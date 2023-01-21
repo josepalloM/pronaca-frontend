@@ -1,0 +1,29 @@
+{
+    "empleados": [
+        {
+            "id": 1,
+            "nombre": "'Juan'",
+            "sueldoNeto": 450
+        },
+        {
+            "id": 2,
+            "nombre": "Karen",
+            "sueldoNeto": 450
+        },
+        {
+            "id": 3,
+            "nombre": "Josue",
+            "sueldoNeto": 450
+        },
+        {
+            "id": 4,
+            "nombre": "Miguel",
+            "sueldoNeto": 450
+        },
+        {
+            "id": 5,
+            "nombre": "Pedro",
+            "sueldoNeto": 450
+        }
+    ]
+}
