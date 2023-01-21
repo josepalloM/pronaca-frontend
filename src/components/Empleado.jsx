@@ -13,6 +13,7 @@ function Empleado({ empleado}) {
             <td>
                 <button>Editar</button>
                 <button>Eliminar</button>
+                <button>Pagar</button>
             </td>
         </tr>
     )

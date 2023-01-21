@@ -13,8 +13,8 @@ function Empleados() {
 
     return (
         <>
-            <h1>Empleados</h1>
-            <p>Administración de empleados</p>
+            <h1 className="font-black text-4xl text-blue-900">Empleados</h1>
+            <p className="mt-3">Administración de empleados</p>
 
             <Link 
                 

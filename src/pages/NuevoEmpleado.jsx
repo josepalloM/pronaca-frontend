@@ -19,6 +19,8 @@ export  async function action({request}){
   }
 
   await agregarEmpleado(datos)
+
+  console.log(datos)
   return redirect('/empleados')
 }
 
