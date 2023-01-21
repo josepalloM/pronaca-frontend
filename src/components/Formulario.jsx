@@ -4,82 +4,82 @@ const Formulario = ({empleado}) => {
             <div className="">
                 <label
                     className=""
-                    htmlFor="nombre"
+                    htmlFor="nombre_empleado"
                 >Nombre:</label>
                 <input 
-                    id="nombre"
+                    id="nombre_empleado"
                     type="text"
                     className=""
                     placeholder="Nombre del empleado"
-                    name="nombre"
+                    name="nombre_empleado"
                 />
             </div>
             <div className="">
                 <label
                     className=""
-                    htmlFor="apellido"
+                    htmlFor="apellido_empleado"
                 >Apellido:</label>
                 <input 
-                    id="apellido"
+                    id="apellido_empleado"
                     type="text"
                     className=""
                     placeholder="Apellido del empleado"
-                    name="apellido"
+                    name="apellido_empleado"
                 />
             </div>
             <div className="">
                 <label
                     className=""
-                    htmlFor="cedula"
+                    htmlFor="cedula_empleado"
                 >Cedula:</label>
                 <input 
-                    id="cedula"
+                    id="cedula_empleado"
                     type="text"
                     className=""
                     placeholder="Cedula del empleado"
-                    name="cedula"
+                    name="cedula_empleado"
                 />
             </div>
 
             <div className="">
                 <label
                     className=""
-                    htmlFor="cargo"
+                    htmlFor="descripcion_cargo"
                 >Cargo:</label>
                 <input 
-                    id="cargo"
+                    id="descripcion_cargo"
                     type="text"
                     className=""
                     placeholder="Cargo"
-                    name="cargo"
+                    name="descripcion_cargo"
                 />
             </div>
 
             <div className="">
                 <label
                     className=""
-                    htmlFor="codigo-cargo"
+                    htmlFor="codigo_cargo"
                 >Código del cargo:</label>
                 <input 
-                    id="codigo-cargo"
+                    id="codigo_cargo"
                     type="text"
                     className=""
                     placeholder="Código del cargo"
-                    name="codigo-cargo"
+                    name="codigo_cargo"
                 />
             </div>
 
             <div className="">
                 <label
                     className=""
-                    htmlFor="sueldo"
+                    htmlFor="sueldo_horas_cargo"
                 >Sueldo por horas:</label>
                 <input
-                    id="sueldo"
+                    id="sueldo_horas_cargo"
                     type="text"
                     className=""
                     placeholder="Sueldo por horas"
-                    name="suedo"
+                    name="sueldo_horas_cargo"
                 />
             </div>
         </>
