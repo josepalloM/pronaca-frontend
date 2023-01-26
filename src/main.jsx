@@ -9,11 +9,13 @@ import Pedidos from './pages/Pedidos'
 import Item, { loader as itemsLoader } from './pages/Items'
 import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
 //import ActualizarItem, {action as actualizarItemAction} from '.pages/ActualizarItem'
-import Clientes from './pages/Clientes'
+import Clientes, {loader as clienteLoader} from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
 import Empleados, {loader as empleadosLoader} from './pages/Empleados'
 import ErrorPage from './components/ErrorPage'
-
+import NuevoCliente, {action as nuevoClienteAction} from './pages/NuevoCliente'
+import {action as eliminarClienteAction} from "./components/Cliente"
+import ActualizarCliente, {loader as actualizarClienteLoader, action as actualizarClienteAction} from './pages/ActualizarCliente.jsx'
 
 
 
@@ -49,6 +51,24 @@ const router = createBrowserRouter([
       {
         path: '/clientes',
         element: <Clientes/>,
+        loader: clienteLoader,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: '/cliente/nuevo',
+        element: <NuevoCliente/>,
+        action: nuevoClienteAction
+      },
+      {
+        path: '/clientes/:clienteId/editar',
+        element: <ActualizarCliente />,
+        loader: actualizarClienteLoader,
+        action: actualizarClienteAction,
+        errorElement: <ErrorPage />
+      },
+      {
+        path:  '/clientes/:clienteId/eliminar',
+        action: eliminarClienteAction
       },
       {
         path: '/empleados',

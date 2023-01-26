@@ -7,7 +7,7 @@ function Layout() {
     const location = useLocation()
     return (
         <div className="flex">
-            <aside className={` h-screen bg-orangebg relative ${open ? "w-56" : "w-0"} duration-300 relative`}>
+            <aside className={` h-screen bg-orange-500 relative ${open ? "w-56" : "w-0"} duration-300 relative`}>
                 <AiOutlineMenu className="bg-white text-black text-3xl absolute
                 -right-10 top-2 cursor-pointer" onClick={() => setOpen(!open)}/>
                 <div className="inline-flex ">
@@ -98,7 +98,7 @@ function Layout() {
             </aside>
 
 
-            <main className="w-full bg-white text-center">
+            <main className=" bg-gray-100  md:w-full  p-10 md:h-screen ">
 
                 <Outlet />
             </main>
