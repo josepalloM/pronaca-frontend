@@ -6,11 +6,14 @@ import Layout from './components/Layout'
 import NuevoEmpleado, {action as nuevoEmpleadoAction} from './pages/NuevoEmpleado'
 import Index from './pages/Index'
 import Pedidos from './pages/Pedidos'
-import Produccion from './pages/Produccion'
+import Item, { loader as itemsLoader } from './pages/Items'
+import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
+//import ActualizarItem, {action as actualizarItemAction} from '.pages/ActualizarItem'
 import Clientes from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
 import Empleados, {loader as empleadosLoader} from './pages/Empleados'
 import ErrorPage from './components/ErrorPage'
+
 
 
 
@@ -29,8 +32,20 @@ const router = createBrowserRouter([
       },
       {
         path: '/produccion',
-        element: <Produccion/>
+        element: <Item/>,
+        loader: itemsLoader,
+        errorElement: <ErrorPage/>
       },
+      {
+        path: '/item/nuevo',
+        element: <NuevoItem/>,
+        action: nuevoItemAction
+      },
+      /*{
+        path: '/item/actualizar',
+        element: <ActualizarItem/>,
+        action: actualizarItemAction
+      },*/
       {
         path: '/clientes',
         element: <Clientes/>,
