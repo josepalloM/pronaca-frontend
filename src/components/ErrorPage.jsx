@@ -8,7 +8,7 @@ function Errorpage() {
         <div>
             <h1>Gestión Pronaca</h1>
             <p>Hubo un error</p>
-            <p>{error.message}</p>
+            <p>{error.statusText || error.message}</p>
         </div>
     )
 }

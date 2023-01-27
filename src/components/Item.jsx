@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 function Item({ item}) {
+
+    const navigate = useNavigate()
     const { ID_ITEM, ID_CUENTA, TIPO_ITEM, NOMBRE_ITEM, FECHA_FABRI_ITEM, FECHA1_CADU_ITEM, FECHA2_CADU_ITEM,
         LOTE_ITEM, CANTIDAD_LOTE_ITEM, PRECIO_ITEM, PESO_ITEM, CONSERVACION_ITEM, DETALLE_ITEM, ESTADO_ITEM} = item
 
@@ -46,7 +48,7 @@ function Item({ item}) {
                 {ESTADO_ITEM}
             </td>
             <td>
-                <button><Link to = ''>Actualizar</Link></button>
+                <button onClick={() => navigate(`/item/${ID_ITEM}/actualizar`)}>Actualizar</button>
                 <button>Eliminar</button>
             </td>
         </tr>
