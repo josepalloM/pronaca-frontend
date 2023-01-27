@@ -8,6 +8,7 @@ import Index from './pages/Index'
 import Pedidos from './pages/Pedidos'
 import Item, { loader as itemsLoader } from './pages/Items'
 import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
+
 //import ActualizarItem, {action as actualizarItemAction} from '.pages/ActualizarItem'
 import Clientes, {loader as clienteLoader} from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
@@ -17,6 +18,13 @@ import NuevoCliente, {action as nuevoClienteAction} from './pages/NuevoCliente'
 import {action as eliminarClienteAction} from "./components/Cliente"
 import ActualizarCliente, {loader as actualizarClienteLoader, action as actualizarClienteAction} from './pages/ActualizarCliente.jsx'
 
+import ActualizarItem, { loader as actualizarItemLoader} from './pages/ActualizarItem'
+
+
+
+
+// Import all of Bootstrap's JS
+//import * as bootstrap from 'bootstrap'
 
 
 const router = createBrowserRouter([
@@ -41,13 +49,15 @@ const router = createBrowserRouter([
       {
         path: '/item/nuevo',
         element: <NuevoItem/>,
-        action: nuevoItemAction
+        action: nuevoItemAction,
+        errorElement: <ErrorPage/>
       },
-      /*{
-        path: '/item/actualizar',
+      {
+        path: '/item/:itemId/actualizar',
         element: <ActualizarItem/>,
-        action: actualizarItemAction
-      },*/
+        loader: actualizarItemLoader,
+        errorElement: <ErrorPage/>
+      },
       {
         path: '/clientes',
         element: <Clientes/>,
