@@ -14,6 +14,10 @@ import Finanzas from './pages/Finanzas'
 import Empleados, {loader as empleadosLoader} from './pages/Empleados'
 import ErrorPage from './components/ErrorPage'
 
+//////import main
+import {action as eliminarEmpleadoAction} from "./components/Empleado"
+import ActualizarEmpleado, {loader as actualizarEmpleadoLoader, action as actualizarEmpleadoAction} from './pages/ActualizarEmpleado.jsx'
+
 
 
 
