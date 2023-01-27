@@ -15,6 +15,9 @@ import Empleados, {loader as empleadosLoader} from './pages/Empleados'
 import ErrorPage from './components/ErrorPage'
 
 
+////////////////////
+import {action as eliminarEmpleadoAction} from "./components/Empleado"
+import ActualizarEmpleado, {loader as actualizarEmpleadoLoader, action as actualizarEmpleadoAction} from './pages/ActualizarEmpleado.jsx'
 
 
 const router = createBrowserRouter([
@@ -61,6 +64,24 @@ const router = createBrowserRouter([
         element: <NuevoEmpleado/>,
         action: nuevoEmpleadoAction
       },
+
+
+      /////parte fer
+      ////////editar empleado
+      {
+        path: '/empleados/:empleadoId/editar',
+        element: <ActualizarEmpleado />,
+        loader: actualizarEmpleadoLoader,
+        action: actualizarEmpleadoAction,
+        errorElement: <ErrorPage />
+      },
+      ////////eliminar empleado
+      {
+        path:  '/empleados/:empleadoId/eliminar',
+        action: eliminarEmpleadoAction
+      },
+
+      ,
       {
         path: '/finanzas',
         element: <Finanzas/>

@@ -19,3 +19,32 @@ export async function agregarEmpleado(datos) {
         console.log(error)
     }
 }
+
+/////////////////////////////////eliminar y agregar empleado
+export async function eliminarEmpleado(id){
+    try {
+        const url = "http://localhost:4000/api/empleado"
+        const respuesta = await fetch(`${url}/${id}`, {
+            method:'DELETE'
+        })
+        await respuesta.json()
+    }catch (error){
+        console.log(error)
+    }
+}
+
+export async function actualizarEmpleado(id, datos){
+    try {
+        const url = "http://localhost:4000/api/empleado"
+        const respuesta = await fetch(`${url}/${id}`, {
+            method:'PUT',
+            body:JSON.stringify(datos),
+            headers: {
+                'Content-Type':'application/json'
+            }
+        })
+        await respuesta.json()
+    }catch (error){
+        console.log(error)
+    }
+}

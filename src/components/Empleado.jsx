@@ -11,9 +11,10 @@ function Empleado({ empleado}) {
                 {SUELDO_NETO}
             </td>
             <td>
-                <button>Editar</button>
-                <button>Eliminar</button>
+                <button>Editar</button>&emsp;
+                <button>Eliminar</button>&emsp;
                 <button>Pagar</button>
+                
             </td>
         </tr>
     )
