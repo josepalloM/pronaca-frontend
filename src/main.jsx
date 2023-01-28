@@ -12,6 +12,7 @@ import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
 import Clientes from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
 import Empleados, {loader as empleadosLoader} from './pages/Empleados'
+import {action as pagarEmpleado} from './components/Empleado'
 import ErrorPage from './components/ErrorPage'
 
 
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
         element: <NuevoEmpleado/>,
         action: nuevoEmpleadoAction,
         loader: cargarDepartamentoCargo
+      },
+      {
+        path: '/empleados/:empleadoId/pagar',
+        action: pagarEmpleado
       },
       {
         path: '/finanzas',

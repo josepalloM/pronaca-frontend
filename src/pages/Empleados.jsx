@@ -12,7 +12,6 @@ export async function loader() {
 function Empleados() {
 
     const {empleados, cargos_empleados} = useLoaderData()
-    console.log(empleados)
     return (
         <>
             <h1 className="font-black text-4xl ">Empleados</h1>

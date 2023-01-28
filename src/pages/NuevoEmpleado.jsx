@@ -4,6 +4,7 @@ import Error from "../components/Error";
 import { agregarEmpleado} from "../data/empleados";
 import { obtenerDepartamentos } from "../data/departamento";
 import { obtenerCargos } from "../data/cargo_empleado";
+import { actualizarPasivos } from "../data/cuentas";
 
 export async function loader() {
   const departamentos = await obtenerDepartamentos()
@@ -27,6 +28,8 @@ export  async function action({request}){
   }
 
   await agregarEmpleado(datos)
+  //calcular cuentas Pasivos
+  await actualizarPasivos() 
 
   console.log(datos)
   return redirect('/empleados')
