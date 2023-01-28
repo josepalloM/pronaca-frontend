@@ -34,29 +34,21 @@ export  async function action({request}){
 
 function NuevoEmpleado() {
   const {departamentos,cargos_empleado}= useLoaderData()
-  console.log("c"+cargos_empleado)
-  console.log("ex"+departamentos)
   const errores = useActionData()
   const navigate = useNavigate()
 
   return (
     <>
-        <h1>Nuevo Empleado</h1>
-        <p>Llena todos los campos para agregar un nuevo empleado</p>
+        <h1 className="font-black text-4xl text-black">Nuevo Empleado</h1>
+        <p className="mt-3">Llena todos los campos para agregar un nuevo empleado</p>
 
-        <div>
-          <button
-            onClick={()=> navigate(-1)}
-          >Volver</button>
-        </div>
+        <div className=" flex justify-start bg-black text-white rounded md: w-3/4 mx-auto px-5 py-2 mt-6">Empleado</div>
 
-        <div className="Contenedor-form">
+        <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
           {errores?.length && errores.map( (error, i) =>  <Error key={i}>{error}</Error>)}
 
           <Form
             method="POST"
-            
-
           >
             <Formulario departamentos={departamentos} cargos_empleado={cargos_empleado}/>
               <div className="grid grid-cols-2 gap-2">
