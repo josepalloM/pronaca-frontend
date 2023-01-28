@@ -1,4 +1,12 @@
-const Formulario = ({empleado}) => {
+import { Link, useLoaderData } from "react-router-dom";
+import {useState} from "react"
+
+const Formulario = ({empleado,departamentos, cargos_empleado}) => {
+
+    const [value, setValue] = useState("")
+    const [valueC, setValueC] = useState("")
+
+    console.log(value+"jjj"+valueC)
     return (
         <>
             <div className="">
@@ -40,48 +48,55 @@ const Formulario = ({empleado}) => {
                     name="cedula_empleado"
                 />
             </div>
+            
+            <div className="">
+                <label
+                    className=""
+                    htmlFor="horas_laboradas"
+                >Horas laboradas:</label>
+                <input
+                    id="horas_laboradas"
+                    type="text"
+                    className=""
+                    placeholder="Horas laboradas"
+                    name="horas_laboradas"
+                />
+            </div>
+
+            <div className="">
+                <label
+                    className=""
+                    htmlFor="nombre_departamento"
+                >Departamento:</label>
+                <div className="">
+                    {departamentos.length ?(
+                    <select id="nombre_departamento" value={value} name="nombre_departamento" onChange={(event)=>setValue(event.target.value)} className="form-control">
+                        {departamentos.map(departamento =>(
+                            <option key={departamento.ID_DEPARTAMENTO} value={departamento.ID_DEPARTAMENTO}>{departamento.NOMBRE_DEPARTAMENTO}</option>
+                        ))}
+                    </select>
+                    ):(<p> No existe DEPARTAMENTOS</p>)}
+                </div>
+            </div>
 
             <div className="">
                 <label
                     className=""
                     htmlFor="descripcion_cargo"
                 >Cargo:</label>
-                <input 
-                    id="descripcion_cargo"
-                    type="text"
-                    className=""
-                    placeholder="Cargo"
-                    name="descripcion_cargo"
-                />
-            </div>
+                <div className="">
+                    {cargos_empleado.length ?(
+                        <select id="descripcion_cargo" value={valueC} name="descripcion_cargo" onChange={(event)=>setValueC(event.target.value)} className="form-control">
+                            {cargos_empleado.filter(cargos=>cargos.ID_DEPARTAMENTO==value).map( cargo => (
+                                <option key={cargo.ID_CARGO_EMPLEADO} value={cargo.DESCRIPCION_CARGO}>{cargo.DESCRIPCION_CARGO}</option>                         
+                            ))}                        
+                        </select>
+                    ):(<p> No existe DEPARTAMENTOS</p>)}
 
-            <div className="">
-                <label
-                    className=""
-                    htmlFor="codigo_cargo"
-                >Código del cargo:</label>
-                <input 
-                    id="codigo_cargo"
-                    type="text"
-                    className=""
-                    placeholder="Código del cargo"
-                    name="codigo_cargo"
-                />
-            </div>
-
-            <div className="">
-                <label
-                    className=""
-                    htmlFor="sueldo_horas_cargo"
-                >Sueldo por horas:</label>
-                <input
-                    id="sueldo_horas_cargo"
-                    type="text"
-                    className=""
-                    placeholder="Sueldo por horas"
-                    name="sueldo_horas_cargo"
-                />
-            </div>
+                </div>
+                
+            </div>            
+            
         </>
     )
 }

@@ -1,12 +1,20 @@
-import { useNavigate, Form, useActionData, redirect } from "react-router-dom"
+import { useNavigate, Form, useActionData, redirect, useLoaderData } from "react-router-dom"
 import Formulario from "../components/Formulario";
 import Error from "../components/Error";
-import { agregarEmpleado } from "../data/empleados";
+import { agregarEmpleado} from "../data/empleados";
+import { obtenerDepartamentos } from "../data/departamento";
+import { obtenerCargos } from "../data/cargo_empleado";
+
+export async function loader() {
+  const departamentos = await obtenerDepartamentos()
+  const cargos_empleado = await obtenerCargos()
+  return {departamentos, cargos_empleado}
+}
 
 export  async function action({request}){
   const formData = await request.formData()
   const datos = Object.fromEntries(formData)
-
+  
   //validaciones
   const errores = []
   if(Object.values(datos).includes('')){
@@ -25,7 +33,9 @@ export  async function action({request}){
 }
 
 function NuevoEmpleado() {
-
+  const {departamentos,cargos_empleado}= useLoaderData()
+  console.log("c"+cargos_empleado)
+  console.log("ex"+departamentos)
   const errores = useActionData()
   const navigate = useNavigate()
 
@@ -48,12 +58,24 @@ function NuevoEmpleado() {
             
 
           >
-            <Formulario/>
-
-            <input 
-              type="submit"
-              value="Registrar Empleado"  
-            />
+            <Formulario departamentos={departamentos} cargos_empleado={cargos_empleado}/>
+              <div className="grid grid-cols-2 gap-2">
+                <div>
+                  <input
+                    type="submit"
+                    className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
+                    value="Registrar Empleado"
+                  />
+                </div>
+                <div>
+                  <button
+                    type="button"
+                    className="felx justify-items-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
+                    onClick={() => navigate(-1)}
+                  >Cancelar</button>
+                </div>       
+              </div>
+            
           </Form>
         </div>
     </>

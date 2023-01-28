@@ -2,6 +2,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { obtenerEmpleados } from "../data/empleados";
 import Empleado from "../components/Empleado";
 
+
 export function loader() {
     const empleados = obtenerEmpleados()
     return empleados
@@ -10,7 +11,7 @@ export function loader() {
 function Empleados() {
 
     const empleados = useLoaderData()
-
+    console.log("mi emp"+empleados)
     return (
         <>
             <h1 className="font-black text-4xl text-blue-900">Empleados</h1>

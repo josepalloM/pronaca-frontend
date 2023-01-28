@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
-import NuevoEmpleado, {action as nuevoEmpleadoAction} from './pages/NuevoEmpleado'
+import NuevoEmpleado, {action as nuevoEmpleadoAction, loader as cargarDepartamentoCargo} from './pages/NuevoEmpleado'
 import Index from './pages/Index'
 import Pedidos from './pages/Pedidos'
 import Item, { loader as itemsLoader } from './pages/Items'
@@ -59,7 +59,8 @@ const router = createBrowserRouter([
       {
         path: '/empleados/nuevo',
         element: <NuevoEmpleado/>,
-        action: nuevoEmpleadoAction
+        action: nuevoEmpleadoAction,
+        loader: cargarDepartamentoCargo
       },
       {
         path: '/finanzas',

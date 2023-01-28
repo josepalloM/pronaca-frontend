@@ -1,11 +1,11 @@
 
 function Empleado({ empleado}) {
-    const { NOMBRE_EMPLEADO, SUELDO_NETO, ID_EMPLEADO} = empleado
+    const { NOMBRE_EMPLEADO, APELLIDO_EMPLEADO,SUELDO_NETO, ID_EMPLEADO} = empleado
 
     return (
         <tr>
             <td>
-                {NOMBRE_EMPLEADO}
+                {NOMBRE_EMPLEADO} {APELLIDO_EMPLEADO}
             </td>
             <td>
                 {SUELDO_NETO}
