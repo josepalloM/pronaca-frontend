@@ -9,6 +9,8 @@ import NuevoCargo, {loader as nuevoCargoLoader, action as nuevoCargoAction} from
 import Index from './pages/Index'
 import Pedidos from './pages/Pedidos'
 import Item, { loader as itemsLoader } from './pages/Items'
+import BalanceGeneral, { loader as balanceLoader } from './pages/BalanceGeneral'
+import EstadoFinanciero, { loader as estadoLoader } from './pages/EstadoFinanciero'
 import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
 //import ActualizarItem, {action as actualizarItemAction} from '.pages/ActualizarItem'
 import Clientes from './pages/Clientes'
@@ -101,6 +103,16 @@ const router = createBrowserRouter([
         element: <NuevoCargo/>,
         loader: nuevoCargoLoader,
         action: nuevoCargoAction
+      },
+      {
+        path: '/finanzas/balance',
+        element: <BalanceGeneral/>,
+        loader: balanceLoader,
+      },
+      {
+        path: '/finanzas/estado',
+        element: <EstadoFinanciero/>,
+        loader: estadoLoader,
       }
     ]
   },
