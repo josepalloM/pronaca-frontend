@@ -3,13 +3,9 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
-<<<<<<< HEAD
-import NuevoEmpleado, {action as nuevoEmpleadoAction} from './pages/NuevoEmpleado'
-import NuevoDepartamento, {action as nuevoDepartamentoAction} from './pages/NuevoDepartamento'
-import NuevoCargo, {action as nuevoCargoAction} from './pages/NuevoCargo'
-=======
 import NuevoEmpleado, {action as nuevoEmpleadoAction, loader as cargarDepartamentoCargo} from './pages/NuevoEmpleado'
->>>>>>> 33894275d0f2408d3ad1449fb0597d7143b1640b
+import NuevoDepartamento, {action as nuevoDepartamentoAction} from './pages/NuevoDepartamento'
+import NuevoCargo, {loader as nuevoCargoLoader, action as nuevoCargoAction} from './pages/NuevoCargo'
 import Index from './pages/Index'
 import Pedidos from './pages/Pedidos'
 import Item, { loader as itemsLoader } from './pages/Items'
@@ -96,6 +92,7 @@ const router = createBrowserRouter([
       {
         path: '/finanzas/cargos/nuevo',
         element: <NuevoCargo/>,
+        loader: nuevoCargoLoader,
         action: nuevoCargoAction
       }
     ]

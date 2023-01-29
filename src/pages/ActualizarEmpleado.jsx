@@ -2,7 +2,7 @@ import {agregarEmpleado, obtenerEmpleado, actualizarEmpleado} from "../data/empl
 import Error from "../components/Error.jsx";
 import {Form, useNavigate, useLoaderData, useActionData, redirect} from "react-router-dom";
 import Formulario from "../components/Formulario.jsx";
-import { obtenerDepartamentos } from "../data/departamento";
+import { obtenerDepartamentos } from "../data/departamentos";
 import { obtenerCargos } from "../data/cargo_empleado";
 
 export async function loader({params}){

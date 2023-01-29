@@ -1,8 +1,13 @@
-import { useNavigate, Form, useActionData, redirect } from "react-router-dom"
+import { useNavigate, Form, useActionData, useLoaderData, redirect } from "react-router-dom"
 import FormularioCargo from "../components/FormularioCargo";
 import Error from "../components/Error";
 import { agregarCargo } from "../data/cargo_empleado";
-import React, { useState } from 'react';
+import { obtenerDepartamentos } from "../data/departamentos";
+
+export async function loader() {
+  const departamentos = await obtenerDepartamentos()
+  return { departamentos }
+}
 
 export async function action({ request }) {
 
@@ -29,15 +34,8 @@ export async function action({ request }) {
 
 function NuevoCargo() {
   const errores = useActionData()
+  const { departamentos } = useLoaderData()
   const navigate = useNavigate()
-
-  // Cambiar dinámicamente con los departamentos de la base de datos
-  const [options, setOptions] = useState(['Option 1', 'Option 2', 'Option 3']);
-  const [selectedOption, setSelectedOption] = useState(options[0]);
-
-  const handleChange = (event) => {
-    setSelectedOption(event.target.value);
-  }
 
   return (
     <>
@@ -54,21 +52,9 @@ function NuevoCargo() {
 
 
         >
-          <FormularioCargo />
+          <FormularioCargo departamentos={departamentos} />
 
           <div className="grid grid-cols-2 gap-2">
-
-            <div>
-              <br></br>
-              <label>Departamento:</label>
-              <select value={selectedOption} onChange={e => setSelectedOption(e.target.value)}>
-                {options.map(option => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-            </div><br></br>
             <div>
               <input
                 type="submit"
