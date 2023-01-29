@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
 import NuevoEmpleado, {action as nuevoEmpleadoAction} from './pages/NuevoEmpleado'
 import Index from './pages/Index'
-import Pedidos from './pages/Pedidos'
+import Pedidos, { loader as pedidoLoader } from './pages/Pedidos'
 import Item, { loader as itemsLoader } from './pages/Items'
 import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
 
@@ -20,6 +20,7 @@ import ActualizarCliente, {loader as actualizarClienteLoader, action as actualiz
 
 import ActualizarItem, { loader as actualizarItemLoader} from './pages/ActualizarItem'
 
+import NuevoPedido, {action as nuevoPedidoAction} from './pages/NuevoPedido'
 
 
 
@@ -38,8 +39,26 @@ const router = createBrowserRouter([
       },
       {
         path: '/pedidos',
-        element: <Pedidos/>
+        element: <Pedidos/>,
+        loader: pedidoLoader,
+        errorElement: <ErrorPage/>
       },
+      {
+        path: '/pedido/nuevo',
+        element: <NuevoPedido/>,
+        action: nuevoPedidoAction
+      },
+      // {
+      //   path: '/Pedidos/:pedidoId/editar',
+      //   element: <ActualizarPedido />,
+      //   loader: actualizarPedidoLoader,
+      //   action: actualizarPedidoAction,
+      //   errorElement: <ErrorPage />
+      // },
+      // {
+      //   path:  '/pedidos/:pedidoId/eliminar',
+      //   action: eliminarPedidoAction
+      // },
       {
         path: '/produccion',
         element: <Item/>,
@@ -94,6 +113,10 @@ const router = createBrowserRouter([
       {
         path: '/finanzas',
         element: <Finanzas/>
+      },
+      {
+        path: '*',
+        element: <Index/>
       }
     ]
   },
