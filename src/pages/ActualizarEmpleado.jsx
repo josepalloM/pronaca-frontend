@@ -2,9 +2,13 @@ import {agregarEmpleado, obtenerEmpleado, actualizarEmpleado} from "../data/empl
 import Error from "../components/Error.jsx";
 import {Form, useNavigate, useLoaderData, useActionData, redirect} from "react-router-dom";
 import Formulario from "../components/Formulario.jsx";
+import { obtenerDepartamentos } from "../data/departamento";
+import { obtenerCargos } from "../data/cargo_empleado";
 
 export async function loader({params}){
     const empleado =  await obtenerEmpleado(params.empleadoId)
+    const departamentos = await obtenerDepartamentos()
+    const cargos_empleado = await obtenerCargos()
     if (Object.values(empleado).length===0){
         throw new Response('', {
             status: 404,
@@ -12,7 +16,7 @@ export async function loader({params}){
         })
     }
     console.log("Empleado en actualizar", empleado)
-    return empleado
+    return {empleado,departamentos,cargos_empleado}
 }
 
 export async function action({request, params}){
@@ -39,7 +43,7 @@ export async function action({request, params}){
 function ActualizarEmpleado() {
 
     const navigate = useNavigate()
-    const empleado = useLoaderData()
+    const {empleado, departamentos,cargos_empleado} = useLoaderData()
     const errores = useActionData()
 
     return (
@@ -59,7 +63,7 @@ function ActualizarEmpleado() {
 
                 >
                     <Formulario
-                        empleado={empleado}
+                        empleado={empleado} departamentos={departamentos} cargos_empleado={cargos_empleado}
                     />
 
                     <div className="grid grid-cols-2 gap-2">
