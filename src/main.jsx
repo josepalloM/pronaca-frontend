@@ -3,9 +3,13 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
+<<<<<<< HEAD
 import NuevoEmpleado, {action as nuevoEmpleadoAction} from './pages/NuevoEmpleado'
 import NuevoDepartamento, {action as nuevoDepartamentoAction} from './pages/NuevoDepartamento'
 import NuevoCargo, {action as nuevoCargoAction} from './pages/NuevoCargo'
+=======
+import NuevoEmpleado, {action as nuevoEmpleadoAction, loader as cargarDepartamentoCargo} from './pages/NuevoEmpleado'
+>>>>>>> 33894275d0f2408d3ad1449fb0597d7143b1640b
 import Index from './pages/Index'
 import Pedidos from './pages/Pedidos'
 import Item, { loader as itemsLoader } from './pages/Items'
@@ -14,7 +18,11 @@ import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
 import Clientes from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
 import Empleados, {loader as empleadosLoader} from './pages/Empleados'
+import {action as pagarEmpleado} from './components/Empleado'
 import ErrorPage from './components/ErrorPage'
+////actualizar empleado
+
+import ActualizarEmpleado, {loader as actualizarEmpleadoLoader, action as actualizarEmpleadoAction} from './pages/ActualizarEmpleado.jsx'
 
 
 
@@ -61,7 +69,20 @@ const router = createBrowserRouter([
       {
         path: '/empleados/nuevo',
         element: <NuevoEmpleado/>,
-        action: nuevoEmpleadoAction
+        action: nuevoEmpleadoAction,
+        loader: cargarDepartamentoCargo
+      },
+
+      {
+        path: '/empleados/:empleadoId/editar',
+        element: <ActualizarEmpleado />,
+        loader: actualizarEmpleadoLoader,
+        action: actualizarEmpleadoAction,
+        errorElement: <ErrorPage />
+      },
+      {
+        path: '/empleados/:empleadoId/pagar',
+        action: pagarEmpleado
       },
       {
         path: '/finanzas',

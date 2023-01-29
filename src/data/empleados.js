@@ -1,5 +1,6 @@
 export async function obtenerEmpleados(){
-    const respuesta = await fetch(import.meta.env.VITE_API_URL_GET)
+    const url = "http://localhost:4000/api/empleado/"
+    const respuesta = await fetch(url)
     const resultado = await respuesta.json()
     return resultado
 }
@@ -7,8 +8,32 @@ export async function obtenerEmpleados(){
 export async function agregarEmpleado(datos) {
 
     try {
-        const respuesta = await fetch(import.meta.env.VITE_API_URL_POST, {
+        const url = "http://localhost:4000/api/empleado/"
+        const respuesta = await fetch(url, {
             method:'POST',
+            body:JSON.stringify(datos),
+            headers: {
+                'Content-Type':'application/json'
+            }
+        })
+        await respuesta.json()
+    }catch (error){
+        console.log(error)
+    }
+}
+
+export async function obtenerEmpleado(id) {
+    const url = "http://localhost:4000/api/empleado"
+    const respuesta = await fetch(`${url}/${id}`)
+    const resultado = await respuesta.json()
+    return resultado
+}
+
+export async function actualizarEmpleado(id, datos){
+    try {
+        const url = "http://localhost:4000/api/empleado"
+        const respuesta = await fetch(`${url}/${id}`, {
+            method:'PUT',
             body:JSON.stringify(datos),
             headers: {
                 'Content-Type':'application/json'
