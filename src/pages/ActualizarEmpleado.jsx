@@ -51,7 +51,7 @@ function ActualizarEmpleado() {
             <h1 className="font-black text-4xl text-black">Editar Empleado</h1>
             <p className="mt-3">A continuación podrás modificar los datos de un empleado</p>
 
-            <div className=" flex justify-start bg-black text-white rounded md: w-3/4 mx-auto px-5 py-2 mt-6">Ciente</div>
+            <div className=" flex justify-start bg-black text-white rounded md: w-3/4 mx-auto px-5 py-2 mt-6">Empleado</div>
             <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
                 
                 
@@ -72,6 +72,7 @@ function ActualizarEmpleado() {
                                 type="submit"
                                 className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
                                 value="Editar Empleado"
+                                
                             />
                         </div>
                         <div>
