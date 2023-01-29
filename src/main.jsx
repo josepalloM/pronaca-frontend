@@ -18,6 +18,7 @@ import Finanzas from './pages/Finanzas'
 import Empleados, {loader as empleadosLoader} from './pages/Empleados'
 import {action as pagarEmpleado} from './components/Empleado'
 import ActualizarIess, {loader as iess, action as nuevoIess} from './pages/ActualizarIess'
+import {loader as eliminarEmpleado} from './pages/EliminarEmpleado'
 import ErrorPage from './components/ErrorPage'
 ////actualizar empleado
 
@@ -88,6 +89,10 @@ const router = createBrowserRouter([
         element: <ActualizarIess/>,
         loader: iess,
         action: nuevoIess
+      },
+      {
+        path:'/empleados/:empleadoId/eliminar',
+        loader: eliminarEmpleado
       },
       {
         path: '/finanzas',

@@ -1,9 +1,11 @@
 import {useEffect, useState} from "react"
 import {Form, useNavigate,redirect} from "react-router-dom"
 import {agregarCuenta} from "../data/cuentas.js";
+import {eliminarEmpleado} from "../data/empleados.js"
 
 export async function action({params}){
     await agregarCuenta(params.empleadoId)
+    
     return redirect('/empleados')
 }
 
@@ -34,8 +36,13 @@ function Empleado({ empleado, cargos}) {
                         type="button"
                         className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
                         onClick={() => navigate(`/empleados/${ID_EMPLEADO}/editar`)}
-                    >Editar</button>
-                <button>Eliminar</button>
+                    >Editar
+                </button>
+                <button type="submit"
+                        className="text-red-600 hover:text-blue-700 uppercase font-bold text-xs"
+                        onClick={() => navigate(`/empleados/${ID_EMPLEADO}/eliminar`)}>
+                        Eliminar
+                </button>
                 <Form
                     method='post'
                     action={`/empleados/${ID_EMPLEADO}/pagar`}
