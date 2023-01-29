@@ -1,10 +1,9 @@
 import {useEffect, useState} from "react"
 import {Form, useNavigate,redirect} from "react-router-dom"
-import {agregarCuenta, actualizarCostos} from "../data/cuentas.js";
+import {agregarCuenta} from "../data/cuentas.js";
 
 export async function action({params}){
     await agregarCuenta(params.empleadoId)
-    await actualizarCostos()
     return redirect('/empleados')
 }
 

@@ -15,6 +15,7 @@ import Clientes from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
 import Empleados, {loader as empleadosLoader} from './pages/Empleados'
 import {action as pagarEmpleado} from './components/Empleado'
+import ActualizarIess, {loader as iess, action as nuevoIess} from './pages/ActualizarIess'
 import ErrorPage from './components/ErrorPage'
 ////actualizar empleado
 
@@ -79,6 +80,12 @@ const router = createBrowserRouter([
       {
         path: '/empleados/:empleadoId/pagar',
         action: pagarEmpleado
+      },
+      {
+        path:'/empleados/iess',
+        element: <ActualizarIess/>,
+        loader: iess,
+        action: nuevoIess
       },
       {
         path: '/finanzas',
