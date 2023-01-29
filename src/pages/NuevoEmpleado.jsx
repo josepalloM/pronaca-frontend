@@ -2,7 +2,7 @@ import { useNavigate, Form, useActionData, redirect, useLoaderData } from "react
 import Formulario from "../components/Formulario";
 import Error from "../components/Error";
 import { agregarEmpleado} from "../data/empleados";
-import { obtenerDepartamentos } from "../data/departamento";
+import { obtenerDepartamentos } from "../data/departamentos";
 import { obtenerCargos } from "../data/cargo_empleado";
 import { actualizarPasivos } from "../data/cuentas";
 

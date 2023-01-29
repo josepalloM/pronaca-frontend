@@ -1,14 +1,14 @@
 const FormularioDepartamento = ({departamento}) => (
     <>
-        <div className="">
+        <div className="mb-4">
             <label
-                className=""
+                className="flex justify-start text-gray-800"
                 htmlFor="nombre_departamento"
             >Nombre Departamento: </label>
             <input
                 id="nombre_departamento"
                 type="text"
-                className=""
+                className="mt-2 block w-full p-3 bg-gray-50"
                 placeholder="Nombre del departamento"
                 name="nombre_departamento" />
         </div><br></br>
