@@ -26,7 +26,7 @@ function Layout() {
                                     active:shadow transition duration-150 ease-in-out">
                                 <Link
                                     className={`${location.pathname === '/'}`}
-                                    to='/pedidos'>Pedidos</Link>
+                                    to='/opciones'>Pedidos</Link>
                             </button>
                         </div>
                     </li>
