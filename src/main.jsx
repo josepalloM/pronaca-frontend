@@ -14,6 +14,9 @@ import Finanzas from './pages/Finanzas'
 import Empleados, {loader as empleadosLoader} from './pages/Empleados'
 import {action as pagarEmpleado} from './components/Empleado'
 import ErrorPage from './components/ErrorPage'
+////actualizar empleado
+
+import ActualizarEmpleado, {loader as actualizarEmpleadoLoader, action as actualizarEmpleadoAction} from './pages/ActualizarEmpleado.jsx'
 
 
 
@@ -62,6 +65,14 @@ const router = createBrowserRouter([
         element: <NuevoEmpleado/>,
         action: nuevoEmpleadoAction,
         loader: cargarDepartamentoCargo
+      },
+
+      {
+        path: '/empleados/:empleadoId/editar',
+        element: <ActualizarEmpleado />,
+        loader: actualizarEmpleadoLoader,
+        action: actualizarEmpleadoAction,
+        errorElement: <ErrorPage />
       },
       {
         path: '/empleados/:empleadoId/pagar',

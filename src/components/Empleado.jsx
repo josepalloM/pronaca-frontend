@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react"
-import {Form, redirect} from "react-router-dom"
+import {Form, useNavigate,redirect} from "react-router-dom"
 import {agregarCuenta, actualizarCostos} from "../data/cuentas.js";
 
 export async function action({params}){
@@ -11,6 +11,7 @@ export async function action({params}){
 function Empleado({ empleado, cargos}) {
     const { NOMBRE_EMPLEADO, APELLIDO_EMPLEADO,ID_CARGO_EMPLEADO,SUELDO_NETO, ID_EMPLEADO} = empleado
     const [DESCRIPCION_CARGO,setCargo] = useState("")
+    const navigate = useNavigate()
 
     useEffect(()=>{    
         
@@ -30,9 +31,11 @@ function Empleado({ empleado, cargos}) {
                 {DESCRIPCION_CARGO}
             </td>
             <td className="p-4 flex justify-center gap-3">
-                <button type="button"
+                <button
+                        type="button"
                         className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
-                        >Editar</button>
+                        onClick={() => navigate(`/empleados/${ID_EMPLEADO}/editar`)}
+                    >Editar</button>
                 <button>Eliminar</button>
                 <Form
                     method='post'
