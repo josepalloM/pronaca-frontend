@@ -17,16 +17,7 @@ const FormularioCargo = ({ departamentos }) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Descripción del cargo"
                     name="descripcion_cargo" /><br></br><br></br>
-                <label
-                    className="flex justify-start text-gray-800"
-                    htmlFor="sueldo_horas_cargo"
-                >Sueldo por horas: </label>
-                <input
-                    id="sueldo_horas_cargo"
-                    type="text"
-                    className="mt-2 block w-full p-3 bg-gray-50"
-                    placeholder="Sueldo por horas"
-                    name="sueldo_horas_cargo" />
+
             </div>
 
             <div className="mb-4">

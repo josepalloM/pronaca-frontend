@@ -8,7 +8,7 @@ export async function obtenerCargos(){
 }
 
 export async function obtenerCargo(id) {
-    const url = "http://localhost:4000/api/cargo_empleado"
+    const url = "http://localhost:4000/api/cargo_empleado/"
     const respuesta = await fetch(`${url}/${id}`)
     const resultado = await respuesta.json()
     return resultado
@@ -17,7 +17,7 @@ export async function obtenerCargo(id) {
 export async function agregarCargo(datos) {
 
     try {
-        const url = "http://localhost:4000/api/cargo/"
+        const url = "http://localhost:4000/api/cargo_empleado/"
         const respuesta = await fetch(url, {
             method:'POST',
             body:JSON.stringify(datos),
