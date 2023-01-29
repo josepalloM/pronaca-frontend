@@ -4,6 +4,8 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
 import NuevoEmpleado, {action as nuevoEmpleadoAction} from './pages/NuevoEmpleado'
+import NuevoDepartamento, {action as nuevoDepartamentoAction} from './pages/NuevoDepartamento'
+import NuevoCargo, {action as nuevoCargoAction} from './pages/NuevoCargo'
 import Index from './pages/Index'
 import Pedidos from './pages/Pedidos'
 import Item, { loader as itemsLoader } from './pages/Items'
@@ -64,6 +66,16 @@ const router = createBrowserRouter([
       {
         path: '/finanzas',
         element: <Finanzas/>
+      },
+      {
+        path: '/finanzas/departamentos/nuevo',
+        element: <NuevoDepartamento/>,
+        action: nuevoDepartamentoAction
+      },
+      {
+        path: '/finanzas/cargos/nuevo',
+        element: <NuevoCargo/>,
+        action: nuevoCargoAction
       }
     ]
   },
