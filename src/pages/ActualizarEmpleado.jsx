@@ -45,6 +45,7 @@ function ActualizarEmpleado() {
     const navigate = useNavigate()
     const {empleado, departamentos,cargos_empleado} = useLoaderData()
     const errores = useActionData()
+    
 
     return (
         <>

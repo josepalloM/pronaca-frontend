@@ -33,7 +33,7 @@ export async function actualizarEmpleado(id, datos){
     try {
         const url = "http://localhost:4000/api/empleado"
         const respuesta = await fetch(`${url}/${id}`, {
-            method:'PUT',
+            method:'POST',
             body:JSON.stringify(datos),
             headers: {
                 'Content-Type':'application/json'
