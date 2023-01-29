@@ -26,7 +26,19 @@ function Empleados() {
                 type="button"
                 className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
                 onClick={() => navigate(`/empleados/iess`)}
-            >Valor IESS</button>
+            >Valor IESS</button> <br></br>
+
+<button
+                type="button"
+                className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
+                onClick={() => navigate(`/empleados/departamentos/nuevo`)}
+            >Nuevo departamento</button><br></br>
+
+<button
+                type="button"
+                className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
+                onClick={() => navigate(`/empleados/cargos/nuevo`)}
+            >Nuevo cargo</button><br></br>
 
             <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">
                 {empleados.length ? (

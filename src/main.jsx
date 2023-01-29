@@ -99,12 +99,12 @@ const router = createBrowserRouter([
         element: <Finanzas/>
       },
       {
-        path: '/finanzas/departamentos/nuevo',
+        path: '/empleados/departamentos/nuevo',
         element: <NuevoDepartamento/>,
         action: nuevoDepartamentoAction
       },
       {
-        path: '/finanzas/cargos/nuevo',
+        path: '/empleados/cargos/nuevo',
         element: <NuevoCargo/>,
         loader: nuevoCargoLoader,
         action: nuevoCargoAction
