@@ -3,13 +3,10 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
-<<<<<<< HEAD
-import NuevoEmpleado, {action as nuevoEmpleadoAction} from './pages/NuevoEmpleado'
 import NuevoDepartamento, {action as nuevoDepartamentoAction} from './pages/NuevoDepartamento'
 import NuevoCargo, {action as nuevoCargoAction} from './pages/NuevoCargo'
-=======
 import NuevoEmpleado, {action as nuevoEmpleadoAction, loader as cargarDepartamentoCargo} from './pages/NuevoEmpleado'
->>>>>>> 33894275d0f2408d3ad1449fb0597d7143b1640b
+
 import Index from './pages/Index'
 import Pedidos from './pages/Pedidos'
 import Item, { loader as itemsLoader } from './pages/Items'
@@ -19,6 +16,7 @@ import Clientes from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
 import Empleados, {loader as empleadosLoader} from './pages/Empleados'
 import {action as pagarEmpleado} from './components/Empleado'
+import ActualizarIess, {loader as iess, action as nuevoIess} from './pages/ActualizarIess'
 import ErrorPage from './components/ErrorPage'
 ////actualizar empleado
 
@@ -83,6 +81,12 @@ const router = createBrowserRouter([
       {
         path: '/empleados/:empleadoId/pagar',
         action: pagarEmpleado
+      },
+      {
+        path:'/empleados/iess',
+        element: <ActualizarIess/>,
+        loader: iess,
+        action: nuevoIess
       },
       {
         path: '/finanzas',
