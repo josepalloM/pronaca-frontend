@@ -1,3 +1,4 @@
+
 const FormularioItem = ({item}) => (
     <>
         <div className="">
@@ -10,7 +11,9 @@ const FormularioItem = ({item}) => (
                 type="text"
                 className=""
                 placeholder="Id de la cuenta"
-                name="id_cuenta" />
+                name="id_cuenta"
+                defaultValue = {item?.ID_CUENTA}
+                />
         </div>
         <div className="">
             <label
@@ -22,7 +25,10 @@ const FormularioItem = ({item}) => (
                 type="text"
                 className=""
                 placeholder="Tipo Item"
-                name="tipo_item" />
+                name="tipo_item" 
+                defaultValue = {item?.TIPO_ITEM}
+                />
+                
         </div>
         <div className="">
             <label
@@ -34,7 +40,9 @@ const FormularioItem = ({item}) => (
                 type="text"
                 className=""
                 placeholder="Nombre Item"
-                name="nombre_item" />
+                name="nombre_item" 
+                //defaultValue={item[0]?.NOMBRE_ITEM}
+                />
         </div>
 
         <div className="">
@@ -47,7 +55,9 @@ const FormularioItem = ({item}) => (
                 type="text"
                 className=""
                 placeholder="Fecha Fabricación Item"
-                name="fecha_fabri_item" />
+                name="fecha_fabri_item" 
+                //defaultValue = {item[0]?.FECHA_FABRI_ITEM}
+                />
         </div>
 
         <div className="">
@@ -60,7 +70,9 @@ const FormularioItem = ({item}) => (
                 type="text"
                 className=""
                 placeholder="Fecha 1 caducidad Item"
-                name="fecha1_cadu_item" />
+                name="fecha1_cadu_item" 
+                //defaultValue = {item[0]?.FECHA1_CADU_ITEM}
+                />
         </div>
 
         <div className="">
@@ -73,7 +85,9 @@ const FormularioItem = ({item}) => (
                 type="text"
                 className=""
                 placeholder="Fecha 2 caducidad Item"
-                name="fecha2_cadu_item" />
+                name="fecha2_cadu_item" 
+                //defaultValue = {item[0]?.FECHA2_CADU_ITEM}
+                />
         </div>
 
         <div className="">
@@ -86,7 +100,9 @@ const FormularioItem = ({item}) => (
                 type="text"
                 className=""
                 placeholder="Lote de Item"
-                name="lote_item" />
+                name="lote_item" 
+                //defaultValue = {item[0]?.LOTE_ITEM}
+                />
         </div>
 
         <div className="">
@@ -99,7 +115,9 @@ const FormularioItem = ({item}) => (
                 type="text"
                 className=""
                 placeholder="Cantidad Lote de Item"
-                name="cantidad_lote_item" />
+                name="cantidad_lote_item" 
+                //defaultValue = {item[0]?.CANTIDAD_LOTE_ITEM}
+                />
         </div>
 
         <div className="">
@@ -112,7 +130,9 @@ const FormularioItem = ({item}) => (
                 type="text"
                 className=""
                 placeholder="Precio Item"
-                name="precio_item" />
+                name="precio_item" 
+                //defaultValue = {item[0]?.PRECIO_ITEM}
+                />
         </div>
 
         <div className="">
@@ -125,7 +145,9 @@ const FormularioItem = ({item}) => (
                 type="text"
                 className=""
                 placeholder="Peso de Item"
-                name="peso_item" />
+                name="peso_item" 
+                //defaultValue = {item[0]?.PESO_ITEM}
+                />
         </div>
 
         <div className="">
@@ -138,7 +160,9 @@ const FormularioItem = ({item}) => (
                 type="text"
                 className=""
                 placeholder="Conservación Item"
-                name="conservacion_item" />
+                name="conservacion_item" 
+                //defaultValue = {item[0]?.CONSERVACION_ITEM}
+                />
         </div>
 
         <div className="">
@@ -151,7 +175,9 @@ const FormularioItem = ({item}) => (
                 type="text"
                 className=""
                 placeholder="Detalle Item"
-                name="detalle_item" />
+                name="detalle_item" 
+                //defaultValue = {item[0]?.DETALLE_ITEM}
+                />
         </div>
 
         <div className="">
@@ -164,7 +190,9 @@ const FormularioItem = ({item}) => (
                 type="text"
                 className=""
                 placeholder="Estado Item"
-                name="estado_item" />
+                name="estado_item" 
+                //defaultValue = {item[0]?.ESTADO_ITEM}
+                />
         </div>
     </>
 )

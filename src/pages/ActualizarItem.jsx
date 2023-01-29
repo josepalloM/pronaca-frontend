@@ -1,9 +1,20 @@
-import { useNavigate, Form, useActionData, redirect } from "react-router-dom"
-import FormularioItem from "../components/FormularioItem";
-import Error from "../components/Error";
-import { agregarItems } from "../data/items";
+import {Form, useNavigate, useLoaderData} from 'react-router-dom'
+import { obtenerItem } from "../data/items"
+import FormularioItem from '../components/FormularioItem'
 
-export  async function action({request}){
+export async function loader({params}){
+  const item = await obtenerItem(params.itemId)
+  if(Object.values(item).length === 0){
+    throw new Response('', {
+      status: 404,
+      statusText: 'No hay ningun resultado'
+    })
+  }
+  return item
+}
+
+export async function action(request, params){
+
   const formData = await request.formData()
   const datos = Object.fromEntries(formData)
 
@@ -18,21 +29,21 @@ export  async function action({request}){
     return errores
   }
 
+  //actualizar cliente
   await agregarItems(datos)
-
   console.log(datos)
   return redirect('/produccion')
+
 }
 
-function ActualizarItem() {
+function ActualizarItem(){
+    const navigate = useNavigate();
+    const item = useLoaderData();
 
-  const errores = useActionData()
-  const navigate = useNavigate()
-
-  return (
+  return(
     <>
         <h1>Actualizar Item</h1>
-        <p>Llena todos los campos para agregar un nuevo item</p>
+        <p>Puede modificar los datos un nuevo item</p>
 
         <div>
           <button
@@ -41,10 +52,10 @@ function ActualizarItem() {
         </div>
 
         <div className="Contenedor-form">
-          {errores?.length && errores.map( (error, i) =>  <Error key={i}>{error}</Error>)}
+          {/*errores?.length && errores.map( (error, i) =>  <Error key={i}>{error}</Error>)*/}
 
           <Form method="POST">
-            <FormularioItem/>
+            <FormularioItem item={item}/>
             <input 
               type="submit"
               value="Registrar Item"  
