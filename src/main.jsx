@@ -9,7 +9,6 @@ import Pedidos from './pages/Pedidos'
 import Item, { loader as itemsLoader } from './pages/Items'
 import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
 
-//import ActualizarItem, {action as actualizarItemAction} from '.pages/ActualizarItem'
 import Clientes, {loader as clienteLoader} from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
 import Empleados, {loader as empleadosLoader} from './pages/Empleados'
@@ -17,8 +16,7 @@ import ErrorPage from './components/ErrorPage'
 import NuevoCliente, {action as nuevoClienteAction} from './pages/NuevoCliente'
 import {action as eliminarClienteAction} from "./components/Cliente"
 import ActualizarCliente, {loader as actualizarClienteLoader, action as actualizarClienteAction} from './pages/ActualizarCliente.jsx'
-
-import ActualizarItem, { loader as actualizarItemLoader} from './pages/ActualizarItem'
+import ActualizarItem, { loader as actualizarItemLoader, action as actualizarItemAction} from './pages/ActualizarItem'
 
 
 
@@ -56,6 +54,7 @@ const router = createBrowserRouter([
         path: '/item/:itemId/actualizar',
         element: <ActualizarItem/>,
         loader: actualizarItemLoader,
+        action: actualizarItemAction,
         errorElement: <ErrorPage/>
       },
       {
