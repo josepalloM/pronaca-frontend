@@ -4,6 +4,7 @@ import Pedido from "../components/Pedido"
 
 export function loader() {
   const pedidos = obtenerPedidos()
+  console.log(pedidos)
   return pedidos
 }
 

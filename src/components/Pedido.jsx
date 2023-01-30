@@ -3,10 +3,12 @@ import {eliminarPedido} from "../data/pedidos.js";
 
 export async function action({params}){
     await eliminarPedido(params.pedidoId)
-    return redirect('/pedidos')
+    
+    return redirect('/')
 }
 
 function Pedido({ pedido }) {
+    console.log(pedido)
     const navigate = useNavigate()
     const {
         FECHA_PEDIDO,

@@ -56,8 +56,8 @@ const router = createBrowserRouter([
       {
         path: '/opciones/preventa',
         element: <Preventas/>,
-        loader: preventaLoader
-
+        loader: preventaLoader,
+        errorElement: <ErrorPage/>
       },
       {
         path: '/opciones/preventa/nuevo',

@@ -1,24 +1,30 @@
-import React from 'react'
+import {Form, redirect} from "react-router-dom";
+import { eliminarPreventa } from "../data/preventa";
+
+export async function action({params}){
+    await eliminarPreventa(params.preventaId)
+    return redirect('/opciones/preventa')
+}
 
 function Preventa({preventa}) {
-
-    const navigate = useNavigate()
+    console.log(preventa)
     const {
-        NOMBRE_CLIENTE_POTENCIAL,
-        NOMBRE_EMPLEADO,
+        ID_PREVENTA,
+        ID_EMPLEADO,
+        ID_CLIENTE_POTENCIAL,
         FECHA_VISITA_PREVENTA,
-        DESCRIPCION_PREVENTA,
-        ID_PREVENTA
+        DESCRIPCION_PREVENTA
+        
     } = preventa
 
     return (
 
         <tr className="border-b">
             <td className="">
-                {NOMBRE_CLIENTE_POTENCIAL}
+                {ID_CLIENTE_POTENCIAL}
             </td>
             <td>
-                {NOMBRE_EMPLEADO}
+                {ID_EMPLEADO}
             </td>
             <td>
                 {FECHA_VISITA_PREVENTA}

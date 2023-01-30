@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {Form, useActionData, useNavigate} from "react-router-dom";
+import {Form, useActionData, useNavigate, redirect} from "react-router-dom";
 import Error from "../components/Error.jsx";
 import FormularioPreventa from "../components/FormularioPreventa.jsx";
 import { agregarPreventa } from '../data/preventa.js';
@@ -26,10 +26,11 @@ export async function action({request}){
     
     await agregarPreventa(datos)
   
-    
-    //console.log(datos);
+    console.log(datos);
+
     return redirect('/opciones/preventa');
 }
+
 function NuevaPreventa(props) {
     //const clientes = useLoaderData()
     const errores = useActionData()

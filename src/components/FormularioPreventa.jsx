@@ -15,7 +15,7 @@ const FormularioPreventa = ({}) => {
             .finally(() => setLoaded(true));
     }, []);
     useEffect(() => {
-        fetch('http://localhost:4000/api/empleado/')
+        fetch('http://localhost:4000/api/empleado')
             .then((res) => res.json())
             .then((empleado) => setEmpleados(empleado))
             .catch((err) => console.log(err))
@@ -42,10 +42,10 @@ const FormularioPreventa = ({}) => {
     return (
         <div className="grid grid-cols-2 gap-4">
             <div className="my-4"> Seleccione un cliente
-                <Select options={aux} id="cliente_preventa" name="cliente_preventa"/>
+                <Select options={aux} id="ID_CLIENTE_POTENCIAL" name="ID_CLIENTE_POTENCIAL"/>
             </div>
             <div className="my-4"> Seleccione un empleado
-                <Select options={aux1} id="empleado_preventa" name="empleado_preventa"/>
+                <Select options={aux1} id="ID_EMPLEADO" name="ID_EMPLEADO"/>
             </div>
             <div className="my-4">
                 <p>Fecha Seleccionada: {date}</p>
@@ -53,18 +53,18 @@ const FormularioPreventa = ({}) => {
                     type="date"
                     onChange={handleChange}
                     ref={dateInputRef}
-                    id="fecha_preventa"
-                    name="fecha_preventa"
+                    id="FECHA_VISITA_PREVENTA"
+                    name="FECHA_VISITA_PREVENTA"
                 />
             </div>
             <div>
                 <label
                     className="flex justify-start text-gray-800"
-                    htmlFor="descripcion_preventa"
+                    htmlFor="DESCRIPCION_PREVENTA"
                 >Descripción:</label>
                 <input
-                    id="descripcion_preventa"
-                    name="descripcion_preventa"
+                    id="DESCRIPCION_PREVENTA"
+                    name="DESCRIPCION_PREVENTA"
                     type="text"
                     className="block w-full p-3 bg-gray-50"
                     placeholder="Descripción de la preventa"

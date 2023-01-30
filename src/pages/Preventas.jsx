@@ -4,11 +4,13 @@ import Preventa from "../components/Preventa"
 
 export function loader() {
   const preventas = obtenerPreventas()
+  
   return preventas
 }
 
 function Preventas() {
   const preventas = useLoaderData()
+  console.log(preventas)
   return (
     <>
       <h1 className="font-black text-4xl ">Preventa</h1>
@@ -29,7 +31,7 @@ function Preventas() {
             <tbody>
               {preventas.map(preventa => (
                 <Preventa
-                  cliente={preventa}
+                  preventa={preventa}
                   key={preventa.ID_PREVENTA}
                 />
 
