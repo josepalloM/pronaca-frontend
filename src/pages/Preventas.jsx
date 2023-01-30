@@ -44,7 +44,7 @@ function Preventas() {
         >
           <Link
 
-            to='/preventa/nuevo'>CREAR preventa</Link>
+            to='/opciones/preventa/nuevo'>CREAR preventa</Link>
         </button>
       </div>
     </>

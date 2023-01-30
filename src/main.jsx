@@ -23,7 +23,7 @@ import ActualizarItem, { loader as actualizarItemLoader} from './pages/Actualiza
 import NuevoPedido, {action as nuevoPedidoAction} from './pages/NuevoPedido'
 import PedidosOpciones from './pages/PedidosOpciones'
 import Preventas, {loader as preventaLoader} from './pages/Preventas'
-import NuevaPreventa/*, {action as nuevaPreventaAction}*/ from './pages/NuevaPreventa'
+import NuevaPreventa, {action as nuevaPreventaAction} from './pages/NuevaPreventa'
 
 
 
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
       {
         path: '/opciones/preventa/nuevo',
         element: <NuevaPreventa/>,
-        //action: nuevaPreventaAction
+        action: nuevaPreventaAction
       },
       {
         path: '/opciones/pedidos',

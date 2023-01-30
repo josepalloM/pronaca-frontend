@@ -1,3 +1,10 @@
+export async function obtenerPreventas(){
+    const url = "http://localhost:4000/api/preventa"
+    const respuesta = await fetch(url)
+    const resultado = await respuesta.json()
+    return resultado
+}
+
 export async function agregarPreventa(datos) {
     try {
         const url = "http://localhost:4000/api/preventa"
