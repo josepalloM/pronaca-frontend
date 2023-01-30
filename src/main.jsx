@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
 import NuevoEmpleado, {action as nuevoEmpleadoAction} from './pages/NuevoEmpleado'
 import Index from './pages/Index'
-import Pedidos, { loader as pedidoLoader }, { loader as pedidoLoader }, { loader as pedidoLoader } from './pages/Pedidos'
+import Pedidos, { loader as pedidoLoader } from './pages/Pedidos'
 import Item, { loader as itemsLoader } from './pages/Items'
 import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
 
@@ -24,6 +24,7 @@ import NuevoPedido, {action as nuevoPedidoAction} from './pages/NuevoPedido'
 import PedidosOpciones from './pages/PedidosOpciones'
 import Preventas, {loader as preventaLoader} from './pages/Preventas'
 import NuevaPreventa, {action as nuevaPreventaAction} from './pages/NuevaPreventa'
+import ActualizarPedido, {loader as actualizarPedidoLoader, action as actualizarPedidoAction} from './pages/ActualizarPedido'
 
 
 
@@ -59,10 +60,6 @@ const router = createBrowserRouter([
         path: '/opciones/pedidos',
         element: <Pedidos/>,
         loader: pedidoLoader,
-        errorElement: <ErrorPage/>,
-        loader: pedidoLoader,
-        errorElement: <ErrorPage/>,
-        loader: pedidoLoader,
         errorElement: <ErrorPage/>
       },
       {
@@ -70,13 +67,13 @@ const router = createBrowserRouter([
         element: <NuevoPedido/>,
         action: nuevoPedidoAction
       },
-      // {
-      //   path: '/Pedidos/:pedidoId/editar',
-      //   element: <ActualizarPedido />,
-      //   loader: actualizarPedidoLoader,
-      //   action: actualizarPedidoAction,
-      //   errorElement: <ErrorPage />
-      // },
+      {
+        path: '/pedido/:pedidoId/editar',
+        element: <ActualizarPedido />,
+        loader: actualizarPedidoLoader,
+        action: actualizarPedidoAction,
+        errorElement: <ErrorPage />
+      },
       // {
       //   path:  '/pedidos/:pedidoId/eliminar',
       //   action: eliminarPedidoAction

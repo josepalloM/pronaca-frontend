@@ -21,7 +21,7 @@ export  async function action({request}){
     await agregarPedido(datos)
   
     console.log(datos)
-    return redirect('/pedidos')
+    return redirect('/opciones/pedidos')
 }
 
 function NuevoPedido() {

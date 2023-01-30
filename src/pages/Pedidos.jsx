@@ -42,7 +42,7 @@ function Pedidos() {
         >
           <Link
 
-            to='/pedido/nuevo'>CREAR Pedido</Link>
+            to='/opciones/pedido/nuevo'>CREAR Pedido</Link>
         </button>
       </div>
     </>

@@ -31,12 +31,12 @@ function Pedido({ pedido }) {
                     <button
                         type="button"
                         className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
-                        onClick={() => navigate(`/pedidos/${ID_PEDIDO}/editar`)}
+                        onClick={() => navigate(`/pedido/${ID_PEDIDO}/editar`)}
                     >Editar</button>
 
                     <Form
                         method='post'
-                        action={`/pedidos/${ID_PEDIDO}/eliminar`}
+                        action={`/pedido/${ID_PEDIDO}/eliminar`}
                         onSubmit={ (e) => {
                             if (!confirm('¿Deseas eliminar este registro?')){
                                 e.preventDefault()

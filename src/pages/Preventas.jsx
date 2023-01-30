@@ -9,7 +9,6 @@ export function loader() {
 
 function Preventas() {
   const preventas = useLoaderData()
-  console.log(preventas)
   return (
     <>
       <h1 className="font-black text-4xl ">Preventa</h1>
