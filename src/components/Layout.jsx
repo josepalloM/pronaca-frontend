@@ -15,83 +15,93 @@ function Layout() {
                 </div>
                 <ul>
                     <li>
-                        <div className={`mt-24 flex space-x-2 justify-center ${!open && "scale-0"}`}>
-                            <button type="button"
+                        <div className={`mt-24 text-center ${!open && "scale-0"}`}>
+                        <Link
+                            className={`${location.pathname === '/'}`}
+                                    to='/opciones'>
+                                    <button type="button"
                                     data-mdb-ripple="true"
                                     data-mdb-ripple-color="light"
-                                    className="inline-block w-10/12 px-6 py-2.5 bg-white border-b-2 text-black
+                                    className="inline-block w-10/12 px-8 py-2.5 bg-white text-black
                                     font-medium text-xs leading-tight uppercase rounded
-                                    shadow hover:bg-grey hover:shadow-lg focus:bg-grey
+                                    shadow-md hover:bg-amber-400 hover:shadow focus:bg-grey
                                     focus:shadow focus:outline-none focus:ring-0 active:bg-grey
                                     active:shadow transition duration-150 ease-in-out">
-                                <Link
-                                    className={`${location.pathname === '/'}`}
-                                    to='/opciones'>Pedidos</Link>
+                                Pedidos 
                             </button>
+                        </Link>
                         </div>
                     </li>
                     <li>
-                        <div className={`my-2 flex space-x-2 justify-center ${!open && "scale-0"}`}>
+                        <div className={`my-2 text-center ${!open && "scale-0"}`}>
+                        <Link
+                            className={`${location.pathname === '/'}`}
+                            to='/produccion'>
                             <button type="button"
-                                    data-mdb-ripple="true"
-                                    data-mdb-ripple-color="light"
-                                    className=" border-b-2 inline-block w-10/12 px-6 py-2.5 bg-white text-black
-                                        font-medium text-xs leading-tight uppercase rounded
-                                        shadow hover:bg-grey hover:shadow focus:bg-grey
-                                        focus:shadow focus:outline-none focus:ring-0 active:bg-grey
-                                        active:shadow transition duration-150 ease-in-out">
-                                <Link
-                                    className={`${location.pathname === '/'}`}
-                                    to='/produccion'>Producción</Link>
+                                data-mdb-ripple="true"
+                                data-mdb-ripple-color="light"
+                                className="inline-block w-10/12 px-6 py-2.5 bg-white text-black
+                                    font-medium text-xs leading-tight uppercase rounded
+                                    shadow hover:bg-amber-400 hover:shadow focus:bg-grey
+                                    focus:shadow focus:outline-none focus:ring-0 active:bg-grey
+                                    active:shadow transition duration-150 ease-in-out">
+                                    Producción
                             </button>
+                         </Link>
                         </div>
                     </li>
                     <li >
-                        <div className={`my-2 flex space-x-2 justify-center ${!open && "scale-0"}`}>
+                        <div className={`my-2 text-center ${!open && "scale-0"}`}>
+                        <Link
+                            className={`${location.pathname === '/' }`}
+                            to='/clientes'>
                             <button type="button"
-                                    data-mdb-ripple="true"
-                                    data-mdb-ripple-color="light"
-                                    className=" border-b-2 inline-block w-10/12 px-6 py-2.5 bg-white text-black
-                                        font-medium text-xs leading-tight uppercase rounded
-                                        shadow hover:bg-grey hover:shadow-lg focus:bg-grey
-                                        focus:shadow focus:outline-none focus:ring-0 active:bg-grey
-                                        active:shadow transition duration-150 ease-in-out">
-                                <Link
-                                    className={`${location.pathname === '/' }`}
-                                    to='/clientes'>Clientes</Link>
+                                data-mdb-ripple="true"
+                                data-mdb-ripple-color="light"
+                                className="inline-block w-10/12 px-6 py-2.5 bg-white text-black
+                                    font-medium text-xs leading-tight uppercase rounded
+                                    shadow hover:bg-amber-400 hover:shadow-lg focus:bg-grey
+                                    focus:shadow focus:outline-none focus:ring-0 active:bg-grey
+                                    active:shadow transition duration-150 ease-in-out">
+                                Clientes
                             </button>
+                        </Link>
                         </div>
                     </li>
                     <li >
-                        <div className={`my-2 flex space-x-2 justify-center ${!open && "scale-0"}`}>
+                        <div className={`my-2 text-center ${!open && "scale-0"}`}>
+                        <Link
+                            className={`${location.pathname === '/' }`}
+                            to='/empleados'>
                             <button type="button"
-                                    data-mdb-ripple="true"
-                                    data-mdb-ripple-color="light"
-                                    className="border-b-2 inline-block w-10/12 px-6 py-2.5 bg-white text-black
-                                        font-medium text-xs leading-tight uppercase rounded
-                                        shadow hover:bg-grey hover:shadow-lg focus:bg-grey
-                                        focus:shadow focus:outline-none focus:ring-0 active:bg-grey
-                                        active:shadow transition duration-150 ease-in-out">
-                                <Link
-                                    className={`${location.pathname === '/' }`}
-                                    to='/empleados'>Empleados</Link>
+                            data-mdb-ripple="true"
+                            data-mdb-ripple-color="light"
+                            className="inline-block w-10/12 px-6 py-2.5 bg-white text-black
+                                font-medium text-xs leading-tight uppercase rounded
+                                shadow hover:bg-amber-400 hover:shadow-lg focus:bg-grey
+                                focus:shadow focus:outline-none focus:ring-0 active:bg-grey
+                                active:shadow transition duration-150 ease-in-out">
+                                Empleados
                             </button>
+                        </Link>
                         </div>
                     </li>
                     <li >
-                        <div className={`my-2 flex space-x-2 justify-center ${!open && "scale-0"}`}>
+                        <div className={`my-2 text-center ${!open && "scale-0"}`}>
+                        <Link
+                            className={`${location.pathname === '/' }`}
+                            to='/finanzas'>
                             <button type="button"
-                                    data-mdb-ripple="true"
-                                    data-mdb-ripple-color="light"
-                                    className="border-b-2 inline-block w-10/12 px-6 py-2.5 bg-white text-black
-                                        font-medium text-xs leading-tight uppercase rounded
-                                        shadow-md hover:bg-grey hover:shadow-lg focus:bg-grey
-                                        focus:shadow focus:outline-none focus:ring-0 active:bg-grey
-                                        active:shadow transition duration-150 ease-in-out">
-                                <Link
-                                    className={`${location.pathname === '/' }`}
-                                    to='/finanzas'>Finanzas</Link>
+                                data-mdb-ripple="true"
+                                data-mdb-ripple-color="light"
+                                className="inline-block w-10/12 px-6 py-2.5 bg-white text-black
+                                    font-medium text-xs leading-tight uppercase rounded
+                                    shadow-md hover:bg-amber-400 hover:shadow-lg focus:bg-grey
+                                    focus:shadow focus:outline-none focus:ring-0 active:bg-grey
+                                    active:shadow transition duration-150 ease-in-out">
+                                Finanzas
                             </button>
+                        </Link>
                         </div>
                     </li>
                 </ul>
@@ -109,7 +119,5 @@ function Layout() {
     )
 }
 /* Header */
-
-
 
 export default Layout
