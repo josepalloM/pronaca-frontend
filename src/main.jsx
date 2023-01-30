@@ -21,6 +21,7 @@ import ActualizarCliente, {loader as actualizarClienteLoader, action as actualiz
 import ActualizarItem, { loader as actualizarItemLoader} from './pages/ActualizarItem'
 
 import NuevoPedido, {action as nuevoPedidoAction} from './pages/NuevoPedido'
+import PedidosOpciones from './pages/PedidosOpciones'
 
 
 
@@ -38,13 +39,18 @@ const router = createBrowserRouter([
         element: <Index/>
       },
       {
-        path: '/pedidos',
+        path: '/opciones',
+        element: <PedidosOpciones/>
+      },
+
+      {
+        path: '/opciones/pedidos',
         element: <Pedidos/>,
         loader: pedidoLoader,
         errorElement: <ErrorPage/>
       },
       {
-        path: '/pedido/nuevo',
+        path: '/opciones/pedido/nuevo',
         element: <NuevoPedido/>,
         action: nuevoPedidoAction
       },
