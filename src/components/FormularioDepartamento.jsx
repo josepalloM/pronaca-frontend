@@ -13,14 +13,14 @@ const FormularioDepartamento = ({ departamento }) => (
                 name="nombre_departamento" />
             <label
                 className="flex justify-start text-gray-800"
-                htmlFor="sueldo_horas_cargo"
+                htmlFor="sueldo_horas"
             >Sueldo por horas: </label>
             <input
-                id="sueldo_horas_cargo"
+                id="sueldo_horas"
                 type="text"
                 className="mt-2 block w-full p-3 bg-gray-50"
                 placeholder="Sueldo por horas"
-                name="sueldo_horas_cargo" />
+                name="sueldo_horas" />
         </div><br></br>
     </>
 )

@@ -21,7 +21,7 @@ export async function action({ request }) {
   await agregarDepartamento(datos)
 
   console.log(datos)
-  return redirect('/departamentos')
+  return redirect('/empleados')
 }
 
 function NuevoDepartamento() {
