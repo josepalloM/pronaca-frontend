@@ -23,7 +23,7 @@ function PedidosOpciones() {
 
                 <Link
 
-                    to='/preventa'>Preventa</Link>
+                    to='/opciones/preventa'>Preventa</Link>
                 </button>
             </div>
 
