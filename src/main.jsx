@@ -73,7 +73,9 @@ const router = createBrowserRouter([
       {
         path: '/opciones/pedido/nuevo',
         element: <NuevoPedido/>,
-        action: nuevoPedidoAction
+        action: nuevoPedidoAction,
+        loader: pedidoLoader,
+        errorElement: <ErrorPage/>
       },
       {
         path: '/pedido/:pedidoId/editar',
@@ -188,6 +190,10 @@ const router = createBrowserRouter([
         path: '/finanzas/estado',
         element: <EstadoFinanciero/>,
         loader: estadoLoader,
+      },
+      {
+        path: '*',
+        element: <Index/>
       }
     ]
   },
