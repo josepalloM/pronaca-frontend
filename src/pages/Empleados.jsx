@@ -19,36 +19,36 @@ function Empleados() {
     const navigate = useNavigate()
     return (
         <>
-            <h1 className="font-black text-4xl ">Empleados</h1>
-            <p>Administración de empleados</p>
+            <h1 className="font-black text-4xl">Empleados</h1>
+            <p >Administración de empleados</p>
             
             <button
                 type="button"
-                className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
+                className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
                 onClick={() => navigate(`/empleados/iess`)}
             >Valor IESS</button> <br></br>
 
 <button
                 type="button"
-                className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
+                className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
                 onClick={() => navigate(`/empleados/departamentos/nuevo`)}
             >Nuevo departamento</button><br></br>
 
 <button
                 type="button"
-                className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
+                className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
                 onClick={() => navigate(`/empleados/cargos/nuevo`)}
             >Nuevo cargo</button><br></br>
 
             <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">
                 {empleados.length ? (
-                    <table>
-                        <thead>
+                    <table className="w-full bg-white shadow mt-5 table-auto">
+                        <thead className="w-full bg-white shadow mt-5 table-auto">
                             <tr>
-                                <th>Nombre</th>
-                                <th>Sueldo Neto</th>
-                                <th>Cargo</th>
-                                <th>Acciones</th>
+                                <th className="p-2">Nombre</th>
+                                <th className="p-2">Sueldo Neto</th>
+                                <th className="p-2">Cargo</th>
+                                <th className="p-2">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,7 +62,7 @@ function Empleados() {
                                 ))}
                             </tbody>
                     </table>
-                ): (<p> No existe empleados</p> )}
+                ): (<p className="text-center mt-10"> No existe empleados</p> )}
 
                 <button  className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
                     <Link
