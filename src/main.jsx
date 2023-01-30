@@ -3,16 +3,23 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
-import NuevoEmpleado, {action as nuevoEmpleadoAction} from './pages/NuevoEmpleado'
+import NuevoEmpleado, {action as nuevoEmpleadoAction, loader as cargarDepartamentoCargo} from './pages/NuevoEmpleado'
+import NuevoDepartamento, {action as nuevoDepartamentoAction} from './pages/NuevoDepartamento'
+import NuevoCargo, {loader as nuevoCargoLoader, action as nuevoCargoAction} from './pages/NuevoCargo'
 import Index from './pages/Index'
 import Pedidos, { loader as pedidoLoader } from './pages/Pedidos'
 import Item, { loader as itemsLoader } from './pages/Items'
+import BalanceGeneral, { loader as balanceLoader } from './pages/BalanceGeneral'
+import EstadoFinanciero, { loader as estadoLoader } from './pages/EstadoFinanciero'
 import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
 
 //import ActualizarItem, {action as actualizarItemAction} from '.pages/ActualizarItem'
 import Clientes, {loader as clienteLoader} from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
 import Empleados, {loader as empleadosLoader} from './pages/Empleados'
+import {action as pagarEmpleado} from './components/Empleado'
+import ActualizarIess, {loader as iess, action as nuevoIess} from './pages/ActualizarIess'
+import {loader as eliminarEmpleado} from './pages/EliminarEmpleado'
 import ErrorPage from './components/ErrorPage'
 import NuevoCliente, {action as nuevoClienteAction} from './pages/NuevoCliente'
 import {action as eliminarClienteAction} from "./components/Cliente"
@@ -25,6 +32,7 @@ import PedidosOpciones from './pages/PedidosOpciones'
 import Preventas, {loader as preventaLoader} from './pages/Preventas'
 import NuevaPreventa, {action as nuevaPreventaAction} from './pages/NuevaPreventa'
 import ActualizarPedido, {loader as actualizarPedidoLoader, action as actualizarPedidoAction} from './pages/ActualizarPedido'
+import ActualizarEmpleado, {loader as actualizarEmpleadoLoader, action as actualizarEmpleadoAction} from './pages/ActualizarEmpleado.jsx'
 
 
 
@@ -127,7 +135,30 @@ const router = createBrowserRouter([
       {
         path: '/empleados/nuevo',
         element: <NuevoEmpleado/>,
-        action: nuevoEmpleadoAction
+        action: nuevoEmpleadoAction,
+        loader: cargarDepartamentoCargo
+      },
+
+      {
+        path: '/empleados/:empleadoId/editar',
+        element: <ActualizarEmpleado />,
+        loader: actualizarEmpleadoLoader,
+        action: actualizarEmpleadoAction,
+        errorElement: <ErrorPage />
+      },
+      {
+        path: '/empleados/:empleadoId/pagar',
+        action: pagarEmpleado
+      },
+      {
+        path:'/empleados/iess',
+        element: <ActualizarIess/>,
+        loader: iess,
+        action: nuevoIess
+      },
+      {
+        path:'/empleados/:empleadoId/eliminar',
+        loader: eliminarEmpleado
       },
       {
         path: '/finanzas',
@@ -136,6 +167,27 @@ const router = createBrowserRouter([
       {
         path: '*',
         element: <Index/>
+      },
+      {
+        path: '/empleados/departamentos/nuevo',
+        element: <NuevoDepartamento/>,
+        action: nuevoDepartamentoAction
+      },
+      {
+        path: '/empleados/cargos/nuevo',
+        element: <NuevoCargo/>,
+        loader: nuevoCargoLoader,
+        action: nuevoCargoAction
+      },
+      {
+        path: '/finanzas/balance',
+        element: <BalanceGeneral/>,
+        loader: balanceLoader,
+      },
+      {
+        path: '/finanzas/estado',
+        element: <EstadoFinanciero/>,
+        loader: estadoLoader,
       }
     ]
   },
