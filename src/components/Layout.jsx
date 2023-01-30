@@ -42,7 +42,7 @@ function Layout() {
                                         active:shadow transition duration-150 ease-in-out">
                                 <Link
                                     className={`${location.pathname === '/'}`}
-                                    to='/produccion'>Producción</Link>
+                                    to='/gestor'>Producción</Link>
                             </button>
                         </div>
                     </li>

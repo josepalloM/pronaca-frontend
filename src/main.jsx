@@ -7,7 +7,9 @@ import NuevoEmpleado, {action as nuevoEmpleadoAction} from './pages/NuevoEmplead
 import Index from './pages/Index'
 import Pedidos from './pages/Pedidos'
 import Item, { loader as itemsLoader } from './pages/Items'
+import ListaItems, {loader as listaItemsloader} from './pages/ListaItems'
 import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
+//import ListaItems, {action as nuevaListaItemAction} from './pages/NuevoListaItem'
 
 import Clientes, {loader as clienteLoader} from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
@@ -17,13 +19,8 @@ import NuevoCliente, {action as nuevoClienteAction} from './pages/NuevoCliente'
 import {action as eliminarClienteAction} from "./components/Cliente"
 import ActualizarCliente, {loader as actualizarClienteLoader, action as actualizarClienteAction} from './pages/ActualizarCliente.jsx'
 import ActualizarItem, { loader as actualizarItemLoader, action as actualizarItemAction} from './pages/ActualizarItem'
-
-
-
-
-// Import all of Bootstrap's JS
-//import * as bootstrap from 'bootstrap'
-
+import EmpleadoProduccion from './pages/EmpleadoProduccion'
+import NuevoListaItem, {action as nuevaListaItemAction} from './pages/NuevoListaItem'
 
 const router = createBrowserRouter([
   {
@@ -39,9 +36,25 @@ const router = createBrowserRouter([
         element: <Pedidos/>
       },
       {
+        path: '/gestor',
+        element: <EmpleadoProduccion/>
+      },
+      {
         path: '/produccion',
         element: <Item/>,
         loader: itemsLoader,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: '/gestorlista',
+        element: <ListaItems/>,
+        loader: listaItemsloader,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: '/listaitem/nuevo',
+        element: <NuevoListaItem/>,
+        action: nuevaListaItemAction,
         errorElement: <ErrorPage/>
       },
       {
