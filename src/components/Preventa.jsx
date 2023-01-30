@@ -27,11 +27,6 @@ function Preventa({preventa}) {
                 {DESCRIPCION_PREVENTA}
             </td>
             <td className="p-4 flex justify-center gap-3">
-                <button
-                    type="button"
-                    className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
-                    onClick={() => navigate(`/preventas/${ID_PREVENTA}/editar`)}
-                >Editar</button>
 
                 <Form
                     method='post'
