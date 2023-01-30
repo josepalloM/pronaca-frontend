@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
 import NuevoEmpleado, {action as nuevoEmpleadoAction} from './pages/NuevoEmpleado'
 import Index from './pages/Index'
-import Pedidos, { loader as pedidoLoader } from './pages/Pedidos'
+import Pedidos, { loader as pedidoLoader }, { loader as pedidoLoader }, { loader as pedidoLoader } from './pages/Pedidos'
 import Item, { loader as itemsLoader } from './pages/Items'
 import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
 
@@ -46,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: '/opciones/pedidos',
         element: <Pedidos/>,
+        loader: pedidoLoader,
+        errorElement: <ErrorPage/>,
+        loader: pedidoLoader,
+        errorElement: <ErrorPage/>,
         loader: pedidoLoader,
         errorElement: <ErrorPage/>
       },
