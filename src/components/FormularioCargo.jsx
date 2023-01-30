@@ -23,16 +23,17 @@ const FormularioCargo = ({ departamentos }) => {
             <div className="mb-4">
                 <label
                     className=" flex justify-start text-gray-800"
-                    htmlFor="nombre_departamento"
+                    htmlFor="id_departamento"
                 >Departamento:</label>
                 <div className="">
                     {departamentos.length ? (
-                        <select id="nombre_departamento" value={value} name="nombre_departamento" 
+                        <select id="id_departamento" value={value} name="id_departamento" 
                         
                         onChange={(event) => setValue(event.target.value)} className="border border-gray-500 rounded py-2 px-3 block w-full appearance-none leading-tight focus:outline-none focus:bg-white">
                             <option >Selecciona un departamento</option>
                             {departamentos.map(departamento => (
                                 <option key={departamento.ID_DEPARTAMENTO} value={departamento.ID_DEPARTAMENTO}>{departamento.NOMBRE_DEPARTAMENTO}</option>
+                                
                             ))}
                         </select>
                     ) : (<p> No existe DEPARTAMENTOS</p>)}
