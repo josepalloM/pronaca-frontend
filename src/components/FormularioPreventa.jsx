@@ -68,7 +68,7 @@ const FormularioPreventa = ({}) => {
                     type="text"
                     className="block w-full p-3 bg-gray-50"
                     placeholder="Descripción de la preventa"
-                    name="descripcion"
+
                     //defaultValue={cliente?.NOMBRE_CLIENTE_POTENCIAL}
                 />
             </div>
