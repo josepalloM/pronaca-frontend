@@ -43,7 +43,7 @@ function Empleados() {
             <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">
                 {empleados.length ? (
                     <table className="w-full bg-white shadow mt-5 table-auto">
-                        <thead className="w-full bg-white shadow mt-5 table-auto">
+                        <thead className="bg-black text-white">
                             <tr>
                                 <th className="p-2">Nombre</th>
                                 <th className="p-2">Sueldo Neto</th>

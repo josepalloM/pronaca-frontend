@@ -38,6 +38,9 @@ import ActualizarEmpleado, {loader as actualizarEmpleadoLoader, action as actual
 import ActualizarDepartamento, {loader as actualizarDepartamentoLoader, action as actualizarDepartamentoAction} from './pages/ActualizarDepartamento.jsx'
 
 
+import NuevaCuenta from './pages/NuevaCuenta'
+import Cuentas, {loader as obtenerCuentas} from './pages/Cuentas'
+import NuevoAsiento from './pages/NuevoAsiento'
 
 // Import all of Bootstrap's JS
 //import * as bootstrap from 'bootstrap'
@@ -198,14 +201,29 @@ const router = createBrowserRouter([
         action: nuevoCargoAction
       },
       {
+        path: '/finanzas/cuentas/nuevo',
+        element: <NuevaCuenta/>,
+        loader: obtenerCuentas
+      },
+      {
+        path: '/finanzas/cuentas',
+        element: <Cuentas/>,
+        loader: obtenerCuentas
+      },
+      {
+        path: '/finanzas/asientos/nuevo',
+        element: <NuevoAsiento/>,
+        loader: obtenerCuentas
+      },
+      {
         path: '/finanzas/balance',
         element: <BalanceGeneral/>,
-        loader: balanceLoader,
+        loader: balanceLoader
       },
       {
         path: '/finanzas/estado',
         element: <EstadoFinanciero/>,
-        loader: estadoLoader,
+        loader: estadoLoader
       }
     ]
   },

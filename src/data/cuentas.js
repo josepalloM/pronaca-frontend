@@ -1,3 +1,9 @@
+export async function obtenerCuentas(){
+    const url = "http://localhost:4000/api/cuenta"
+    const respuesta = await fetch(url)
+    const resultado = await respuesta.json()
+    return resultado
+}
 export async function agregarCuenta(id) {
 
     try {
