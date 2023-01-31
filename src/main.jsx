@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
-import NuevoEmpleado, {action as nuevoEmpleadoAction} from './pages/NuevoEmpleado'
+import NuevoEmpleado, {action as nuevoEmpleadoAction, loader as cargarDepartamentoCargo} from './pages/NuevoEmpleado'
+import NuevoDepartamento, {action as nuevoDepartamentoAction} from './pages/NuevoDepartamento'
+import NuevoCargo, {loader as nuevoCargoLoader, action as nuevoCargoAction} from './pages/NuevoCargo'
 import Index from './pages/Index'
-import Pedidos from './pages/Pedidos'
+import Pedidos, { loader as pedidoLoader } from './pages/Pedidos'
 import Item, { loader as itemsLoader } from './pages/Items'
+import BalanceGeneral, { loader as balanceLoader } from './pages/BalanceGeneral'
+import EstadoFinanciero, { loader as estadoLoader } from './pages/EstadoFinanciero'
 import ListaItems, {loader as listaItemsloader} from './pages/ListaItems'
 import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
 //import ListaItems, {action as nuevaListaItemAction} from './pages/NuevoListaItem'
@@ -14,13 +18,28 @@ import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
 import Clientes, {loader as clienteLoader} from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
 import Empleados, {loader as empleadosLoader} from './pages/Empleados'
+import {action as pagarEmpleado} from './components/Empleado'
+import ActualizarIess, {loader as iess, action as nuevoIess} from './pages/ActualizarIess'
+import {loader as eliminarEmpleado} from './pages/EliminarEmpleado'
 import ErrorPage from './components/ErrorPage'
 import NuevoCliente, {action as nuevoClienteAction} from './pages/NuevoCliente'
 import {action as eliminarClienteAction} from "./components/Cliente"
 import ActualizarCliente, {loader as actualizarClienteLoader, action as actualizarClienteAction} from './pages/ActualizarCliente.jsx'
+
 import ActualizarItem, { loader as actualizarItemLoader, action as actualizarItemAction} from './pages/ActualizarItem'
+import NuevoPedido, {action as nuevoPedidoAction} from './pages/NuevoPedido'
+import PedidosOpciones from './pages/PedidosOpciones'
+import Preventas, {loader as preventaLoader} from './pages/Preventas'
+import NuevaPreventa, {action as nuevaPreventaAction} from './pages/NuevaPreventa'
+import ActualizarPedido, {loader as actualizarPedidoLoader, action as actualizarPedidoAction} from './pages/ActualizarPedido'
+import ActualizarEmpleado, {loader as actualizarEmpleadoLoader, action as actualizarEmpleadoAction} from './pages/ActualizarEmpleado.jsx'
 import EmpleadoProduccion from './pages/EmpleadoProduccion'
 import NuevoListaItem, {action as nuevaListaItemAction} from './pages/NuevoListaItem'
+
+
+// Import all of Bootstrap's JS
+//import * as bootstrap from 'bootstrap'
+
 
 const router = createBrowserRouter([
   {
@@ -32,13 +51,63 @@ const router = createBrowserRouter([
         element: <Index/>
       },
       {
-        path: '/pedidos',
-        element: <Pedidos/>
+        path: '/opciones',
+        element: <PedidosOpciones/>
+      },
+      {
+        path: '/opciones/preventa',
+        element: <Preventas/>,
+        loader: preventaLoader,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: '/opciones/preventa/nuevo',
+        element: <NuevaPreventa/>,
+        action: nuevaPreventaAction
+      },
+      {
+        path: '/opciones/pedidos',
+        element: <Pedidos/>,
+        loader: pedidoLoader,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: '/opciones/pedido/nuevo',
+        element: <NuevoPedido/>,
+        action: nuevoPedidoAction,
+        loader: pedidoLoader,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: '/pedido/:pedidoId/editar',
+        element: <ActualizarPedido />,
+        loader: actualizarPedidoLoader,
+        action: actualizarPedidoAction,
+        errorElement: <ErrorPage />
+      },
+      // {
+      //   path:  '/pedidos/:pedidoId/eliminar',
+      //   action: eliminarPedidoAction
+      // },
+      {
+        path: '/gestor',
+        element: <EmpleadoProduccion/>
       },
       {
         path: '/gestor',
         element: <EmpleadoProduccion/>
       },
+      {
+        path: '/pedido/:pedidoId/editar',
+        element: <ActualizarPedido />,
+        loader: actualizarPedidoLoader,
+        action: actualizarPedidoAction,
+        errorElement: <ErrorPage />
+      },
+      // {
+      //   path:  '/pedidos/:pedidoId/eliminar',
+      //   action: eliminarPedidoAction
+      // },
       {
         path: '/produccion',
         element: <Item/>,
@@ -101,11 +170,63 @@ const router = createBrowserRouter([
       {
         path: '/empleados/nuevo',
         element: <NuevoEmpleado/>,
-        action: nuevoEmpleadoAction
+        action: nuevoEmpleadoAction,
+        loader: cargarDepartamentoCargo
+      },
+
+      {
+        path: '/empleados/:empleadoId/editar',
+        element: <ActualizarEmpleado />,
+        loader: actualizarEmpleadoLoader,
+        action: actualizarEmpleadoAction,
+        errorElement: <ErrorPage />
+      },
+      {
+        path: '/empleados/:empleadoId/pagar',
+        action: pagarEmpleado
+      },
+      {
+        path:'/empleados/iess',
+        element: <ActualizarIess/>,
+        loader: iess,
+        action: nuevoIess
+      },
+      {
+        path:'/empleados/:empleadoId/eliminar',
+        loader: eliminarEmpleado
       },
       {
         path: '/finanzas',
         element: <Finanzas/>
+      },
+      {
+        path: '*',
+        element: <Index/>
+      },
+      {
+        path: '/empleados/departamentos/nuevo',
+        element: <NuevoDepartamento/>,
+        action: nuevoDepartamentoAction
+      },
+      {
+        path: '/empleados/cargos/nuevo',
+        element: <NuevoCargo/>,
+        loader: nuevoCargoLoader,
+        action: nuevoCargoAction
+      },
+      {
+        path: '/finanzas/balance',
+        element: <BalanceGeneral/>,
+        loader: balanceLoader,
+      },
+      {
+        path: '/finanzas/estado',
+        element: <EstadoFinanciero/>,
+        loader: estadoLoader,
+      },
+      {
+        path: '*',
+        element: <Index/>
       }
     ]
   },
