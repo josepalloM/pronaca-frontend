@@ -1,15 +1,11 @@
 import { useNavigate, Form, useActionData, redirect, useLoaderData } from "react-router-dom"
-import Formulario from "../components/Formulario";
+import FormularioAsiento from "../components/FormularioAsiento";
 import Error from "../components/Error";
-import { agregarEmpleado} from "../data/empleados";
-import { obtenerDepartamentos } from "../data/departamentos";
-import { obtenerCargos } from "../data/cargo_empleado";
-import { actualizarPasivos } from "../data/cuentas";
+import {obtenerCuentas} from "../data/cuentas";
 
 export async function loader() {
-  const departamentos = await obtenerDepartamentos()
-  const cargos_empleado = await obtenerCargos()
-  return {departamentos, cargos_empleado}
+  const cuentas = await obtenerCuentas()
+  return cuentas
 }
 
 export  async function action({request}){
@@ -35,17 +31,17 @@ export  async function action({request}){
   return redirect('/empleados')
 }
 
-function NuevoEmpleado() {
-  const {departamentos,cargos_empleado}= useLoaderData()
+function NuevoAsiento() {
+  const cuentas= useLoaderData()
   const errores = useActionData()
   const navigate = useNavigate()
 
   return (
     <>
-        <h1 className="font-black text-4xl text-black">Nuevo Empleado</h1>
-        <p className="mt-3">Llena todos los campos para agregar un nuevo empleado</p>
+        <h1 className="font-black text-4xl text-black">Nuevo Asiento</h1>
+        <p className="mt-3">Llena todos los campos para agregar un nuevo asiento</p>
 
-        <div className=" flex justify-start bg-black text-white rounded md: w-3/4 mx-auto px-5 py-2 mt-6">Empleado</div>
+        <div className=" flex justify-start bg-black text-white rounded md: w-3/4 mx-auto px-5 py-2 mt-6">Asiento</div>
 
         <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
           {errores?.length && errores.map( (error, i) =>  <Error key={i}>{error}</Error>)}
@@ -53,13 +49,13 @@ function NuevoEmpleado() {
           <Form
             method="POST"
           >
-            <Formulario departamentos={departamentos} cargos_empleado={cargos_empleado}/>
+            <FormularioAsiento cuentas={cuentas}/>
               <div className="grid grid-cols-2 gap-2">
                 <div>
                   <input
                     type="submit"
                     className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
-                    value="Registrar Empleado"
+                    value="Registrar Asiento"
                   />
                 </div>
                 <div>
@@ -77,4 +73,4 @@ function NuevoEmpleado() {
   )
 }
 
-export default NuevoEmpleado
+export default NuevoAsiento
