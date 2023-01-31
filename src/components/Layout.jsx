@@ -36,7 +36,7 @@ function Layout() {
                         <div className={`my-2 text-center ${!open && "scale-0"}`}>
                         <Link
                             className={`${location.pathname === '/'}`}
-                            to='/produccion'>
+                            to='/gestor'>
                             <button type="button"
                                 data-mdb-ripple="true"
                                 data-mdb-ripple-color="light"

@@ -94,10 +94,6 @@ const router = createBrowserRouter([
         element: <EmpleadoProduccion/>
       },
       {
-        path: '/gestor',
-        element: <EmpleadoProduccion/>
-      },
-      {
         path: '/pedido/:pedidoId/editar',
         element: <ActualizarPedido />,
         loader: actualizarPedidoLoader,
