@@ -53,7 +53,7 @@ const FormularioActualizarEmpleado = ({empleado}) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Cedula del empleado"
                     name="cedula_empleado"
-                    defaultValue={empleado?.APELLIDO_EMPLEADO}
+                    defaultValue={empleado?.CEDULA_EMPLEADO}
                     
                     /// add
                 />
@@ -71,8 +71,7 @@ const FormularioActualizarEmpleado = ({empleado}) => {
                     placeholder="Horas laboradas"
                     name="horas_laboradas"
                     /// add
-                    defaultValue={empleado?.APELLIDO_EMPLEADO}
-                    
+                    defaultValue={empleado?.HORAS_LABORADAS}                   
                 />
             </div>
 

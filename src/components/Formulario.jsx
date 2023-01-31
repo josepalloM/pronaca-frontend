@@ -3,8 +3,8 @@ import {useState} from "react"
 
 const Formulario = ({empleado,departamentos, cargos_empleado}) => {
 
-    const [value, setValue] = useState("")
-    const [valueC, setValueC] = useState("")
+    const [departamento, setDepartamento] = useState("")
+    const [cargo, setCargo] = useState("")
 
     return (
         <>
@@ -16,7 +16,7 @@ const Formulario = ({empleado,departamentos, cargos_empleado}) => {
                 <input 
                     id="nombre_empleado"
                     type="text"
-                    className="mt-2 block w-full p-3 bg-gray-50"
+                    className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
                     placeholder="Nombre del empleado"
                     name="nombre_empleado"
                 />
@@ -29,7 +29,7 @@ const Formulario = ({empleado,departamentos, cargos_empleado}) => {
                 <input 
                     id="apellido_empleado"
                     type="text"
-                    className="mt-2 block w-full p-3 bg-gray-50"
+                    className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
                     placeholder="Apellido del empleado"
                     name="apellido_empleado"
                 />
@@ -42,7 +42,7 @@ const Formulario = ({empleado,departamentos, cargos_empleado}) => {
                 <input 
                     id="cedula_empleado"
                     type="text"
-                    className="mt-2 block w-full p-3 bg-gray-50"
+                    className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
                     placeholder="Cedula del empleado"
                     name="cedula_empleado"
                 />
@@ -56,7 +56,7 @@ const Formulario = ({empleado,departamentos, cargos_empleado}) => {
                 <input
                     id="horas_laboradas"
                     type="text"
-                    className="mt-2 block w-full p-3 bg-gray-50"
+                    className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
                     placeholder="Horas laboradas"
                     name="horas_laboradas"
                 />
@@ -69,7 +69,7 @@ const Formulario = ({empleado,departamentos, cargos_empleado}) => {
                 >Departamento:</label>
                 <div className="">
                     {departamentos.length ?(
-                    <select id="nombre_departamento" value={value} name="nombre_departamento" onChange={(event)=>setValue(event.target.value)} className="form-control">
+                    <select id="nombre_departamento" value={departamento} name="nombre_departamento" onChange={(event)=>setDepartamento(event.target.value)} className="form-control border-2 border-black">
                         <option >Selecciona un departamento</option>
                         {departamentos.map(departamento =>(
                             <option key={departamento.ID_DEPARTAMENTO} value={departamento.ID_DEPARTAMENTO}>{departamento.NOMBRE_DEPARTAMENTO}</option>
@@ -86,9 +86,9 @@ const Formulario = ({empleado,departamentos, cargos_empleado}) => {
                 >Cargo:</label>
                 <div className="">
                     {cargos_empleado.length ?(
-                        <select id="descripcion_cargo" value={valueC} name="descripcion_cargo" onChange={(event)=>setValueC(event.target.value)} className="form-control">
+                        <select id="descripcion_cargo" value={cargo} name="descripcion_cargo" onChange={(event)=>setCargo(event.target.value)} className="form-control border-2 border-black">
                             <option>Selecciona un cargo</option>
-                            {cargos_empleado.filter(cargos=>cargos.ID_DEPARTAMENTO==value).map( cargo => (
+                            {cargos_empleado.filter(cargos=>cargos.ID_DEPARTAMENTO==departamento).map( cargo => (
                                 <option key={cargo.ID_CARGO_EMPLEADO} value={cargo.DESCRIPCION_CARGO}>{cargo.DESCRIPCION_CARGO}</option>                         
                             ))}                        
                         </select>

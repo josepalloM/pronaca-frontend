@@ -33,8 +33,9 @@ import Preventas, {loader as preventaLoader} from './pages/Preventas'
 import NuevaPreventa, {action as nuevaPreventaAction} from './pages/NuevaPreventa'
 import ActualizarPedido, {loader as actualizarPedidoLoader, action as actualizarPedidoAction} from './pages/ActualizarPedido'
 import ActualizarEmpleado, {loader as actualizarEmpleadoLoader, action as actualizarEmpleadoAction} from './pages/ActualizarEmpleado.jsx'
-
-
+import NuevaCuenta from './pages/NuevaCuenta'
+import Cuentas, {loader as obtenerCuentas} from './pages/Cuentas'
+import NuevoAsiento from './pages/NuevoAsiento'
 
 // Import all of Bootstrap's JS
 //import * as bootstrap from 'bootstrap'
@@ -180,14 +181,29 @@ const router = createBrowserRouter([
         action: nuevoCargoAction
       },
       {
+        path: '/finanzas/cuentas/nuevo',
+        element: <NuevaCuenta/>,
+        loader: obtenerCuentas
+      },
+      {
+        path: '/finanzas/cuentas',
+        element: <Cuentas/>,
+        loader: obtenerCuentas
+      },
+      {
+        path: '/finanzas/asientos/nuevo',
+        element: <NuevoAsiento/>,
+        loader: obtenerCuentas
+      },
+      {
         path: '/finanzas/balance',
         element: <BalanceGeneral/>,
-        loader: balanceLoader,
+        loader: balanceLoader
       },
       {
         path: '/finanzas/estado',
         element: <EstadoFinanciero/>,
-        loader: estadoLoader,
+        loader: estadoLoader
       }
     ]
   },
