@@ -3,16 +3,22 @@ import { Link, useNavigate } from "react-router-dom"
 function Item({ item}) {
 
     const navigate = useNavigate()
-    const { ID_ITEM, ID_CUENTA, TIPO_ITEM, NOMBRE_ITEM, FECHA_FABRI_ITEM, FECHA1_CADU_ITEM, FECHA2_CADU_ITEM,
-        LOTE_ITEM, CANTIDAD_LOTE_ITEM, PRECIO_ITEM, PESO_ITEM, CONSERVACION_ITEM, DETALLE_ITEM, ESTADO_ITEM} = item
+    const { ID_ITEM, ID_LISTA_ITEMS, ID_ESTADO_PRODUCION, ID_TIPO_ITEM, CODIGO_ITEM, NOMBRE_ITEM, FECHA_FABRI_ITEM, FECHA1_CADU_ITEM, FECHA2_CADU_ITEM,
+        LOTE_ITEM, CANTIDAD_LOTE_ITEM, PRECIO_ITEM, PESO_ITEM, CONSERVACION_ITEM, DETALLE_ITEM,} = item
 
     return (
-        <tr>
+        <tr className="">
             <td>
-                {ID_CUENTA}
+                {ID_LISTA_ITEMS}
             </td>
             <td>
-                {TIPO_ITEM}
+                {ID_ESTADO_PRODUCION}
+            </td>
+            <td>
+                {ID_TIPO_ITEM}
+            </td>
+            <td>
+                {CODIGO_ITEM}
             </td>
             <td>
                 {NOMBRE_ITEM}
@@ -44,12 +50,13 @@ function Item({ item}) {
             <td>
                 {DETALLE_ITEM}
             </td>
-            <td>
-                {ESTADO_ITEM}
-            </td>
-            <td>
-                <button onClick={() => navigate(`/item/${ID_ITEM}/actualizar`)}>Actualizar</button>
-                <button>Eliminar</button>
+            <td className="p-4 flex justify-center gap-3">
+                <button type="button"
+                        className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs" 
+                        onClick={() => navigate(`/item/${ID_ITEM}/actualizar`)}>Editar</button>
+                <button type="submit"
+                        className="text-red-600 hover:text-blue-700 uppercase font-bold text-xs"
+                    >Eliminar</button>
             </td>
         </tr>
     )

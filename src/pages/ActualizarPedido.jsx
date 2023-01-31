@@ -33,7 +33,7 @@ export async function action({request, params}){
 
     // Actualizar Pedido
     await  actualizarPedido(params.pedidoId, datos)
-    return redirect('/pedidos')
+    return redirect('/opciones/pedidos')
 }
 
 function ActualizarPedido() {
@@ -67,7 +67,7 @@ function ActualizarPedido() {
                             <input
                                 type="submit"
                                 className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
-                                value="Editar Pedido"
+                                value="Guardar Pedido"
                             />
                         </div>
                         <div>

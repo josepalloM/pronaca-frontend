@@ -9,11 +9,13 @@ import NuevoCargo, {loader as nuevoCargoLoader, action as nuevoCargoAction} from
 import Index from './pages/Index'
 import Pedidos, { loader as pedidoLoader } from './pages/Pedidos'
 import Item, { loader as itemsLoader } from './pages/Items'
+
 import BalanceGeneral, { loader as balanceLoader } from './pages/BalanceGeneral'
 import EstadoFinanciero, { loader as estadoLoader } from './pages/EstadoFinanciero'
+import ListaItems, {loader as listaItemsloader} from './pages/ListaItems'
 import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
+//import ListaItems, {action as nuevaListaItemAction} from './pages/NuevoListaItem'
 
-//import ActualizarItem, {action as actualizarItemAction} from '.pages/ActualizarItem'
 import Clientes, {loader as clienteLoader} from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
 import Empleados, {loader as empleadosLoader} from './pages/Empleados'
@@ -26,8 +28,9 @@ import ErrorPage from './components/ErrorPage'
 import NuevoCliente, {action as nuevoClienteAction} from './pages/NuevoCliente'
 import {action as eliminarClienteAction} from "./components/Cliente"
 import ActualizarCliente, {loader as actualizarClienteLoader, action as actualizarClienteAction} from './pages/ActualizarCliente.jsx'
-
-import ActualizarItem, { loader as actualizarItemLoader} from './pages/ActualizarItem'
+import ActualizarItem, { loader as actualizarItemLoader, action as actualizarItemAction} from './pages/ActualizarItem'
+import EmpleadoProduccion from './pages/EmpleadoProduccion'
+import NuevoListaItem, {action as nuevaListaItemAction} from './pages/NuevoListaItem'
 
 import NuevoPedido, {action as nuevoPedidoAction} from './pages/NuevoPedido'
 import PedidosOpciones from './pages/PedidosOpciones'
@@ -42,9 +45,9 @@ import NuevaCuenta from './pages/NuevaCuenta'
 import Cuentas, {loader as obtenerCuentas} from './pages/Cuentas'
 import NuevoAsiento from './pages/NuevoAsiento'
 
+
 // Import all of Bootstrap's JS
 //import * as bootstrap from 'bootstrap'
-
 
 const router = createBrowserRouter([
   {
@@ -79,7 +82,13 @@ const router = createBrowserRouter([
       {
         path: '/opciones/pedido/nuevo',
         element: <NuevoPedido/>,
-        action: nuevoPedidoAction
+        action: nuevoPedidoAction,
+        loader: pedidoLoader,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: '/gestor',
+        element: <EmpleadoProduccion/>
       },
       {
         path: '/pedido/:pedidoId/editar',
@@ -92,10 +101,23 @@ const router = createBrowserRouter([
       //   path:  '/pedidos/:pedidoId/eliminar',
       //   action: eliminarPedidoAction
       // },
+      
       {
         path: '/produccion',
         element: <Item/>,
         loader: itemsLoader,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: '/gestorlista',
+        element: <ListaItems/>,
+        loader: listaItemsloader,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: '/listaitem/nuevo',
+        element: <NuevoListaItem/>,
+        action: nuevaListaItemAction,
         errorElement: <ErrorPage/>
       },
       {
@@ -108,6 +130,7 @@ const router = createBrowserRouter([
         path: '/item/:itemId/actualizar',
         element: <ActualizarItem/>,
         loader: actualizarItemLoader,
+        action: actualizarItemAction,
         errorElement: <ErrorPage/>
       },
       {
@@ -223,7 +246,7 @@ const router = createBrowserRouter([
       {
         path: '/finanzas/estado',
         element: <EstadoFinanciero/>,
-        loader: estadoLoader
+        loader: estadoLoader,
       }
     ]
   },
