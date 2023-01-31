@@ -9,9 +9,10 @@ import NuevoCargo, {loader as nuevoCargoLoader, action as nuevoCargoAction} from
 import Index from './pages/Index'
 import Pedidos, { loader as pedidoLoader } from './pages/Pedidos'
 import Item, { loader as itemsLoader } from './pages/Items'
-import ListaItems, {loader as listaItemsloader} from './pages/ListaItems'
+
 import BalanceGeneral, { loader as balanceLoader } from './pages/BalanceGeneral'
 import EstadoFinanciero, { loader as estadoLoader } from './pages/EstadoFinanciero'
+import ListaItems, {loader as listaItemsloader} from './pages/ListaItems'
 import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
 //import ListaItems, {action as nuevaListaItemAction} from './pages/NuevoListaItem'
 
@@ -35,13 +36,11 @@ import Preventas, {loader as preventaLoader} from './pages/Preventas'
 import NuevaPreventa, {action as nuevaPreventaAction} from './pages/NuevaPreventa'
 import ActualizarPedido, {loader as actualizarPedidoLoader, action as actualizarPedidoAction} from './pages/ActualizarPedido'
 import ActualizarEmpleado, {loader as actualizarEmpleadoLoader, action as actualizarEmpleadoAction} from './pages/ActualizarEmpleado.jsx'
-import NuevaCuenta from './pages/NuevaCuenta'
-import Cuentas, {loader as obtenerCuentas} from './pages/Cuentas'
-import NuevoAsiento from './pages/NuevoAsiento'
+
+
 
 // Import all of Bootstrap's JS
 //import * as bootstrap from 'bootstrap'
-
 
 const router = createBrowserRouter([
   {
@@ -55,10 +54,6 @@ const router = createBrowserRouter([
       {
         path: '/opciones',
         element: <PedidosOpciones/>
-      },
-      {
-        path: '/gestor',
-        element: <EmpleadoProduccion/>
       },
       {
         path: '/opciones/preventa',
@@ -80,7 +75,9 @@ const router = createBrowserRouter([
       {
         path: '/opciones/pedido/nuevo',
         element: <NuevoPedido/>,
-        action: nuevoPedidoAction
+        action: nuevoPedidoAction,
+        loader: pedidoLoader,
+        errorElement: <ErrorPage/>
       },
       {
         path: '/gestor',
@@ -97,6 +94,7 @@ const router = createBrowserRouter([
       //   path:  '/pedidos/:pedidoId/eliminar',
       //   action: eliminarPedidoAction
       // },
+      
       {
         path: '/produccion',
         element: <Item/>,
@@ -226,7 +224,7 @@ const router = createBrowserRouter([
       {
         path: '/finanzas/estado',
         element: <EstadoFinanciero/>,
-        loader: estadoLoader
+        loader: estadoLoader,
       }
     ]
   },

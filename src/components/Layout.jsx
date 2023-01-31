@@ -6,8 +6,8 @@ function Layout() {
     const [open, setOpen] = useState(true);
     const location = useLocation()
     return (
-        <div className="flex">
-            <aside className={` h-screen bg-orange-500 relative ${open ? "w-56" : "w-0"} duration-300 relative`}>
+        <div className="min-h-screen flex">
+            <aside className={`md:min-h-screen bg-orange-500 relative ${open ? "w-56" : "w-0"} duration-300 relative`}>
                 <AiOutlineMenu className="bg-white text-black text-3xl absolute
                 -right-10 top-2 cursor-pointer" onClick={() => setOpen(!open)}/>
                 <div className="inline-flex ">
@@ -36,7 +36,7 @@ function Layout() {
                         <div className={`my-2 text-center ${!open && "scale-0"}`}>
                         <Link
                             className={`${location.pathname === '/'}`}
-                            to='/produccion'>
+                            to='/gestor'>
                             <button type="button"
                                 data-mdb-ripple="true"
                                 data-mdb-ripple-color="light"
@@ -108,7 +108,7 @@ function Layout() {
             </aside>
 
 
-            <main className=" bg-gray-100  md:w-full  p-10 md:h-screen ">
+            <main className=" bg-gray-100  md:w-full  p-10 h-screen overflow-scroll ">
 
                 <Outlet />
             </main>
