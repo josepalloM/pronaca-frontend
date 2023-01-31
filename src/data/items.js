@@ -34,8 +34,8 @@ export async function agregarItems(datos) {
 
 export async function actualizarItem(id, datos){
     try {
-        //const url = "http://localhost:4000/api/cliente"
-        const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/${id}`, {
+        const url = "http://localhost:4000/api/item"
+        const respuesta = await fetch(`${url}/${id}`, {
             method:'PUT',
             body:JSON.stringify(datos),
             headers: {

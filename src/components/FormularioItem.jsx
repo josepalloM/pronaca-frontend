@@ -20,14 +20,14 @@ const FormularioItem = ({item}) => {
                 <div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"
-                        htmlFor="id_estado_produccion"
+                        htmlFor="id_estado_producion"
                     >Id Estado Produccion: </label>
                     <input
-                        id="id_estado_produccion"
+                        id="id_estado_producion"
                         type="text"
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Estado de Produccion"
-                        name="id_estado_produccion" 
+                        name="id_estado_producion" 
                         defaultValue = {item?.ID_ESTADO_PRODUCION}
                         />
                         

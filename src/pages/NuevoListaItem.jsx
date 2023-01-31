@@ -21,7 +21,7 @@ export  async function action({request}){
   await agregarListaItems(datos)
 
   console.log(datos)
-  return redirect('/produccion')
+  return redirect('/gestorlista')
 }
 
 function NuevaListaItem() {

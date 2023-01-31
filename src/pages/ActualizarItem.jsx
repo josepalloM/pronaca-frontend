@@ -11,12 +11,14 @@ export async function loader({params}){
       statusText: 'El item no fue encontrado'
     })
   }
+  console.log("Cliente en actualizar", item)
   return item
 }
 
-export async function action(request, params){
+export async function action({request, params}){
 
   const formData = await request.formData()
+
   const datos = Object.fromEntries(formData)
 
   //validaciones
@@ -35,7 +37,7 @@ export async function action(request, params){
   console.log(datos)
   return redirect('/produccion')
 
-}
+};
 
 function ActualizarItem(){
     const navigate = useNavigate();
@@ -44,7 +46,7 @@ function ActualizarItem(){
 
   return(
     <>
-        <h1 className="font-black text-4xl text-black">Actualizar Item</h1>
+        <h1 className="font-black text-4xl text-black">Editar Item</h1>
         <p className="mt-3">Puede modificar los datos un nuevo item</p>
 
         <div className=" flex justify-start bg-black text-white rounded md: w-3/4 mx-auto px-5 py-2 mt-6">Editar Item</div>

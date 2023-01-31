@@ -35,14 +35,14 @@ const FormularioListaItem = ({listaItem}) => {
                 <div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"
-                        htmlFor="id_tipo_lista_product"
+                        htmlFor="id_tipo_lista_produc"
                     >Id Tipo Lista procucto: </label>
                     <input
-                        id="id_tipo_lista_product"
+                        id="id_tipo_lista_produc"
                         type="text"
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Tipo Lista procucto"
-                        name="id_tipo_lista_product" 
+                        name="id_tipo_lista_produc" 
                         defaultValue = {listaItem?.ID_TIPO_LISTA_PRODUC}
                         />
                         
