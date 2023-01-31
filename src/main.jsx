@@ -17,9 +17,11 @@ import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
 import Clientes, {loader as clienteLoader} from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
 import Empleados, {loader as empleadosLoader} from './pages/Empleados'
+import Departamentos, {loader as departamentosLoader} from './pages/Departamentos'
 import {action as pagarEmpleado} from './components/Empleado'
 import ActualizarIess, {loader as iess, action as nuevoIess} from './pages/ActualizarIess'
 import {loader as eliminarEmpleado} from './pages/EliminarEmpleado'
+import {loader as eliminarDepartamento} from './pages/EliminarDepartamento'
 import ErrorPage from './components/ErrorPage'
 import NuevoCliente, {action as nuevoClienteAction} from './pages/NuevoCliente'
 import {action as eliminarClienteAction} from "./components/Cliente"
@@ -33,6 +35,7 @@ import Preventas, {loader as preventaLoader} from './pages/Preventas'
 import NuevaPreventa, {action as nuevaPreventaAction} from './pages/NuevaPreventa'
 import ActualizarPedido, {loader as actualizarPedidoLoader, action as actualizarPedidoAction} from './pages/ActualizarPedido'
 import ActualizarEmpleado, {loader as actualizarEmpleadoLoader, action as actualizarEmpleadoAction} from './pages/ActualizarEmpleado.jsx'
+import ActualizarDepartamento, {loader as actualizarDepartamentoLoader, action as actualizarDepartamentoAction} from './pages/ActualizarDepartamento.jsx'
 
 
 
@@ -169,9 +172,24 @@ const router = createBrowserRouter([
         element: <Index/>
       },
       {
+        path: '/empleados/departamentos',
+        element: <Departamentos/>,
+        loader: departamentosLoader,
+      },
+      {
         path: '/empleados/departamentos/nuevo',
         element: <NuevoDepartamento/>,
         action: nuevoDepartamentoAction
+      },
+      {
+        path: '/empleados/departamentos/:departamentoId/editar',
+        element: <ActualizarDepartamento/>,
+        loader: actualizarDepartamentoLoader,
+        action: actualizarDepartamentoAction,
+      },
+      {
+        path:'/empleados/departamentos/:departamentoId/eliminar',
+        loader: eliminarDepartamento
       },
       {
         path: '/empleados/cargos/nuevo',

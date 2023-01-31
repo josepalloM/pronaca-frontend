@@ -26,19 +26,19 @@ function Empleados() {
                 type="button"
                 className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
                 onClick={() => navigate(`/empleados/iess`)}
-            >Valor IESS</button> <br></br>
+            >IESS</button> <br></br>
 
 <button
                 type="button"
                 className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
-                onClick={() => navigate(`/empleados/departamentos/nuevo`)}
-            >Nuevo departamento</button><br></br>
+                onClick={() => navigate(`/empleados/departamentos`)}
+            >Departamentos</button><br></br>
 
 <button
                 type="button"
                 className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
-                onClick={() => navigate(`/empleados/cargos/nuevo`)}
-            >Nuevo cargo</button><br></br>
+                onClick={() => navigate(`/empleados/cargos`)}
+            >Cargos</button><br></br>
 
             <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">
                 {empleados.length ? (
