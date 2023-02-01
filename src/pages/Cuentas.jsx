@@ -9,7 +9,7 @@ export async function loader() {
 function Cuentas() {
 
     const cuentas = useLoaderData()
-    const navigate = useNavigate()
+    
     return (
         <>
             <h1 className="font-black text-4xl">Catálogo de Cuentas</h1>
@@ -26,7 +26,7 @@ function Cuentas() {
                         </thead>
                         <tbody>
                             {cuentas.map( cuenta => (
-                                <tr className="border-b">
+                                <tr key={cuenta.ID_CUENTA} className="border-b">
                                     <td>
                                         {cuenta.CODIGO_CUENTA}
                                     </td>

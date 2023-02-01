@@ -2,6 +2,7 @@ import { useNavigate, Form, useActionData, redirect, useLoaderData } from "react
 import FormularioAsiento from "../components/FormularioAsiento";
 import Error from "../components/Error";
 import {obtenerCuentas} from "../data/cuentas";
+import { agregarAsiento } from "../data/asiento";
 
 export async function loader() {
   const cuentas = await obtenerCuentas()
@@ -11,7 +12,6 @@ export async function loader() {
 export  async function action({request}){
   const formData = await request.formData()
   const datos = Object.fromEntries(formData)
-  
   //validaciones
   const errores = []
   if(Object.values(datos).includes('')){
@@ -23,12 +23,10 @@ export  async function action({request}){
     return errores
   }
 
-  await agregarEmpleado(datos)
-  //calcular cuentas Pasivos
-  await actualizarPasivos() 
+  await agregarAsiento(datos) 
 
-  console.log(datos)
-  return redirect('/empleados')
+  
+  return redirect('/finanzas/asientos')
 }
 
 function NuevoAsiento() {

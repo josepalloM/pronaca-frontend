@@ -2,10 +2,11 @@ import {useEffect, useState} from "react"
 import {Form, useNavigate,redirect} from "react-router-dom"
 import {agregarCuenta} from "../data/cuentas.js";
 import {eliminarEmpleado} from "../data/empleados.js"
+import EliminarEmpleado from "../pages/EliminarEmpleado.jsx";
 
 export async function action({params}){
     await agregarCuenta(params.empleadoId)
-    
+    await eliminarEmpleado(params.empleadoId)
     return redirect('/empleados')
 }
 

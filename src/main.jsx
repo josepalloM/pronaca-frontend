@@ -41,9 +41,11 @@ import ActualizarEmpleado, {loader as actualizarEmpleadoLoader, action as actual
 import ActualizarDepartamento, {loader as actualizarDepartamentoLoader, action as actualizarDepartamentoAction} from './pages/ActualizarDepartamento.jsx'
 
 
-import NuevaCuenta from './pages/NuevaCuenta'
+import NuevaCuenta, {action as nuevaCuenta} from './pages/NuevaCuenta'
 import Cuentas, {loader as obtenerCuentas} from './pages/Cuentas'
-import NuevoAsiento from './pages/NuevoAsiento'
+import NuevoAsiento, {action as nuevoAsiento} from './pages/NuevoAsiento'
+import {action as eliminarAsiento} from './components/Asiento'
+import Asiento, {loader as obtenerAsientos} from './pages/Asientos'
 
 
 // Import all of Bootstrap's JS
@@ -224,19 +226,31 @@ const router = createBrowserRouter([
         action: nuevoCargoAction
       },
       {
-        path: '/finanzas/cuentas/nuevo',
-        element: <NuevaCuenta/>,
-        loader: obtenerCuentas
-      },
-      {
         path: '/finanzas/cuentas',
         element: <Cuentas/>,
         loader: obtenerCuentas
       },
       {
+        path: '/finanzas/cuentas/nuevo',
+        element: <NuevaCuenta/>,
+        loader: obtenerCuentas,
+        action: nuevaCuenta
+      },
+      
+      {
         path: '/finanzas/asientos/nuevo',
         element: <NuevoAsiento/>,
-        loader: obtenerCuentas
+        loader: obtenerCuentas,
+        action: nuevoAsiento
+      },
+      {
+        path: '/finanzas/asientos',
+        element: <Asiento/>,
+        loader: obtenerAsientos
+      },
+      {
+        path:'/finanzas/asientos/:asientoId/eliminar',
+        action: eliminarAsiento
       },
       {
         path: '/finanzas/balance',

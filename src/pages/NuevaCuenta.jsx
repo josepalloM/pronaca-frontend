@@ -1,7 +1,7 @@
 import { useNavigate, Form, useActionData, redirect, useLoaderData } from "react-router-dom"
 import FormularioCuenta from "../components/FormularioCuenta";
 import Error from "../components/Error";
-import {obtenerCuentas} from "../data/cuentas";
+import {obtenerCuentas, agregarCuentas} from "../data/cuentas";
 
 export async function loader() {
   const cuentas = await obtenerCuentas()
@@ -23,12 +23,10 @@ export  async function action({request}){
     return errores
   }
 
-  await agregarEmpleado(datos)
-  //calcular cuentas Pasivos
-  await actualizarPasivos() 
+  await agregarCuentas(datos)
 
   console.log(datos)
-  return redirect('/empleados')
+  return redirect('/finanzas/cuentas')
 }
 
 function NuevaCuenta() {
@@ -39,7 +37,7 @@ function NuevaCuenta() {
   return (
     <>
         <h1 className="font-black text-4xl text-black">Nueva Cuenta</h1>
-        <p className="mt-3">Llena todos los campos para agregar un nuevo empleado</p>
+        <p className="mt-3">Llena todos los campos para agregar una Nueva Cuenta</p>
 
         <div className=" flex justify-start bg-black text-white rounded md: w-3/4 mx-auto px-5 py-2 mt-6">Cuenta</div>
 
