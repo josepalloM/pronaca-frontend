@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
 import NuevoEmpleado, {action as nuevoEmpleadoAction, loader as cargarDepartamentoCargo} from './pages/NuevoEmpleado'
 import NuevoDepartamento, {action as nuevoDepartamentoAction} from './pages/NuevoDepartamento'
-import NuevoCargo, {loader as nuevoCargoLoader, action as nuevoCargoAction} from './pages/NuevoCargo'
+import NuevoCargo, {loader as nuevoCargoLoader, action as nuevoCargoAction} from './pages/NuevoCargo' //
 import Index from './pages/Index'
 import Pedidos, { loader as pedidoLoader } from './pages/Pedidos'
 import Item, { loader as itemsLoader } from './pages/Items'
@@ -20,10 +20,12 @@ import Clientes, {loader as clienteLoader} from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
 import Empleados, {loader as empleadosLoader} from './pages/Empleados'
 import Departamentos, {loader as departamentosLoader} from './pages/Departamentos'
+import Cargos, {loader as cargosLoader} from './pages/Cargos' //
 import {action as pagarEmpleado} from './components/Empleado'
 import ActualizarIess, {loader as iess, action as nuevoIess} from './pages/ActualizarIess'
 import {loader as eliminarEmpleado} from './pages/EliminarEmpleado'
 import {loader as eliminarDepartamento} from './pages/EliminarDepartamento'
+import {loader as eliminarCargo} from './pages/EliminarCargo' //
 import ErrorPage from './components/ErrorPage'
 import NuevoCliente, {action as nuevoClienteAction} from './pages/NuevoCliente'
 import {action as eliminarClienteAction} from "./components/Cliente"
@@ -39,6 +41,7 @@ import NuevaPreventa, {action as nuevaPreventaAction} from './pages/NuevaPrevent
 import ActualizarPedido, {loader as actualizarPedidoLoader, action as actualizarPedidoAction} from './pages/ActualizarPedido'
 import ActualizarEmpleado, {loader as actualizarEmpleadoLoader, action as actualizarEmpleadoAction} from './pages/ActualizarEmpleado.jsx'
 import ActualizarDepartamento, {loader as actualizarDepartamentoLoader, action as actualizarDepartamentoAction} from './pages/ActualizarDepartamento.jsx'
+import ActualizarCargo, {loader as actualizarCargoLoader, action as actualizarCargoAction} from './pages/ActualizarCargo.jsx' //
 
 
 import NuevaCuenta, {action as nuevaCuenta} from './pages/NuevaCuenta'
@@ -220,10 +223,19 @@ const router = createBrowserRouter([
         loader: eliminarDepartamento
       },
       {
+        path: '/empleados/cargos',
+        element: <Cargos/>,
+        loader: cargosLoader,
+      },
+      {
         path: '/empleados/cargos/nuevo',
         element: <NuevoCargo/>,
         loader: nuevoCargoLoader,
         action: nuevoCargoAction
+      },
+      {
+        path:'/empleados/cargos/:cargoId/eliminar',
+        loader: eliminarCargo
       },
       {
         path: '/finanzas/cuentas',

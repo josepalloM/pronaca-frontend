@@ -30,3 +30,30 @@ export async function agregarCargo(datos) {
         console.log(error)
     }
 }
+export async function actualizarCargo(id, datos){
+    try {
+        const url = "http://localhost:4000/api/cargo_empleado"
+        const respuesta = await fetch(`${url}/${id}`, {
+            method:'PUT',
+            body:JSON.stringify(datos),
+            headers: {
+                'Content-Type':'application/json'
+            }
+        })
+        await respuesta.json()
+    }catch (error){
+        console.log(error)
+    }
+}
+
+export async function eliminarCargo(id){
+    try {
+        const url = "http://localhost:4000/api/cargo_empleado"
+        const respuesta = await fetch(`${url}/${id}`, {
+            method:'DELETE'
+        })
+        await respuesta.json()
+    }catch (error){
+        console.log(error)
+    }
+}
