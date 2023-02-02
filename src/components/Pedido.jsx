@@ -1,50 +1,44 @@
 import {Form, useNavigate, redirect} from "react-router-dom";
-import {eliminarCliente} from "../data/clientes.js";
+import {eliminarPedido} from "../data/pedidos.js";
 
 export async function action({params}){
-    await eliminarCliente(params.clienteId)
-    return redirect('/clientes')
+    await eliminarPedido(params.pedidoId)
+    
+    return redirect('/')
 }
 
-function Cliente({ cliente }) {
+function Pedido({ pedido }) {
+    console.log(pedido)
     const navigate = useNavigate()
     const {
-        NOMBRE_CLIENTE_POTENCIAL,
-        APELLIDO_CLIENTE_POTENCIAL,
-        DIRECCION_CLIENTE_POTENCIAL,
-        TELEFONO_CLIENTE_POTENCIAL,
-        RUC_CEDULA_CLIENTEPOTENCIAL,
-        ID_CLIENTE_POTENCIAL,
-    } = cliente
+        FECHA_PEDIDO,
+        PEDIDO_DEVUELTO,
+        ESTADO_PEDIDO,
+        ID_PEDIDO,
+    } = pedido
 
     return (
   
             <tr className="border-b">
                 <td className="">
-                    {NOMBRE_CLIENTE_POTENCIAL}
+                    {FECHA_PEDIDO}
                 </td>
                 <td>
-                    {APELLIDO_CLIENTE_POTENCIAL}
+                    {PEDIDO_DEVUELTO}
                 </td>
                 <td>
-                    {DIRECCION_CLIENTE_POTENCIAL}
-                </td>
-                <td>
-                    {TELEFONO_CLIENTE_POTENCIAL}
-                </td>
-                <td>
-                    {RUC_CEDULA_CLIENTEPOTENCIAL}
+                    {ESTADO_PEDIDO}
                 </td>
                 <td className="p-4 flex justify-center gap-3">
                     <button
                         type="button"
                         className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
-                        onClick={() => navigate(`/clientes/${ID_CLIENTE_POTENCIAL}/editar`)}
+                        onClick={() => navigate(`/pedido/${ID_PEDIDO}/editar`)}
                     >Editar</button>
 
                     <Form
                         method='post'
-                        action={`/clientes/${ID_CLIENTE_POTENCIAL}/eliminar`}
+                        action={`/pedido/${ID_PEDIDO}/eliminar`}
                         onSubmit={ (e) => {
                             if (!confirm('¿Deseas eliminar este registro?')){
                                 e.preventDefault()
@@ -64,4 +58,4 @@ function Cliente({ cliente }) {
     )
 }
 
-export default Cliente
+export default Pedido
