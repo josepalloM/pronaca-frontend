@@ -21,6 +21,7 @@ import Finanzas from './pages/Finanzas'
 import Empleados, {loader as empleadosLoader} from './pages/Empleados'
 import Departamentos, {loader as departamentosLoader} from './pages/Departamentos'
 import Cargos, {loader as cargosLoader} from './pages/Cargos' //
+
 import {action as pagarEmpleado} from './components/Empleado'
 import ActualizarIess, {loader as iess, action as nuevoIess} from './pages/ActualizarIess'
 import {loader as eliminarEmpleado} from './pages/EliminarEmpleado'
@@ -166,12 +167,12 @@ const router = createBrowserRouter([
         loader: empleadosLoader,
         errorElement: <ErrorPage/>
       },
-      {
-        path: '/empleados/nuevo',
-        element: <NuevoEmpleado/>,
-        action: nuevoEmpleadoAction,
-        loader: cargarDepartamentoCargo
-      },
+      // {
+      //   path: '/empleados/nuevo',
+      //   element: <NuevoEmpleado/>,
+      //   action: nuevoEmpleadoAction,
+      //   loader: cargarDepartamentoCargo
+      // },
 
       {
         path: '/empleados/:empleadoId/editar',
@@ -233,9 +234,10 @@ const router = createBrowserRouter([
         loader: nuevoCargoLoader,
         action: nuevoCargoAction
       },
+
       {
-        path:'/empleados/cargos/:cargoId/eliminar',
-        loader: eliminarCargo
+       path:'/empleados/cargos/:cargoId/eliminar',
+       loader: eliminarCargo
       },
       {
         path: '/finanzas/cuentas',

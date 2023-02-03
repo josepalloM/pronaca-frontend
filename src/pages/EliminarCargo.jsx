@@ -1,5 +1,5 @@
 import { redirect } from "react-router-dom";
-import { eliminarCargo } from "../data/cargos_empleado.js"
+import { eliminarCargo } from "../data/cargo_empleado.js"
 
 export async function loader({params}){
     await eliminarCargo(params.cargoId)
