@@ -26,20 +26,7 @@ export async function agregarCuentas(datos) {
         console.log(error)
     }
 }
-export async function agregarCuenta(id) {
-
-    try {
-        const url = "http://localhost:4000/api/cuenta/"
-        const respuesta = await fetch(`${url}/${id}`, {
-            method:'POST'
-        })
-        await respuesta.json()
-    }catch (error){
-        console.log(error)
-    }
-}
-
-export async function actualizarPasivos(){
+export async function actualizarPasivos(id){
     try {
         const url = "http://localhost:4000/api/cuenta/cuentasPasivo"
         const respuesta = await fetch(url, {
@@ -51,12 +38,15 @@ export async function actualizarPasivos(){
     }
 }
 
+export async function actualizarCostosGastos(id){
+    
+        const url = "http://localhost:4000/api/cuenta"
+        await fetch(`${url}/cuentasCostosGastos/${id}`)
+    
+}
 export async function actualizarCostos(){
     try {
         const url = "http://localhost:4000/api/cuenta/cuentasCostos"
-        const respuesta = await fetch(url, {
-            method:'GET'
-        })
         await respuesta.json()
     }catch (error){
         console.log(error)

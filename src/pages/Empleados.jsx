@@ -1,20 +1,29 @@
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate, Form } from "react-router-dom";
 import { obtenerEmpleados } from "../data/empleados";
 import Empleado from "../components/Empleado";
 import {obtenerCargos} from "../data/cargo_empleado"
-import {actualizarCostos} from "../data/cuentas.js";
+import {actualizarCostos} from "../data/cuentas";
 import { actualizarAsientos } from "../data/asiento";
+import { actualizarMovimiento } from "../data/movimiento_empleado";
+import { useState } from "react";
 
 export async function loader() {
     const empleados = await obtenerEmpleados()
     const cargos_empleados = await obtenerCargos()
-    await actualizarCostos()
-    await actualizarAsientos()
+    await actualizarMovimiento(empleados[0].ID_EMPLEADO)
+    console.log(empleados[0].ID_BANCO)
+    
+    {empleados.map( empleado => {
+        actualizarMovimiento(empleado.ID_EMPLEADO)
+    })}
+    console.log("v", empleados)
+    //await actualizarCostos()
+    //await actualizarAsientos()
     return {empleados,cargos_empleados}
 }
 
 function Empleados() {
-
+    const [idBanco,setIdBanco] = useState("")
     const {empleados, cargos_empleados} = useLoaderData()
     const navigate = useNavigate()
     return (
@@ -27,8 +36,22 @@ function Empleados() {
                 className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
                 onClick={() => navigate(`/empleados/iess`)}
             >IESS</button> <br></br>
-
-<button
+            <Form
+                method='post'
+                action={`/empleados/${idBanco}/pagar`}
+                onSubmit={ (e) => {
+                    if (!confirm('¿Deseas Pagar el sueldo?')){
+                        e.preventDefault()
+                    }
+                }}
+            >   
+                <button
+                    type="submit"
+                    className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
+                    onClick={(event)=>setIdBanco(empleados[0]?.ID_BANCO)}
+                >Pagar</button>
+            </Form>
+            <button
                 type="button"
                 className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
                 onClick={() => navigate(`/empleados/departamentos`)}
@@ -69,12 +92,6 @@ function Empleados() {
                         to='/empleados/nuevo'>CREAR EMPLEADO</Link>
                 </button>
             </div>
-
-            
-
-            
-
-            
         
         </>
     )

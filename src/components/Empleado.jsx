@@ -1,15 +1,19 @@
 import {useEffect, useState} from "react"
 import {Form, useNavigate,redirect} from "react-router-dom"
-import {agregarCuenta} from "../data/cuentas.js";
-import {eliminarEmpleado} from "../data/empleados.js"
-import EliminarEmpleado from "../pages/EliminarEmpleado.jsx";
+import { actualizarCostosGastos } from "../data/cuentas.js";
+import { actualizarMovimiento } from "../data/movimiento_empleado.js";
 
 export async function action({params}){
-    await agregarCuenta(params.empleadoId)
-    await eliminarEmpleado(params.empleadoId)
+    await actualizarCostosGastos(params.empleadoId) 
     return redirect('/empleados')
 }
-
+export async function loader() {
+    const empleados = await obtenerEmpleados()
+    {empleados.map( empleado => (
+        actualizarMovimiento(empleado.ID_EMPLEADO)
+    ))}
+    console.log("v", empleados)
+}
 function Empleado({ empleado, cargos}) {
     const { NOMBRE_EMPLEADO, APELLIDO_EMPLEADO,ID_CARGO_EMPLEADO,SUELDO_NETO, ID_EMPLEADO} = empleado
     const [DESCRIPCION_CARGO,setCargo] = useState("")
@@ -44,20 +48,6 @@ function Empleado({ empleado, cargos}) {
                         onClick={() => navigate(`/empleados/${ID_EMPLEADO}/eliminar`)}>
                         Eliminar
                 </button>
-                <Form
-                    method='post'
-                    action={`/empleados/${ID_EMPLEADO}/pagar`}
-                    onSubmit={ (e) => {
-                        if (!confirm('¿Deseas Pagar el sueldo?')){
-                            e.preventDefault()
-                        }
-                    }}
-                >
-                         <button
-                        type="submit"
-                        className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
-                    >Pagar</button>
-                </Form>
             </td>
         </tr>
     )

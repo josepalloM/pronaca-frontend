@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
-import NuevoEmpleado, {action as nuevoEmpleadoAction, loader as cargarDepartamentoCargo} from './pages/NuevoEmpleado'
+import NuevoEmpleado, {action, action as nuevoEmpleadoAction, loader as cargarDepartamentoCargo} from './pages/NuevoEmpleado'
 import NuevoDepartamento, {action as nuevoDepartamentoAction} from './pages/NuevoDepartamento'
 import NuevoCargo, {loader as nuevoCargoLoader, action as nuevoCargoAction} from './pages/NuevoCargo' //
 import Index from './pages/Index'
@@ -21,9 +21,7 @@ import Finanzas from './pages/Finanzas'
 import Empleados, {loader as empleadosLoader} from './pages/Empleados'
 import Departamentos, {loader as departamentosLoader} from './pages/Departamentos'
 import Cargos, {loader as cargosLoader} from './pages/Cargos' //
-
-import {action as pagarEmpleado} from './components/Empleado'
-import ActualizarIess, {loader as iess, action as nuevoIess} from './pages/ActualizarIess'
+import {action as pagarEmpleado,loader as actualizarMovimiento} from './components/Empleado'
 import {loader as eliminarEmpleado} from './pages/EliminarEmpleado'
 import {loader as eliminarDepartamento} from './pages/EliminarDepartamento'
 import {loader as eliminarCargo} from './pages/EliminarCargo' //
@@ -51,7 +49,13 @@ import NuevoAsiento, {action as nuevoAsiento} from './pages/NuevoAsiento'
 import {action as eliminarAsiento} from './components/Asiento'
 import Asiento, {loader as obtenerAsientos} from './pages/Asientos'
 
+import NuevoParametro, {action as nuevoParametro} from './pages/NuevoIess'
+import ActualizarIess, {loader as iess, action as actualizarIess} from './pages/ActualizarIess'
+import ParametrosIESS, {loader as parametros, action as eliminarIess} from './pages/Parametros_IESS'
 
+import Bancos, {loader as obtenerBancos, action as eliminarBanco} from './pages/Bancos'
+import NuevoBanco, {action as nuevoBanco} from './pages/NuevoBanco'
+import ActualizarBanco, {loader as obtenerBanco, action as actualizarBanco } from './pages/ActualizarBanco'
 // Import all of Bootstrap's JS
 //import * as bootstrap from 'bootstrap'
 
@@ -167,12 +171,12 @@ const router = createBrowserRouter([
         loader: empleadosLoader,
         errorElement: <ErrorPage/>
       },
-      // {
-      //   path: '/empleados/nuevo',
-      //   element: <NuevoEmpleado/>,
-      //   action: nuevoEmpleadoAction,
-      //   loader: cargarDepartamentoCargo
-      // },
+      {
+        path: '/empleados/nuevo',
+        element: <NuevoEmpleado/>,
+        action: nuevoEmpleadoAction,
+        loader: cargarDepartamentoCargo
+      },
 
       {
         path: '/empleados/:empleadoId/editar',
@@ -182,14 +186,30 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />
       },
       {
-        path: '/empleados/:empleadoId/pagar',
-        action: pagarEmpleado
+        path: '/empleados/iess',
+        element: <ParametrosIESS />,
+        loader: parametros,
+        errorElement: <ErrorPage />
       },
       {
-        path:'/empleados/iess',
+        path: '/empleados/:empleadoId/pagar',
+        action: pagarEmpleado,
+        loader: actualizarMovimiento
+      },
+      {
+        path:'/empleados/iess/:iessId/editar',
         element: <ActualizarIess/>,
         loader: iess,
-        action: nuevoIess
+        action: actualizarIess
+      },
+      {
+        path:'/empleados/iess/nuevo',
+        element: <NuevoParametro/>,
+        action: nuevoParametro
+      },
+      {
+        path:'/empleados/iess/:iessId/eliminar',
+        action: eliminarIess
       },
       {
         path:'/empleados/:empleadoId/eliminar',
@@ -238,6 +258,27 @@ const router = createBrowserRouter([
       {
        path:'/empleados/cargos/:cargoId/eliminar',
        loader: eliminarCargo
+      },
+      {
+        path: '/finanzas/bancos',
+        element: <Bancos/>,
+        loader: obtenerBancos,
+        action: eliminarBanco
+      },
+      {
+        path: '/finanzas/bancos/nuevo',
+        element: <NuevoBanco/>,
+        action: nuevoBanco
+      },
+      {
+        path: '/finanzas/bancos/:bancoId/editar',
+        element: <ActualizarBanco/>,
+        loader: obtenerBanco,
+        action: actualizarBanco
+      },
+      {
+        path:'/finanzas/bancos/:bancoId/eliminar',
+        action: eliminarBanco
       },
       {
         path: '/finanzas/cuentas',

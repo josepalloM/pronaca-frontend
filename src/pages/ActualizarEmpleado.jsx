@@ -1,12 +1,15 @@
-import {agregarEmpleado, obtenerEmpleado, actualizarEmpleado} from "../data/empleados.js";
+import { obtenerEmpleado, actualizarEmpleado} from "../data/empleados.js";
 import Error from "../components/Error.jsx";
 import {Form, useNavigate, useLoaderData, useActionData, redirect} from "react-router-dom";
 import FormularioActualizarEmpleado from "../components/FormularioActualizarEmpleado.jsx";
-
+import { actualizarMovimiento} from "../data/movimiento_empleado.js";
+import { obtenerDepartamentos } from "../data/departamentos";
+import { obtenerCargos } from "../data/cargo_empleado";
 
 export async function loader({params}){
     const empleado =  await obtenerEmpleado(params.empleadoId)
-    
+    const departamentos = await obtenerDepartamentos()
+    const cargos_empleado = await obtenerCargos()
     
     if (Object.values(empleado).length===0){
         throw new Response('', {
@@ -15,7 +18,7 @@ export async function loader({params}){
         })
     }
     console.log("Empleado en actualizar", empleado)
-    return {empleado}
+    return {empleado, departamentos, cargos_empleado}
 }
 
 export async function action({request, params}){
@@ -33,9 +36,11 @@ export async function action({request, params}){
     if (Object.keys(errores).length){
         return errores
     }
-
     // Actualizar Empleado
     await  actualizarEmpleado(params.empleadoId, datos)
+    //actualizar los movimiento iess y pago de nómina
+    await actualizarMovimiento(params.empleadoId)
+
     return redirect('/empleados')
 }
 
@@ -64,6 +69,8 @@ function ActualizarEmpleado() {
                 >
                     <FormularioActualizarEmpleado
                         empleado={empleado}  
+                        departamentos={departamentos} 
+                        cargos_empleado={cargos_empleado}
                     />
 
                     <div className="grid grid-cols-2 gap-2">
