@@ -25,12 +25,12 @@ export  async function action({request}){
       errores.push('Todos los campos son obligatorios')
     }
 
-    let regex = new RegExp("^[A-ZÑa-zñáéíóúÁÉÍÓÚ'° ]+$");
+    let regex = new RegExp("(^[A-ZÑa-zñáéíóúÁÉÍÓÚ'° ]+$)");
     if(!regex.test(nombre)){
         errores.push("El nombre solo debe contener letras");
     }
 
-    let regex1 = new RegExp("^[A-ZÑa-zñáéíóúÁÉÍÓÚ'° ]+$");
+    let regex1 = new RegExp("(^[A-ZÑa-zñáéíóúÁÉÍÓÚ'° ]+$)");
     if(!regex1.test(apellido)){
         errores.push("El apellido solo debe contener letras");
     }
