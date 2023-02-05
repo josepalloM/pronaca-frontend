@@ -37,12 +37,12 @@ export  async function action({request}){
 
     let regex2 = new RegExp("^\d{10}$");
     if(!regex2.test(cedula)){
-        errores.push("La cédula solo debe contener números");
+        errores.push("La cédula solo debe contener 10 números");
     }
 
     let regex3 = new RegExp("^[^@]+@[^@]+\\.[a-zA-Z]{2,}$");
     if(!regex3.test(email)){
-        errores.push("La cédula solo debe contener números");
+        errores.push("El email debe ser de la siguiente forma alguien@ejemplo.algo");
     }
 
     //let regex4 = new RegExp("^[^@]+@[^@]+\\.[a-zA-Z]{2,}$");
@@ -52,7 +52,7 @@ export  async function action({request}){
 
     let regex5 = new RegExp("(^\d{10}$)|(^\d{9}$)");
     if(!regex5.test(telefono)){
-        errores.push("El teléfono solo debe contener números");
+        errores.push("El teléfono solo debe contener 9 o 10 números");
     }
 
     //Retornar datos si hay erroes
