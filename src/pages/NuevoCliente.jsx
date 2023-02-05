@@ -18,7 +18,7 @@ export  async function action({request}){
     const cedula = formData.get('RUC_CEDULA')
     const email = formData.get('EMAIL_CLIENTE')
     const estado = formData.get('ESTADO_CLIENTE')
-    const telefono = formData.get('TELEFONO_CLIENTE')
+    const telefono = formData.get('telefono_cliente')
     //validaciones
     const errores = []
     if(Object.values(datos).includes('')){
