@@ -35,7 +35,7 @@ function Clientes() {
               {clientes.map(cliente => (
                 <Cliente
                   cliente={cliente}
-                  key={cliente.ID_CLIENTE_POTENCIAL}
+                  key={cliente.ID_CLIENTE}
                 />
 
               ))}

@@ -1,7 +1,14 @@
-import { useNavigate, Form, useActionData, redirect } from "react-router-dom"
+import { useNavigate, Form, useActionData, redirect, useLoaderData } from "react-router-dom"
 import FormularioCliente from "../components/FormularioCliente";
 import Error from "../components/Error";
-import { agregarCliente } from "../data/clientes";
+import {obtenerUbicaciones} from "../data/ubicaciones";
+
+export async function loader(){
+    const ubicaciones =  await obtenerUbicaciones()
+    console.log("Ubicaciones", ubicaciones)
+    return ubicaciones
+}
+
 
 export  async function action({request}){
     const formData = await request.formData()
@@ -25,7 +32,8 @@ export  async function action({request}){
 }
 
 function NuevoCliente() {
-    
+
+    const ubicaciones = useLoaderData()
     const errores = useActionData()
     const navigate = useNavigate()
 
@@ -45,7 +53,9 @@ function NuevoCliente() {
 
 
                 >
-                    <FormularioCliente />
+                    <FormularioCliente 
+                        ubicaciones={ubicaciones}
+                    />
 
                     <div className="grid grid-cols-2 gap-2">
                         <div>

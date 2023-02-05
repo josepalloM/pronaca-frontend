@@ -25,7 +25,7 @@ import ActualizarIess, {loader as iess, action as nuevoIess} from './pages/Actua
 import {loader as eliminarEmpleado} from './pages/EliminarEmpleado'
 import {loader as eliminarDepartamento} from './pages/EliminarDepartamento'
 import ErrorPage from './components/ErrorPage'
-import NuevoCliente, {action as nuevoClienteAction} from './pages/NuevoCliente'
+import NuevoCliente, {action as nuevoClienteAction, loader as nuevoClienteLoader} from './pages/NuevoCliente'
 import {action as eliminarClienteAction} from "./components/Cliente"
 import ActualizarCliente, {loader as actualizarClienteLoader, action as actualizarClienteAction} from './pages/ActualizarCliente.jsx'
 import ActualizarItem, { loader as actualizarItemLoader, action as actualizarItemAction} from './pages/ActualizarItem'
@@ -144,6 +144,7 @@ const router = createBrowserRouter([
       {
         path: '/cliente/nuevo',
         element: <NuevoCliente/>,
+        loader: nuevoClienteLoader,
         action: nuevoClienteAction
       },
       {

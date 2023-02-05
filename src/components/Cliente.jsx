@@ -11,7 +11,7 @@ function Cliente({ cliente }) {
     const {
         NOMBRE_CLIENTE,
         APELLIDO_CLIENTE,
-        RUC_CEDULA_,
+        RUC_CEDULA,
         EMAIL_CLIENTE,
         ESTADO_CLIENTE,
         ZONA_UBICACION,
@@ -32,7 +32,7 @@ function Cliente({ cliente }) {
                     {APELLIDO_CLIENTE}
                 </td>
                 <td>
-                    {RUC_CEDULA_}
+                    {RUC_CEDULA}
                 </td>
                 <td>
                     {EMAIL_CLIENTE}
