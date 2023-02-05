@@ -29,8 +29,11 @@ import NuevoCliente, {action as nuevoClienteAction} from './pages/NuevoCliente'
 import {action as eliminarClienteAction} from "./components/Cliente"
 import ActualizarCliente, {loader as actualizarClienteLoader, action as actualizarClienteAction} from './pages/ActualizarCliente.jsx'
 import ActualizarItem, { loader as actualizarItemLoader, action as actualizarItemAction} from './pages/ActualizarItem'
+import ActualizarListaItem, {loader as actualizarListaItemLoader, action as actualizarListaItemAction} from './pages/ActializarListaItem'
 import EmpleadoProduccion from './pages/EmpleadoProduccion'
 import NuevoListaItem, {action as nuevaListaItemAction} from './pages/NuevoListaItem'
+import {action as eliminarListaItemAction} from './components/ListaItem'
+import {action as eliminarItemAction} from './components/Item'
 
 import NuevoPedido, {action as nuevoPedidoAction} from './pages/NuevoPedido'
 import PedidosOpciones from './pages/PedidosOpciones'
@@ -123,6 +126,17 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage/>
       },
       {
+        path: '/listaitem/:listaId/actualizar',
+        element: <ActualizarListaItem/>,
+        loader: actualizarListaItemLoader,
+        action: actualizarListaItemAction,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path:  '/listaitem/:listaId/eliminar',
+        action: eliminarListaItemAction
+      },
+      {
         path: '/item/nuevo',
         element: <NuevoItem/>,
         action: nuevoItemAction,
@@ -134,6 +148,10 @@ const router = createBrowserRouter([
         loader: actualizarItemLoader,
         action: actualizarItemAction,
         errorElement: <ErrorPage/>
+      },
+      {
+        path:  '/item/:itemId/eliminar',
+        action: eliminarItemAction
       },
       {
         path: '/clientes',
