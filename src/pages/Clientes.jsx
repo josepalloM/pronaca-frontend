@@ -21,9 +21,13 @@ function Clientes() {
               <tr>
                 <th className="p-2">Nombre</th>
                 <th className="p-2">Apellido</th>
-                <th className="p-2">Dirección</th>
+                <th className="p-2">RUC-Cédula</th>
+                <th className="p-2">Email</th>
+                <th className="p-2">Estado Cliente</th>
+                <th className="p-2">Zona</th>
+                <th className="p-2">Sector</th>
+                <th className="p-2">Número</th>
                 <th className="p-2">Teléfono</th>
-                <th className="p-2">Cédula</th>
                 <th className="p-2">Acciones</th>
               </tr>
             </thead>
