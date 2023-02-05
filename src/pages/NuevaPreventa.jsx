@@ -1,17 +1,16 @@
 import React, {useRef, useState} from 'react';
-import {Form, useActionData, useNavigate, redirect} from "react-router-dom";
+import {Form, useActionData, useNavigate, redirect, useLoaderData} from "react-router-dom";
 import Error from "../components/Error.jsx";
 import FormularioPreventa from "../components/FormularioPreventa.jsx";
 import { agregarPreventa } from '../data/preventa.js';
+import { obtenerEmpleados } from '../data/empleados.js';
+import { obtenerClientes } from '../data/clientes.js';
 
-//export function loader() {
-    //const clientes = obtenerClientes()
-    //const empleados = obtenerEmpleados()
-    //var preventa = [clientes,empleados]
-    //const preventa1 = clientes.concat(empleados)
-    //console.log(preventa)
-    //return clientes;
-//}
+export async function loader() {
+    const clientes = await obtenerClientes()
+    const empleados = await obtenerEmpleados()
+    return {clientes,empleados};
+}
 
 export async function action({request}){
     const formData = await request.formData()
@@ -32,7 +31,7 @@ export async function action({request}){
 }
 
 function NuevaPreventa(props) {
-    //const clientes = useLoaderData()
+    const {clientes,empleados} = useLoaderData()
     const errores = useActionData()
     const navigate = useNavigate()
     //console.log(clientes)
@@ -45,7 +44,7 @@ function NuevaPreventa(props) {
             <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
                 {errores?.length && errores.map((error, i) => <Error key={i}>{error}</Error>)}
                 <Form method="POST">
-                    <FormularioPreventa/>
+                    <FormularioPreventa clientes={clientes} empleados={empleados}/>
                     <div className="grid grid-cols-2 gap-2 text-center">
                         <div>
                             <input
