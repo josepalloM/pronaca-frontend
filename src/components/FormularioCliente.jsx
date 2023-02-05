@@ -1,8 +1,11 @@
 import {useState} from "react"
 const FormularioCliente = ({cliente, ubicaciones}) => {    
-    //console.log(ubicaciones)
+    //console.log("Cliente en actualizar FORM", cliente)
+    //console.log("Cliente ESTADO en actualizar FORM", cliente.cliente.ESTADO_CLIENTE)
+    //console.log("Ubicaciones en actualizar FORM", ubicaciones)
     const [ubicacion, setUbicacion] = useState("")
     return (
+       
         <>
             <div className="mb-4">
                 <label
@@ -15,6 +18,7 @@ const FormularioCliente = ({cliente, ubicaciones}) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Nombre del cliente"
                     name="nombre_cliente"
+                    
                     defaultValue={cliente?.NOMBRE_CLIENTE}
                 />
             </div>
@@ -43,7 +47,7 @@ const FormularioCliente = ({cliente, ubicaciones}) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Cedula/Ruc del cliente"
                     name="ruc_cedula"
-                    defaultValue={cliente?.RUC_CEDULA_}
+                    defaultValue={cliente?.RUC_CEDULA}
                 />
             </div>
             <div className="mb-4">
@@ -60,7 +64,6 @@ const FormularioCliente = ({cliente, ubicaciones}) => {
                     defaultValue={cliente?.EMAIL_CLIENTE}
                 />
             </div>
-
             <div className="mb-4">
                 <label
                     className="flex justify-start text-gray-800"
@@ -75,37 +78,6 @@ const FormularioCliente = ({cliente, ubicaciones}) => {
                     defaultValue={cliente?.ESTADO_CLIENTE}
                 />
             </div>
-{/* 
-            <div className="mb-4">
-                <label
-                    className=" flex justify-start text-gray-800"
-                    htmlFor="zona_ubicacion"
-                >Zona:</label>
-                <input 
-                    id="zona_ubicacion"
-                    type="text"
-                    className="mt-2 block w-full p-3 bg-gray-50"
-                    placeholder="Dirección del cliente"
-                    name="zona_ubicacion"
-                    defaultValue={ubicaciones?.ZONA_UBICACION}
-                />
-            </div>
-
-            <div className="mb-4">
-                <label
-                    className=" flex justify-start text-gray-800"
-                    htmlFor="sector_ubicacion"
-                >Sector:</label>
-                <input 
-                    id="sector_ubicacion"
-                    type="text"
-                    className="mt-2 block w-full p-3 bg-gray-50"
-                    placeholder="Dirección del cliente"
-                    name="sector_ubicacion"
-                    defaultValue={ubicaciones?.SECTOR_UBICACION}
-                />
-            </div> */}
-
             <div className="mb-4">
                 <label
                     className=" flex justify-start text-gray-800"
@@ -113,21 +85,34 @@ const FormularioCliente = ({cliente, ubicaciones}) => {
                 >Sector-Ubicacion:</label>
                 <div className="">
                     {ubicaciones.length ?(
-                    <select id="id_ubicacion" value={ubicacion} name="id_ubicacion" onChange={(event)=>setUbicacion(event.target.value)} 
-                        className="form-control border-2 border-black">
+                    <select 
+                        id="id_ubicacion" 
+                        value={ubicacion} 
+                        name="id_ubicacion" 
+                        onChange={(event)=>setUbicacion(event.target.value)} 
+                        className="form-control border-2 border-black"
+                        >
                         <option >Selecciona una zona</option>
-                        {ubicaciones.map(ubicacion =>(
-                            <option key={ubicacion.ID_UBICACION} value={ubicacion.ID_UBICACION}>{ubicacion.ZONA_UBICACION}</option>
-                        ))}
+                        {ubicaciones.map((ubicacion)=>{
+                            if(cliente?.ID_UBICACION === ubicacion.ID_UBICACION){
+                                
+                                return(<option 
+                                key={ubicacion.ID_UBICACION} 
+                                value={ubicacion.ID_UBICACION}
+                                
+                                >{ubicacion.ZONA_UBICACION}-{ubicacion.SECTOR_UBICACION}</option>)
+                            }else{
+                                return(<option 
+                                key={ubicacion.ID_UBICACION} 
+                                value={ubicacion.ID_UBICACION}
+                                >{ubicacion.ZONA_UBICACION}-{ubicacion.SECTOR_UBICACION}</option>)
+                            }
+                            
+                        })}
                     </select>
                     ):(<p> No existen Ubicaciones</p>)}
                 </div>
             </div> 
-
-
-
-
-
             <div className="mb-4">
                 <label
                     className=" flex justify-start text-gray-800"
@@ -139,10 +124,9 @@ const FormularioCliente = ({cliente, ubicaciones}) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Dirección del cliente"
                     name="numero_ubicacion"
-                    defaultValue={ubicaciones?.NUMERO_UBICACION}
+                    defaultValue={cliente?.NUMERO_UBICACION}
                 />
             </div>
-
             <div className="mb-4">
                 <label
                     className="flex justify-start text-gray-800"
