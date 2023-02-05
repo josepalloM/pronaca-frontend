@@ -1,32 +1,34 @@
+import {useState} from "react"
 const FormularioCliente = ({cliente, ubicaciones}) => {    
-    console.log(ubicaciones)
+    //console.log(ubicaciones)
+    const [ubicacion, setUbicacion] = useState("")
     return (
         <>
             <div className="mb-4">
                 <label
                     className="flex justify-start text-gray-800"
-                    htmlFor="nombre_cliente_potencial"
+                    htmlFor="nombre_cliente"
                 >Nombre:</label>
                 <input 
-                    id="nombre_cliente_potencial"
+                    id="nombre_cliente"
                     type="text"
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Nombre del cliente"
-                    name="nombre_cliente_potencial"
+                    name="nombre_cliente"
                     defaultValue={cliente?.NOMBRE_CLIENTE}
                 />
             </div>
             <div className="mb-4">
                 <label
                     className=" flex justify-start text-gray-800"
-                    htmlFor="apellido_cliente_potencial"
+                    htmlFor="apellido_cliente"
                 >Apellido:</label>
                 <input 
-                    id="apellido_cliente_potencial"
+                    id="apellido_cliente"
                     type="text"
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Apellido del cliente"
-                    name="apellido_cliente_potencial"
+                    name="apellido_cliente"
                     defaultValue={cliente?.APELLIDO_CLIENTE}
                 />
             </div>
@@ -107,17 +109,23 @@ const FormularioCliente = ({cliente, ubicaciones}) => {
             <div className="mb-4">
                 <label
                     className=" flex justify-start text-gray-800"
-                    htmlFor="sector_ubicacion"
+                    htmlFor="id_ubicacion"
                 >Sector-Ubicacion:</label>
-                <input 
-                    id="sector_ubicacion"
-                    type="text"
-                    className="mt-2 block w-full p-3 bg-gray-50"
-                    placeholder="Dirección del cliente"
-                    name="sector_ubicacion"
-                    defaultValue={ubicaciones?.SECTOR_UBICACION}
-                />
+                <div className="">
+                    {ubicaciones.length ?(
+                    <select id="id_ubicacion" value={ubicacion} name="id_ubicacion" onChange={(event)=>setUbicacion(event.target.value)} 
+                        className="form-control border-2 border-black">
+                        <option >Selecciona una zona</option>
+                        {ubicaciones.map(ubicacion =>(
+                            <option key={ubicacion.ID_UBICACION} value={ubicacion.ID_UBICACION}>{ubicacion.ZONA_UBICACION}</option>
+                        ))}
+                    </select>
+                    ):(<p> No existen Ubicaciones</p>)}
+                </div>
             </div> 
+
+
+
 
 
             <div className="mb-4">

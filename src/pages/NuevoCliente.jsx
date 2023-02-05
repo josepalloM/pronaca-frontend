@@ -2,10 +2,11 @@ import { useNavigate, Form, useActionData, redirect, useLoaderData } from "react
 import FormularioCliente from "../components/FormularioCliente";
 import Error from "../components/Error";
 import {obtenerUbicaciones} from "../data/ubicaciones";
+import {agregarCliente} from "../data/clientes"
 
 export async function loader(){
     const ubicaciones =  await obtenerUbicaciones()
-    console.log("Ubicaciones", ubicaciones)
+    //console.log("Ubicaciones", ubicaciones)
     return ubicaciones
 }
 
@@ -13,8 +14,8 @@ export async function loader(){
 export  async function action({request}){
     const formData = await request.formData()
     const datos = Object.fromEntries(formData)
-    const nombre = formData.get('nombre_cliente_potencial')
-    const apellido = formData.get('apellido_cliente_potencial')
+    const nombre = formData.get('nombre_cliente')
+    const apellido = formData.get('apellido_cliente')
     const cedula = formData.get('ruc_cedula')
     const email = formData.get('email_cliente')
     const telefono = formData.get('telefono_cliente')
@@ -53,7 +54,7 @@ export  async function action({request}){
     if(Object.keys(errores).length){
       return errores
     }
-  
+    console.log(datos)
     await agregarCliente(datos)
   
     console.log(datos)
