@@ -35,12 +35,12 @@ export  async function action({request}){
         errores.push("El apellido solo debe contener letras");
     }
 
-    let regex2 = new RegExp("^\d{10}$");
+    let regex2 = new RegExp("^[0-9]{10}$");
     if(!regex2.test(cedula)){
         errores.push("La cédula solo debe contener 10 números");
     }
 
-    let regex3 = new RegExp("^[^@]+@[^@]+\\.[a-zA-Z]{2,}$");
+    let regex3 = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])")
     if(!regex3.test(email)){
         errores.push("El email debe ser de la siguiente forma alguien@ejemplo.algo");
     }
@@ -50,7 +50,7 @@ export  async function action({request}){
     //    errores.push("El estado solo debe ser ");
     //}
 
-    let regex5 = new RegExp("(^\d{10}$)|(^\d{9}$)");
+    let regex5 = new RegExp("(^[0-9]{10}$)|(^[0-9]{9}$)");
     if(!regex5.test(telefono)){
         errores.push("El teléfono solo debe contener 9 o 10 números");
     }
