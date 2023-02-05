@@ -13,13 +13,48 @@ export async function loader(){
 export  async function action({request}){
     const formData = await request.formData()
     const datos = Object.fromEntries(formData)
-  
+    const nombre = formData.get('NOMBRE_CLIENTE')
+    const apellido = formData.get('APELLIDO_CLIENTE')
+    const cedula = formData.get('RUC_CEDULA')
+    const email = formData.get('EMAIL_CLIENTE')
+    const estado = formData.get('ESTADO_CLIENTE')
+    const telefono = formData.get('TELEFONO_CLIENTE')
     //validaciones
     const errores = []
     if(Object.values(datos).includes('')){
       errores.push('Todos los campos son obligatorios')
     }
-  
+
+    let regex = new RegExp("^[A-ZÑa-zñáéíóúÁÉÍÓÚ'° ]+$");
+    if(!regex.test(nombre)){
+        errores.push("El nombre solo debe contener letras");
+    }
+
+    let regex1 = new RegExp("^[A-ZÑa-zñáéíóúÁÉÍÓÚ'° ]+$");
+    if(!regex1.test(apellido)){
+        errores.push("El apellido solo debe contener letras");
+    }
+
+    let regex2 = new RegExp("^\d{10}$");
+    if(!regex2.test(cedula)){
+        errores.push("La cédula solo debe contener números");
+    }
+
+    let regex3 = new RegExp("^[^@]+@[^@]+\\.[a-zA-Z]{2,}$");
+    if(!regex3.test(email)){
+        errores.push("La cédula solo debe contener números");
+    }
+
+    //let regex4 = new RegExp("^[^@]+@[^@]+\\.[a-zA-Z]{2,}$");
+    //if(!regex4.test(estado)){
+    //    errores.push("El estado solo debe ser ");
+    //}
+
+    let regex5 = new RegExp("(^\d{10}$)|(^\d{9}$)");
+    if(!regex5.test(telefono)){
+        errores.push("El teléfono solo debe contener números");
+    }
+
     //Retornar datos si hay erroes
     if(Object.keys(errores).length){
       return errores
