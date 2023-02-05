@@ -18,10 +18,10 @@ import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
 
 import Clientes, {loader as clienteLoader} from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
-import Empleados, {loader as empleadosLoader} from './pages/Empleados'
+import Empleados, {loader as empleadosLoader, action as pagar} from './pages/Empleados'
 import Departamentos, {loader as departamentosLoader} from './pages/Departamentos'
 import Cargos, {loader as cargosLoader} from './pages/Cargos' //
-import {action as pagarEmpleado,loader as actualizarMovimiento} from './components/Empleado'
+import {action as pagarEmpleado} from './components/Empleado'
 import {loader as eliminarEmpleado} from './pages/EliminarEmpleado'
 import {loader as eliminarDepartamento} from './pages/EliminarDepartamento'
 import {loader as eliminarCargo} from './pages/EliminarCargo' //
@@ -169,6 +169,7 @@ const router = createBrowserRouter([
         path: '/empleados',
         element: <Empleados/>,
         loader: empleadosLoader,
+        action: pagar,
         errorElement: <ErrorPage/>
       },
       {
@@ -193,8 +194,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/empleados/:empleadoId/pagar',
-        action: pagarEmpleado,
-        loader: actualizarMovimiento
+        action: pagar
+        
       },
       {
         path:'/empleados/iess/:iessId/editar',

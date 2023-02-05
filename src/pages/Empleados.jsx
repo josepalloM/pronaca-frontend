@@ -1,27 +1,24 @@
-import { Link, useLoaderData, useNavigate, Form } from "react-router-dom";
+import { Link, useLoaderData, useNavigate, Form , redirect} from "react-router-dom";
 import { obtenerEmpleados } from "../data/empleados";
 import Empleado from "../components/Empleado";
 import {obtenerCargos} from "../data/cargo_empleado"
-import {actualizarCostos} from "../data/cuentas";
-import { actualizarAsientos } from "../data/asiento";
 import { actualizarMovimiento } from "../data/movimiento_empleado";
 import { useState } from "react";
+import { actualizarCostosGastos } from "../data/cuentas.js";
 
 export async function loader() {
     const empleados = await obtenerEmpleados()
     const cargos_empleados = await obtenerCargos()
-    await actualizarMovimiento(empleados[0].ID_EMPLEADO)
-    console.log(empleados[0].ID_BANCO)
     
     {empleados.map( empleado => {
         actualizarMovimiento(empleado.ID_EMPLEADO)
     })}
-    console.log("v", empleados)
-    //await actualizarCostos()
-    //await actualizarAsientos()
     return {empleados,cargos_empleados}
 }
-
+export async function action({params}){
+    await actualizarCostosGastos(params.empleadoId) 
+    return redirect('/empleados')
+}
 function Empleados() {
     const [idBanco,setIdBanco] = useState("")
     const {empleados, cargos_empleados} = useLoaderData()

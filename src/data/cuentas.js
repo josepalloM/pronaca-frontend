@@ -42,6 +42,7 @@ export async function actualizarCostosGastos(id){
     
         const url = "http://localhost:4000/api/cuenta"
         await fetch(`${url}/cuentasCostosGastos/${id}`)
+        console.log("w",id)
     
 }
 export async function actualizarCostos(){

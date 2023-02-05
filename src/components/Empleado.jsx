@@ -2,20 +2,22 @@ import {useEffect, useState} from "react"
 import {Form, useNavigate,redirect} from "react-router-dom"
 import { actualizarCostosGastos } from "../data/cuentas.js";
 import { actualizarMovimiento } from "../data/movimiento_empleado.js";
+import { obtenerEmpleados } from "../data/empleados.js";
 
 export async function action({params}){
     await actualizarCostosGastos(params.empleadoId) 
     return redirect('/empleados')
 }
+/*
 export async function loader() {
     const empleados = await obtenerEmpleados()
     {empleados.map( empleado => (
         actualizarMovimiento(empleado.ID_EMPLEADO)
     ))}
-    console.log("v", empleados)
-}
+}*/
+
 function Empleado({ empleado, cargos}) {
-    const { NOMBRE_EMPLEADO, APELLIDO_EMPLEADO,ID_CARGO_EMPLEADO,SUELDO_NETO, ID_EMPLEADO} = empleado
+    const {ID_EMPLEADO, NOMBRE_EMPLEADO, APELLIDO_EMPLEADO,ID_CARGO_EMPLEADO,SUELDO_NETO} = empleado
     const [DESCRIPCION_CARGO,setCargo] = useState("")
     const navigate = useNavigate()
 
