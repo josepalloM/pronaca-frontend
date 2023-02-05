@@ -17,11 +17,48 @@ export async function loader({params}){
 
 export async function action({request, params}){
     const formData = await request.formData()
-
     const datos = Object.fromEntries(formData)
-
-    //Validacion
+    const nombre = formData.get('nombre_cliente_potencial')
+    const apellido = formData.get('apellido_cliente_potencial')
+    const cedula = formData.get('ruc_cedula')
+    const email = formData.get('email_cliente')
+    const telefono = formData.get('telefono_cliente')
+    //validaciones
     const errores = []
+    if(Object.values(datos).includes('')){
+        errores.push('Todos los campos son obligatorios')
+    }
+
+    let regex = new RegExp("(^[A-ZÑa-zñáéíóúÁÉÍÓÚ'° ]+$)");
+    if(!regex.test(nombre)){
+        errores.push("El nombre solo debe contener letras");
+    }
+
+    let regex1 = new RegExp("(^[A-ZÑa-zñáéíóúÁÉÍÓÚ'° ]+$)");
+    if(!regex1.test(apellido)){
+        errores.push("El apellido solo debe contener letras");
+    }
+
+    let regex2 = new RegExp("^[0-9]{10}$");
+    if(!regex2.test(cedula)){
+        errores.push("La cédula solo debe contener 10 números");
+    }
+
+    let regex3 = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])")
+    if(!regex3.test(email)){
+        errores.push("El email debe ser de la siguiente forma alguien@ejemplo.algo");
+    }
+
+    //let regex4 = new RegExp("^[^@]+@[^@]+\\.[a-zA-Z]{2,}$");
+    //if(!regex4.test(estado)){
+    //    errores.push("El estado solo debe ser ");
+    //}
+
+    let regex5 = new RegExp("(^[0-9]{10}$)|(^[0-9]{9}$)");
+    if(!regex5.test(telefono)){
+        errores.push("El teléfono solo debe contener 9 o 10 números");
+    }
+    //Validacion
     if (Object.values(datos).includes('')){
         errores.push('Todos los campos sosn necesarios')
     }

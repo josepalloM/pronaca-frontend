@@ -13,11 +13,10 @@ export async function loader(){
 export  async function action({request}){
     const formData = await request.formData()
     const datos = Object.fromEntries(formData)
-    const nombre = formData.get('NOMBRE_CLIENTE')
-    const apellido = formData.get('APELLIDO_CLIENTE')
-    const cedula = formData.get('RUC_CEDULA')
-    const email = formData.get('EMAIL_CLIENTE')
-    const estado = formData.get('ESTADO_CLIENTE')
+    const nombre = formData.get('nombre_cliente_potencial')
+    const apellido = formData.get('apellido_cliente_potencial')
+    const cedula = formData.get('ruc_cedula')
+    const email = formData.get('email_cliente')
     const telefono = formData.get('telefono_cliente')
     //validaciones
     const errores = []
@@ -44,11 +43,6 @@ export  async function action({request}){
     if(!regex3.test(email)){
         errores.push("El email debe ser de la siguiente forma alguien@ejemplo.algo");
     }
-
-    //let regex4 = new RegExp("^[^@]+@[^@]+\\.[a-zA-Z]{2,}$");
-    //if(!regex4.test(estado)){
-    //    errores.push("El estado solo debe ser ");
-    //}
 
     let regex5 = new RegExp("(^[0-9]{10}$)|(^[0-9]{9}$)");
     if(!regex5.test(telefono)){
