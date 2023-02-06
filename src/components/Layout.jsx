@@ -110,6 +110,10 @@ function Layout() {
 
             <main className=" bg-gray-100  md:w-full  p-10 h-screen overflow-scroll ">
 
+
+
+
+
                 <Outlet />
             </main>
 
