@@ -4,7 +4,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
 import NuevoEmpleado, {action, action as nuevoEmpleadoAction, loader as cargarDepartamentoCargo} from './pages/NuevoEmpleado'
-import NuevoDepartamento, {action as nuevoDepartamentoAction} from './pages/NuevoDepartamento'
+import NuevoDepartamento, {loader as nuevoDepartamentoLoader, action as nuevoDepartamentoAction} from './pages/NuevoDepartamento'
 import NuevoCargo, {loader as nuevoCargoLoader, action as nuevoCargoAction} from './pages/NuevoCargo' //
 import Index from './pages/Index'
 import Pedidos, { loader as pedidoLoader } from './pages/Pedidos'
@@ -232,6 +232,7 @@ const router = createBrowserRouter([
       {
         path: '/empleados/departamentos/nuevo',
         element: <NuevoDepartamento/>,
+        loader: nuevoDepartamentoLoader,
         action: nuevoDepartamentoAction
       },
       {

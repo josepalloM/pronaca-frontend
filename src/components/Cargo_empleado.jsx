@@ -6,7 +6,7 @@ export async function action({ params }) {
 }
 
 function Cargo({ cargo }) {
-    const { ID_CARGO_EMPLEADO, ID_DEPARTAMENTO, DESCRIPCION_CARGO, CODIGO_CARGO } = cargo
+    const { ID_CARGO_EMPLEADO, ID_DEPARTAMENTO, DESCRIPCION_CARGO } = cargo
     const navigate = useNavigate()
 
     return (
@@ -16,9 +16,6 @@ function Cargo({ cargo }) {
             </td>
             <td>
                 {DESCRIPCION_CARGO}
-            </td>
-            <td>
-                {CODIGO_CARGO}
             </td>
             <td className="p-4 flex justify-center gap-3">
                 <button

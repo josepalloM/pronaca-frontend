@@ -1,6 +1,6 @@
 import {useState} from "react"
 
-const FormularioCargo = ({ departamentos }) => {
+const FormularioCargo = ({ departamentos, cuentas }) => {
 
     const [value, setValue] = useState("")
 
