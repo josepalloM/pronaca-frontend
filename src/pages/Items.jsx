@@ -13,8 +13,8 @@ function Items() {
 
     return (
         <>
-            <h1 className="font-black text-4xl">Item</h1>
-            <p>Administración de Items</p>
+            <h1 className="font-black text-4xl">Producto</h1>
+            <p>Administración de Producto</p>
 
             <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">
                 {items.length ? (
