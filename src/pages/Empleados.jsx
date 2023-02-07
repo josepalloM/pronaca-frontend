@@ -28,11 +28,10 @@ function Empleados() {
             <h1 className="font-black text-4xl">Empleados</h1>
             <p >Administración de empleados</p>
             
-            <button
-                type="button"
-                className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
-                onClick={() => navigate(`/empleados/iess`)}
-            >IESS</button> <br></br>
+
+            
+
+
             <Form
                 method='post'
                 action={`/empleados/${idBanco}/pagar`}
@@ -42,23 +41,17 @@ function Empleados() {
                     }
                 }}
             >   
+            <img width="150" className="bg-orangebg" src="https://previews.123rf.com/images/urfandadashov/urfandadashov1808/urfandadashov180815663/107447699-paying-icon-vector-isolated-on-white-background-for-your-web-and-mobile-app-design-paying-logo-conce.jpg"></img>
+
                 <button
                     type="submit"
                     className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
                     onClick={(event)=>setIdBanco(empleados[0]?.ID_BANCO)}
                 >Pagar</button>
             </Form>
-            <button
-                type="button"
-                className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
-                onClick={() => navigate(`/empleados/departamentos`)}
-            >Departamentos</button><br></br>
+            
 
-<button
-                type="button"
-                className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
-                onClick={() => navigate(`/empleados/cargos`)}
-            >Cargos</button><br></br>
+            
 
             <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">
                 {empleados.length ? (

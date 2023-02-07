@@ -18,6 +18,8 @@ import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
 
 import Clientes, {loader as clienteLoader} from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
+///
+import EmpleadosMenu from './pages/EmpleadosMenu'
 import Empleados, {loader as empleadosLoader, action as pagar} from './pages/Empleados'
 import Departamentos, {loader as departamentosLoader} from './pages/Departamentos'
 import Cargos, {loader as cargosLoader} from './pages/Cargos' //
@@ -52,6 +54,7 @@ import Asiento, {loader as obtenerAsientos} from './pages/Asientos'
 import NuevoParametro, {action as nuevoParametro} from './pages/NuevoIess'
 import ActualizarIess, {loader as iess, action as actualizarIess} from './pages/ActualizarIess'
 import ParametrosIESS, {loader as parametros, action as eliminarIess} from './pages/Parametros_IESS'
+
 
 import Bancos, {loader as obtenerBancos, action as eliminarBanco} from './pages/Bancos'
 import NuevoBanco, {action as nuevoBanco} from './pages/NuevoBanco'
@@ -107,6 +110,11 @@ const router = createBrowserRouter([
         action: actualizarPedidoAction,
         errorElement: <ErrorPage />
       },
+      {
+        path: '/empleados_menu',
+        element: <EmpleadosMenu/>
+      },
+
       // {
       //   path:  '/pedidos/:pedidoId/eliminar',
       //   action: eliminarPedidoAction
