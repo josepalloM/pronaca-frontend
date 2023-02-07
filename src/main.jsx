@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Layout from './components/Layout'
 import NuevoEmpleado, {action as nuevoEmpleadoAction, loader as cargarDepartamentoCargo} from './pages/NuevoEmpleado'
 import NuevoDepartamento, {action as nuevoDepartamentoAction} from './pages/NuevoDepartamento'
@@ -46,6 +46,10 @@ import Cuentas, {loader as obtenerCuentas} from './pages/Cuentas'
 import NuevoAsiento, {action as nuevoAsiento} from './pages/NuevoAsiento'
 import {action as eliminarAsiento} from './components/Asiento'
 import Asiento, {loader as obtenerAsientos} from './pages/Asientos'
+import Login/*, {action as loginAction}*/ from './pages/Login'
+import Registro from './pages/Registro'
+import { RutasPrivadas} from './routes/RutasPrivadas'
+import Prueba from './pages/Prueba'
 
 
 // Import all of Bootstrap's JS
@@ -55,15 +59,37 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout/>,
+
     children: [
+      
+      {
+        path: '/login',
+        element: <Login/>,
+        //action: loginAction,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: '/registro',
+        element: <Registro/>
+      },
+
+
+      {
+        path:'/rutas',
+        element: <RutasPrivadas/>,
+      },
+
+
       {
         index: true,
-        element: <Index/>
+        element: <Index/>,
+        
       },
       {
         path: '/opciones',
-        element: <PedidosOpciones/>
+        element:<PedidosOpciones/>
       },
+      
       {
         path: '/opciones/preventa',
         element: <Preventas/>,
