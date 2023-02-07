@@ -1,49 +1,41 @@
 import { Form, useNavigate, redirect} from "react-router-dom"
-import { eliminarListaItem } from "../data/items"
+import { eliminarTipoListaProduc } from "../data/tipo_lista_produc"
 
 export async function action({params}){
-    await eliminarListaItem(params.listaId)
+    await eliminarTipoListaProduc(params.tipolistaId)
     
-    return redirect('/gestorlista')
+    return redirect('/gestortipolista')
 }
 
-function Item({ listaItem}) {
+function TipoListaProduc({tipo_lista_produc}) {
 
     const navigate = useNavigate()
-    const {ID_LISTA_ITEMS, ID_EMPLEADO, ID_CUENTA, ID_TIPO_LISTA_PRODUC, DETALLE_LISTA, FECHA_LISTA, ESTADO_LISTA, DETALLE_ESTADO_LISTA,} = listaItem
+    const {
+        ID_TIPO_LISTA_PRODUC,
+        TIPO_LISTA_ITEMS,
+        DETALLE_TIPO_LISTA,
+    } = tipo_lista_produc
 
     return (
         <tr className="">
             <td>
-                {ID_EMPLEADO}
-            </td>
-            <td>
-                {ID_CUENTA}
-            </td>
-            <td>
                 {ID_TIPO_LISTA_PRODUC}
             </td>
             <td>
-                {DETALLE_LISTA}
+                {TIPO_LISTA_ITEMS}
             </td>
             <td>
-                {FECHA_LISTA}
-            </td>
-            <td>
-                {ESTADO_LISTA}
-            </td>
-            <td>
-                {DETALLE_ESTADO_LISTA}
-            </td>
+                {DETALLE_TIPO_LISTA}
+            </td>            
             <td className="p-4 flex justify-center gap-3">
                 <button type="button"
                         className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs" 
-                        onClick={() => navigate(`/listaitem/${ID_LISTA_ITEMS}/actualizar`)}>Editar
+                        onClick={() => navigate(`/tipolista/${ID_TIPO_LISTA_PRODUC}/actualizar`)}>Editar
                 </button>
                 
                 <Form 
                     method='POST'
-                    action={`/listaitem/${ID_LISTA_ITEMS}/eliminar`}
+                    action={`/listaitem/${ID_TIPO_LISTA_PRODUC}/eliminar`}
                     onSubmit={ (e) => {
                         if (!confirm('¿Deseas eliminar este registro?')){
                             e.preventDefault()
@@ -59,4 +51,4 @@ function Item({ listaItem}) {
     )
 }
 
-export default Item
+export default TipoListaProduc

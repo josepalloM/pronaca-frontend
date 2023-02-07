@@ -1,49 +1,54 @@
 import { Form, useNavigate, redirect} from "react-router-dom"
-import { eliminarListaItem } from "../data/items"
+import { eliminarRecetaProduccion } from "../data/receta_produccion"
 
 export async function action({params}){
-    await eliminarListaItem(params.listaId)
-    
-    return redirect('/gestorlista')
+    await eliminarRecetaProduccion(params.recetaId)  
+    return redirect('/gestorreceta')
 }
 
-function Item({ listaItem}) {
+function Receta_Produccion({receta_produccion}) {
 
     const navigate = useNavigate()
-    const {ID_LISTA_ITEMS, ID_EMPLEADO, ID_CUENTA, ID_TIPO_LISTA_PRODUC, DETALLE_LISTA, FECHA_LISTA, ESTADO_LISTA, DETALLE_ESTADO_LISTA,} = listaItem
+    const { 
+        ID_ITEM, 
+        ID_PEDIDO_MATERIAP, 
+        NOMBRE_RECETA, 
+        DESCRIPCION_RECETA, 
+        CATEGORIA_RECETA, 
+        TIEMPO_PRODUC_RECETA,
+        ID_RECETA,
+    } = receta_produccion
 
     return (
         <tr className="">
             <td>
-                {ID_EMPLEADO}
+                {ID_ITEM}
             </td>
             <td>
-                {ID_CUENTA}
+                {ID_PEDIDO_MATERIAP}
             </td>
             <td>
-                {ID_TIPO_LISTA_PRODUC}
+                {NOMBRE_RECETA}
             </td>
             <td>
-                {DETALLE_LISTA}
+                {DESCRIPCION_RECETA}
             </td>
             <td>
-                {FECHA_LISTA}
+                {CATEGORIA_RECETA}
             </td>
             <td>
-                {ESTADO_LISTA}
-            </td>
-            <td>
-                {DETALLE_ESTADO_LISTA}
+                {TIEMPO_PRODUC_RECETA}
             </td>
             <td className="p-4 flex justify-center gap-3">
                 <button type="button"
                         className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs" 
-                        onClick={() => navigate(`/listaitem/${ID_LISTA_ITEMS}/actualizar`)}>Editar
+                        onClick={() => navigate(`/receta/${ID_RECETA}/actualizar`)}
+                        >Editar
                 </button>
                 
                 <Form 
                     method='POST'
-                    action={`/listaitem/${ID_LISTA_ITEMS}/eliminar`}
+                    action={`/receta/${ID_RECETA}/eliminar`}
                     onSubmit={ (e) => {
                         if (!confirm('¿Deseas eliminar este registro?')){
                             e.preventDefault()
@@ -59,4 +64,4 @@ function Item({ listaItem}) {
     )
 }
 
-export default Item
+export default Receta_Produccion

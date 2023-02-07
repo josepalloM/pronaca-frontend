@@ -9,12 +9,14 @@ import NuevoCargo, {loader as nuevoCargoLoader, action as nuevoCargoAction} from
 import Index from './pages/Index'
 import Pedidos, { loader as pedidoLoader } from './pages/Pedidos'
 import Item, { loader as itemsLoader } from './pages/Items'
+import Recetas_Produccion,{ loader as recetaLoader} from './pages/Receta'
+import NuevaReceta_Produccion ,{action as nuevoRecetaAction} from './pages/NuevoReceta'
+import TipoListaProduc,{ loader as tipolistaLoader} from './pages/TipoListaProduc'
 
 import BalanceGeneral, { loader as balanceLoader } from './pages/BalanceGeneral'
 import EstadoFinanciero, { loader as estadoLoader } from './pages/EstadoFinanciero'
 import ListaItems, {loader as listaItemsloader} from './pages/ListaItems'
 import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
-//import ListaItems, {action as nuevaListaItemAction} from './pages/NuevoListaItem'
 
 import Clientes, {loader as clienteLoader} from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
@@ -29,8 +31,11 @@ import NuevoCliente, {action as nuevoClienteAction, loader as nuevoClienteLoader
 import {action as eliminarClienteAction} from "./components/Cliente"
 import ActualizarCliente, {loader as actualizarClienteLoader, action as actualizarClienteAction} from './pages/ActualizarCliente.jsx'
 import ActualizarItem, { loader as actualizarItemLoader, action as actualizarItemAction} from './pages/ActualizarItem'
+import ActualizarListaItem, {loader as actualizarListaItemLoader, action as actualizarListaItemAction} from './pages/ActializarListaItem'
 import EmpleadoProduccion from './pages/EmpleadoProduccion'
 import NuevoListaItem, {action as nuevaListaItemAction} from './pages/NuevoListaItem'
+import {action as eliminarListaItemAction} from './components/ListaItem'
+import {action as eliminarItemAction} from './components/Item'
 
 import NuevoPedido, {action as nuevoPedidoAction} from './pages/NuevoPedido'
 import PedidosOpciones from './pages/PedidosOpciones'
@@ -50,6 +55,7 @@ import Login/*, {action as loginAction}*/ from './pages/Login'
 import Registro from './pages/Registro'
 import { RutasPrivadas} from './routes/RutasPrivadas'
 import Prueba from './pages/Prueba'
+
 
 
 // Import all of Bootstrap's JS
@@ -144,10 +150,39 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage/>
       },
       {
+        path: '/gestorreceta',
+        element: <Recetas_Produccion/>,
+        loader: recetaLoader,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: '/receta/nuevo',
+        element: <NuevaReceta_Produccion/>,
+        action: nuevoRecetaAction,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: '/gestortipolista',
+        element: <TipoListaProduc/>,
+        loader: tipolistaLoader,
+        errorElement: <ErrorPage/>
+      },
+      {
         path: '/listaitem/nuevo',
         element: <NuevoListaItem/>,
         action: nuevaListaItemAction,
         errorElement: <ErrorPage/>
+      },
+      {
+        path: '/listaitem/:listaId/actualizar',
+        element: <ActualizarListaItem/>,
+        loader: actualizarListaItemLoader,
+        action: actualizarListaItemAction,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path:  '/listaitem/:listaId/eliminar',
+        action: eliminarListaItemAction
       },
       {
         path: '/item/nuevo',
@@ -161,6 +196,10 @@ const router = createBrowserRouter([
         loader: actualizarItemLoader,
         action: actualizarItemAction,
         errorElement: <ErrorPage/>
+      },
+      {
+        path:  '/item/:itemId/eliminar',
+        action: eliminarItemAction
       },
       {
         path: '/clientes',
