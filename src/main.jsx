@@ -9,12 +9,14 @@ import NuevoCargo, {loader as nuevoCargoLoader, action as nuevoCargoAction} from
 import Index from './pages/Index'
 import Pedidos, { loader as pedidoLoader } from './pages/Pedidos'
 import Item, { loader as itemsLoader } from './pages/Items'
+import Recetas_Produccion,{ loader as recetaLoader} from './pages/Receta'
+import NuevaReceta_Produccion ,{action as nuevoRecetaAction} from './pages/NuevoReceta'
+import TipoListaProduc,{ loader as tipolistaLoader} from './pages/TipoListaProduc'
 
 import BalanceGeneral, { loader as balanceLoader } from './pages/BalanceGeneral'
 import EstadoFinanciero, { loader as estadoLoader } from './pages/EstadoFinanciero'
 import ListaItems, {loader as listaItemsloader} from './pages/ListaItems'
 import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
-//import ListaItems, {action as nuevaListaItemAction} from './pages/NuevoListaItem'
 
 import Clientes, {loader as clienteLoader} from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
@@ -49,6 +51,7 @@ import Cuentas, {loader as obtenerCuentas} from './pages/Cuentas'
 import NuevoAsiento, {action as nuevoAsiento} from './pages/NuevoAsiento'
 import {action as eliminarAsiento} from './components/Asiento'
 import Asiento, {loader as obtenerAsientos} from './pages/Asientos'
+
 
 
 // Import all of Bootstrap's JS
@@ -117,6 +120,24 @@ const router = createBrowserRouter([
         path: '/gestorlista',
         element: <ListaItems/>,
         loader: listaItemsloader,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: '/gestorreceta',
+        element: <Recetas_Produccion/>,
+        loader: recetaLoader,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: '/receta/nuevo',
+        element: <NuevaReceta_Produccion/>,
+        action: nuevoRecetaAction,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: '/gestortipolista',
+        element: <TipoListaProduc/>,
+        loader: tipolistaLoader,
         errorElement: <ErrorPage/>
       },
       {

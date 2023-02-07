@@ -48,6 +48,18 @@ function ListaItems() {
                         to='/listaitem/nuevo'>CREAR</Link>
                 </button>
             </div>
+            <div>
+                <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
+                    <Link
+                        to='/gestorreceta'>RECETA PRODUCCION</Link>
+                </button>
+            </div>
+            <div>
+                <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
+                    <Link
+                        to='/gestortipolista'>TIPO LISTA PRODUCCION</Link>
+                </button>
+            </div>
         </>
     )
 }
