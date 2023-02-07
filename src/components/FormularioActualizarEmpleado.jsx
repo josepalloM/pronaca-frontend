@@ -1,11 +1,19 @@
 import { Link, useLoaderData } from "react-router-dom";
-import {useState} from "react"
+import {useEffect, useState} from "react"
 
 const FormularioActualizarEmpleado = ({empleado, departamentos, cargos_empleado}) => {
 
     const [departamento, setDepartamento] = useState("")
     const [cargo, setCargo] = useState("")
+    const [departamentoAux, setDepartamentoAux] = useState("")
 
+    useEffect(()=>{
+        setCargo(cargos_empleado.filter(cargo_empleado => empleado.ID_CARGO_EMPLEADO==cargo_empleado.ID_CARGO_EMPLEADO)[0]?.DESCRIPCION_CARGO)
+
+        setDepartamento(departamentos.filter( departamento => cargos_empleado.filter(cargo_empleado => empleado.ID_CARGO_EMPLEADO==cargo_empleado.ID_CARGO_EMPLEADO)[0]?.ID_DEPARTAMENTO == departamento.ID_DEPARTAMENTO)[0]?.ID_DEPARTAMENTO)
+        setDepartamentoAux(departamentos.filter( departamento => cargos_empleado.filter(cargo_empleado => empleado.ID_CARGO_EMPLEADO==cargo_empleado.ID_CARGO_EMPLEADO)[0]?.ID_DEPARTAMENTO == departamento.ID_DEPARTAMENTO)[0]?.NOMBRE_DEPARTAMENTO)
+
+    })
     return (
         <>
             <div className="mb-4">
@@ -94,7 +102,7 @@ const FormularioActualizarEmpleado = ({empleado, departamentos, cargos_empleado}
                 >Departamento:</label>
                 <div className="">
                     {departamentos.length ?(
-                    <select id="nombre_departamento" value={departamento} name="nombre_departamento" onChange={(event)=>setDepartamento(event.target.value)} className="form-control border-2 border-black">
+                    <select id="nombre_departamento" value={departamento} name="nombre_departamento" onChange={(event)=>setDepartamento(event.target.value)} className="form-control border-2 border-black" defaultValue={departamentoAux} >
                         <option >Selecciona un departamento</option>
                         {departamentos.map(departamento =>(
                             <option key={departamento.ID_DEPARTAMENTO} value={departamento.ID_DEPARTAMENTO}>{departamento.NOMBRE_DEPARTAMENTO}</option>
@@ -111,7 +119,7 @@ const FormularioActualizarEmpleado = ({empleado, departamentos, cargos_empleado}
                 >Cargo:</label>
                 <div className="">
                     {cargos_empleado.length ?(
-                        <select id="descripcion_cargo" value={cargo} name="descripcion_cargo" onChange={(event)=>setCargo(event.target.value)} className="form-control border-2 border-black">
+                        <select id="descripcion_cargo" value={cargo} name="descripcion_cargo" onChange={(event)=>setCargo(event.target.value)} className="form-control border-2 border-black" defaultValue={cargo}>
                             <option>Selecciona un cargo</option>
                             {cargos_empleado.filter(cargos=>cargos.ID_DEPARTAMENTO==departamento).map( cargo => (
                                 <option key={cargo.ID_CARGO_EMPLEADO} value={cargo.DESCRIPCION_CARGO}>{cargo.DESCRIPCION_CARGO}</option>                         
