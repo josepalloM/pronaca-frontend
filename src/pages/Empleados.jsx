@@ -29,7 +29,7 @@ function Empleados() {
             <p >Administración de empleados</p>
             
 
-
+            
 
 
             <Form
@@ -41,7 +41,13 @@ function Empleados() {
                     }
                 }}
             >   
-                
+            <img width="150" className="bg-orangebg" src="https://previews.123rf.com/images/urfandadashov/urfandadashov1808/urfandadashov180815663/107447699-paying-icon-vector-isolated-on-white-background-for-your-web-and-mobile-app-design-paying-logo-conce.jpg"></img>
+
+                <button
+                    type="submit"
+                    className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
+                    onClick={(event)=>setIdBanco(empleados[0]?.ID_BANCO)}
+                >Pagar</button>
             </Form>
             
 

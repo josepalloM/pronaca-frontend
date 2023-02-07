@@ -36,10 +36,7 @@ function EmpleadosMenu() {
                   <img width="150" class="bg-orangebg" src="https://www.clipartmax.com/png/middle/309-3096179_transparent-employees-logo.png"></img>
                   <button class="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm" onClick={() => navigate(`/empleados/cargos`)}>Cargos</button>
               </div>
-              <div class="mt-6" style={{ width: "180px" }}>
-                  <img width="150" class="bg-orangebg" src="https://previews.123rf.com/images/urfandadashov/urfandadashov1808/urfandadashov180815663/107447699-paying-icon-vector-isolated-on-white-background-for-your-web-and-mobile-app-design-paying-logo-conce.jpg"></img>
-                  <button class="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm" onClick={(event) => setIdBanco(empleados[0]?.ID_BANCO)}>Pagar</button>
-              </div>
+              
           </div>
 
       </>
