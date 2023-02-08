@@ -1,6 +1,6 @@
 import {useState} from "react"
 
-const FormularioCargo = ({ departamentos }) => {
+const FormularioCargo = ({ departamentos, cuentas }) => {
 
     const [value, setValue] = useState("")
 
@@ -16,8 +16,7 @@ const FormularioCargo = ({ departamentos }) => {
                     type="text"
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Descripción del cargo"
-                    name="descripcion_cargo" /><br></br><br></br>
-
+                    name="descripcion_cargo" /><br></br>
             </div>
 
             <div className="mb-4">

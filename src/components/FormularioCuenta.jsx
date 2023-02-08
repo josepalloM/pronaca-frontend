@@ -59,7 +59,7 @@ const FormularioCuenta = ({cuentas}) => {
                         <select id="cue_id_cuenta" value={idCueIdCuenta} name="cue_id_cuenta" onChange={(event)=>setCueIdCuenta(event.target.value)} className="form-control border-2 border-black">
                             <option>Selecciona una cuenta</option>
                             {cuentas.map( cuenta => (
-                                <option key={cuenta.ID_CUENTA} value={cuenta.ID_CUENTA}>{cuenta.DESCRIPCION_CUENTA}</option>                         
+                                <option key={cuenta.ID_CUENTA} value={cuenta.ID_CUENTA}>{cuenta.CODIGO_CUENTA} {cuenta.DESCRIPCION_CUENTA}</option>                         
                             ))}                        
                         </select>
                     ):(<p> No existe CUENTAS</p>)}
