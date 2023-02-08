@@ -29,7 +29,7 @@ export async function action({ request }) {
   await agregarCargo(datos)
 
   console.log(datos)
-  return redirect('/empleados')
+  return redirect('/empleados/cargos')
 }
 
 function NuevoCargo() {

@@ -1,6 +1,7 @@
 import { useNavigate, Form, useActionData, redirect } from "react-router-dom"
 import Error from "../components/Error";
 import { agregarParametro } from "../data/parametros_iess";
+import {agregarMovimientoEmpleado} from '../data/movimiento_empleado'
 
 export  async function action({request}){
     const formData = await request.formData()
@@ -18,7 +19,8 @@ export  async function action({request}){
     }
   
     await agregarParametro(datos)
-    
+    await agregarMovimientoEmpleado(datos)
+
     return redirect('/empleados/iess')
 }
 

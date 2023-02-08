@@ -53,3 +53,14 @@ export async function actualizarCostos(){
         console.log(error)
     }
 }
+export async function eliminarCuenta(id){
+    try {
+        const url = "http://localhost:4000/api/cuenta"
+        const respuesta = await fetch(`${url}/${id}`, {
+            method:'DELETE'
+        })
+        await respuesta.json()
+    }catch (error){
+        console.log(error)
+    }
+}

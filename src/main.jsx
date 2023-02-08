@@ -23,7 +23,6 @@ import EmpleadosMenu from './pages/EmpleadosMenu'
 import Empleados, {loader as empleadosLoader, action as pagar} from './pages/Empleados'
 import Departamentos, {loader as departamentosLoader} from './pages/Departamentos'
 import Cargos, {loader as cargosLoader} from './pages/Cargos' //
-import {action as pagarEmpleado} from './components/Empleado'
 import {loader as eliminarEmpleado} from './pages/EliminarEmpleado'
 import {loader as eliminarDepartamento} from './pages/EliminarDepartamento'
 import {loader as eliminarCargo} from './pages/EliminarCargo' //
@@ -46,7 +45,7 @@ import ActualizarCargo, {loader as actualizarCargoLoader, action as actualizarCa
 
 
 import NuevaCuenta, {action as nuevaCuenta} from './pages/NuevaCuenta'
-import Cuentas, {loader as obtenerCuentas} from './pages/Cuentas'
+import Cuentas, {loader as obtenerCuentas, action as eliminarCuenta} from './pages/Cuentas'
 import NuevoAsiento, {action as nuevoAsiento} from './pages/NuevoAsiento'
 import {action as eliminarAsiento} from './components/Asiento'
 import Asiento, {loader as obtenerAsientos} from './pages/Asientos'
@@ -293,7 +292,8 @@ const router = createBrowserRouter([
       {
         path: '/finanzas/cuentas',
         element: <Cuentas/>,
-        loader: obtenerCuentas
+        loader: obtenerCuentas,
+        action: eliminarCuenta
       },
       {
         path: '/finanzas/cuentas/nuevo',

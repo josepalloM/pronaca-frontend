@@ -7,16 +7,13 @@ export async function action({ params }) {
 }
 
 function Empleado({ departamento }) {
-    const { ID_DEPARTAMENTO, NOMBRE_DEPARTAMENTO, SUELDO_HORAS } = departamento
+    const { ID_DEPARTAMENTO, NOMBRE_DEPARTAMENTO} = departamento
     const navigate = useNavigate()
 
     return (
         <tr className="border-b">
             <td>
                 {NOMBRE_DEPARTAMENTO}
-            </td>
-            <td>
-                {SUELDO_HORAS}
             </td>
             <td className="p-4 flex justify-center gap-3">
                 <button

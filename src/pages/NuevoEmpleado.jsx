@@ -27,7 +27,7 @@ export  async function action({request}){
     return errores
   }
   await agregarEmpleado(datos)
-  await agregarMovimientoEmpleado(datos)
+  //await agregarMovimientoEmpleado(datos)
 
   return redirect('/empleados')
 }

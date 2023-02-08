@@ -1,4 +1,4 @@
-import { Link, useLoaderData, useNavigate, Form , redirect} from "react-router-dom";
+import { Link, useLoaderData, Form , redirect} from "react-router-dom";
 import { obtenerEmpleados } from "../data/empleados";
 import Empleado from "../components/Empleado";
 import {obtenerCargos} from "../data/cargo_empleado"
@@ -10,9 +10,8 @@ export async function loader() {
     const empleados = await obtenerEmpleados()
     const cargos_empleados = await obtenerCargos()
     
-    {empleados.map( empleado => {
-        actualizarMovimiento(empleado.ID_EMPLEADO)
-    })}
+    actualizarMovimiento(0)
+    
     return {empleados,cargos_empleados}
 }
 export async function action({params}){
@@ -22,15 +21,11 @@ export async function action({params}){
 function Empleados() {
     const [idBanco,setIdBanco] = useState("")
     const {empleados, cargos_empleados} = useLoaderData()
-    const navigate = useNavigate()
+
     return (
         <>
             <h1 className="font-black text-4xl">Empleados</h1>
             <p >Administración de empleados</p>
-            
-
-            
-
 
             <Form
                 method='post'
@@ -50,9 +45,6 @@ function Empleados() {
                 >Pagar</button>
             </Form>
             
-
-            
-
             <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">
                 {empleados.length ? (
                     <table className="w-full bg-white shadow mt-5 table-auto">
@@ -61,6 +53,7 @@ function Empleados() {
                                 <th className="p-2">Nombre</th>
                                 <th className="p-2">Sueldo Neto</th>
                                 <th className="p-2">Cargo</th>
+                                <th className="p-2">E-mail</th>
                                 <th className="p-2">Acciones</th>
                             </tr>
                         </thead>
