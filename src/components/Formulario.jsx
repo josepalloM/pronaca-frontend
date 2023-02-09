@@ -47,6 +47,19 @@ const Formulario = ({empleado,departamentos, cargos_empleado}) => {
                     name="cedula_empleado"
                 />
             </div>
+            <div className="mb-4">
+                <label
+                    className=" flex justify-start text-gray-800"
+                    htmlFor="correo"
+                >E-Mail:</label>
+                <input 
+                    id="correo"
+                    type="text"
+                    className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
+                    placeholder="E-mail del empleado"
+                    name="correo"
+                />
+            </div>
             
             <div className="mb-4">
                 <label
@@ -59,6 +72,32 @@ const Formulario = ({empleado,departamentos, cargos_empleado}) => {
                     className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
                     placeholder="Horas laboradas"
                     name="horas_laboradas"
+                />
+            </div>
+            <div className="mb-4">
+                <label
+                    className=" flex justify-start text-gray-800"
+                    htmlFor="sueldo_fijo"
+                >Sueldo fijo:</label>
+                <input
+                    id="sueldo_fijo"
+                    type="text"
+                    className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
+                    placeholder="Sueldo Fijo"
+                    name="sueldo_fijo"
+                />
+            </div>
+            <div className="mb-4">
+                <label
+                    className=" flex justify-start text-gray-800"
+                    htmlFor="sueldo_horas"
+                >Sueldo por horas:</label>
+                <input
+                    id="sueldo_horas"
+                    type="text"
+                    className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
+                    placeholder="Sueldo por Horas"
+                    name="sueldo_horas"
                 />
             </div>
 

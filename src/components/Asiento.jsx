@@ -7,9 +7,9 @@ export async function action({params}){
 }
 
 function Asiento({ asiento, cuentas}) {
-    const {ID_ASIENTO, ID_CUENTA, ID_INFORME_FINANCIERO, FECHA_ASIENTO,DEBE,HABER} = asiento
+    const {ID_ASIENTO, ID_CUENTA, ID_INFORME_FINANCIERO, FECHA_ASIENTO,descripcion_asiento,DEBE,HABER} = asiento
     const cuenta = cuentas.filter(cuenta => (cuenta.ID_CUENTA==ID_CUENTA))
-
+    const cuenta2 = cuentas.filter(cuenta => (cuenta.DESCRIPCION_CUENTA==descripcion_asiento))
     return (
         <tr className="border-b">
             <td>
@@ -22,7 +22,10 @@ function Asiento({ asiento, cuentas}) {
                 {cuenta[0].DESCRIPCION_CUENTA}
             </td>
             <td>
-                {cuenta[0].CODIGO_CUENTA}
+                {descripcion_asiento}
+            </td>
+            <td>
+                {cuenta2[0]?.CODIGO_CUENTA}
             </td>
             <td>
                 {DEBE}

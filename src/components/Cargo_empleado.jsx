@@ -1,30 +1,32 @@
-import { useEffect, useState } from "react"
-import { Form, useNavigate, redirect } from "react-router-dom"
+import { useNavigate, redirect } from "react-router-dom"
 
 export async function action({ params }) {
 
-    return redirect('/empleados/departamentos')
+    return redirect('/empleados/cargos')
 }
 
-function Empleado({ departamento }) {
-    const { ID_DEPARTAMENTO, NOMBRE_DEPARTAMENTO} = departamento
+function Cargo({ cargo }) {
+    const { ID_CARGO_EMPLEADO, ID_DEPARTAMENTO, DESCRIPCION_CARGO } = cargo
     const navigate = useNavigate()
 
     return (
         <tr className="border-b">
             <td>
-                {NOMBRE_DEPARTAMENTO}
+                {ID_DEPARTAMENTO}
+            </td>
+            <td>
+                {DESCRIPCION_CARGO}
             </td>
             <td className="p-4 flex justify-center gap-3">
                 <button
                     type="button"
                     className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
-                    onClick={() => navigate(`/empleados/departamentos/${ID_DEPARTAMENTO}/editar`)}
+                    onClick={() => navigate(`/empleados/cargos/${ID_CARGO_EMPLEADO}/editar`)}
                 >Editar
                 </button>
                 <button type="submit"
                     className="text-red-600 hover:text-blue-700 uppercase font-bold text-xs"
-                    onClick={() => navigate(`/empleados/departamentos/${ID_DEPARTAMENTO}/eliminar`)}>
+                    onClick={() => navigate(`/empleados/cargos/${ID_CARGO_EMPLEADO}/eliminar`)}>
                     Eliminar
                 </button>
             </td>
@@ -32,4 +34,4 @@ function Empleado({ departamento }) {
     )
 }
 
-export default Empleado
+export default Cargo
