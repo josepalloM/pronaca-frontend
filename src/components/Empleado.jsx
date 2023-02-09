@@ -26,7 +26,19 @@ function Empleado({ empleado, cargos}) {
             <td>
                 {CORREO}
             </td>
-            c
+            <td className="p-4 flex justify-center gap-3">
+                <button
+                        type="button"
+                        className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
+                        onClick={() => navigate(`/empleados/${ID_EMPLEADO}/editar`)}
+                    >Editar
+                </button>
+                <button type="submit"
+                        className="text-red-600 hover:text-blue-700 uppercase font-bold text-xs"
+                        onClick={() => navigate(`/empleados/${ID_EMPLEADO}/eliminar`)}>
+                        Eliminar
+                </button>
+            </td>
         </tr>
     )
 }
