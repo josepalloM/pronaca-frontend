@@ -51,6 +51,8 @@ function Empleados() {
                         <thead className="bg-black text-white">
                             <tr>
                                 <th className="p-2">Nombre</th>
+                                <th className="p-2">Cédula</th>
+                                <th className="p-2">Horas extras</th>
                                 <th className="p-2">Sueldo Neto</th>
                                 <th className="p-2">Cargo</th>
                                 <th className="p-2">E-mail</th>

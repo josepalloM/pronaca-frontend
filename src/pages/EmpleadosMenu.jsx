@@ -1,43 +1,48 @@
 import React from 'react'
 
-import { Link, useLoaderData, useNavigate, Form , redirect} from "react-router-dom";
-import { obtenerEmpleados } from "../data/empleados";
-import Empleado from "../components/Empleado";
-import {obtenerCargos} from "../data/cargo_empleado"
-import { actualizarMovimiento } from "../data/movimiento_empleado";
-import { useState } from "react";
-import { actualizarCostosGastos } from "../data/cuentas.js";
-
-
+import { Link} from "react-router-dom";
 
 function EmpleadosMenu() {
-    const navigate = useNavigate()
   return (
 
-      <>
-          <h1 className="font-black text-4xl">Empleados</h1>
-          <p >Administración de empleados</p>
-          
-          <div className="ml-40 mt-5 d-flex" style={{ flexDirection: "row" }}>
-                <div className="mt-6" style={{ width: "180px" }}>
-                    <img width="150" className="bg-orangebg" src="https://thumbs.dreamstime.com/b/black-solid-icon-employee-applicant-man-logo-symbol-146530494.jpg"></img>
-                    <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm" onClick={() => navigate(`/empleados`)}>Empleado</button>
-                </div>
+      <>        
+        <h1 className="font-black text-4xl text-black">Empleados</h1>
+        <p className="mt-3">Selecciona las acciones a realizar con los empleados</p>
 
-              <div style={{ width: "180px" }}>
-                  <img width="150" className="bg-orangebg" src="https://pbs.twimg.com/profile_images/1439613333930483712/0pMHDGdR_400x400.jpg"></img>
-                  <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm" onClick={() => navigate(`/empleados/iess`)}>Parámetros del IESS</button>
-              </div>
-              <div className="mt-6" style={{ width: "180px" }}>
-                  <img width="150" className="bg-orangebg" src="https://png.pngtree.com/element_our/sm/20180413/sm_5ad0c05d03e6b.jpg"></img>
-                  <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm" onClick={() => navigate(`/empleados/departamentos`)}>Departamentos</button>
-              </div>
-              <div className="mt-6" style={{ width: "180px" }}>
-                  <img width="150" className="bg-orangebg" src="https://www.clipartmax.com/png/middle/309-3096179_transparent-employees-logo.png"></img>
-                  <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm" onClick={() => navigate(`/empleados/cargos`)}>Cargos</button>
-              </div>
-              
-          </div>
+        <div className=" flex justify-start bg-black text-white rounded md: w-3/4 mx-auto px-5 py-2 mt-6">Acciones Pedidos</div>
+        <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
+            <div className="grid grid-cols-2 gap-10">
+                <button
+                    className="flex justify-center mt-3 ml-5 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
+                    >
+                <Link
+
+                    to='/empleados'>Empleados</Link>
+                </button>
+                <button
+                    className="flex justify-center mt-3 ml-5 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
+                    >
+                <Link
+
+                    to='/empleados/iess'>Parámetros del IESS</Link>
+                </button>
+                <button
+                className="flex justify-center mt-3 ml-5 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
+                >
+                <Link
+
+                    to='/empleados/departamentos'>Departamentos</Link>
+                </button>
+                <button
+                    className="flex justify-center mt-3 ml-5 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
+                    >
+                <Link
+
+                    to='/empleados/cargos'>Cargos</Link>
+                </button>
+            </div>
+
+        </div>
 
       </>
     

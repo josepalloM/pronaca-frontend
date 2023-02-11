@@ -31,22 +31,6 @@ export async function eliminarMovimiento_empleado(id){
     }
 }
 
-export async function actualizarValorIess(datos){
-    try {
-        const url = "http://localhost:4000/api/movimiento_empleado/iess"
-        const respuesta = await fetch(url, {
-            method:'PUT',
-            body:JSON.stringify(datos),
-            headers: {
-                'Content-Type':'application/json'
-            }
-        })
-        await respuesta.json()
-    }catch (error){
-        console.log(error)
-    }
-}
-
 export async function agregarMovimientoEmpleado(datos) {
 
     try {
