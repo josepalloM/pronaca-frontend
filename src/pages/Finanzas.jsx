@@ -37,7 +37,7 @@ function Finanzas() {
                     >
                 <Link
 
-                    to='/finanzas/estado'>Estado de Resultados</Link>
+                    to='/finanzas/estado_de_resultados'>Estado de Resultados</Link>
                 </button>
             </div>
 
