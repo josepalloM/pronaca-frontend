@@ -94,7 +94,7 @@ function Layout() {
                         <Link
                             state={location.state}
                             className={`${location.pathname === '/' }`}
-                            to='/empleados'>
+                            to='/empleados_menu'>
                             <button type="button"
                             data-mdb-ripple="true"
                             data-mdb-ripple-color="light"

@@ -1,3 +1,8 @@
+export async function action({params}){
+    await eliminarAsiento(params.asientoId)
+    return redirect('/finanzas/balance')
+}
+
 function Balance({ balance }) {
     const { ACTIVOS, PASIVOS, PATRIMONIO} = balance
 

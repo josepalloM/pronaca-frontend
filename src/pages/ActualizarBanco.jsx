@@ -1,18 +1,18 @@
 import { useNavigate, Form, useActionData, redirect, useLoaderData } from "react-router-dom"
 import Error from "../components/Error";
-import { obtenerParametro, actualizarParametro} from "../data/parametros_iess";
+import { obtenerBanco, actualizarBanco} from "../data/banco";
 
 
 export async function loader({params}){
-    const iess =  await obtenerParametro(params.iessId)
-    if (Object.values(iess).length===0){
+    const banco =  await obtenerBanco(params.bancoId)
+    if (Object.values(banco).length===0){
         throw new Response('', {
             status: 404,
             statusText: 'El valor del IESS no fue encontrado'
         })
     }
     
-    return iess
+    return banco
 }
 
 export async function action({request, params}){
@@ -30,20 +30,19 @@ export async function action({request, params}){
         return errores
     }
 
-    // Actualizar Cliente
-    await  actualizarParametro(params.iessId,datos)
-    return redirect('/empleados/iess')
+    await  actualizarBanco(params.bancoId,datos)
+    return redirect('/finanzas/bancos')
 }
 
-function ActualizarIess() {
-  const iess = useLoaderData()
+function ActualizarBanco() {
+  const banco = useLoaderData()
   const errores = useActionData()
   const navigate = useNavigate()
 
   return (
     <>
-        <h1 className="font-black text-4xl text-black">IESS</h1>
-        <p className="mt-3">Llena el valor del IESS</p>
+        <h1 className="font-black text-4xl text-black">Editar Banco</h1>
+        <p className="mt-3">Llena el valor del Banco</p>
 
         <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
           {errores?.length && errores.map( (error, i) =>  <Error key={i}>{error}</Error>)}
@@ -54,29 +53,29 @@ function ActualizarIess() {
             <div className="mb-4">
               <label
                 className="flex justify-start text-gray-800"
-                htmlFor="nombre_parametro"
+                htmlFor="nombre_banco"
                 >Nombre:</label>
               <input 
-                id="nombre_parametro"
+                id="nombre_banco"
                 type="text"
                 className="mt-2 block w-full p-3 bg-gray-50"
-                placeholder="Nombre del parámetro"
-                name="nombre_parametro"
-                defaultValue={iess.NOMBRE_PARAMETRO}
+                placeholder="Nombre del Banco"
+                name="nombre_banco"
+                defaultValue={banco.NOMBRE_BANCO}
               />
               </div>
                 <div className="mb-4">
                   <label
                     className="flex justify-start text-gray-800"
-                    htmlFor="valor"
+                    htmlFor="saldo"
                   >Valor:</label>
                   <input 
-                    id="valor"
+                    id="saldo"
                     type="text"
                     className="mt-2 block w-full p-3 bg-gray-50"
-                    placeholder="Valor del parámetro"
-                    name="valor"
-                    defaultValue={iess.VALOR}
+                    placeholder="Saldo"
+                    name="saldo"
+                    defaultValue={banco.SALDO}
                   />
                 </div>
 
@@ -85,7 +84,7 @@ function ActualizarIess() {
                   <input
                     type="submit"
                     className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
-                    value="Actualizar Parámetro"
+                    value="Actualizar Banco"
                   />
                 </div>
                 <div>
@@ -103,4 +102,4 @@ function ActualizarIess() {
   )
 }
 
-export default ActualizarIess
+export default ActualizarBanco

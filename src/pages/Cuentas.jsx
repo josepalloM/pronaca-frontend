@@ -5,7 +5,10 @@ export async function loader() {
     const cuentas = await obtenerCuentas()
     return cuentas
 }
-
+export async function action({params}){
+    await eliminarCliente(params.cuentaId)
+    return redirect('/finanzas/cuentas')
+}
 function Cuentas() {
 
     const cuentas = useLoaderData()
@@ -22,6 +25,7 @@ function Cuentas() {
                             <tr>
                                 <th className="p-2">Código</th>
                                 <th className="p-2">Nombre</th>
+                                <th className="p-2">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,6 +36,13 @@ function Cuentas() {
                                     </td>
                                     <td>
                                         {cuenta.DESCRIPCION_CUENTA}
+                                    </td>
+                                    <td className="p-4 flex justify-center gap-3">
+                                        <button type="submit"
+                                                className="text-red-600 hover:text-blue-700 uppercase font-bold text-xs"
+                                                onClick={() => navigate(`/finanzas/${ID_CUENTA}/eliminar`)}>
+                                                Eliminar
+                                        </button>
                                     </td>
                                 </tr>
 
