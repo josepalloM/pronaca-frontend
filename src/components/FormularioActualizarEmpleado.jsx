@@ -84,12 +84,12 @@ const FormularioActualizarEmpleado = ({empleado, departamentos, cargos_empleado}
                 <label
                     className=" flex justify-start text-gray-800"
                     htmlFor="horas_laboradas"
-                >Horas laboradas:</label>
+                >Horas extras laboradas:</label>
                 <input
                     id="horas_laboradas"
                     type="text"
                     className="mt-2 block w-full p-3 bg-gray-50"
-                    placeholder="Horas laboradas"
+                    placeholder="Horas extras laboradas"
                     name="horas_laboradas"
                     /// add
                     defaultValue={empleado?.HORAS_LABORADAS}                   

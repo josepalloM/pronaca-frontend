@@ -17,12 +17,12 @@ const FormularioAsiento = ({cuentas}) => {
     const dateInputRef = useRef(null);
 
     //cuentas Padres
-    cuentasPadres = cuentas.filter(cuenta=>(cuenta.DESCRIPCION_CUENTA=="Bancos" || cuenta.DESCRIPCION_CUENTA=="Inventario" || cuenta.DESCRIPCION_CUENTA=="Cuentas por pagar" || cuenta.DESCRIPCION_CUENTA=="Ingresos" || cuenta.DESCRIPCION_CUENTA=="Costos" || cuenta.DESCRIPCION_CUENTA=="Gastos"))    
+    cuentasPadres = cuentas.filter(cuenta=>(cuenta.DESCRIPCION_CUENTA=="Banco Pichincha" || cuenta.DESCRIPCION_CUENTA=="Inventario" || cuenta.DESCRIPCION_CUENTA=="Cuentas por pagar" || cuenta.DESCRIPCION_CUENTA=="Ingresos" || cuenta.DESCRIPCION_CUENTA=="Costos" || cuenta.DESCRIPCION_CUENTA=="Gastos"))    
     cuentasPadres.forEach(cuenta=>idCuentasPadres.push(cuenta.ID_CUENTA))
     cuentaAsientos = cuentas.filter(cuenta => (idCuentasPadres.includes(cuenta.ID_CUENTA) == true)) 
     
     //ceuntas Hijos
-    cuentasHijos = cuentas.filter(cuenta=>(cuenta.DESCRIPCION_CUENTA=="Inventario" || cuenta.DESCRIPCION_CUENTA=="Pago de nómina" || cuenta.DESCRIPCION_CUENTA=="Beneficios sociales" || cuenta.DESCRIPCION_CUENTA=="Ventas"|| cuenta.DESCRIPCION_CUENTA=="Costos operativos" ||cuenta.DESCRIPCION_CUENTA=="Costos de ventas" || cuenta.DESCRIPCION_CUENTA=="Gastos nómina"))    
+    cuentasHijos = cuentas.filter(cuenta=>(cuenta.DESCRIPCION_CUENTA=="Materia prima" || cuenta.DESCRIPCION_CUENTA=="Insumos"||cuenta.DESCRIPCION_CUENTA=="Producto"|| cuenta.DESCRIPCION_CUENTA=="Pago de nómina" || cuenta.DESCRIPCION_CUENTA=="Beneficios sociales" || cuenta.DESCRIPCION_CUENTA=="Ventas"||cuenta.DESCRIPCION_CUENTA=="Devoluciones"|| cuenta.DESCRIPCION_CUENTA=="Costos operativos" ||cuenta.DESCRIPCION_CUENTA=="Costos operativos"||cuenta.DESCRIPCION_CUENTA=="Costos de ventas" || cuenta.DESCRIPCION_CUENTA=="Gastos nómina"))    
     cuentasHijos.forEach(cuenta=>idCuentasHijos.push(cuenta.ID_CUENTA))
     cuentaAsientos2 = cuentas.filter(cuenta => (idCuentasHijos.includes(cuenta.ID_CUENTA) == true)) 
 
