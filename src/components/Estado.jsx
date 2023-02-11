@@ -1,3 +1,7 @@
+export async function action({params}){
+    await eliminarAsiento(params.asientoId)
+    return redirect('/finanzas/estado')
+}
 function Estado({ estado }) {
     const { INGRESOS, COSTOS, GASTOS} = estado
 
