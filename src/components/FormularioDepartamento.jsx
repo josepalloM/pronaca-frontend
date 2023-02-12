@@ -2,7 +2,8 @@ import { useState } from "react"
 
 const FormularioDepartamento = ({ cuentas }) => {
 
-    const [value, setValue] = useState("")
+    const [value, setValue] = useState('');
+    const [description, setDescription] = useState('');
 
     return (
         <>
@@ -28,7 +29,7 @@ const FormularioDepartamento = ({ cuentas }) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Código de la cuenta"
                     name="codigo_cuenta" />
-                
+
                 <div className="mb-4">
                     <label
                         className=" flex justify-start text-gray-800"
@@ -37,13 +38,29 @@ const FormularioDepartamento = ({ cuentas }) => {
                     <div className="">
                         {cuentas.length ? (
                             <select id="id_cuenta" value={value} name="id_cuenta"
-                                onChange={(event) => setValue(event.target.value)} className="border border-gray-500 rounded py-2 px-3 block w-full appearance-none leading-tight focus:outline-none focus:bg-white">
+                                onChange={(event) => {
+                                    setValue(event.target.value);
+                                    const selectedCuenta = cuentas.find(cuenta => cuenta.ID_CUENTA === parseInt(event.target.value));
+                                    setDescription(selectedCuenta.DESCRIPCION_CUENTA);
+                                }}
+                                className="border border-gray-500 rounded py-2 px-3 block w-full appearance-none leading-tight focus:outline-none focus:bg-white">
                                 <option >Selecciona una cuenta</option>
                                 {cuentas.filter(cuenta => cuenta.DESCRIPCION_CUENTA === "Costos operativos" || cuenta.DESCRIPCION_CUENTA === "Gastos nómina").map(cuenta => (
                                     <option key={cuenta.ID_CUENTA} value={cuenta.ID_CUENTA}>{cuenta.CODIGO_CUENTA} {cuenta.DESCRIPCION_CUENTA}</option>
-
                                 ))}
                             </select>
+
+                        ) : (<p> No existe CUENTAS</p>)}
+                    </div>
+                    <div className="">
+                        {cuentas.length ? (
+                            <input
+                            id="cuenta"
+                            type="text"
+                            value={description}
+                            name="cuenta"
+                            onChange={(event) => setDescription(event.target.value)}
+                            style={{ display: 'none' }} />
 
                         ) : (<p> No existe CUENTAS</p>)}
                     </div>

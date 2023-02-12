@@ -12,6 +12,7 @@ export async function loader() {
 export async function action({ request }) {
   const formData = await request.formData()
   const datos = Object.fromEntries(formData)
+  console.log(datos)
 
   //validaciones
   const errores = []
