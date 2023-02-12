@@ -3,28 +3,35 @@ import {eliminarPedido} from "../data/pedidos.js";
 
 export async function action({params}){
     await eliminarPedido(params.pedidoId)
-    
-    return redirect('/')
+    return redirect('/opciones/pedidos')
 }
 
 function Pedido({ pedido }) {
-    console.log(pedido)
     const navigate = useNavigate()
     const {
         FECHA_PEDIDO,
-        PEDIDO_DEVUELTO,
+        NOMBRE_EMPLEADO,
+        APELLIDO_EMPLEADO,
+        NOMBRE_CLIENTE,
+        APELLIDO_CLIENTE,
         ESTADO_PEDIDO,
-        ID_PEDIDO,
+        ID_PEDIDO
     } = pedido
 
     return (
   
             <tr className="border-b">
                 <td className="">
+                    {ID_PEDIDO}
+                </td>
+                <td>
                     {FECHA_PEDIDO}
                 </td>
                 <td>
-                    {PEDIDO_DEVUELTO}
+                    {NOMBRE_EMPLEADO} {APELLIDO_EMPLEADO}
+                </td>
+                <td>
+                    {NOMBRE_CLIENTE} {APELLIDO_CLIENTE}
                 </td>
                 <td>
                     {ESTADO_PEDIDO}

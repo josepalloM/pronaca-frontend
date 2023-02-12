@@ -39,7 +39,7 @@ import NuevoListaItem, {action as nuevaListaItemAction} from './pages/NuevoLista
 import {action as eliminarListaItemAction} from './components/ListaItem'
 import {action as eliminarItemAction} from './components/Item'
 
-import NuevoPedido, {action as nuevoPedidoAction} from './pages/NuevoPedido'
+import NuevoPedido, {action as nuevoPedidoAction, loader as nuevoPedidoLoader} from './pages/NuevoPedido'
 import PedidosOpciones from './pages/PedidosOpciones'
 import Preventas, {loader as preventaLoader} from './pages/Preventas'
 import NuevaPreventa, {action as nuevaPreventaAction, loader as nuevaPreventaLoader} from './pages/NuevaPreventa'
@@ -128,7 +128,7 @@ const router = createBrowserRouter([
         path: '/opciones/pedido/nuevo',
         element: <NuevoPedido/>,
         action: nuevoPedidoAction,
-        loader: pedidoLoader,
+        loader: nuevoPedidoLoader,
         errorElement: <ErrorPage/>
       },
       {

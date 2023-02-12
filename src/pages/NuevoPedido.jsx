@@ -1,7 +1,16 @@
-import { useNavigate, Form, useActionData, redirect } from "react-router-dom"
+import { useNavigate, Form, useActionData, redirect, useLoaderData } from "react-router-dom"
 import FormularioPedido from "../components/FormularioPedido";
 import Error from "../components/Error";
 import { agregarPedido } from "../data/pedidos";
+import {obtenerEmpleados} from "../data/empleados";
+import {obtenerClientes} from "../data/clientes";
+
+export async function loader(){
+    const empleados =  await obtenerEmpleados()
+    const clientes =  await obtenerClientes()
+    console.log("Empleados", empleados)
+    return {empleados, clientes}
+}
 
 export  async function action({request}){
     const formData = await request.formData()
@@ -25,7 +34,7 @@ export  async function action({request}){
 }
 
 function NuevoPedido() {
-    
+    const {empleados, clientes} = useLoaderData()
     const errores = useActionData()
     const navigate = useNavigate()
 
@@ -40,13 +49,11 @@ function NuevoPedido() {
                 
                 {errores?.length && errores.map((error, i) => <Error key={i}>{error}</Error>)}
 
-                <Form
+                <Form 
                     method="POST"
-
-
                 >
-                    <FormularioPedido />
 
+                    <FormularioPedido clientes={clientes} empleados={empleados} />
                     <div className="grid grid-cols-2 gap-2">
                         <div>
                             <input
@@ -61,10 +68,8 @@ function NuevoPedido() {
                                 className="felx justify-items-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
                                 onClick={() => navigate(-1)}
                             >Cancelar</button>
-                        </div>
-                        
+                        </div>        
                     </div>
-                    
                     
                 </Form>
             </div>
