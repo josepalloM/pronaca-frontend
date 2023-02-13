@@ -3,15 +3,23 @@ import React, {useEffect, useRef, useState} from "react";
 
 const FormularioDetalle_Pedido = ({detalle_pedido, pedido, items}) => {    
     
-    const [pedido, setPedidos] = useState("")
+    const [idPedido, setPedidos] = useState("")
     const [item, setItems] = useState("")
-    const dateInputRef = useRef(null);
-    const handleChange = (e) => {
-        setDate(e.target.value);
-    };
 
     return (
         <div className="grid grid-cols-2 gap-4">
+            <div className="my-4"> Pedido 
+            {
+                    <label> {pedido.ID_PEDIDO}</label>
+            }
+            </div>
+            
+            <div className="my-4"> Fecha
+            {
+                    <label> {pedido.FECHA_PEDIDO}</label>
+            }
+            </div>
+            
             <div className="my-4"> Seleccione un item
             {items.length ?(
                     <select 

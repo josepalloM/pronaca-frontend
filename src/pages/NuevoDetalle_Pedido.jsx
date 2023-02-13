@@ -1,14 +1,17 @@
+import $ from 'jquery'
 import { useNavigate, Form, Link, useActionData, redirect, useLoaderData } from "react-router-dom"
 import Error from "../components/Error";
+import { obtenerPedidos } from "../data/pedidos";
 import { obtenerPedido } from "../data/pedidos";
 import { agregarDetalle_Pedido } from "../data/detalle_pedidos";
 import FormularioDetalle_Pedido from "../components/FormularioDetalle_Pedido";
 import {obtenerItems} from "../data/items";
 
 export async function loader(){
-    // const pedido =  await obtenerPedido()
+    const pedidos =  await obtenerPedidos()
+    const pedido = $(pedidos).get(-1)
+    console.log(pedido)
     const items = await obtenerItems()
-    console.log("Empleados", empleados)
     return {pedido, items}
 }
 
@@ -34,7 +37,7 @@ export  async function action({request}){
 }
 
 function NuevoPedido() {
-    const {empleados, clientes, items} = useLoaderData()
+    const {pedido, items} = useLoaderData()
     const errores = useActionData()
     const navigate = useNavigate()
 
@@ -53,7 +56,7 @@ function NuevoPedido() {
                     method="POST"
                 >
 
-                    <FormularioDetalle_Pedido items={items} />
+                    <FormularioDetalle_Pedido pedido={pedido} items={items} />
                     <div className="grid grid-cols-2 gap-2">
                         
                     {/* <Link
