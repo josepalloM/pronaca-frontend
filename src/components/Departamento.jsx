@@ -13,6 +13,9 @@ function Empleado({ departamento }) {
     return (
         <tr className="border-b">
             <td>
+                {ID_DEPARTAMENTO}
+            </td>
+            <td>
                 {NOMBRE_DEPARTAMENTO}
             </td>
             <td className="p-4 flex justify-center gap-3">
