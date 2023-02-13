@@ -1,4 +1,4 @@
-import { useNavigate, Form, useActionData, redirect } from "react-router-dom"
+import { useNavigate, Form, useActionData, redirect, Link } from "react-router-dom"
 import FormularioListaItem from "../components/FormularioListaItems";
 import Error from "../components/Error";
 import { agregarListaItems } from "../data/items";
@@ -6,7 +6,7 @@ import { agregarListaItems } from "../data/items";
 export async function action({ request }) {
   const formData = await request.formData()
   const datos = Object.fromEntries(formData)
-
+  
   //validaciones
   const errores = []
   if (Object.values(datos).includes('')) {
@@ -51,9 +51,7 @@ function NuevaListaItem() {
                 type="submit"
                 className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
                 value="Guardar"
-                onClick={()=>{
-                  navigate('/item/nuevo')
-                }}
+                onClick={navigate('/item/nuevo')}
               />
             </div>
             <div>

@@ -5,7 +5,7 @@ import { useState, useRef } from "react"
 const FormularioListaItem = ({ listaItem }) => {
 
     const [tipo_lista,setTipo_lista] = useState('');
-    let Id_Empleado = listaItem?.Id_Empleado(1);
+    //let Id_Empleado = listaItem?.Id_Empleado(1);
     //const Id_Empleado = listaItem?.Id_Empleado(1);
     const [date, setDate] = useState('');
     const dateInputRef = useRef(null);
@@ -17,7 +17,7 @@ const FormularioListaItem = ({ listaItem }) => {
     return (
         <>
             <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
-                {/*<div className="mb-4">
+                <div className="mb-4" hidden>
                     <label
                         className="flex justify-start text-gray-800"
                         htmlFor="id_empleado"
@@ -28,31 +28,24 @@ const FormularioListaItem = ({ listaItem }) => {
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Id Empleado"
                         name="id_empleado"
-                        defaultValue={listaItem?.ID_EMPLEADO}
+                        defaultValue={1}
                     />
                 </div>
-                <div className="mb-4">
+                <div className="mb-4" hidden>
                     <label
                         className="flex justify-start text-gray-800"
                         htmlFor="id_cuenta"
                     >Id cuenta: </label>
-                    <select id="id_cuenta" value={cuentas} name="cuentas"
-                        onChange={(event) =>
-                            setCuentas(event.target.value)} className="form-control border-2 border-black">
-                        <option >Selecciona una Cuenta</option>
-                        <option value={1}>Balance General</option>
-                        <option value={2}>Estado de resultados</option>
-                    </select>
                     <input
                         id="id_cuenta"
                         type="text"
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Id Cuenta"
                         name="id_cuenta"
-                        defaultValue={listaItem?.ID_CUENTA}
+                        defaultValue={20}
                     />
 
-                </div>*/}
+                </div>
                 <div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"
@@ -143,6 +136,13 @@ const FormularioListaItem = ({ listaItem }) => {
                         defaultValue={listaItem?.DETALLE_ESTADO_LISTA}
                     />
                 </div>
+                {/*<div visible='false'>
+                    <input 
+                    id='id_cuenta' 
+                    name='id_cuenta'
+                    value={20}
+                    />
+                </div>*/}
             </div>
         </>
 

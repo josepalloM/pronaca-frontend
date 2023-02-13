@@ -83,7 +83,7 @@ const FormularioUpdateItem = ({item}) => {
                     >Fecha Fabricación: </label>
                     <input
                         id="fecha_fabri_item"
-                        type="text"
+                        type="date"
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Ejmplo: aaaa-mm-dd"
                         name="fecha_fabri_item" 
@@ -98,7 +98,7 @@ const FormularioUpdateItem = ({item}) => {
                     >Fecha Caducidad 1 : </label>
                     <input
                         id="fecha1_cadu_item"
-                        type="text"
+                        type="date"
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Ejmplo: aaaa-mm-dd"
                         name="fecha1_cadu_item" 
@@ -113,7 +113,7 @@ const FormularioUpdateItem = ({item}) => {
                     >Fecha Caducidad 2: </label>
                     <input
                         id="fecha2_cadu_item"
-                        type="text"
+                        type="date"
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Ejmplo: aaaa-mm-dd"
                         name="fecha2_cadu_item" 
