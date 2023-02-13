@@ -75,6 +75,7 @@ function ActualizarBanco() {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Saldo"
                     name="saldo"
+                    pattern="[0-9]*"
                     defaultValue={banco.SALDO}
                   />
                 </div>
