@@ -32,7 +32,7 @@ import {action as eliminarClienteAction} from "./components/Cliente"
 import ActualizarCliente, {loader as actualizarClienteLoader, action as actualizarClienteAction} from './pages/ActualizarCliente.jsx'
 import ActualizarItem, { loader as actualizarItemLoader, action as actualizarItemAction} from './pages/ActualizarItem'
 import EmpleadoProduccion from './pages/EmpleadoProduccion'
-import NuevoListaItem, {action as nuevaListaItemAction} from './pages/NuevoListaItem'
+import NuevoListaItem, {action as nuevaListaItemAction, loader as nuevaListaLoader} from './pages/NuevoListaItem'
 
 import NuevoPedido, {action as nuevoPedidoAction} from './pages/NuevoPedido'
 import PedidosOpciones from './pages/PedidosOpciones'
@@ -135,6 +135,7 @@ const router = createBrowserRouter([
         path: '/listaitem/nuevo',
         element: <NuevoListaItem/>,
         action: nuevaListaItemAction,
+        loader: nuevaListaLoader,
         errorElement: <ErrorPage/>
       },
       {
