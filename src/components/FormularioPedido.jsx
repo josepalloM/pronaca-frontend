@@ -68,18 +68,6 @@ const FormularioPedido = ({pedido, clientes, empleados}) => {
                     readOnly
                 />
             </div>
-            {/* <div className="my-4"> Seleccione un producto
-                <Select options={aux2} id="ID_ITEM" name="ID_ITEM"/>
-            </div>
-            <div className="my-4">
-                <input
-                    id="CANTIDAD_ITEMS"
-                    name="CANTIDAD_ITEMS"
-                    type="number"
-                    className="block w-full p-3 bg-gray-50"
-                    placeholder="Cantidad">
-                </input>
-            </div> */}
         </div>
     );
 }

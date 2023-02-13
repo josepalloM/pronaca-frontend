@@ -68,6 +68,10 @@ import ParametrosIESS, {loader as parametros, action as eliminarIess} from './pa
 import Bancos, {loader as obtenerBancos, action as eliminarBanco} from './pages/Bancos'
 import NuevoBanco, {action as nuevoBanco} from './pages/NuevoBanco'
 import ActualizarBanco, {loader as obtenerBanco, action as actualizarBanco } from './pages/ActualizarBanco'
+
+//Detalle pedido
+import NuevoDetalle_Pedido, {action as nuevoDetalle_PedidoAction, loader as nuevoDetalle_PedidoLoader} from './pages/NuevoDetalle_Pedido'
+
 // Import all of Bootstrap's JS
 //import * as bootstrap from 'bootstrap'
 
@@ -129,6 +133,14 @@ const router = createBrowserRouter([
         element: <NuevoPedido/>,
         action: nuevoPedidoAction,
         loader: nuevoPedidoLoader,
+        errorElement: <ErrorPage/>
+      },
+      //Detalle pedido
+      {
+        path: '/opciones/pedido/detalle/nuevo',
+        element: <NuevoDetalle_Pedido/>,
+        action: nuevoDetalle_PedidoAction,
+        loader: nuevoDetalle_PedidoLoader,
         errorElement: <ErrorPage/>
       },
       {
