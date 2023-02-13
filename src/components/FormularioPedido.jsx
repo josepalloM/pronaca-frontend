@@ -21,12 +21,12 @@ const FormularioPedido = ({pedido, clientes, empleados}) => {
                         onChange={(event)=>setClientes(event.target.value)} 
                         className="form-control border-2 border-black"
                         >
-                        <option >Selecciona una zona</option>
+                        <option >Selecciona un cliente</option>
                         {clientes.map(cliente =>(
-                            <option key={cliente.ID_CLIENTE} value={cliente.ID_CLIENTE}>{cliente.NOMBRE_CLIENTE}</option>
+                            <option key={cliente.ID_CLIENTE} value={cliente.ID_CLIENTE}>{cliente.NOMBRE_CLIENTE} {cliente.APELLIDO_CLIENTE}</option>
                         ))}
                     </select>
-                    ):(<p> No existen Ubicaciones</p>)}
+                    ):(<p> No existen Clientes</p>)}
             </div>
             <div className="my-4"> Seleccione un empleado
             {empleados.length ?(
@@ -36,12 +36,12 @@ const FormularioPedido = ({pedido, clientes, empleados}) => {
                         onChange={(event)=>setEmpleados(event.target.value)} 
                         className="form-control border-2 border-black"
                         >
-                        <option >Selecciona una zona</option>
+                        <option >Selecciona un empleado</option>
                         {empleados.map(empleado =>(
-                            <option key={empleado.ID_EMPLEADO} value={empleado.ID_EMPLEADO}>{empleado.NOMBRE_EMPLEADO}</option>
+                            <option key={empleado.ID_EMPLEADO} value={empleado.ID_EMPLEADO}>{empleado.NOMBRE_EMPLEADO} {empleado.APELLIDO_CLIENTE}</option>
                         ))}
                     </select>
-                    ):(<p> No existen Ubicaciones</p>)}
+                    ):(<p> No existen Empleados</p>)}
             </div>
             <div className="my-4">
                 <p>Fecha Seleccionada: {date}</p>

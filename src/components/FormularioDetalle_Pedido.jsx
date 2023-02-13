@@ -10,7 +10,15 @@ const FormularioDetalle_Pedido = ({detalle_pedido, pedido, items}) => {
         <div className="grid grid-cols-2 gap-4">
             <div className="my-4"> Pedido 
             {
-                    <label> {pedido.ID_PEDIDO}</label>
+                    <input
+                    id="ESTADO_PEDIDO"
+                    name="ESTADO_PEDIDO"
+                    type="text"
+                    className="block w-full p-3 bg-gray-50"
+                    placeholder="Estado del pedido"
+                    value={pedido.ID_PEDIDO}
+                    readOnly
+                />
             }
             </div>
             
@@ -26,6 +34,7 @@ const FormularioDetalle_Pedido = ({detalle_pedido, pedido, items}) => {
                         id="id_item" 
                         name="id_item" 
                         onChange={(event)=>setItems(event.target.value)} 
+                        multiple={true}
                         className="form-control border-2 border-black"
                         >
                         <option >Selecciona un item</option>

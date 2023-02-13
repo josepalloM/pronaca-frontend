@@ -2,7 +2,6 @@ import $ from 'jquery'
 import { useNavigate, Form, Link, useActionData, redirect, useLoaderData } from "react-router-dom"
 import Error from "../components/Error";
 import { obtenerPedidos } from "../data/pedidos";
-import { obtenerPedido } from "../data/pedidos";
 import { agregarDetalle_Pedido } from "../data/detalle_pedidos";
 import FormularioDetalle_Pedido from "../components/FormularioDetalle_Pedido";
 import {obtenerItems} from "../data/items";
