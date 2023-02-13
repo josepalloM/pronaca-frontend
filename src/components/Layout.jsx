@@ -11,22 +11,16 @@ function Layout() {
     const navigate = useNavigate();
     //console.log(location.state)
 
-    const onLogout = () => {
-		navigate('/login', {
-			replace: true,
-		});
-	};
-
-    useEffect(()=>{
-        localStorage.setItem('usuario', JSON.stringify(location.state))
-    }, [location.state])
+    
 
     return (
         <div className="min-h-screen flex">
             <aside className={`md:min-h-screen bg-orange-500 relative ${open ? "w-56" : "w-0"} duration-300 relative`}>
                 <AiOutlineMenu className="bg-white text-black text-3xl absolute
                 -right-10 top-2 cursor-pointer" onClick={() => setOpen(!open)}/>
-                <Link to="/">
+                <Link 
+                    state={location.state}
+                    to="/">
                     <div className="flex justify-center "> 
                         <img className="w-9/12 h-9/12" src="https://www.pronaca.com/wp-content/uploads/2022/04/cropped-favicon.png"/>
                     </div>

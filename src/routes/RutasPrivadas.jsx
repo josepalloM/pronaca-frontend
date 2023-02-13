@@ -1,8 +1,17 @@
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import Login from '../pages/Login';
 
-export const RutasPrivadas = ({ children }) => {
-	const location= useLocation();
-    console.log(location.state)
+export const RutasPrivadas = ({ usuario, children, redirectTo, setUsuario }) => {
+	console.log("usuario priv ",usuario)
+	
+	
+	if(usuario===null){
+		
+		//return	<Navigate to='/login' />
+		return <Login usuario={usuario} setUsuario={setUsuario} />
+	}
 
-	return location.state?.logged ? children : <Navigate to='/login' />;
+	//return children
+	return children ? {children, usuario} : <Outlet/>
+	//return location.state?.logged ? children : <Navigate to='/login' />;
 };
