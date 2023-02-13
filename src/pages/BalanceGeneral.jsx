@@ -1,6 +1,7 @@
 import { useLoaderData, Link } from "react-router-dom";
 import { obtenerBalance } from "../data/balance";
 import Balance from "../components/Balance";
+import { useState } from "react";
 
 export async function loader() {
 const balance = await obtenerBalance();
@@ -8,6 +9,7 @@ return { balance };
 }
 
 function BalanceGeneral() {
+
 const { balance } = useLoaderData();
 
 return (
@@ -39,7 +41,7 @@ return (
             )}
         </div>
         <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
-            <Link to="#">CREAR BALANCE</Link>
+            <Link to="/balance/nuevo">CREAR BALANCE</Link>
         </button>
     </>
 );

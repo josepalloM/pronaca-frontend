@@ -42,7 +42,8 @@ import ActualizarPedido, {loader as actualizarPedidoLoader, action as actualizar
 import ActualizarEmpleado, {loader as actualizarEmpleadoLoader, action as actualizarEmpleadoAction} from './pages/ActualizarEmpleado.jsx'
 import ActualizarDepartamento, {loader as actualizarDepartamentoLoader, action as actualizarDepartamentoAction} from './pages/ActualizarDepartamento.jsx'
 import ActualizarCargo, {loader as actualizarCargoLoader, action as actualizarCargoAction} from './pages/ActualizarCargo.jsx' //
-
+/////
+import NuevoBalance, {action as nuevoBalance} from './pages/NuevoBalance'
 
 import NuevaCuenta, {action as nuevaCuenta} from './pages/NuevaCuenta'
 import Cuentas, {loader as obtenerCuentas, action as eliminarCuenta} from './pages/Cuentas'
@@ -322,6 +323,13 @@ const router = createBrowserRouter([
         path: '/finanzas/balance',
         element: <BalanceGeneral/>,
         loader: balanceLoader
+      },
+      //////
+      {
+        path: '/finanzas/balance/nuevo',
+        element: <NuevoBalance/>,
+        loader: balanceLoader,
+        action: nuevoBalance
       },
       {
         path: '/finanzas/estado',
