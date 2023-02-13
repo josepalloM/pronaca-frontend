@@ -26,6 +26,13 @@ function Finanzas() {
                     to='/finanzas/asientos'>Asientos</Link>
                 </button>
                 <button
+                    className="flex justify-center mt-3 ml-5 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
+                    >
+                <Link
+
+                    to='/finanzas/bancos'>Bancos</Link>
+                </button>
+                <button
                 className="flex justify-center mt-3 ml-5 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
                 >
                 <Link

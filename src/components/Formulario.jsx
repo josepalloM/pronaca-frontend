@@ -45,6 +45,7 @@ const Formulario = ({empleado,departamentos, cargos_empleado}) => {
                     className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
                     placeholder="Cedula del empleado"
                     name="cedula_empleado"
+                    pattern="[0-9]{10}"
                 />
             </div>
             <div className="mb-4">
