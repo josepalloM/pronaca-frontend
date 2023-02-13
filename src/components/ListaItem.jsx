@@ -10,18 +10,15 @@ export async function action({params}){
 function Item({ listaItem}) {
 
     const navigate = useNavigate()
-    const {ID_LISTA_ITEMS, ID_EMPLEADO, ID_CUENTA, ID_TIPO_LISTA_PRODUC, DETALLE_LISTA, FECHA_LISTA, ESTADO_LISTA, DETALLE_ESTADO_LISTA,} = listaItem
+    const {ID_LISTA_ITEMS, ID_EMPLEADO,NOMBRE_EMPLEADO,APELLIDO_EMPLEADO, ID_CUENTA,DESCRIPCION_CUENTA,ID_TIPO_LISTA_PRODUC, TIPO_LISTA_ITEMS, DETALLE_LISTA, FECHA_LISTA, ESTADO_LISTA, DETALLE_ESTADO_LISTA,} = listaItem
 
     return (
         <tr className="">
             <td>
-                {ID_EMPLEADO}
+                {NOMBRE_EMPLEADO} {APELLIDO_EMPLEADO}
             </td>
             <td>
-                {ID_CUENTA}
-            </td>
-            <td>
-                {ID_TIPO_LISTA_PRODUC}
+                {TIPO_LISTA_ITEMS}
             </td>
             <td>
                 {DETALLE_LISTA}

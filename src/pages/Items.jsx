@@ -49,10 +49,10 @@ function Items() {
                     </table>
                 ): (<p className="text-center mt-10"> No existe Item</p> )}
 
-                <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
+                {/*<button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
                     <Link
                         to='/item/nuevo'>CREAR</Link>
-                </button>
+                </button>*/}
             </div>
         </>
     )

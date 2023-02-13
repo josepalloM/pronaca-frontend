@@ -52,7 +52,7 @@ function Item({ item}) {
                 {PESO_ITEM}
             </td>
             <td>
-                {CONSERVACION_ITEM}
+                {CONSERVACION_ITEM} {DETALLE_ITEM}
             </td>
             <td>
                 {DETALLE_ITEM}

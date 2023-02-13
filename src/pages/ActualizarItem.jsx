@@ -1,7 +1,7 @@
 import {agregarItems, obtenerItem, actualizarItem} from "../data/items.js";
 import Error from "../components/Error.jsx";
 import {Form, useNavigate, useLoaderData, useActionData, redirect} from 'react-router-dom'
-import FormularioItem from '../components/FormularioItem'
+import FormularioUpdateItem from '../components/FormularioActualizarItem'
 
 export async function loader({params}){
   const item = await obtenerItem(params.itemId)
@@ -54,7 +54,7 @@ function ActualizarItem(){
             {errores?.length && errores.map((error, i) => <Error key={i}>{error}</Error>)}
 
             <Form method="POST">
-                <FormularioItem 
+                <FormularioUpdateItem 
                   item={item}
                 />
 

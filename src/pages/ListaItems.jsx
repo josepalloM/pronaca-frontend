@@ -1,5 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { obtenerListaItems } from "../data/items";
+import {obtenerTipoListaProducs} from '../data/tipo_lista_produc';
 import ListaItem from "../components/ListaItem";
 
 export function loader() {
@@ -22,9 +23,8 @@ function ListaItems() {
                     <table className="w-full bg-white shadow mt-5 table-auto">
                         <thead className="bg-black text-white">
                             <tr>
-                                <th className="p-2">Id Empleado</th>
-                                <th className="p-2">Id Cuenta</th>
-                                <th className="p-2">Id Tipo Lista Producto</th>
+                                <th className="p-2">Empleado</th>
+                                <th className="p-2">Tipo Lista Producto</th>
                                 <th className="p-2">Detalle Lista</th>
                                 <th className="p-2">Fecha Lista</th>
                                 <th className="p-2">Estado lista</th>

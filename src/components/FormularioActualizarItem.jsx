@@ -1,5 +1,4 @@
-
-const FormularioItem = ({item}) => {
+const FormularioUpdateItem = ({item}) => {
     return(
         <>
             <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
@@ -77,7 +76,7 @@ const FormularioItem = ({item}) => {
                         />
                 </div>
 
-                {/*<div className="mb-4">
+                <div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"
                         htmlFor="fecha_fabri_item"
@@ -210,11 +209,11 @@ const FormularioItem = ({item}) => {
                         name="detalle_item" 
                         defaultValue = {item?.DETALLE_ITEM}
                         />
-                </div>*/}
+                </div>
             </div>
         </>
 
     )
 }
 
-export default FormularioItem
+export default FormularioUpdateItem
