@@ -2,6 +2,7 @@ import {agregarCliente, obtenerCliente, actualizarCliente} from "../data/cliente
 import Error from "../components/Error.jsx";
 import {Form, useNavigate, useLoaderData, useActionData, redirect} from "react-router-dom";
 import FormularioCliente from "../components/FormularioCliente.jsx";
+import {obtenerUbicaciones} from "../data/ubicaciones";
 
 export async function loader({params}){
     const cliente =  await obtenerCliente(params.clienteId)
@@ -11,15 +12,21 @@ export async function loader({params}){
             statusText: 'El cliente no fue encontrado'
         })
     }
-    console.log("Cliente en actualizar", cliente)
-    return cliente
+
+    const ubicaciones =  await obtenerUbicaciones()
+    //console.log("Ubicaciones", ubicaciones)
+
+    
+    //return {cliente, ubicacion}
+    console.log(cliente)
+    return {cliente, ubicaciones}
 }
 
 export async function action({request, params}){
     const formData = await request.formData()
     const datos = Object.fromEntries(formData)
-    const nombre = formData.get('nombre_cliente_potencial')
-    const apellido = formData.get('apellido_cliente_potencial')
+    const nombre = formData.get('nombre_cliente')
+    const apellido = formData.get('apellido_cliente')
     const cedula = formData.get('ruc_cedula')
     const email = formData.get('email_cliente')
     const telefono = formData.get('telefono_cliente')
@@ -69,14 +76,17 @@ export async function action({request, params}){
     }
 
     // Actualizar Cliente
-    await  actualizarCliente(params.clienteId, datos)
+    await actualizarCliente(params.clienteId, datos)
+    //await obtenerUbicacion(params.ubicacionId)
     return redirect('/clientes')
 }
 
 function ActualizarCliente() {
 
     const navigate = useNavigate()
-    const cliente = useLoaderData()
+    const {cliente, ubicaciones} = useLoaderData()
+    //const ubicacion = useLoaderData()
+    //const ubicaciones={}
     const errores = useActionData()
 
     return (
@@ -91,12 +101,13 @@ function ActualizarCliente() {
                 {errores?.length && errores.map((error, i) => <Error key={i}>{error}</Error>)}
 
                 <Form
-                    method="POST"
+                    method="PUT"
                     
 
                 >
                     <FormularioCliente 
                         cliente={cliente}
+                        ubicaciones={ubicaciones}
                     />
 
                     <div className="grid grid-cols-2 gap-2">
