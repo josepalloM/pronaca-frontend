@@ -4,13 +4,14 @@ import Error from "../components/Error";
 import { obtenerPedidos } from "../data/pedidos";
 import { agregarDetalle_Pedido } from "../data/detalle_pedidos";
 import FormularioDetalle_Pedido from "../components/FormularioDetalle_Pedido";
-import {obtenerItems} from "../data/items";
+import {obtenerItemsVenta} from "../data/itemsVenta";
 
 export async function loader(){
     const pedidos =  await obtenerPedidos()
     const pedido = $(pedidos).get(-1)
     console.log(pedido)
-    const items = await obtenerItems()
+    const items = await obtenerItemsVenta()
+    console.log(items)
     return {pedido, items}
 }
 
