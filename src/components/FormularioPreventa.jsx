@@ -3,8 +3,8 @@ import React, {useEffect, useRef, useState} from "react";
 const FormularioPreventa = ({clientes,empleados}) => {
     const [date, setDate] = useState('');
     const dateInputRef = useRef(null);
-    const [cliente, setCliente] = useState("")
-    const [empleado, setEmpleado] = useState("")
+    //const [cliente, setCliente] = useState("")
+    //const [empleado, setEmpleado] = useState("")
     var opcionesClientes = clientes.map(function(cl){
         var rObj = {};
         rObj["value"] = cl.ID_CLIENTE;

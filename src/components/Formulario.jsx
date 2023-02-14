@@ -5,7 +5,6 @@ const Formulario = ({empleado,departamentos, cargos_empleado}) => {
 
     const [departamento, setDepartamento] = useState("")
     const [cargo, setCargo] = useState("")
-
     return (
         <>
             <div className="mb-4">

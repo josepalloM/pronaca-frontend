@@ -36,6 +36,7 @@ import NuevoPedido, {action as nuevoPedidoAction} from './pages/NuevoPedido'
 import PedidosOpciones from './pages/PedidosOpciones'
 import Preventas, {loader as preventaLoader} from './pages/Preventas'
 import NuevaPreventa, {action as nuevaPreventaAction, loader as nuevaPreventaLoader} from './pages/NuevaPreventa'
+import {action as eliminarPreventaAction} from "./components/Preventa"
 import ActualizarPedido, {loader as actualizarPedidoLoader, action as actualizarPedidoAction} from './pages/ActualizarPedido'
 import ActualizarEmpleado, {loader as actualizarEmpleadoLoader, action as actualizarEmpleadoAction} from './pages/ActualizarEmpleado.jsx'
 import ActualizarDepartamento, {loader as actualizarDepartamentoLoader, action as actualizarDepartamentoAction} from './pages/ActualizarDepartamento.jsx'
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
         element: <NuevaPreventa/>,
         action: nuevaPreventaAction,
         loader: nuevaPreventaLoader
+      },
+      {
+        path:  '/preventas/:preventaId/eliminar',
+        action: eliminarPreventaAction
       },
       {
         path: '/opciones/pedidos',
