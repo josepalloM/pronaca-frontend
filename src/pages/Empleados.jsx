@@ -1,45 +1,50 @@
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, Form , redirect} from "react-router-dom";
 import { obtenerEmpleados } from "../data/empleados";
 import Empleado from "../components/Empleado";
 import {obtenerCargos} from "../data/cargo_empleado"
-import {actualizarCostos} from "../data/cuentas.js";
-import { actualizarAsientos } from "../data/asiento";
+import { actualizarMovimiento } from "../data/movimiento_empleado";
+import { useState } from "react";
+import { actualizarCostosGastos } from "../data/cuentas.js";
 
 export async function loader() {
     const empleados = await obtenerEmpleados()
     const cargos_empleados = await obtenerCargos()
-    await actualizarCostos()
-    await actualizarAsientos()
+    
+    actualizarMovimiento(0)
+    
     return {empleados,cargos_empleados}
 }
-
+export async function action({params}){
+    await actualizarCostosGastos(params.empleadoId) 
+    return redirect('/empleados')
+}
 function Empleados() {
-
+    const [idBanco,setIdBanco] = useState("")
     const {empleados, cargos_empleados} = useLoaderData()
-    const navigate = useNavigate()
+
     return (
         <>
             <h1 className="font-black text-4xl">Empleados</h1>
             <p >Administración de empleados</p>
+
+            <Form
+                method='post'
+                action={`/empleados/${idBanco}/pagar`}
+                onSubmit={ (e) => {
+                    if (!confirm('¿Deseas Pagar el sueldo?')){
+                        e.preventDefault()
+                    }
+                }}
+            >   
+            <img width="150" className="bg-orangebg" src="https://previews.123rf.com/images/urfandadashov/urfandadashov1808/urfandadashov180815663/107447699-paying-icon-vector-isolated-on-white-background-for-your-web-and-mobile-app-design-paying-logo-conce.jpg"></img>
+
+                <button
+                    type="submit"
+                    className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
+                    onClick={(event)=>setIdBanco(empleados[0]?.ID_BANCO)}
+                >Pagar</button>
+            </Form>
             
-            <button
-                type="button"
-                className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
-                onClick={() => navigate(`/empleados/iess`)}
-            >IESS</button> <br></br>
-
-<button
-                type="button"
-                className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
-                onClick={() => navigate(`/empleados/departamentos`)}
-            >Departamentos</button><br></br>
-
-<button
-                type="button"
-                className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
-                onClick={() => navigate(`/empleados/cargos`)}
-            >Cargos</button><br></br>
-
             <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">
                 {empleados.length ? (
                     <table className="w-full bg-white shadow mt-5 table-auto">
@@ -48,6 +53,7 @@ function Empleados() {
                                 <th className="p-2">Nombre</th>
                                 <th className="p-2">Sueldo Neto</th>
                                 <th className="p-2">Cargo</th>
+                                <th className="p-2">E-mail</th>
                                 <th className="p-2">Acciones</th>
                             </tr>
                         </thead>
@@ -69,12 +75,6 @@ function Empleados() {
                         to='/empleados/nuevo'>CREAR EMPLEADO</Link>
                 </button>
             </div>
-
-            
-
-            
-
-            
         
         </>
     )

@@ -25,7 +25,6 @@ export  async function action({request}){
 
   await agregarCuentas(datos)
 
-  console.log(datos)
   return redirect('/finanzas/cuentas')
 }
 

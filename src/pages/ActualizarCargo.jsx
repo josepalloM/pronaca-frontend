@@ -1,24 +1,21 @@
-import { obtenerEmpleado, actualizarEmpleado} from "../data/empleados.js";
+import { obtenerCargo, actualizarCargo } from "../data/cargo_empleado";
 import Error from "../components/Error.jsx";
 import {Form, useNavigate, useLoaderData, useActionData, redirect} from "react-router-dom";
-import FormularioActualizarEmpleado from "../components/FormularioActualizarEmpleado.jsx";
-import { actualizarMovimiento} from "../data/movimiento_empleado.js";
-import { obtenerDepartamentos } from "../data/departamentos";
-import { obtenerCargos } from "../data/cargo_empleado";
+import FormularioActualizarCargo from "../components/FormularioActualizarCargo.jsx";
+
 
 export async function loader({params}){
-    const empleado =  await obtenerEmpleado(params.empleadoId)
-    const departamentos = await obtenerDepartamentos()
-    const cargos_empleado = await obtenerCargos()
+    const cargo =  await obtenerCargo(params.cargoId)
     
-    if (Object.values(empleado).length===0){
+    
+    if (Object.values(cargo).length===0){
         throw new Response('', {
             status: 404,
-            statusText: 'El empleado no fue encontrado'
+            statusText: 'El cargo no fue encontrado'
         })
     }
-    console.log("Empleado en actualizar", empleado)
-    return {empleado, departamentos, cargos_empleado}
+    console.log("Cargo en actualizar", cargo)
+    return { cargo }
 }
 
 export async function action({request, params}){
@@ -36,27 +33,25 @@ export async function action({request, params}){
     if (Object.keys(errores).length){
         return errores
     }
-    // Actualizar Empleado
-    await  actualizarEmpleado(params.empleadoId, datos)
-    //actualizar los movimiento iess y pago de nómina
-    await actualizarMovimiento(params.empleadoId)
 
-    return redirect('/empleados')
+    // Actualizar Cargo
+    await  actualizarCargo(params.cargoId, datos)
+    return redirect('/empleados/cargos')
 }
 
-function ActualizarEmpleado() {
+function ActualizarCargos() {
 
     const navigate = useNavigate()
-    const {empleado, departamentos,cargos_empleado} = useLoaderData()
+    const { cargo } = useLoaderData()
     const errores = useActionData()
     
 
     return (
         <>
-            <h1 className="font-black text-4xl text-black">Editar Empleado</h1>
-            <p className="mt-3">A continuación podrás modificar los datos de un empleado</p>
+            <h1 className="font-black text-4xl text-black">Editar Cargo</h1>
+            <p className="mt-3">A continuación podrás modificar los datos de un cargo</p>
 
-            <div className=" flex justify-start bg-black text-white rounded md: w-3/4 mx-auto px-5 py-2 mt-6">Empleado</div>
+            <div className=" flex justify-start bg-black text-white rounded md: w-3/4 mx-auto px-5 py-2 mt-6">Cargo</div>
             <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
                 
                 
@@ -67,10 +62,8 @@ function ActualizarEmpleado() {
                     //
 
                 >
-                    <FormularioActualizarEmpleado
-                        empleado={empleado}  
-                        departamentos={departamentos} 
-                        cargos_empleado={cargos_empleado}
+                    <FormularioActualizarCargo
+                        cargo={cargo}  
                     />
 
                     <div className="grid grid-cols-2 gap-2">
@@ -78,7 +71,7 @@ function ActualizarEmpleado() {
                             <input
                                 type="submit"
                                 className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
-                                value="Editar Empleado"
+                                value="Guardar cambios"
                                 
                             />
                         </div>
@@ -99,4 +92,4 @@ function ActualizarEmpleado() {
     );
 }
 
-export default ActualizarEmpleado;
+export default ActualizarCargos;

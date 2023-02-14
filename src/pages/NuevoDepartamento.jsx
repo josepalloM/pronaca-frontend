@@ -1,7 +1,13 @@
-import { useNavigate, Form, useActionData, redirect } from "react-router-dom"
+import { useNavigate, Form, useActionData, useLoaderData, redirect } from "react-router-dom"
 import FormularioDepartamento from "../components/FormularioDepartamento";
 import Error from "../components/Error";
 import { agregarDepartamento } from "../data/departamentos";
+import { obtenerCuentas } from "../data/cuentas";
+
+export async function loader() {
+  const cuentas = await obtenerCuentas()
+  return { cuentas }
+}
 
 export async function action({ request }) {
   const formData = await request.formData()
@@ -27,6 +33,7 @@ export async function action({ request }) {
 function NuevoDepartamento() {
 
   const errores = useActionData()
+  const { cuentas } = useLoaderData()
   const navigate = useNavigate()
 
   return (
@@ -44,7 +51,7 @@ function NuevoDepartamento() {
 
 
         >
-          <FormularioDepartamento />
+          <FormularioDepartamento cuentas={cuentas} />
           <div className="grid grid-cols-2 gap-2">
             <div>
               <input

@@ -22,8 +22,9 @@ function Departamentos() {
                         <thead className="w-full bg-white shadow mt-5 table-auto">
                             <tr>
                                 <th className="p-2">Nombre</th>
-                                <th className="p-2">Sueldo por horas</th>
+                                <th className="p-2">Acciones</th>
                             </tr>
+                            
                         </thead>
                         <tbody>
                             {departamentos.map(departamento => (
