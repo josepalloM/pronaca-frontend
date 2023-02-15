@@ -16,7 +16,6 @@ export async function agregarPedido(datos) {
 
     try {
         const url = "http://localhost:4000/api/pedido/"
-        console.log(datos)
         const respuesta = await fetch(url, {
             method:'POST',
             body:JSON.stringify(datos),

@@ -8,7 +8,6 @@ import {obtenerClientes} from "../data/clientes";
 export async function loader(){
     const empleados =  await obtenerEmpleados()
     const clientes =  await obtenerClientes()
-    console.log("Empleados", empleados)
     return {empleados, clientes}
 }
 
@@ -29,7 +28,6 @@ export  async function action({request}){
   
     await agregarPedido(datos)
   
-    console.log(datos)
     return redirect('/opciones/pedido/detalle/nuevo')
 }
 

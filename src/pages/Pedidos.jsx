@@ -9,7 +9,6 @@ export function loader() {
 
 function Pedidos() {
   const pedidos = useLoaderData()
-  console.log(pedidos)
   return (
     <>
       <h1 className="font-black text-4xl ">Pedidos</h1>

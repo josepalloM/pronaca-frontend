@@ -2,7 +2,6 @@ export async function obtenerItemsVenta(){
     const url = "http://localhost:4000/api/itemVenta"
     const respuesta = await fetch(url)
     const resultado = await respuesta.json()
-    console.log(resultado)
     return resultado
 }
 
