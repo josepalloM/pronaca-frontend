@@ -35,6 +35,11 @@ export  async function action({request}){
     return redirect('/opciones/pedidos')
 }
 
+// const submit = (e) => {
+//     e.preventDefault();
+//     console.log(inputFields)
+// }
+
 function NuevoPedido() {
     const {pedido, items} = useLoaderData()
     const errores = useActionData()
@@ -74,15 +79,16 @@ function NuevoPedido() {
                             </button>
                         </Link> */}
                         <div>
-                            <input
+                            <button
                                 type="submit"
+                                // onClick={submit}
                                 className="inline-block w-10/12 px-8 py-2.5 bg-orange-300 text-black
                                     font-medium text-sm leading-tight uppercase rounded
                                     shadow-md hover:bg-amber-400 hover:shadow focus:bg-grey
                                     focus:shadow focus:outline-none focus:ring-0 active:bg-grey
                                     active:shadow transition duration-150 ease-in-out"
                                 value="Registrar Pedido"
-                            />
+                            >Registrar Pedido</button>
                         </div>
                         <div>
                             <button
