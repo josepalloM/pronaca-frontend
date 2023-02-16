@@ -6,6 +6,7 @@ const FormularioDetalle_Pedido = ({detalle_pedido, pedido, items}) => {
     const [item, setItems] = useState("")
     console.log(item)
     const [precio, setPrecio] = useState("")
+    const [cantidad, setCantidad] = useState(1)
     const [captureItem, setCaptureItem] = useState([
         {
             id_pedido: '',
@@ -108,34 +109,31 @@ const FormularioDetalle_Pedido = ({detalle_pedido, pedido, items}) => {
                  />
              }
              </div>
-             {/* <div className="my-4"></div>
-             <div className="my-4"></div> */}
              <div className="my-4">Seleccione los productos
                   {items.length ?(
                      <div 
                          id='id_item' 
                          name='id_item'
                         //  onChange={(event)=>setItems(event.target.value)} 
-                         className=""
+                         className="grid grid-cols-3"
                          >
-                         <div className="grid grid-cols-3 block p-3 bg-gray-50">
-                                <div>NOMBRE</div>
-                                <div>PRECIO</div>
-                                <div>CANTIDAD</div>
-                            </div>
                          {items.map(item =>(
-                            <div key={item.ID_ITEM} value={item.ID_ITEM} className="grid grid-cols-3 block p-3 bg-gray-50">
+                            <div key={item.ID_ITEM} value={item.ID_ITEM}
+                            className="grid-cols-3 block p-3 m-3 bg-gray-50 text-center rounded overflow-hidden shadow-lg">
+                            <div>
                                 <div>{item.NOMBRE_ITEM}</div>
-                                <div>{item.PRECIO_ITEM}</div>
+                                <div className="precio">${item.PRECIO_ITEM*cantidad}</div>
                                 <input
                                     id="cantidad_pedido"
                                     name="cantidad_pedido"
                                     type="number"
                                     className="block w-full p-3 bg-gray-50"
-                                    placeholder={1}
+                                    placeholder={cantidad}
+                                    defaultValue={1}
+                                    onChange={(event)=>setCantidad(event.target.value)}
                                     />
                             </div>
-
+                            </div>
                          ))}
                      </div>
                     
