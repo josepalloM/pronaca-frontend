@@ -25,8 +25,8 @@ export  async function action({request}){
 
   await agregarAsiento(datos) 
 
-  
-  return redirect('/finanzas/asientos')
+  return redirect(`/finanzas/asientos/nuevo/nuevaCuentaAsiento`)
+
 }
 
 function NuevoAsiento() {
@@ -49,19 +49,19 @@ function NuevoAsiento() {
           >
             <FormularioAsiento cuentas={cuentas}/>
               <div className="grid grid-cols-2 gap-2">
-                <div>
-                  <input
-                    type="submit"
-                    className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
-                    value="Registrar Asiento"
-                  />
-                </div>
+                
                 <div>
                   <button
                     type="button"
                     className="felx justify-items-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
                     onClick={() => navigate(-1)}
                   >Cancelar</button>
+                </div>   
+                <div>
+                  <input
+                    type="submit"
+                    className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
+                    value="Siguiente"/>
                 </div>       
               </div>
             

@@ -1,4 +1,3 @@
-import { Link, useLoaderData } from "react-router-dom";
 import {useEffect, useState} from "react"
 
 const FormularioActualizarEmpleado = ({empleado, departamentos, cargos_empleado}) => {

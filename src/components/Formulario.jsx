@@ -1,11 +1,10 @@
 import { Link, useLoaderData } from "react-router-dom";
 import {useState, useForm} from "react"
 
-const Formulario = ({empleado,departamentos, cargos_empleado}) => {
+const Formulario = ({departamentos, cargos_empleado}) => {
 
     const [departamento, setDepartamento] = useState("")
     const [cargo, setCargo] = useState("")
-  
     return (
         <>
             <div className="mb-4">

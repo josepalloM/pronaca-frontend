@@ -24,11 +24,8 @@ function Asientos() {
                             <tr>
                                 <th className="p-2">Nro.</th>
                                 <th className="p-2">Fecha</th>
-                                <th className="p-2">Cuenta</th>
-                                <th className="p-2">Descripción Cuenta</th>
-                                <th className="p-2">Código</th>
-                                <th className="p-2">Debe</th>
-                                <th className="p-2">Haber</th>
+                                <th className="p-2">Descripción Asiento</th>
+                                <th className="p-2">Monto</th>
                                 <th className="p-2">Acciones</th>
                             </tr>
                         </thead>
