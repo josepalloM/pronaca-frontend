@@ -15,13 +15,13 @@ function Item({ listaItem}) {
     return (
         <tr className="">
             <td>
-                {NOMBRE_EMPLEADO} {APELLIDO_EMPLEADO}
-            </td>
-            <td>
-                {TIPO_LISTA_ITEMS}
+                {ID_LISTA_ITEMS}
             </td>
             <td>
                 {DETALLE_LISTA}
+            </td>
+            <td>
+                {NOMBRE_EMPLEADO} {APELLIDO_EMPLEADO}
             </td>
             <td>
                 {FECHA_LISTA}

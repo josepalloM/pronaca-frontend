@@ -63,7 +63,7 @@ function ActualizarItem(){
                     <input
                       type="submit"
                       className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
-                      value="Editar Item"
+                      value="Guardar"
                   />
                   </div>
                   <div>

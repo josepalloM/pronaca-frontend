@@ -51,6 +51,7 @@ function NuevoItem() {
                         type="submit"
                         className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
                         value="Guardar"
+                        onClick={navigate('/gestorlista')}
                     />
                 </div>
                 <div>

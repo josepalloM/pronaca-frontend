@@ -4,15 +4,11 @@ import { useState, useRef } from "react"
 
 const FormularioListaItem = ({ listaItem }) => {
 
-    const [tipo_lista,setTipo_lista] = useState('');
-    //let Id_Empleado = listaItem?.Id_Empleado(1);
-    //const Id_Empleado = listaItem?.Id_Empleado(1);
     const [date, setDate] = useState('');
     const dateInputRef = useRef(null);
     const handleChange = (e) => {
         setDate(e.target.value);
     };
-    //listaItem?.ID_CUENTA = 20;
 
     return (
         <>
@@ -42,39 +38,15 @@ const FormularioListaItem = ({ listaItem }) => {
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Id Cuenta"
                         name="id_cuenta"
-                        defaultValue={20}
+                        defaultValue={20} //id cuenta de gastos
                     />
 
                 </div>
                 <div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"
-                        htmlFor="id_tipo_lista_produc"
-                    >Tipo Lista procucto: </label>
-                    <select id="id_tipo_lista_produc" value={tipo_lista} name="id_tipo_lista_produc"
-                        //defaultValue={listaItem?.ID_TIPO_LISTA_PRODUC}
-                        onChange={(event) =>
-                            setTipo_lista(event.target.value)} 
-                            className="form-control border-2 border-black">
-                        <option >Selecciona el Tipo de lista</option>
-                        <option value={1}>Materia Prima</option>
-                        <option value={2}>Productos Produccion</option>
-                    </select>
-                    {/*<input
-                        id="id_tipo_lista_produc"
-                        type="text"
-                        className="mt-2 block w-full p-3 bg-gray-50"
-                        placeholder="Tipo Lista procucto"
-                        name="id_tipo_lista_produc"
-                        defaultValue={listaItem?.ID_TIPO_LISTA_PRODUC}
-                    />*/}
-
-                </div>
-                <div className="mb-4">
-                    <label
-                        className="flex justify-start text-gray-800"
                         htmlFor="detalle_lista"
-                    >Detalle Lista: </label>
+                    >Detalle: </label>
                     <input
                         id="detalle_lista"
                         type="text"
@@ -89,7 +61,7 @@ const FormularioListaItem = ({ listaItem }) => {
                     <label
                         className="flex justify-start text-gray-800"
                         htmlFor="fecha_lista"
-                    >Fecha Lista: </label>
+                    >Fecha: </label>
                      <input
                     type='date'
                     onChange={handleChange}
@@ -111,7 +83,7 @@ const FormularioListaItem = ({ listaItem }) => {
                     <label
                         className="flex justify-start text-gray-800"
                         htmlFor="estado_lista"
-                    >Estado Lista: </label>
+                    >Estado de la Lista: </label>
                     <input
                         id="estado_lista"
                         type="text"
@@ -126,7 +98,7 @@ const FormularioListaItem = ({ listaItem }) => {
                     <label
                         className="flex justify-start text-gray-800"
                         htmlFor="detalle_estado_lista"
-                    >Destalle Estado Lista: </label>
+                    >Informacion del Estado: </label>
                     <input
                         id="detalle_estado_lista"
                         type="text"

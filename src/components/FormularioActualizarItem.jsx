@@ -1,4 +1,7 @@
+import {useState} from 'react'
 const FormularioUpdateItem = ({item}) => {
+    const [receta,setreceta] = useState();
+    const [estadop,setestadop] = useState(); 
     return(
         <>
             <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
@@ -21,14 +24,26 @@ const FormularioUpdateItem = ({item}) => {
                         className="flex justify-start text-gray-800"
                         htmlFor="id_estado_producion"
                     >Id Estado Produccion: </label>
-                    <input
+                   {/*<input
                         id="id_estado_producion"
                         type="text"
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Estado de Produccion"
                         name="id_estado_producion" 
                         defaultValue = {item?.ID_ESTADO_PRODUCION}
-                        />
+                        />*/}
+                    <select id="id_estado_producion" value={item?.ID_ESTADO_PRODUCCION} name="id_estado_producion"
+                        onChange={(event) =>
+                            setestadop(event.target.value)} 
+                            className="form-control border-2 border-black">
+                        <option >Selecciona la receta</option>
+                        <option value={1}>Preproduccion</option>
+                        <option value={2}>Almacenado</option>
+                        <option value={3}>Produccion</option>
+                        <option value={4}>Control de Calidad</option>
+                        <option value={5}>Embalado y Etiquetado</option>
+                        <option value={6}>Finalizado</option>
+                    </select>
                         
                 </div>
                 <div className="mb-4">
@@ -209,6 +224,20 @@ const FormularioUpdateItem = ({item}) => {
                         name="detalle_item" 
                         defaultValue = {item?.DETALLE_ITEM}
                         />
+                </div>
+                <div className="mb-4">
+                    <label
+                        className="flex justify-start text-gray-800"
+                        htmlFor="id_recetap"
+                    >Receta de Produccion: </label>
+                    <select id="id_recetap" value={item?.ID_RECETAP} name="id_recetap"
+                        onChange={(event) =>
+                            setreceta(event.target.value)} 
+                            className="form-control border-2 border-black">
+                        <option >Selecciona la receta</option>
+                        <option value={1}>Receta de Embutidos</option>
+                        <option value={2}>Receta de Mr Pollo</option>
+                    </select>
                 </div>
             </div>
         </>

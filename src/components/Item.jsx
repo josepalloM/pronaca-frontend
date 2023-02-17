@@ -11,7 +11,7 @@ function Item({ item}) {
 
     const navigate = useNavigate()
     const { ID_ITEM, ID_LISTA_ITEMS, ID_ESTADO_PRODUCION, ID_TIPO_ITEM, CODIGO_ITEM, NOMBRE_ITEM, FECHA_FABRI_ITEM, FECHA1_CADU_ITEM, FECHA2_CADU_ITEM,
-        LOTE_ITEM, CANTIDAD_LOTE_ITEM, PRECIO_ITEM, PESO_ITEM, CONSERVACION_ITEM, DETALLE_ITEM,} = item
+        LOTE_ITEM, CANTIDAD_LOTE_ITEM, PRECIO_ITEM, PESO_ITEM, CONSERVACION_ITEM, DETALLE_ITEM,ID_RECETAP} = item
 
     return (
         <tr className="">
@@ -52,7 +52,7 @@ function Item({ item}) {
                 {PESO_ITEM}
             </td>
             <td>
-                {CONSERVACION_ITEM} {DETALLE_ITEM}
+                {CONSERVACION_ITEM}
             </td>
             <td>
                 {DETALLE_ITEM}

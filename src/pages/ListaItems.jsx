@@ -23,9 +23,9 @@ function ListaItems() {
                     <table className="w-full bg-white shadow mt-5 table-auto">
                         <thead className="bg-black text-white">
                             <tr>
-                                <th className="p-2">Empleado</th>
-                                <th className="p-2">Tipo Lista Producto</th>
+                                <th className="p-2">Codigo</th>
                                 <th className="p-2">Detalle Lista</th>
+                                <th className="p-2">Empleado</th>
                                 <th className="p-2">Fecha Lista</th>
                                 <th className="p-2">Estado lista</th>
                                 <th className="p-2">Detalle Estado Lista</th>
