@@ -1,7 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
-import {useState} from "react"
+import {useState, useForm} from "react"
 
-const Formulario = ({empleado,departamentos, cargos_empleado}) => {
+const Formulario = ({departamentos, cargos_empleado}) => {
 
     const [departamento, setDepartamento] = useState("")
     const [cargo, setCargo] = useState("")
@@ -44,6 +44,7 @@ const Formulario = ({empleado,departamentos, cargos_empleado}) => {
                     className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
                     placeholder="Cedula del empleado"
                     name="cedula_empleado"
+                    pattern="[0-9]{10}"
                 />
             </div>
             <div className="mb-4">
@@ -57,6 +58,7 @@ const Formulario = ({empleado,departamentos, cargos_empleado}) => {
                     className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
                     placeholder="E-mail del empleado"
                     name="correo"
+                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$"
                 />
             </div>
             
@@ -64,13 +66,14 @@ const Formulario = ({empleado,departamentos, cargos_empleado}) => {
                 <label
                     className=" flex justify-start text-gray-800"
                     htmlFor="horas_laboradas"
-                >Horas laboradas:</label>
+                >Horas Extras:</label>
                 <input
                     id="horas_laboradas"
                     type="text"
                     className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
-                    placeholder="Horas laboradas"
+                    placeholder="Horas extras laboradas"
                     name="horas_laboradas"
+                    pattern="[0-9.0-9]{0,6}"
                 />
             </div>
             <div className="mb-4">
@@ -82,8 +85,10 @@ const Formulario = ({empleado,departamentos, cargos_empleado}) => {
                     id="sueldo_fijo"
                     type="text"
                     className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
-                    placeholder="Sueldo Fijo"
+                    placeholder="Sueldo Fijo (Ejm: 550.00)"
                     name="sueldo_fijo"
+                    pattern="[0-9.0-9]{0,6}"
+                    
                 />
             </div>
             <div className="mb-4">
@@ -95,8 +100,9 @@ const Formulario = ({empleado,departamentos, cargos_empleado}) => {
                     id="sueldo_horas"
                     type="text"
                     className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
-                    placeholder="Sueldo por Horas"
+                    placeholder="Sueldo por Horas (Ejm: 3.0)"
                     name="sueldo_horas"
+                    pattern="[0-9.0-9]{0,6}"
                 />
             </div>
 

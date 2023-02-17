@@ -6,3 +6,20 @@ export async function obtenerBalance(){
     console.log(resultado)
     return resultado
 }
+
+export async function agregarBalance(datos) {
+    try {
+        const url = "http://localhost:4000/api/balance/"
+        const respuesta = await fetch(url, {
+            method:'POST',
+            body:JSON.stringify(datos),
+            headers: {
+                'Content-Type':'application/json'
+            }
+        })
+        await respuesta.json()
+    }catch (error){
+        console.log(error)
+    }
+
+}

@@ -21,6 +21,7 @@ function Departamentos() {
                     <table className="w-full bg-white shadow mt-5 table-auto">
                         <thead className="w-full bg-white shadow mt-5 table-auto">
                             <tr>
+                                <th className="p-2">Nro. Departamento</th>
                                 <th className="p-2">Nombre</th>
                                 <th className="p-2">Acciones</th>
                             </tr>

@@ -1,7 +1,13 @@
-import { useNavigate, Form, useActionData, redirect } from "react-router-dom"
+import { useNavigate, Form, useActionData, useLoaderData, redirect } from "react-router-dom"
 import FormularioListaItem from "../components/FormularioListaItems";
 import Error from "../components/Error";
 import { agregarListaItems } from "../data/items";
+import { obtenerCuentas } from "../data/cuentas";
+
+export async function loader() {
+  const cuentas = await obtenerCuentas()
+  return { cuentas }
+}
 
 export  async function action({request}){
   const formData = await request.formData()
@@ -26,6 +32,7 @@ export  async function action({request}){
 
 function NuevaListaItem() {
 
+  const { cuentas } = useLoaderData()
   const errores = useActionData()
   const navigate = useNavigate()
 
@@ -44,7 +51,7 @@ function NuevaListaItem() {
           {errores?.length && errores.map( (error, i) =>  <Error key={i}>{error}</Error>)}
 
           <Form method="POST">
-            <FormularioListaItem/>
+            <FormularioListaItem cuentas={cuentas}/>
             <div className="grid grid-cols-2 gap-2">
                 <div>
                     <input

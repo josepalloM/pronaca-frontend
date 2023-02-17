@@ -76,6 +76,7 @@ function ActualizarIess() {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Valor del parámetro"
                     name="valor"
+                    pattern="[0-9]*"
                     defaultValue={iess.VALOR}
                   />
                 </div>

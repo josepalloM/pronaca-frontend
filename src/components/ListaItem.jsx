@@ -1,6 +1,16 @@
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import { obtenerCuenta } from "../data/cuentas"
+import { useState, useEffect } from "react"
 
-function Item({ listaItem}) {
+function Item({ listaItem }) {
+
+    const [cuenta, setCuenta] = useState();
+
+    useEffect(() => {
+        obtenerCuenta(listaItem.ID_CUENTA).then(cuenta => {
+          setCuenta(cuenta[0].DESCRIPCION_CUENTA);
+        });
+      }, []);
 
     const navigate = useNavigate()
     const {ID_LISTA_ITEMS, ID_EMPLEADO, ID_CUENTA, ID_TIPO_LISTA_PRODUC, DETALLE_LISTA, FECHA_LISTA, ESTADO_LISTA, DETALLE_ESTADO_LISTA,} = listaItem
@@ -11,7 +21,7 @@ function Item({ listaItem}) {
                 {ID_EMPLEADO}
             </td>
             <td>
-                {ID_CUENTA}
+                {cuenta}
             </td>
             <td>
                 {ID_TIPO_LISTA_PRODUC}

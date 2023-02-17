@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
-import NuevoEmpleado, {action, action as nuevoEmpleadoAction, loader as cargarDepartamentoCargo} from './pages/NuevoEmpleado'
+import NuevoEmpleado, {action as nuevoEmpleadoAction, loader as cargarDepartamentoCargo} from './pages/NuevoEmpleado'
 import NuevoDepartamento, {loader as nuevoDepartamentoLoader, action as nuevoDepartamentoAction} from './pages/NuevoDepartamento'
 import NuevoCargo, {loader as nuevoCargoLoader, action as nuevoCargoAction} from './pages/NuevoCargo' //
 import Index from './pages/Index'
@@ -32,7 +32,7 @@ import {action as eliminarClienteAction} from "./components/Cliente"
 import ActualizarCliente, {loader as actualizarClienteLoader, action as actualizarClienteAction} from './pages/ActualizarCliente.jsx'
 import ActualizarItem, { loader as actualizarItemLoader, action as actualizarItemAction} from './pages/ActualizarItem'
 import EmpleadoProduccion from './pages/EmpleadoProduccion'
-import NuevoListaItem, {action as nuevaListaItemAction} from './pages/NuevoListaItem'
+import NuevoListaItem, {action as nuevaListaItemAction, loader as nuevaListaLoader} from './pages/NuevoListaItem'
 
 import NuevoPedido, {action as nuevoPedidoAction} from './pages/NuevoPedido'
 import PedidosOpciones from './pages/PedidosOpciones'
@@ -43,13 +43,18 @@ import ActualizarPedido, {loader as actualizarPedidoLoader, action as actualizar
 import ActualizarEmpleado, {loader as actualizarEmpleadoLoader, action as actualizarEmpleadoAction} from './pages/ActualizarEmpleado.jsx'
 import ActualizarDepartamento, {loader as actualizarDepartamentoLoader, action as actualizarDepartamentoAction} from './pages/ActualizarDepartamento.jsx'
 import ActualizarCargo, {loader as actualizarCargoLoader, action as actualizarCargoAction} from './pages/ActualizarCargo.jsx' //
-
+/////
+import NuevoBalance, {action as nuevoBalance} from './pages/NuevoBalance'
 
 import NuevaCuenta, {action as nuevaCuenta} from './pages/NuevaCuenta'
 import Cuentas, {loader as obtenerCuentas, action as eliminarCuenta} from './pages/Cuentas'
 import NuevoAsiento, {action as nuevoAsiento} from './pages/NuevoAsiento'
+import NuevoDetalleAsiento,{action as obtenerCuentasAsiento, loader as obtenerDetallesAsiento} from './pages/NuevoDetalleAsiento'
 import {action as eliminarAsiento} from './components/Asiento'
 import Asiento, {loader as obtenerAsientos} from './pages/Asientos'
+import {action as nuevoDetalleAsiento} from './components/FormularioDetalleAsiento'
+import {loader as eliminarDetalleAsiento} from './pages/EliminarDetalleAsiento'
+
 
 import NuevoParametro, {action as nuevoParametro} from './pages/NuevoIess'
 import ActualizarIess, {loader as iess, action as actualizarIess} from './pages/ActualizarIess'
@@ -141,6 +146,7 @@ const router = createBrowserRouter([
         path: '/listaitem/nuevo',
         element: <NuevoListaItem/>,
         action: nuevaListaItemAction,
+        loader: nuevaListaLoader,
         errorElement: <ErrorPage/>
       },
       {
@@ -316,6 +322,16 @@ const router = createBrowserRouter([
         action: nuevoAsiento
       },
       {
+        path: '/finanzas/asientos/nuevo/nuevaCuentaAsiento',
+        element: <NuevoDetalleAsiento/>,
+        loader: obtenerDetallesAsiento,
+        action: nuevoDetalleAsiento
+      },
+      {
+        path: '/finanzas/asientos/nuevo/nuevaCuentaAsiento/:detalleAsientoId',
+        loader: eliminarDetalleAsiento
+      },
+      {
         path: '/finanzas/asientos',
         element: <Asiento/>,
         loader: obtenerAsientos
@@ -328,6 +344,13 @@ const router = createBrowserRouter([
         path: '/finanzas/balance',
         element: <BalanceGeneral/>,
         loader: balanceLoader
+      },
+      //////
+      {
+        path: '/finanzas/balance/nuevo',
+        element: <NuevoBalance/>,
+        loader: balanceLoader,
+        action: nuevoBalance
       },
       {
         path: '/finanzas/estado',

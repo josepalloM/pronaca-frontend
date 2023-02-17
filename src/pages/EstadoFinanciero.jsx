@@ -1,53 +1,49 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import { obtenerEstado } from "../data/estado";
 import Estado from "../components/Estado";
 
 export async function loader() {
-    const estado = await obtenerEstado()
-
-    return { estado }
+const estado = await obtenerEstado();
+return { estado };
 }
 
 function EstadoFinanciero() {
+const { estado } = useLoaderData();
 
-    const { estado } = useLoaderData()
+return (
+    <>
+        <h1 className="font-black text-4xl ">Estado financiero</h1>
+        <p>Vista del Estado financiero</p>
 
-    return (
-        <>
-            <h1 className="font-black text-4xl ">Estado Financiero</h1>
-            <p>Vista del Estado Financiero</p>
-
-            <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">
-                {estado.length ? (
-                    <table>
-                        <thead>
-                            <tr className="border-b">
-                                <th>Ingresos</th>
-                                <th>Costos</th>
-                                <th>Gastos</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {estado.map(estado => (
-                                <Estado
+        <div className="rounded-md md:w-11/12 mx-auto px-5 py-10 mt-5">
+            {estado.length ? (
+                <table className="w-full bg-white shadow mt-5 table-auto">
+                    <thead className="bg-black text-white">
+                        <tr>
+                            <th className="p-2">id</th>
+                            <th className="p-2">fecha</th>
+                            <th className="p-2">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {estado.map(estado => (
+                            <Estado
                                 estado={estado}
-                                />
+                                key={estado.id}
+                            />
+                        ))}
+                    </tbody>
+                </table>
+            ) : (
+                <p className="text-center mt-10"> No existe estados financieros</p>
+            )}
+        </div>
+        <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
+            <Link to="#">CREAR ESTADO FINANCIERO</Link>
+        </button>
+    </>
+);
 
-                            ))}
-                        </tbody>
-                    </table>
-                ) : (<p> No existe estado financiero</p>)}
-
-            </div>
-
-
-
-
-
-
-
-        </>
-    )
 }
 
-export default EstadoFinanciero
+export default EstadoFinanciero;

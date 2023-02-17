@@ -19,19 +19,10 @@ function Asiento({ asiento, cuentas}) {
                 {FECHA_ASIENTO}
             </td>
             <td>
-                {cuenta[0].DESCRIPCION_CUENTA}
-            </td>
-            <td>
                 {descripcion_asiento}
             </td>
             <td>
                 {cuenta2[0]?.CODIGO_CUENTA}
-            </td>
-            <td>
-                {DEBE}
-            </td>
-            <td>
-                {HABER}
             </td>
             <td className="p-4 flex justify-center gap-3">
                 <Form
