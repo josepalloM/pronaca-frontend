@@ -42,7 +42,6 @@ export async function agregarMovimientoEmpleado(datos) {
                 'Content-Type':'application/json'
             }
         })
-        console.log("aaa",respuesta)
         await respuesta.json()
     }catch (error){
         console.log(error)

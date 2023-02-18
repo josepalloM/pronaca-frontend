@@ -226,6 +226,7 @@ const router = createBrowserRouter([
       {
         path:'/empleados/iess/nuevo',
         element: <NuevoParametro/>,
+        loader: obtenerCuentas,
         action: nuevoParametro
       },
       {

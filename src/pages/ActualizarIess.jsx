@@ -1,10 +1,13 @@
 import { useNavigate, Form, useActionData, redirect, useLoaderData } from "react-router-dom"
 import Error from "../components/Error";
 import { obtenerParametro, actualizarParametro} from "../data/parametros_iess";
-
+import {useState, useForm} from "react"
+import { actualizarMovimiento } from "../data/movimiento_empleado";
+import {obtenerCuentas} from "../data/cuentas";
 
 export async function loader({params}){
     const iess =  await obtenerParametro(params.iessId)
+    const cuentas = await obtenerCuentas()
     if (Object.values(iess).length===0){
         throw new Response('', {
             status: 404,
@@ -12,7 +15,7 @@ export async function loader({params}){
         })
     }
     
-    return iess
+    return {iess,cuentas}
 }
 
 export async function action({request, params}){
@@ -30,13 +33,15 @@ export async function action({request, params}){
         return errores
     }
 
-    // Actualizar Cliente
     await  actualizarParametro(params.iessId,datos)
+    await actualizarMovimiento(params.iessId,datos)
+
     return redirect('/empleados/iess')
 }
 
 function ActualizarIess() {
-  const iess = useLoaderData()
+  const [cuenta, setCuenta] = useState("")
+  const {iess,cuentas} = useLoaderData()
   const errores = useActionData()
   const navigate = useNavigate()
 
@@ -76,11 +81,28 @@ function ActualizarIess() {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Valor del parámetro"
                     name="valor"
-                    pattern="[0-9]*"
+                    pattern="[0-9]*.[0-9]*"
                     defaultValue={iess.VALOR}
                   />
                 </div>
+                <div className="mb-4">
+                        <label
+                            className=" flex justify-start text-gray-800"
+                            htmlFor="descripcion_cuenta"
+                        >Cuenta:</label>
+                        <div className="">
+                            {cuentas.length ?(
+                                <select id="descripcion_cuenta" value={cuenta} name="descripcion_cuenta" onChange={(event)=>setCuenta(event.target.value)} className="form-control border-2 border-black">
+                                    <option>Selecciona una cuenta</option>
+                                    {cuentas.filter(c=>c.DESCRIPCION_CUENTA=="Aporte patronal por pagar" || c.DESCRIPCION_CUENTA=="Aporte personal por pagar").map( c => (
+                                        <option key={c.ID_CUENTA} value={c.DESCRIPCION_CUENTA}>{c.DESCRIPCION_CUENTA}</option>                         
+                                    ))}                        
+                                </select>
+                            ):(<p> No existe CUENTAS</p>)}
 
+                        </div>
+                        
+                    </div>
               <div className="grid grid-cols-2 gap-2">
                 <div>
                   <input
