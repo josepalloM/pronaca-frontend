@@ -1,11 +1,12 @@
 import {useNavigate, Form, useActionData, redirect, useLoaderData} from "react-router-dom"
 import FormularioDetalleAsiento from "../components/FormularioDetalleAsiento"
 import Error from "../components/Error";
-import { obtenerDetallesAsiento } from "../data/detalle_asiento";
+import { obtenerDetalle } from "../data/detalle_asiento";
 import {obtenerCuentas} from "../data/cuentas"
 
 export async function loader() {
-  const detallesAsiento = await obtenerDetallesAsiento()
+  const detallesAsiento = await obtenerDetalle(0)
+  console.log('prueba')
   const cuentas = await obtenerCuentas()
   return {detallesAsiento,cuentas}
 }

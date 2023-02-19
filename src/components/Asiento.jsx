@@ -21,9 +21,6 @@ function Asiento({ asiento, cuentas}) {
             <td>
                 {descripcion_asiento}
             </td>
-            <td>
-                {cuenta2[0]?.CODIGO_CUENTA}
-            </td>
             <td className="p-4 flex justify-center gap-3">
                 <Form
                     method='post'

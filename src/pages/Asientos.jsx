@@ -25,7 +25,6 @@ function Asientos() {
                                 <th className="p-2">Nro.</th>
                                 <th className="p-2">Fecha</th>
                                 <th className="p-2">Descripción Asiento</th>
-                                <th className="p-2">Monto</th>
                                 <th className="p-2">Acciones</th>
                             </tr>
                         </thead>

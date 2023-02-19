@@ -314,6 +314,9 @@ const router = createBrowserRouter([
         element: <NuevaCuenta/>,
         loader: obtenerCuentas,
         action: nuevaCuenta
+      },{
+        path:'/finanzas/cuentas/:cuentaId/eliminar',
+        action: eliminarCuenta
       },
       
       {

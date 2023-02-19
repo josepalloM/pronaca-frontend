@@ -38,10 +38,10 @@ const FormularioCuenta = ({cuentas}) => {
             <div className="mb-4">
                 <label
                     className=" flex justify-start text-gray-800"
-                    htmlFor="informe_financiero"
+                    htmlFor="id_informe_financiero"
                 >Informe Financiero:</label>
                 <div className="">
-                    <select id="informe_financiero" value={informeFinanciero} name="informe_financiero" onChange={(event)=>setInforme(event.target.value)} className="form-control border-2 border-black">
+                    <select id="id_informe_financiero" value={informeFinanciero} name="id_informe_financiero" onChange={(event)=>setInforme(event.target.value)} className="form-control border-2 border-black">
                         <option >Selecciona un informe</option>
                         <option value={1}>Balance General</option>
                         <option value={2}>Estado de resultados</option>

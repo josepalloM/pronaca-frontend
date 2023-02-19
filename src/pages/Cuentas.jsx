@@ -1,12 +1,13 @@
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData,Form, redirect } from "react-router-dom";
 import {obtenerCuentas} from "../data/cuentas.js";
+import { eliminarCuenta } from "../data/cuentas.js";
 
 export async function loader() {
     const cuentas = await obtenerCuentas()
     return cuentas
 }
 export async function action({params}){
-    await eliminarCliente(params.cuentaId)
+    await eliminarCuenta(params.cuentaId)
     return redirect('/finanzas/cuentas')
 }
 function Cuentas() {
@@ -38,11 +39,20 @@ function Cuentas() {
                                         {cuenta.DESCRIPCION_CUENTA}
                                     </td>
                                     <td className="p-4 flex justify-center gap-3">
-                                        <button type="submit"
-                                                className="text-red-600 hover:text-blue-700 uppercase font-bold text-xs"
-                                                onClick={() => navigate(`/finanzas/${ID_CUENTA}/eliminar`)}>
-                                                Eliminar
-                                        </button>
+                                        <Form
+                                            method='post'
+                                            action={`/finanzas/cuentas/${cuenta.ID_CUENTA}/eliminar`}
+                                            onSubmit={ (e) => {
+                                                if (!confirm('¿Deseas eliminar este registro?')){
+                                                    e.preventDefault()
+                                                }
+                                            }}
+                                        >
+                                            <button
+                                            type="submit"
+                                            className="text-red-600 hover:text-blue-700 uppercase font-bold text-xs"
+                                        >Eliminar</button>
+                                        </Form>
                                     </td>
                                 </tr>
 
