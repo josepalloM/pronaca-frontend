@@ -9,12 +9,15 @@ import NuevoCargo, {loader as nuevoCargoLoader, action as nuevoCargoAction} from
 import Index from './pages/Index'
 import Pedidos, { loader as pedidoLoader } from './pages/Pedidos'
 import Item, { loader as itemsLoader } from './pages/Items'
+import Recetas_Produccion,{ loader as recetaLoader} from './pages/Receta'
+import NuevaReceta_Produccion ,{action as nuevoRecetaAction} from './pages/NuevoReceta'
+import PasoReceta,{ loader as pasorecetaLoader} from './pages/PasoReceta'
 
 import BalanceGeneral, { loader as balanceLoader } from './pages/BalanceGeneral'
 import EstadoFinanciero, { loader as estadoLoader } from './pages/EstadoFinanciero'
 import ListaItems, {loader as listaItemsloader} from './pages/ListaItems'
 import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
-//import ListaItems, {action as nuevaListaItemAction} from './pages/NuevoListaItem'
+
 
 import Clientes, {loader as clienteLoader} from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
@@ -31,8 +34,11 @@ import NuevoCliente, {action as nuevoClienteAction, loader as nuevoClienteLoader
 import {action as eliminarClienteAction} from "./components/Cliente"
 import ActualizarCliente, {loader as actualizarClienteLoader, action as actualizarClienteAction} from './pages/ActualizarCliente.jsx'
 import ActualizarItem, { loader as actualizarItemLoader, action as actualizarItemAction} from './pages/ActualizarItem'
+import ActualizarListaItem, {loader as actualizarListaItemLoader, action as actualizarListaItemAction} from './pages/ActializarListaItem'
 import EmpleadoProduccion from './pages/EmpleadoProduccion'
-import NuevoListaItem, {action as nuevaListaItemAction, loader as nuevaListaLoader} from './pages/NuevoListaItem'
+import NuevoListaItem, {action as nuevaListaItemAction} from './pages/NuevoListaItem'
+import {action as eliminarListaItemAction} from './components/ListaItem'
+import {action as eliminarItemAction} from './components/Item'
 
 import NuevoPedido, {action as nuevoPedidoAction} from './pages/NuevoPedido'
 import PedidosOpciones from './pages/PedidosOpciones'
@@ -52,6 +58,7 @@ import NuevoAsiento, {action as nuevoAsiento} from './pages/NuevoAsiento'
 import NuevoDetalleAsiento,{action as obtenerCuentasAsiento, loader as obtenerDetallesAsiento} from './pages/NuevoDetalleAsiento'
 import {action as eliminarAsiento} from './components/Asiento'
 import Asiento, {loader as obtenerAsientos} from './pages/Asientos'
+
 import {action as nuevoDetalleAsiento} from './components/FormularioDetalleAsiento'
 import {loader as eliminarDetalleAsiento} from './pages/EliminarDetalleAsiento'
 
@@ -143,11 +150,40 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage/>
       },
       {
+        path: '/gestorreceta',
+        element: <Recetas_Produccion/>,
+        loader: recetaLoader,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: '/receta/nuevo',
+        element: <NuevaReceta_Produccion/>,
+        action: nuevoRecetaAction,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: '/gestorpasoreceta',
+        element: <PasoReceta/>,
+        loader: pasorecetaLoader,
+        errorElement: <ErrorPage/>
+      },
+      {
         path: '/listaitem/nuevo',
         element: <NuevoListaItem/>,
         action: nuevaListaItemAction,
-        loader: nuevaListaLoader,
+        //loader: nuevaListaLoader,
         errorElement: <ErrorPage/>
+      },
+      {
+        path: '/listaitem/:listaId/actualizar',
+        element: <ActualizarListaItem/>,
+        loader: actualizarListaItemLoader,
+        action: actualizarListaItemAction,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path:  '/listaitem/:listaId/eliminar',
+        action: eliminarListaItemAction
       },
       {
         path: '/item/nuevo',
@@ -161,6 +197,10 @@ const router = createBrowserRouter([
         loader: actualizarItemLoader,
         action: actualizarItemAction,
         errorElement: <ErrorPage/>
+      },
+      {
+        path:  '/item/:itemId/eliminar',
+        action: eliminarItemAction
       },
       {
         path: '/clientes',

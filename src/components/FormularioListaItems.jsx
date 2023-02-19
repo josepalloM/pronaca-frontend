@@ -1,13 +1,18 @@
-import { useState } from "react"
+import { Link, useLoaderData } from "react-router-dom";
+import { useState, useRef } from "react"
 
-const FormularioListaItem = ({listaItem, cuentas}) => {
+const FormularioListaItem = ({ listaItem }) => {
 
-    const [value, setValue] = useState('');
-    
-    return(
+    const [date, setDate] = useState('');
+    const dateInputRef = useRef(null);
+    const handleChange = (e) => {
+        setDate(e.target.value);
+    };
+
+    return (
         <>
             <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
-                <div className="mb-4">
+                <div className="mb-4" hidden>
                     <label
                         className="flex justify-start text-gray-800"
                         htmlFor="id_empleado"
@@ -18,104 +23,97 @@ const FormularioListaItem = ({listaItem, cuentas}) => {
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Id Empleado"
                         name="id_empleado"
-                        defaultValue = {listaItem?.ID_EMPLEADO}
-                        />
+                        defaultValue={1}
+                    />
                 </div>
-                <div className="mb-4">
+                {/*<div className="mb-4" hidden>
                     <label
                         className=" flex justify-start text-gray-800"
                         htmlFor="id_cuenta"
-                    >Cuenta asociada:</label>
-                    <div className="">
-                        {cuentas.length ? (
-                            <select id="id_cuenta" value={value} name="id_cuenta"
-                                onChange={(event) => {
-                                    setValue(event.target.value);
-                                }}
-                                className="border border-gray-500 rounded py-2 px-3 block w-full appearance-none leading-tight focus:outline-none focus:bg-white">
-                                <option >Selecciona una cuenta</option>
-                                {cuentas.filter(cuenta => cuenta.CUE_ID_CUENTA === 6).map(cuenta => (
-                                    <option key={cuenta.ID_CUENTA} value={cuenta.ID_CUENTA}>{cuenta.CODIGO_CUENTA} {cuenta.DESCRIPCION_CUENTA}</option>
-                                ))}
-                            </select>
-
-                        ) : (<p> No existe CUENTAS</p>)}
-                    </div>
-                </div>
-                <div className="mb-4">
-                    <label
-                        className="flex justify-start text-gray-800"
-                        htmlFor="id_tipo_lista_produc"
-                    >Id Tipo Lista procucto: </label>
+                    >Id cuenta: </label>
                     <input
-                        id="id_tipo_lista_produc"
+                        id="id_cuenta"
                         type="text"
                         className="mt-2 block w-full p-3 bg-gray-50"
-                        placeholder="Tipo Lista procucto"
-                        name="id_tipo_lista_produc" 
-                        defaultValue = {listaItem?.ID_TIPO_LISTA_PRODUC}
-                        />
-                        
-                </div>
+                        placeholder="Id Cuenta"
+                        name="id_cuenta"
+                        defaultValue={20} //id cuenta de gastos
+                    />
+
+                </div>*/}
                 <div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"
                         htmlFor="detalle_lista"
-                    >Detalle Lista: </label>
+                    >Detalle: </label>
                     <input
                         id="detalle_lista"
                         type="text"
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Detalle Lista"
-                        name="detalle_lista" 
-                        defaultValue = {listaItem?.DETALLE_LISTA}
-                        />
-                        
+                        name="detalle_lista"
+                        defaultValue={listaItem?.DETALLE_LISTA}
+                    />
+
                 </div>
                 <div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"
                         htmlFor="fecha_lista"
-                    >Fecha Lista: </label>
-                    <input
+                    >Fecha: </label>
+                     <input
+                    type='date'
+                    onChange={handleChange}
+                    ref={dateInputRef}
+                    id="fecha_lista"
+                    name="fecha_lista"
+                />
+                    {/*<input
                         id="fecha_lista"
                         type="text"
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Ejmplo: aaaa-mm-dd"
-                        name="fecha_lista" 
+                        name="fecha_lista"
                         defaultValue={listaItem?.FECHA_LISTA}
-                        />
+                    />*/}
                 </div>
 
                 <div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"
                         htmlFor="estado_lista"
-                    >Estado Lista: </label>
+                    >Estado de la Lista: </label>
                     <input
                         id="estado_lista"
                         type="text"
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Estado Lista"
-                        name="estado_lista" 
-                        defaultValue = {listaItem?.ESTADO_LISTA}
-                        />
+                        name="estado_lista"
+                        defaultValue={listaItem?.ESTADO_LISTA}
+                    />
                 </div>
 
                 <div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"
                         htmlFor="detalle_estado_lista"
-                    >Destalle Estado Lista: </label>
+                    >Informacion del Estado: </label>
                     <input
                         id="detalle_estado_lista"
                         type="text"
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Destalle Estado Lista"
-                        name="detalle_estado_lista" 
-                        defaultValue = {listaItem?.DETALLE_ESTADO_LISTA}
-                        />
+                        name="detalle_estado_lista"
+                        defaultValue={listaItem?.DETALLE_ESTADO_LISTA}
+                    />
                 </div>
+                {/*<div visible='false'>
+                    <input 
+                    id='id_cuenta' 
+                    name='id_cuenta'
+                    value={20}
+                    />
+                </div>*/}
             </div>
         </>
 
