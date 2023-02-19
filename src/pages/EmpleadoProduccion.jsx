@@ -7,21 +7,25 @@ function EmpleadoProduccion() {
 
     return (
         <>
-            <h1 className="font-black text-4xl text-blue-900">Empleados Produccion</h1>
-            <div className="ml-40 mt-5">
-                <div >
-                <img width={150} className="bg-orangebg" src="https://cdn-icons-png.flaticon.com/512/1226/1226430.png"/>
-                    <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
+            <h1 className="font-black text-4xl text-black">Empleados Produccion</h1>
+            <p className="mt-3">Selecciona las acciones a realizar en produccion</p>
+            <div className=" flex justify-start bg-black text-white rounded md: w-3/4 mx-auto px-5 py-2 mt-6">Acciones Produccion</div>
+            <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
+                <div className="grid grid-cols-2 gap-10">
+                    
+                    
+                    <button className="flex justify-center mt-3 ml-5 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
                         <Link
                             to='/gestorlista'>Gestor de Pedidos</Link>
                     </button>
-                </div>
-                <div className="mt-6">
-                    <img width={150} className="bg-orangebg" src="https://us.123rf.com/450wm/iconisa/iconisa1710/iconisa171001425/87222079-ingeniero-icono-de-l%C3%ADnea-de-vector-de-industria-signo-ilustraci%C3%B3n-sobre-fondo-blanco-trazos-editable.jpgZ"/>
-                    <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
+                
+                
+                    
+                    <button className="flex justify-center mt-3 ml-5 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
                         <Link
                             to='/produccion'>Operario</Link>
                     </button>
+                    
                 </div>
             </div>
         </>

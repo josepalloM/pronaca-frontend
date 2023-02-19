@@ -48,7 +48,19 @@ export async function actualizarItem(id, datos){
     }
 }
 
-// Lista_Items
+export async function eliminarItem(id){
+    try {
+        const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/${id}`, {
+            method:'DELETE'
+        })
+        await respuesta.json()
+    }catch (error){
+        console.log(error)
+    }
+}
+
+
+// ------------Lista_Items-----------------
 export async function obtenerListaItems(){
     //const url = "http://localhost:4000/api/lista_items"
     const respuesta = await fetch(import.meta.env.VITE_API_URL_LISTA)
@@ -75,6 +87,32 @@ export async function agregarListaItems(datos) {
             headers: {
                 'Content-Type':'application/json'
             }
+        })
+        await respuesta.json()
+    }catch (error){
+        console.log(error)
+    }
+}
+
+export async function actualizarListaItem(id, datos){
+    try {
+        const respuesta = await fetch(`${import.meta.env.VITE_API_URL_LISTA}/${id}`, {
+            method:'PUT',
+            body:JSON.stringify(datos),
+            headers: {
+                'Content-Type':'application/json'
+            }
+        })
+        await respuesta.json()
+    }catch (error){
+        console.log(error)
+    }
+}
+
+export async function eliminarListaItem(id){
+    try {
+        const respuesta = await fetch(`${import.meta.env.VITE_API_URL_LISTA}/${id}`, {
+            method:'DELETE'
         })
         await respuesta.json()
     }catch (error){

@@ -1,10 +1,17 @@
-import { Link, useNavigate } from "react-router-dom"
+import { Form, useNavigate, redirect } from "react-router-dom"
+import { eliminarItem } from "../data/items"
+
+export async function action({params}){
+    await eliminarItem(params.itemId)
+    
+    return redirect('/produccion')
+}
 
 function Item({ item}) {
 
     const navigate = useNavigate()
     const { ID_ITEM, ID_LISTA_ITEMS, ID_ESTADO_PRODUCION, ID_TIPO_ITEM, CODIGO_ITEM, NOMBRE_ITEM, FECHA_FABRI_ITEM, FECHA1_CADU_ITEM, FECHA2_CADU_ITEM,
-        LOTE_ITEM, CANTIDAD_LOTE_ITEM, PRECIO_ITEM, PESO_ITEM, CONSERVACION_ITEM, DETALLE_ITEM,} = item
+        LOTE_ITEM, CANTIDAD_LOTE_ITEM, PRECIO_ITEM, PESO_ITEM, CONSERVACION_ITEM, DETALLE_ITEM,ID_RECETAP} = item
 
     return (
         <tr className="">
@@ -54,9 +61,19 @@ function Item({ item}) {
                 <button type="button"
                         className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs" 
                         onClick={() => navigate(`/item/${ID_ITEM}/actualizar`)}>Editar</button>
+                <Form
+                    method='POST'
+                    action={`/item/${ID_ITEM}/eliminar`}
+                    onSubmit={ (e) => {
+                        if (!confirm('¿Deseas eliminar este registro?')){
+                            e.preventDefault()
+                        }
+                    }}
+                >
                 <button type="submit"
                         className="text-red-600 hover:text-blue-700 uppercase font-bold text-xs"
                     >Eliminar</button>
+                </Form>
             </td>
         </tr>
     )

@@ -13,8 +13,8 @@ function Items() {
 
     return (
         <>
-            <h1 className="font-black text-4xl">Item</h1>
-            <p>Administración de Items</p>
+            <h1 className="font-black text-4xl">Producto</h1>
+            <p>Administración de Producto</p>
 
             <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">
                 {items.length ? (
@@ -49,10 +49,10 @@ function Items() {
                     </table>
                 ): (<p className="text-center mt-10"> No existe Item</p> )}
 
-                <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
+                {/*<button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
                     <Link
                         to='/item/nuevo'>CREAR</Link>
-                </button>
+                </button>*/}
             </div>
         </>
     )
