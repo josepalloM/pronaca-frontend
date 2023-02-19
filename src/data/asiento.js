@@ -15,6 +15,12 @@ export async function obtenerAsientos(){
     const resultado = await respuesta.json()
     return resultado
 }
+export async function obtenerUltimoAsiento(id){
+    const url = "http://localhost:4000/api/asiento/"
+    const respuesta = await fetch(`${url}newAsiento/${id}`)
+    const resultado = await respuesta.json()
+    return resultado
+}
 export async function agregarAsiento(datos) {
 
     try {

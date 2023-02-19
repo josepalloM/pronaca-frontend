@@ -30,7 +30,10 @@ const FormularioDetalleAsiento = ({cuentas}) => {
     var idCuentasHijos = [];
     var cuentaAsientos2 = [];
     //ceuntas Hijos
-    cuentasHijos = cuentas.filter(cuenta=>(cuenta.DESCRIPCION_CUENTA=="Banco Pichincha"||cuenta.DESCRIPCION_CUENTA=="Materia prima" || cuenta.DESCRIPCION_CUENTA=="Insumos"||cuenta.DESCRIPCION_CUENTA=="Producto"|| cuenta.DESCRIPCION_CUENTA=="Pago de nómina" || cuenta.DESCRIPCION_CUENTA=="Beneficios sociales" || cuenta.DESCRIPCION_CUENTA=="Ventas"||cuenta.DESCRIPCION_CUENTA=="Devoluciones"|| cuenta.DESCRIPCION_CUENTA=="Costos operativos" ||cuenta.DESCRIPCION_CUENTA=="Costos operativos"||cuenta.DESCRIPCION_CUENTA=="Costos de ventas" || cuenta.DESCRIPCION_CUENTA=="Gastos nómina"))    
+    cuentasHijos = cuentas.filter(cuenta=>(cuenta.DESCRIPCION_CUENTA=="Banco Pichincha"||cuenta.DESCRIPCION_CUENTA=="Banco Internacional"||cuenta.DESCRIPCION_CUENTA=="Materia prima" || 
+    cuenta.DESCRIPCION_CUENTA=="Insumos"||cuenta.DESCRIPCION_CUENTA=="Producto"|| cuenta.DESCRIPCION_CUENTA=="Aporte personal por pagar" || cuenta.DESCRIPCION_CUENTA=="Aporte patronal por pagar" || 
+    cuenta.DESCRIPCION_CUENTA=="Nómina por pagar" || cuenta.DESCRIPCION_CUENTA=="Ventas" ||cuenta.DESCRIPCION_CUENTA=="Devoluciones" ||cuenta.DESCRIPCION_CUENTA=="Costos personal comercial" || 
+    cuenta.DESCRIPCION_CUENTA=="Costos personal producción"||cuenta.DESCRIPCION_CUENTA=="Costos de ventas de mercancia"|| cuenta.DESCRIPCION_CUENTA=="Gastos personal administrativo" ||cuenta.DESCRIPCION_CUENTA=="Gastos personal financiero"))    
     cuentasHijos.forEach(cuenta=>idCuentasHijos.push(cuenta.ID_CUENTA))
     cuentaAsientos2 = cuentas.filter(cuenta => (idCuentasHijos.includes(cuenta.ID_CUENTA) == true)) 
 
@@ -66,7 +69,7 @@ const FormularioDetalleAsiento = ({cuentas}) => {
                 >Código: 
                 {cuentaAsientos2.length ?(      
                     cuentaAsientos2.filter(c => c.DESCRIPCION_CUENTA==descripcionCuenta).map( cuenta => (
-                        <h3 
+                        <h3 key={cuenta.ID_CUENTA}
                             id="codigo_cuenta"
                             placeholder="Código de la cuenta"
                             name="codigo_cuenta"

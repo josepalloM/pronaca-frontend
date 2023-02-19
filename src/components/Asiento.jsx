@@ -6,11 +6,9 @@ export async function action({params}){
     return redirect('/finanzas/asientos')
 }
 
-function Asiento({ asiento, cuentas}) {
-    const {ID_ASIENTO, ID_CUENTA, ID_INFORME_FINANCIERO, FECHA_ASIENTO,descripcion_asiento,DEBE,HABER} = asiento
-    const cuenta = cuentas.filter(cuenta => (cuenta.ID_CUENTA==ID_CUENTA))
-    const cuenta2 = cuentas.filter(cuenta => (cuenta.DESCRIPCION_CUENTA==descripcion_asiento))
-    return (
+function Asiento({ asiento}) {
+    const {ID_ASIENTO, FECHA_ASIENTO,descripcion_asiento} = asiento
+        return (
         <tr className="border-b">
             <td>
                 {ID_ASIENTO}

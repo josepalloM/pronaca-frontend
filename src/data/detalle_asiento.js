@@ -57,17 +57,9 @@ export async function actualizarDetalleAsiento(id, datos){
     }
 }
 export async function obtenerDetalle(id){
-    try {
-        const url = "http://localhost:4000/api/detalle_asiento"
-        const respuesta = await fetch(`${url}/detalle/${id}`, {
-            method:'PUT',
-            body:JSON.stringify(),
-            headers: {
-                'Content-Type':'application/json'
-            }
-        })
-        await respuesta.json()
-    }catch (error){
-        console.log(error)
-    }
+    
+    const url = "http://localhost:4000/api/detalle_asiento"
+    const respuesta = await fetch(`${url}/detalle/${id}`)
+    const resultado = await respuesta.json()
+    return resultado
 }
