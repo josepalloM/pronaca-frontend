@@ -51,14 +51,14 @@ function NuevaListaItem() {
                 type="submit"
                 className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
                 value="Guardar"
-                onClick={navigate('/item/nuevo')}
+                onClick={()=>{navigate('/item/nuevo')}}
               />
             </div>
             <div>
               <button
                 type="button"
                 className="felx justify-items-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
-                onClick={() => navigate(-1)}
+                onClick={()=>{navigate('/gestorlista')}}
               >Cancelar</button>
             </div>
           </div>

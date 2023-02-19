@@ -1,21 +1,21 @@
-export async function obtenerTipoListaProducs(){
-    const url = "http://localhost:4000/api/tipo_lista"
+export async function obtenerPasosReceta(){
+    const url = "http://localhost:4000/api/pasos_receta"
     const respuesta = await fetch(url)
     const resultado = await respuesta.json()
     return resultado
 }
 
-export async function obtenerTipoListaProduc(id) {
-    const url = "http://localhost:4000/api/tipo_lista"
+export async function obtenerPasoReceta(id) {
+    const url = "http://localhost:4000/api/pasos_receta"
     const respuesta = await fetch(`${url}/${id}`)
     const resultado = await respuesta.json()
     return resultado
 }
 
-export async function agregarTipoListaProduc(datos) {
+export async function agregarPasoReceta(datos) {
 
     try {
-        const url = "http://localhost:4000/api/tipo_lista"
+        const url = "http://localhost:4000/api/pasos_receta"
         const respuesta = await fetch(url, {
             method:'POST',
             body:JSON.stringify(datos),
@@ -29,9 +29,9 @@ export async function agregarTipoListaProduc(datos) {
     }
 }
 
-export async function eliminarTipoListaProduc(id){
+export async function eliminarPasoReceta(id){
     try {
-        const url = "http://localhost:4000/api/tipo_lista"
+        const url = "http://localhost:4000/api/pasos_receta"
         const respuesta = await fetch(`${url}/${id}`, {
             method:'DELETE'
         })
@@ -41,9 +41,9 @@ export async function eliminarTipoListaProduc(id){
     }
 }
 
-export async function actualizarTipoListaProduc(id, datos){
+export async function actualizarPasoReceta(id, datos){
     try {
-        const url = "http://localhost:4000/api/tipo_lista"
+        const url = "http://localhost:4000/api/pasos_receta"
         const respuesta = await fetch(`${url}/${id}`, {
             method:'PUT',
             body:JSON.stringify(datos),

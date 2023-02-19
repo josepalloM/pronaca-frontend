@@ -11,12 +11,13 @@ import Pedidos, { loader as pedidoLoader } from './pages/Pedidos'
 import Item, { loader as itemsLoader } from './pages/Items'
 import Recetas_Produccion,{ loader as recetaLoader} from './pages/Receta'
 import NuevaReceta_Produccion ,{action as nuevoRecetaAction} from './pages/NuevoReceta'
-import TipoListaProduc,{ loader as tipolistaLoader} from './pages/TipoListaProduc'
+import PasoReceta,{ loader as pasorecetaLoader} from './pages/PasoReceta'
 
 import BalanceGeneral, { loader as balanceLoader } from './pages/BalanceGeneral'
 import EstadoFinanciero, { loader as estadoLoader } from './pages/EstadoFinanciero'
 import ListaItems, {loader as listaItemsloader} from './pages/ListaItems'
 import NuevoItem, {action as nuevoItemAction} from './pages/NuevoItem'
+
 
 import Clientes, {loader as clienteLoader} from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
@@ -135,9 +136,9 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage/>
       },
       {
-        path: '/gestortipolista',
-        element: <TipoListaProduc/>,
-        loader: tipolistaLoader,
+        path: '/gestorpasoreceta',
+        element: <PasoReceta/>,
+        loader: pasorecetaLoader,
         errorElement: <ErrorPage/>
       },
       {

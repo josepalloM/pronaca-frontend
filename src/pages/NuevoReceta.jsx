@@ -31,7 +31,7 @@ function NuevaReceta_Produccion() {
 
   return (
     <>
-        <h1 className="font-black text-4xl text-black">Nueva Lista Item</h1>
+        <h1 className="font-black text-4xl text-black">Nueva Receta</h1>
         <p className="mt-3">Llena todos los campos para agregar una nueva receta</p>
         <div>
           <button className="felx justify-items-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
@@ -51,6 +51,7 @@ function NuevaReceta_Produccion() {
                         type="submit"
                         className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
                         value="Registrar"
+                        onClick={()=>{navigate('/gestorpasoreceta')}}
                     />
                 </div>
                 <div>

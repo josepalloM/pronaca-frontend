@@ -10,10 +10,8 @@ function Receta_Produccion({receta_produccion}) {
 
     const navigate = useNavigate()
     const { 
-        ID_ITEM, 
-        ID_PEDIDO_MATERIAP, 
         NOMBRE_RECETA, 
-        DESCRIPCION_RECETA, 
+        DETALLE_PEDIDO_PRODUCCION, 
         CATEGORIA_RECETA, 
         TIEMPO_PRODUC_RECETA,
         ID_RECETA,
@@ -22,27 +20,15 @@ function Receta_Produccion({receta_produccion}) {
     return (
         <tr className="">
             <td>
-                {ID_ITEM}
-            </td>
-            <td>
-                {ID_PEDIDO_MATERIAP}
-            </td>
-            <td>
                 {NOMBRE_RECETA}
             </td>
             <td>
-                {DESCRIPCION_RECETA}
-            </td>
-            <td>
-                {CATEGORIA_RECETA}
-            </td>
-            <td>
-                {TIEMPO_PRODUC_RECETA}
+                {DETALLE_PEDIDO_PRODUCCION}
             </td>
             <td className="p-4 flex justify-center gap-3">
                 <button type="button"
                         className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs" 
-                        onClick={() => navigate(`/receta/${ID_RECETA}/actualizar`)}
+                        onClick={() => navigate(`/receta/${ID_RECETA_PRODUCCION}/actualizar`)}
                         >Editar
                 </button>
                 

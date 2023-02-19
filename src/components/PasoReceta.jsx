@@ -1,41 +1,47 @@
 import { Form, useNavigate, redirect} from "react-router-dom"
-import { eliminarTipoListaProduc } from "../data/tipo_lista_produc"
+import { eliminarPasoReceta } from "../data/paso_receta"
 
 export async function action({params}){
-    await eliminarTipoListaProduc(params.tipolistaId)
+    await eliminarPasoReceta(params.pasorecetaId)
     
-    return redirect('/gestortipolista')
+    return redirect('/gestorpasoreceta')
 }
 
-function TipoListaProduc({tipo_lista_produc}) {
+function PasoReceta({paso_receta}) {
 
     const navigate = useNavigate()
     const {
-        ID_TIPO_LISTA_PRODUC,
-        TIPO_LISTA_ITEMS,
-        DETALLE_TIPO_LISTA,
-    } = tipo_lista_produc
+        ID_PASO_RECETA,
+        ID_RECETA_PRODUCCION,
+        NOMBRE_PASO_RECETA,
+        DESCRIPCION_PASO_RECETA,
+        CATEGORIA_PASO_RECETA,
+        TIEMPO_PRODUC_RECETA,
+    } = paso_receta
 
     return (
         <tr className="">
             <td>
-                {ID_TIPO_LISTA_PRODUC}
+                {NOMBRE_PASO_RECETA}
             </td>
             <td>
-                {TIPO_LISTA_ITEMS}
+                {DESCRIPCION_PASO_RECETA}
             </td>
             <td>
-                {DETALLE_TIPO_LISTA}
+                {CATEGORIA_PASO_RECETA}
+            </td>
+            <td>
+                {TIEMPO_PRODUC_RECETA}
             </td>            
             <td className="p-4 flex justify-center gap-3">
-                <button type="button"
+                {/*<button type="button"
                         className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs" 
                         onClick={() => navigate(`/tipolista/${ID_TIPO_LISTA_PRODUC}/actualizar`)}>Editar
-                </button>
+                </button>*/}
                 
                 <Form 
-                    method='POST'
-                    action={`/listaitem/${ID_TIPO_LISTA_PRODUC}/eliminar`}
+                    method='DELETE'
+                    action={`/pasoreceta/${ID_PASO_RECETA}/eliminar`}
                     onSubmit={ (e) => {
                         if (!confirm('¿Deseas eliminar este registro?')){
                             e.preventDefault()
@@ -51,4 +57,4 @@ function TipoListaProduc({tipo_lista_produc}) {
     )
 }
 
-export default TipoListaProduc
+export default PasoReceta

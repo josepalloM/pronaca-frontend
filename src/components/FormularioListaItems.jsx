@@ -27,7 +27,7 @@ const FormularioListaItem = ({ listaItem }) => {
                         defaultValue={1}
                     />
                 </div>
-                <div className="mb-4" hidden>
+                {/*<div className="mb-4" hidden>
                     <label
                         className="flex justify-start text-gray-800"
                         htmlFor="id_cuenta"
@@ -41,7 +41,7 @@ const FormularioListaItem = ({ listaItem }) => {
                         defaultValue={20} //id cuenta de gastos
                     />
 
-                </div>
+                </div>*/}
                 <div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"

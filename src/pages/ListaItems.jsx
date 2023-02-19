@@ -1,6 +1,5 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { obtenerListaItems } from "../data/items";
-import {obtenerTipoListaProducs} from '../data/tipo_lista_produc';
 import ListaItem from "../components/ListaItem";
 
 export function loader() {
@@ -52,12 +51,6 @@ function ListaItems() {
                 <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
                     <Link
                         to='/gestorreceta'>RECETA PRODUCCION</Link>
-                </button>
-            </div>
-            <div>
-                <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
-                    <Link
-                        to='/gestortipolista'>TIPO LISTA PRODUCCION</Link>
                 </button>
             </div>
         </>

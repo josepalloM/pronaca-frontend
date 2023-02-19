@@ -22,13 +22,8 @@ function Recetas_Produccion() {
                     <table className="w-full bg-white shadow mt-5 table-auto">
                         <thead className="bg-black text-white">
                             <tr>
-                                <th className="p-2">Id Item</th>
-                                <th className="p-2">Id Pedido MP</th>
                                 <th className="p-2">Nombre</th>
-                                <th className="p-2">Descripcion</th>
-                                <th className="p-2">Categoria</th>
-                                <th className="p-2">Tiempo</th>
-                                <th className="p-2">Acciones</th>
+                                <th className="p-2">Detalle</th>
                             </tr>
                         </thead>
                         <tbody>
