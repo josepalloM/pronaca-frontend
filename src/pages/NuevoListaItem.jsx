@@ -4,10 +4,10 @@ import Error from "../components/Error";
 import { agregarListaItems } from "../data/items";
 import { obtenerCuentas } from "../data/cuentas";
 
-export async function loader() {
+/*export async function loader() {
   const cuentas = await obtenerCuentas()
   return { cuentas }
-}
+}*/
 
 export async function action({ request }) {
   const formData = await request.formData()
@@ -32,7 +32,7 @@ export async function action({ request }) {
 
 function NuevaListaItem() {
 
-  const { cuentas } = useLoaderData()
+  //const { cuentas } = useLoaderData()
   const errores = useActionData()
   const navigate = useNavigate()
 

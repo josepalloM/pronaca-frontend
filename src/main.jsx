@@ -36,7 +36,7 @@ import ActualizarCliente, {loader as actualizarClienteLoader, action as actualiz
 import ActualizarItem, { loader as actualizarItemLoader, action as actualizarItemAction} from './pages/ActualizarItem'
 import ActualizarListaItem, {loader as actualizarListaItemLoader, action as actualizarListaItemAction} from './pages/ActializarListaItem'
 import EmpleadoProduccion from './pages/EmpleadoProduccion'
-import NuevoListaItem, {action as nuevaListaItemAction, loader as nuevaListaLoader} from './pages/NuevoListaItem'
+import NuevoListaItem, {action as nuevaListaItemAction} from './pages/NuevoListaItem'
 import {action as eliminarListaItemAction} from './components/ListaItem'
 import {action as eliminarItemAction} from './components/Item'
 
@@ -171,7 +171,7 @@ const router = createBrowserRouter([
         path: '/listaitem/nuevo',
         element: <NuevoListaItem/>,
         action: nuevaListaItemAction,
-        loader: nuevaListaLoader,
+        //loader: nuevaListaLoader,
         errorElement: <ErrorPage/>
       },
       {
