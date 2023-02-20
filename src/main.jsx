@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Layout from './components/Layout'
 import NuevoEmpleado, {action as nuevoEmpleadoAction, loader as cargarDepartamentoCargo} from './pages/NuevoEmpleado'
 import NuevoDepartamento, {loader as nuevoDepartamentoLoader, action as nuevoDepartamentoAction} from './pages/NuevoDepartamento'
@@ -40,7 +40,7 @@ import NuevoListaItem, {action as nuevaListaItemAction} from './pages/NuevoLista
 import {action as eliminarListaItemAction} from './components/ListaItem'
 import {action as eliminarItemAction} from './components/Item'
 
-import NuevoPedido, {action as nuevoPedidoAction} from './pages/NuevoPedido'
+import NuevoPedido, {action as nuevoPedidoAction, loader as nuevoPedidoLoader} from './pages/NuevoPedido'
 import PedidosOpciones from './pages/PedidosOpciones'
 import Preventas, {loader as preventaLoader} from './pages/Preventas'
 import NuevaPreventa, {action as nuevaPreventaAction, loader as nuevaPreventaLoader} from './pages/NuevaPreventa'
@@ -58,6 +58,11 @@ import NuevoAsiento, {action as nuevoAsiento} from './pages/NuevoAsiento'
 import NuevoDetalleAsiento,{action as obtenerCuentasAsiento, loader as obtenerDetallesAsiento} from './pages/NuevoDetalleAsiento'
 import {action as eliminarAsiento} from './components/Asiento'
 import Asiento, {loader as obtenerAsientos} from './pages/Asientos'
+import Login/*, {action as loginAction}*/ from './pages/Login'
+import Registro from './pages/Registro'
+import { RutasPrivadas} from './routes/RutasPrivadas'
+import Prueba from './pages/Prueba'
+
 
 import {action as nuevoDetalleAsiento} from './components/FormularioDetalleAsiento'
 import {loader as eliminarDetalleAsiento} from './pages/EliminarDetalleAsiento'
@@ -71,6 +76,10 @@ import ParametrosIESS, {loader as parametros, action as eliminarIess} from './pa
 import Bancos, {loader as obtenerBancos, action as eliminarBanco} from './pages/Bancos'
 import NuevoBanco, {action as nuevoBanco} from './pages/NuevoBanco'
 import ActualizarBanco, {loader as obtenerBanco, action as actualizarBanco } from './pages/ActualizarBanco'
+
+//Detalle pedido
+import NuevoDetalle_Pedido, {action as nuevoDetalle_PedidoAction, loader as nuevoDetalle_PedidoLoader} from './pages/NuevoDetalle_Pedido'
+
 // Import all of Bootstrap's JS
 //import * as bootstrap from 'bootstrap'
 
@@ -78,15 +87,37 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout/>,
+
     children: [
+      
+      {
+        path: '/login',
+        element: <Login/>,
+        //action: loginAction,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: '/registro',
+        element: <Registro/>
+      },
+
+
+      {
+        path:'/rutas',
+        element: <RutasPrivadas/>,
+      },
+
+
       {
         index: true,
-        element: <Index/>
+        element: <Index/>,
+        
       },
       {
         path: '/opciones',
-        element: <PedidosOpciones/>
+        element:<PedidosOpciones/>
       },
+      
       {
         path: '/opciones/preventa',
         element: <Preventas/>,
@@ -113,7 +144,15 @@ const router = createBrowserRouter([
         path: '/opciones/pedido/nuevo',
         element: <NuevoPedido/>,
         action: nuevoPedidoAction,
-        loader: pedidoLoader,
+        loader: nuevoPedidoLoader,
+        errorElement: <ErrorPage/>
+      },
+      //Detalle pedido
+      {
+        path: '/opciones/pedido/detalle/nuevo',
+        element: <NuevoDetalle_Pedido/>,
+        action: nuevoDetalle_PedidoAction,
+        loader: nuevoDetalle_PedidoLoader,
         errorElement: <ErrorPage/>
       },
       {

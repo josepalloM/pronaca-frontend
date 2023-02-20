@@ -1,14 +1,17 @@
+import $ from 'jquery'
 import { useNavigate, Form, Link, useActionData, redirect, useLoaderData } from "react-router-dom"
-import FormularioPedido from "../components/FormularioPedido";
 import Error from "../components/Error";
-import { agregarPedido } from "../data/pedidos";
-import {obtenerEmpleados} from "../data/empleados";
-import {obtenerClientes} from "../data/clientes";
+import { obtenerPedidos } from "../data/pedidos";
+import { agregarDetalle_Pedido } from "../data/detalle_pedidos";
+import FormularioDetalle_Pedido from "../components/FormularioDetalle_Pedido";
+import {obtenerItemsVenta} from "../data/itemsVenta";
 
 export async function loader(){
-    const empleados =  await obtenerEmpleados()
-    const clientes =  await obtenerClientes()
-    return {empleados, clientes}
+    const pedidos =  await obtenerPedidos()
+    const pedido = $(pedidos).get(-1)
+    const items = await obtenerItemsVenta()
+    console.log(items)
+    return {pedido, items}
 }
 
 export  async function action({request}){
@@ -26,13 +29,19 @@ export  async function action({request}){
       return errores
     }
   
-    await agregarPedido(datos)
+    await agregarDetalle_Pedido(datos)
   
-    return redirect('/opciones/pedido/detalle/nuevo')
+    console.log(datos)
+    return redirect('/opciones/pedidos')
 }
 
+// const submit = (e) => {
+//     e.preventDefault();
+//     console.log(inputFields)
+// }
+
 function NuevoPedido() {
-    const {empleados, clientes} = useLoaderData()
+    const {pedido, items} = useLoaderData()
     const errores = useActionData()
     const navigate = useNavigate()
 
@@ -41,7 +50,7 @@ function NuevoPedido() {
             <h1 className="font-black text-4xl text-black">Nuevo Pedido</h1>
             <p className="mt-3">Llena todos los campos para agregar un nuevo pedido</p>
 
-            <div className=" flex justify-start bg-black text-white rounded md: w-3/4 mx-auto px-5 py-2 mt-6">Pedido</div>
+            <div className=" flex justify-start bg-black text-white rounded md: w-3/4 mx-auto px-5 py-2 mt-6">Detalle Pedido</div>
             <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
                 
                 
@@ -51,13 +60,13 @@ function NuevoPedido() {
                     method="POST"
                 >
 
-                    <FormularioPedido clientes={clientes} empleados={empleados} />
+                    <FormularioDetalle_Pedido pedido={pedido} items={items} />
                     <div className="grid grid-cols-2 gap-2">
                         
                     {/* <Link
                             state={location.state}
                             className={`${location.pathname === '/'}`}
-                                    to='/opciones/pedido/nuevo/detalle/nuevo'>
+                                    to='/opciones/pedido/seleccionarItems'>
                                     <button type="submit"
                                     data-mdb-ripple="true"
                                     data-mdb-ripple-color="light"
@@ -70,15 +79,16 @@ function NuevoPedido() {
                             </button>
                         </Link> */}
                         <div>
-                            <input
+                            <button
                                 type="submit"
+                                // onClick={submit}
                                 className="inline-block w-10/12 px-8 py-2.5 bg-orange-300 text-black
                                     font-medium text-sm leading-tight uppercase rounded
                                     shadow-md hover:bg-amber-400 hover:shadow focus:bg-grey
                                     focus:shadow focus:outline-none focus:ring-0 active:bg-grey
                                     active:shadow transition duration-150 ease-in-out"
-                                value="Siguiente"
-                            />
+                                value="Registrar Pedido"
+                            >Registrar Pedido</button>
                         </div>
                         <div>
                             <button

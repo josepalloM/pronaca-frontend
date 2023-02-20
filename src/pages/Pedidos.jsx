@@ -4,7 +4,6 @@ import Pedido from "../components/Pedido"
 
 export function loader() {
   const pedidos = obtenerPedidos()
-  console.log(pedidos)
   return pedidos
 }
 
@@ -20,8 +19,10 @@ function Pedidos() {
           <table className="w-full bg-white shadow mt-5 table-auto">
             <thead className="bg-black text-white">
               <tr>
+                <th className="p-2">ID</th>
                 <th className="p-2">Fecha</th>
-                <th className="p-2">Devuelto</th>
+                <th className="p-2">Empleado</th>
+                <th className="p-2">Cliente</th>
                 <th className="p-2">Estado</th>
                 <th className="p-2">Acciones</th>
               </tr>
