@@ -10,7 +10,6 @@ export async function loader(){
     const pedidos =  await obtenerPedidos()
     const pedido = $(pedidos).get(-1)
     const items = await obtenerItemsVenta()
-    console.log(items)
     return {pedido, items}
 }
 

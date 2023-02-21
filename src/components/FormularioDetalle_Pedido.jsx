@@ -12,19 +12,29 @@ const FormularioDetalle_Pedido = ({detalle_pedido, pedido, items}) => {
             precio_detalle_pedido: ''
         }
     ])
+    // const insertarItem = (numPedido,item,cantidad,precio) =>{
+    //     const nextItem = [
+    //         // Items before the insertion point:
+    //         ...detalle.slice(0, 0),
+    //         // New item:
+    //         { id_pedido: numPedido, id_item: item, cantidad_pedido:cantidad, precio_detalle_pedido: precio},
+    //         // Items after the insertion point:
+    //         ...detalle.slice(0)
+    //       ];
+    //       setDetalle(nextItem);
+    //       console.log(detalle);
+    // }
+
     const insertarItem = (numPedido,item,cantidad,precio) =>{
         const nextItem = [
-            // Items before the insertion point:
-            ...detalle.slice(0, 0),
-            // New item:
-            { id_pedido: numPedido, id_item: item, cantidad_pedido:cantidad, precio_detalle_pedido: precio},
-            // Items after the insertion point:
-            ...detalle.slice(0)
-          ];
-          setDetalle(nextItem);
-          console.log(detalle);
+                    // Items before the insertion point:
+                    ...detalle.slice(0, 0),
+                    // New item:
+                    { id_pedido: numPedido, id_item: item, cantidad_pedido:cantidad, precio_detalle_pedido: precio}
+                  ];
+        setDetalle(prevDetalle => [...prevDetalle, nextItem])
+        console.log(detalle)
     }
-
     const [cantidad, setCantidad] = useState('')
 
     return (
@@ -52,7 +62,6 @@ const FormularioDetalle_Pedido = ({detalle_pedido, pedido, items}) => {
                      <div 
                          id='id_item' 
                          name='id_item'
-                        //  onChange={(event)=>setItems(event.target.value)} 
                          className="grid grid-cols-3"
                          >
                          {items.map(item =>(
@@ -60,18 +69,17 @@ const FormularioDetalle_Pedido = ({detalle_pedido, pedido, items}) => {
                             className="grid-cols-3 block p-3 m-3 bg-gray-50 text-center rounded overflow-hidden shadow-lg">
                             <div>
                                 <div>{item.NOMBRE_ITEM}</div>
-                                <div className="precio">${item.PRECIO_ITEM*cantidad}</div>
+                                <div id="precio_detalle_pedido" className="precio_detalle_pedido">${item.PRECIO_ITEM*cantidad}</div>
                                 <input
                                     id="cantidad_pedido"
                                     name="cantidad_pedido"
                                     type="number"
                                     className="block w-full p-3 bg-gray-50"
-                                    placeholder={cantidad}
+                                    // placeholder={cantidad}
                                     defaultValue={1}
                                     onChange={(event)=>setCantidad(event.target.value)}
-                                    
-                                    />{console.log(cantidad)}
-                                <button onClick={()=>insertarItem(pedido.ID_PEDIDO, item.ID_ITEM, cantidad, item.PRECIO_ITEM)}>Añadir producto</button>
+                                    />
+                                <div onClick={()=>insertarItem(pedido.ID_PEDIDO, item.ID_ITEM, cantidad, item.PRECIO_ITEM)}>Añadir producto</div>
                             </div>
                             </div>
                          ))}
