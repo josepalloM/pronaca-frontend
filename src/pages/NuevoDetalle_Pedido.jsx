@@ -27,7 +27,8 @@ export  async function action({request}){
     if(Object.keys(errores).length){
       return errores
     }
-  
+    
+    console.log("datos detalle pedido", datos)
     await agregarDetalle_Pedido(datos)
   
     console.log(datos)
@@ -59,7 +60,10 @@ function NuevoPedido() {
                     method="POST"
                 >
 
-                    <FormularioDetalle_Pedido pedido={pedido} items={items} />
+                    <FormularioDetalle_Pedido 
+                    pedido={pedido} 
+                    items={items} 
+                    />
                     <div className="grid grid-cols-2 gap-2">
                         
                     {/* <Link

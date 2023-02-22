@@ -1,5 +1,6 @@
 import Select from "react-select";
 import React, {useEffect, useRef, useState} from "react";
+import ItemVenta from "../components/ItemVenta";
 
 const FormularioDetalle_Pedido = ({detalle_pedido, pedido, items}) => {    
     
@@ -12,6 +13,8 @@ const FormularioDetalle_Pedido = ({detalle_pedido, pedido, items}) => {
             precio_detalle_pedido: ''
         }
     ])
+
+
     // const insertarItem = (numPedido,item,cantidad,precio) =>{
     //     const nextItem = [
     //         // Items before the insertion point:
@@ -25,17 +28,19 @@ const FormularioDetalle_Pedido = ({detalle_pedido, pedido, items}) => {
     //       console.log(detalle);
     // }
 
-    const insertarItem = (numPedido,item,cantidad,precio) =>{
-        const nextItem = [
-                    // Items before the insertion point:
-                    ...detalle.slice(0, 0),
-                    // New item:
-                    { id_pedido: numPedido, id_item: item, cantidad_pedido:cantidad, precio_detalle_pedido: precio}
-                  ];
-        setDetalle(prevDetalle => [...prevDetalle, nextItem])
-        console.log(detalle)
-    }
-    const [cantidad, setCantidad] = useState('')
+    // const insertarItem = (numPedido,item,cantidad,precio) =>{
+    //     const nextItem = [
+    //                 // Items before the insertion point:
+    //                 ...detalle.slice(0, 0),
+    //                 // New item:
+    //                 { id_pedido: numPedido, id_item: item, cantidad_pedido:cantidad, precio_detalle_pedido: precio}
+    //               ];
+    //     setDetalle(prevDetalle => [...prevDetalle, nextItem])
+    //     //console.log(detalle)
+    // }
+    // const [cantidad, setCantidad] = useState('')
+
+
 
     return (
 
@@ -65,23 +70,11 @@ const FormularioDetalle_Pedido = ({detalle_pedido, pedido, items}) => {
                          className="grid grid-cols-3"
                          >
                          {items.map(item =>(
-                            <div key={item.ID_ITEM} value={item.ID_ITEM}
-                            className="grid-cols-3 block p-3 m-3 bg-gray-50 text-center rounded overflow-hidden shadow-lg">
-                            <div>
-                                <div>{item.NOMBRE_ITEM}</div>
-                                <div id="precio_detalle_pedido" className="precio_detalle_pedido">${item.PRECIO_ITEM*cantidad}</div>
-                                <input
-                                    id="cantidad_pedido"
-                                    name="cantidad_pedido"
-                                    type="number"
-                                    className="block w-full p-3 bg-gray-50"
-                                    // placeholder={cantidad}
-                                    defaultValue={1}
-                                    onChange={(event)=>setCantidad(event.target.value)}
-                                    />
-                                <div onClick={()=>insertarItem(pedido.ID_PEDIDO, item.ID_ITEM, cantidad, item.PRECIO_ITEM)}>Añadir producto</div>
-                            </div>
-                            </div>
+                            <ItemVenta
+                                key={pedido.ID_ITEM}
+                                pedido={pedido}
+                                item={item}
+                            />
                          ))}
                      </div>
                     

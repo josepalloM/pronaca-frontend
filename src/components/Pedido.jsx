@@ -2,6 +2,7 @@ import {Form, useNavigate, redirect} from "react-router-dom";
 import {eliminarPedido} from "../data/pedidos.js";
 
 export async function action({params}){
+    console.log("ID eliminar pedido ",params.pedidoId)
     await eliminarPedido(params.pedidoId)
     return redirect('/opciones/pedidos')
 }
@@ -45,7 +46,7 @@ function Pedido({ pedido }) {
 
                     <Form
                         method='post'
-                        action={`/pedido/${ID_PEDIDO}/eliminar`}
+                        action={`/opciones/pedidos/${ID_PEDIDO}/eliminar`}
                         onSubmit={ (e) => {
                             if (!confirm('¿Deseas eliminar este registro?')){
                                 e.preventDefault()

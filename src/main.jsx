@@ -8,6 +8,7 @@ import NuevoDepartamento, {loader as nuevoDepartamentoLoader, action as nuevoDep
 import NuevoCargo, {loader as nuevoCargoLoader, action as nuevoCargoAction} from './pages/NuevoCargo' //
 import Index from './pages/Index'
 import Pedidos, { loader as pedidoLoader } from './pages/Pedidos'
+import {action as eliminarPedidoAction} from "./components/Pedido"
 import Item, { loader as itemsLoader } from './pages/Items'
 import Recetas_Produccion,{ loader as recetaLoader} from './pages/Receta'
 import NuevaReceta_Produccion ,{action as nuevoRecetaAction} from './pages/NuevoReceta'
@@ -171,10 +172,10 @@ const router = createBrowserRouter([
         element: <EmpleadosMenu/>
       },
 
-      // {
-      //   path:  '/pedidos/:pedidoId/eliminar',
-      //   action: eliminarPedidoAction
-      // },
+      {
+        path:  '/opciones/pedidos/:pedidoId/eliminar',
+        action: eliminarPedidoAction
+      },
       
       {
         path: '/produccion',
