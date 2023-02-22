@@ -1,7 +1,7 @@
 import {useState} from 'react'
 
-function ItemVenta({item, pedido}) {
-    const [cantidad, setCantidad] = useState('')
+function ItemVenta({item, pedido, obtenerDetalle}) {
+    const [cantidad, setCantidad] = useState(1)
     const [detalle, setDetalle] = useState([
         {
             id_pedido: '',
@@ -19,7 +19,7 @@ function ItemVenta({item, pedido}) {
                     { id_pedido: numPedido, id_item: item, cantidad_pedido:cantidad, precio_detalle_pedido: precio}
                   ];
         setDetalle(prevDetalle => [...prevDetalle, nextItem])
-        //console.log(detalle)
+        console.log(detalle)
     }
 
     const { 
@@ -49,7 +49,7 @@ function ItemVenta({item, pedido}) {
                         defaultValue={1}
                         onChange={(event) => setCantidad(event.target.value)}
                     />
-                    <div onClick={insertarItem(ID_PEDIDO, ID_ITEM, cantidad, PRECIO_ITEM)}>Añadir producto</div>
+                    <div onClick={() => insertarItem(ID_PEDIDO, ID_ITEM, cantidad, PRECIO_ITEM)}>Añadir producto</div>
                 </div>
             </div>
         </>
