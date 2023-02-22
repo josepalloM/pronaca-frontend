@@ -5,10 +5,10 @@ export const RutasPrivadas = ({ usuario, children, redirectTo, setUsuario }) => 
 	console.log("usuario priv ",usuario)
 	
 	
-	if(usuario===null){
+	if(usuario=="null"){
 		
-		//return	<Navigate to='/login' />
-		return <Login usuario={usuario} setUsuario={setUsuario} />
+		return	<Navigate to='/login' />
+		//return <Login />
 	}
 
 	//return children

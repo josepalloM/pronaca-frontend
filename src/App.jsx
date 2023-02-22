@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import { createBrowserRouter, RouterProvider, useLocation } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, useLocation, useNavigate } from 'react-router-dom'
 import Layout from './components/Layout'
 import NuevoEmpleado, { action, action as nuevoEmpleadoAction, loader as cargarDepartamentoCargo } from './pages/NuevoEmpleado'
 import NuevoDepartamento, { loader as nuevoDepartamentoLoader, action as nuevoDepartamentoAction } from './pages/NuevoDepartamento'
@@ -64,42 +64,36 @@ import ActualizarBanco, { loader as obtenerBanco, action as actualizarBanco } fr
 //import * as bootstrap from 'bootstrap'
 
 function App() {
-
-    const [usuario, setUsuario] = useState("");
-
     
-
-    // useEffect(()=>{
-    //     const obtenerUs = () =>{
-    //         const usuarioLS = JSON.parse(localStorage.getItem('log'));
-    //         if(!!usuarioLS){
-    //             const {usuario} = usuarioLS
-    //             setUsuario(usuario)
-    //         }
-
-    //     }
-    //     obtenerUs()
-    // },[])  
-
-    console.log("Usuario app", usuario)
-
+    const [user, setUser] = useState()
+    useEffect(()=>{
+        const obtenerLS = () =>{
+            const us = localStorage.getItem('user') ;
+            us?.length > 0 && setUser(us)
+            
+        }
+        obtenerLS()
+        //console.log("user", obtenerLS())
+    },[])
+    console.log("user APP", user)
+    
     const router = createBrowserRouter([
         {
             path: '/',
-            element: <Layout />,
+            element: <Layout  />,
 
             children: [
 
                 {
                     path: '/login',
-                    element: <Login usuario={usuario} setUsuario={setUsuario} />,
+                    element: <Login  />,
                     action: loginAction,
                     loader: loginLoader,
                     errorElement: <ErrorPage />
                 },
 
                 {
-                    element: <RutasPrivadas usuario={"usuario"} setUsuario={setUsuario} />,
+                    element: <RutasPrivadas usuario={user} />,
                     children: [
                         {
                             path: '/clientes',
@@ -372,7 +366,7 @@ function App() {
                 },
                 {
                     path: '*',
-                    element: <Index />
+                    element: <Layout />
                 },
             ]
         },

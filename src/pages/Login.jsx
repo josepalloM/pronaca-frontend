@@ -1,65 +1,55 @@
 import FormularioLogin from "../components/FormularioLogin"
 import { useNavigate, Form, useActionData, redirect, useLoaderData } from "react-router-dom"
 import Error from "../components/Error";
-import { useState, useEffect } from "react";
-import { obtenerEmpleado } from "../data/login";
+import { consultarEmpleado } from "../data/login";
 
-export async function loader(){
-  
-  //const logs =  await obtenerEmpleado()
-  //console.log("Logs loader", logs)
-  //return logs
+export async function loader({body}){
   return null
 }
 
 
 
 export async function action({request}){
-  
-  //const [usuario, setUser] = useState({})
   const formData = await request.formData()
   const datos = Object.fromEntries(formData)
   const errores = []
+  
+  const resultado = await consultarEmpleado(datos)
+  if(resultado.text === 'Empleado no existe'){
+    errores.push("no esta bién")
+  }
+
+ 
   if(Object.keys(errores).length){
     return errores
   }
-
-  
-  
-
-  // setUsuario = {
-  //   id: 1,
-  //   name: "Jose"
-  // };
-
-  console.log("set usuario", setUsuario)
-  
-  //console.log(datos)
-  
-  //loadLocalStorage(us)
-
-  console.log("logs action", us )
-  return redirect('/') 
+  redirect ('/Login')
 }
 
 
-
-
-
-
-function Login({usuario, setUsuario}){
+function Login(){
   
-  console.log("usuario LOGIN", usuario);
-
- 
-
-
-  
-
-  
+  //const errores = useActionData()
   const errores = useActionData()
   const navigate = useNavigate()
-  
+
+
+  async function handleClick () {
+    const datos = {
+    nombre: nombre.value,
+    cedula: cedula.value
+    }
+    const resultado = await consultarEmpleado(datos)
+    if(resultado.text === 'Empleado existe'){
+      return navigate('/', { state: { user: datos.nombre, cedula: datos.cedula }});
+    }else{
+      if (!confirm('El empleado no existe, ingrese nuevamente ')){
+        e.preventDefault()
+      }      
+      return navigate('/Login');
+    }
+     
+  }
 
 
   return(
@@ -72,16 +62,17 @@ function Login({usuario, setUsuario}){
 
         <Form
           method="POST"
+          
         >
           <FormularioLogin
-              usuario={usuario}
-              setUsuario={setUsuario}
+             
           />
           <div className="grid grid-cols-2 gap-2">
               <div className='flex justify-center'>
                 <input
                   type="submit"
-                  //onClick={log}
+                  onClick={handleClick}
+                  //onClick={() => navigate('/', { state: { user: 'jose' }})}
                   className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
                   value="Ingresar"
                 />
