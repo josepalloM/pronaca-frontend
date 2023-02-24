@@ -1,21 +1,15 @@
-import Select from "react-select";
-import React, {useEffect, useRef, useState} from "react";
+import React, {useState} from "react";
 import ItemVenta from "../components/ItemVenta";
 
 const FormularioDetalle_Pedido = ({detalle_pedido, pedido, items}) => {    
     
     
-    const [detalle, setDetalle] = useState('');
+    const [detalle, setDetalle] = useState([]);
 
-    const obtenerDetalle = (detalleItems) => {
-        const nextItem = [
-            // Items before the insertion point:
-            ...detalle.slice(0, 0),
-            // New item:
-            detalleItems
-          ];
-        setDetalle(prevDetalle => [...prevDetalle, nextItem])
-        
+    const insertarItem = (numPedido,item,cantidad,precio) =>{
+        setDetalle(prevDetalle => [...prevDetalle, { id_pedido: numPedido, id_item: item, cantidad_pedido:cantidad, precio_detalle_pedido: precio}])
+        // insertarDetalle(detalle)
+        console.log(detalle)
     }
 
     return (
@@ -49,7 +43,7 @@ const FormularioDetalle_Pedido = ({detalle_pedido, pedido, items}) => {
                                  key={item.ID_ITEM}
                                  pedido={pedido}
                                  item={item}
-                                 obtenerDetalle={obtenerDetalle}
+                                 insertarItem={insertarItem}
                              />
                           ))}
                       </div>

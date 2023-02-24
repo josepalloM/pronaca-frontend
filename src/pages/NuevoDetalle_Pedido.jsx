@@ -29,7 +29,7 @@ export  async function action({request}){
     }
     
     console.log("datos detalle pedido", datos)
-    await agregarDetalle_Pedido(datos)
+    // await agregarDetalle_Pedido(datos)
   
     console.log(datos)
     return redirect('/opciones/pedidos')
