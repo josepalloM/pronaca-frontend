@@ -1,14 +1,14 @@
 import React, {useState} from "react";
 import ItemVenta from "../components/ItemVenta";
 
-const FormularioDetalle_Pedido = ({detalle_pedido, pedido, items}) => {    
+const FormularioDetalle_Pedido = ({detalle_pedido, pedido, items, insertarDetalle}) => {    
     
     
     const [detalle, setDetalle] = useState([]);
 
     const insertarItem = (numPedido,item,cantidad,precio) =>{
         setDetalle(prevDetalle => [...prevDetalle, { id_pedido: numPedido, id_item: item, cantidad_pedido:cantidad, precio_detalle_pedido: precio}])
-        // insertarDetalle(detalle)
+        insertarDetalle(detalle)
         console.log(detalle)
     }
 
