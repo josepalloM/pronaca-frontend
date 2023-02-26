@@ -40,6 +40,17 @@ export async function eliminarDetalleAsiento(id){
         console.log(error)
     }
 }
+export async function eliminarDetalles(id){
+    try {
+        const url = "http://localhost:4000/api/detalle_asiento"
+        const respuesta = await fetch(`${url}/detalles/${id}`, {
+            method:'DELETE'
+        })
+        await respuesta.json()
+    }catch (error){
+        console.log(error)
+    }
+}
 
 export async function actualizarDetalleAsiento(id, datos){
     try {
@@ -60,6 +71,13 @@ export async function obtenerDetalle(id){
     
     const url = "http://localhost:4000/api/detalle_asiento"
     const respuesta = await fetch(`${url}/detalle/${id}`)
+    const resultado = await respuesta.json()
+    return resultado
+}
+
+export async function cerrarCuentas(id){
+    const url = "http://localhost:4000/api/detalle_asiento"
+    const respuesta = await fetch(`${url}/cerrarCuentas/${id}`)
     const resultado = await respuesta.json()
     return resultado
 }

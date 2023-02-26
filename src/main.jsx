@@ -58,9 +58,11 @@ import NuevoAsiento, {action as nuevoAsiento} from './pages/NuevoAsiento'
 import NuevoDetalleAsiento,{action as obtenerCuentasAsiento, loader as obtenerDetallesAsiento} from './pages/NuevoDetalleAsiento'
 import {action as eliminarAsiento} from './components/Asiento'
 import Asiento, {loader as obtenerAsientos} from './pages/Asientos'
-
+//Detalle de asiento
+import DetalleAsiento, {loader as obtenerDetalle} from './pages/DetalleAsiento'
 import {action as nuevoDetalleAsiento} from './components/FormularioDetalleAsiento'
 import {loader as eliminarDetalleAsiento} from './pages/EliminarDetalleAsiento'
+import {loader as actualizarCierreDeCuentas} from './pages/ActualizarCierreDeCuentas'
 
 
 import NuevoParametro, {action as nuevoParametro} from './pages/NuevoIess'
@@ -366,6 +368,11 @@ const router = createBrowserRouter([
         action: nuevoAsiento
       },
       {
+        path: '/finanzas/asientos/:asientoId/detalle',
+        element: <DetalleAsiento/>,
+        loader: obtenerDetalle
+      },
+      {
         path: '/finanzas/asientos/nuevo/nuevaCuentaAsiento',
         element: <NuevoDetalleAsiento/>,
         loader: obtenerDetallesAsiento,
@@ -374,6 +381,10 @@ const router = createBrowserRouter([
       {
         path: '/finanzas/asientos/nuevo/nuevaCuentaAsiento/:detalleAsientoId',
         loader: eliminarDetalleAsiento
+      },
+      {
+        path: '/finanzas/asientos/nuevo/nuevaCuentaAsiento/cerrarCuentas/:asientoId',
+        loader: actualizarCierreDeCuentas
       },
       {
         path: '/finanzas/asientos',
