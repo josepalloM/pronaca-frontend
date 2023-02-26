@@ -37,7 +37,7 @@ const FormularioBalance = () => {
   <div className="mb-4">
     <label
       className="flex justify-start text-gray-800"
-      htmlFor="fecha_inicio"
+      htmlFor="fecha_fin"
     >
       Fecha de Fin:{" "}
     </label>
@@ -47,10 +47,13 @@ const FormularioBalance = () => {
       className="mt-2 block w-full p-3 bg-gray-50"
       placeholder="Fecha de Fin"
       name="fecha_fin"
+      defaultValue={new Date().toISOString().substr(0, 10)}
     />
     
   </div>
 </div>
+
+{/* 
 
 <div className="mb-4">
    <label
@@ -101,7 +104,7 @@ const FormularioBalance = () => {
    
 </div>
 
-{/* 
+
 
 <div className="mb-4">
    <label
