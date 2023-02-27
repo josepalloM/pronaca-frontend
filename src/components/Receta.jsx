@@ -14,11 +14,14 @@ function Receta_Produccion({receta_produccion}) {
         DETALLE_PEDIDO_PRODUCCION, 
         CATEGORIA_RECETA, 
         TIEMPO_PRODUC_RECETA,
-        ID_RECETA,
+        ID_RECETA_PRODUCCION,
     } = receta_produccion
 
     return (
         <tr className="">
+             <td>
+                {ID_RECETA_PRODUCCION}
+            </td>
             <td>
                 {NOMBRE_RECETA}
             </td>
@@ -28,13 +31,13 @@ function Receta_Produccion({receta_produccion}) {
             <td className="p-4 flex justify-center gap-3">
                 <button type="button"
                         className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs" 
-                        onClick={() => navigate(`/receta/${ID_RECETA_PRODUCCION}/actualizar`)}
-                        >Editar
+                        onClick={() => navigate(`/gestorpasoreceta/${ID_RECETA_PRODUCCION}/pasos`)}
+                        >Seleccionar
                 </button>
                 
                 <Form 
                     method='POST'
-                    action={`/receta/${ID_RECETA}/eliminar`}
+                    action={`/receta/${ID_RECETA_PRODUCCION}/eliminar`}
                     onSubmit={ (e) => {
                         if (!confirm('¿Deseas eliminar este registro?')){
                             e.preventDefault()

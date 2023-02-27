@@ -1,7 +1,7 @@
 import { useNavigate, Form, useActionData, redirect } from "react-router-dom"
-import FormularioReceta from "../components/FormularioReceta";
+import FormularioPasoReceta from "../components/FormularioPasoReceta";
 import Error from "../components/Error";
-import { agregarRecetaProduccion } from "../data/receta_produccion";
+import { agregarPasoReceta } from "../data/paso_receta";
 
 export  async function action({request}){
   const formData = await request.formData()
@@ -18,20 +18,20 @@ export  async function action({request}){
     return errores
   }
 
-  await agregarRecetaProduccion(datos)
+  await agregarPasoReceta(datos)
 
   console.log(datos)
   return redirect('/gestorreceta')
 }
 
-function NuevaReceta_Produccion() {
+function NuevoPaso_Receta() {
 
   const errores = useActionData()
   const navigate = useNavigate()
 
   return (
     <>
-        <h1 className="font-black text-4xl text-black">Nueva Receta</h1>
+        <h1 className="font-black text-4xl text-black">Nuevo Paso de la Receta</h1>
         <p className="mt-3">Llena todos los campos para agregar una nueva receta</p>
         <div>
           <button className="felx justify-items-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
@@ -44,7 +44,7 @@ function NuevaReceta_Produccion() {
           {errores?.length && errores.map( (error, i) =>  <Error key={i}>{error}</Error>)}
 
           <Form method="POST">
-            <FormularioReceta/>
+            <FormularioPasoReceta/>
             <div className="grid grid-cols-2 gap-2">
                 <div>
                     <input
@@ -68,4 +68,4 @@ function NuevaReceta_Produccion() {
   )
 }
 
-export default NuevaReceta_Produccion
+export default NuevoPaso_Receta
