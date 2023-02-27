@@ -58,7 +58,7 @@ function NuevaListaItem() {
                 type="submit"
                 className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
                 value="Guardar"
-                onClick={()=>{navigate('/item/nuevo')}}
+                onClick={()=>{navigate('/gestorlista')}}
               />
             </div>
             <div>
