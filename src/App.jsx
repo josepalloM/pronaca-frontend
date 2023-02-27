@@ -1,18 +1,23 @@
-import {useState, useEffect} from "react";
-import { createBrowserRouter, RouterProvider, useLocation, useNavigate } from 'react-router-dom'
+import { useState, useEffect } from "react";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
-import NuevoEmpleado, { action, action as nuevoEmpleadoAction, loader as cargarDepartamentoCargo } from './pages/NuevoEmpleado'
+import NuevoEmpleado, { action as nuevoEmpleadoAction, loader as cargarDepartamentoCargo } from './pages/NuevoEmpleado'
 import NuevoDepartamento, { loader as nuevoDepartamentoLoader, action as nuevoDepartamentoAction } from './pages/NuevoDepartamento'
 import NuevoCargo, { loader as nuevoCargoLoader, action as nuevoCargoAction } from './pages/NuevoCargo' //
 import Index from './pages/Index'
 import Pedidos, { loader as pedidoLoader } from './pages/Pedidos'
+import { action as eliminarPedidoAction } from "./components/Pedido"
 import Item, { loader as itemsLoader } from './pages/Items'
+import Recetas_Produccion, { loader as recetaLoader } from './pages/Receta'
+import NuevaReceta_Produccion, { action as nuevoRecetaAction } from './pages/NuevoReceta'
+import PasosReceta, { loader as pasorecetaLoader } from './pages/PasoReceta'
+import NuevoPaso_Receta, { action as nuevoPasoRecetaAction } from './pages/NuevoPasoReceta'
 
 import BalanceGeneral, { loader as balanceLoader } from './pages/BalanceGeneral'
 import EstadoFinanciero, { loader as estadoLoader } from './pages/EstadoFinanciero'
 import ListaItems, { loader as listaItemsloader } from './pages/ListaItems'
 import NuevoItem, { action as nuevoItemAction } from './pages/NuevoItem'
-//import ListaItems, {action as nuevaListaItemAction} from './pages/NuevoListaItem'
+
 
 import Clientes, { loader as clienteLoader } from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
@@ -29,28 +34,42 @@ import NuevoCliente, { action as nuevoClienteAction, loader as nuevoClienteLoade
 import { action as eliminarClienteAction } from "./components/Cliente"
 import ActualizarCliente, { loader as actualizarClienteLoader, action as actualizarClienteAction } from './pages/ActualizarCliente.jsx'
 import ActualizarItem, { loader as actualizarItemLoader, action as actualizarItemAction } from './pages/ActualizarItem'
+import ActualizarListaItem, { loader as actualizarListaItemLoader, action as actualizarListaItemAction } from './pages/ActializarListaItem'
 import EmpleadoProduccion from './pages/EmpleadoProduccion'
 import NuevoListaItem, { action as nuevaListaItemAction } from './pages/NuevoListaItem'
+import { action as eliminarListaItemAction } from './components/ListaItem'
+import { action as eliminarItemAction } from './components/Item'
 
-import NuevoPedido, { action as nuevoPedidoAction } from './pages/NuevoPedido'
+import NuevoPedido, { action as nuevoPedidoAction, loader as nuevoPedidoLoader } from './pages/NuevoPedido'
 import PedidosOpciones from './pages/PedidosOpciones'
 import Preventas, { loader as preventaLoader } from './pages/Preventas'
 import NuevaPreventa, { action as nuevaPreventaAction, loader as nuevaPreventaLoader } from './pages/NuevaPreventa'
+import { action as eliminarPreventaAction } from "./components/Preventa"
 import ActualizarPedido, { loader as actualizarPedidoLoader, action as actualizarPedidoAction } from './pages/ActualizarPedido'
 import ActualizarEmpleado, { loader as actualizarEmpleadoLoader, action as actualizarEmpleadoAction } from './pages/ActualizarEmpleado.jsx'
 import ActualizarDepartamento, { loader as actualizarDepartamentoLoader, action as actualizarDepartamentoAction } from './pages/ActualizarDepartamento.jsx'
 import ActualizarCargo, { loader as actualizarCargoLoader, action as actualizarCargoAction } from './pages/ActualizarCargo.jsx' //
-
+/////
+import NuevoBalance, { action as nuevoBalance } from './pages/NuevoBalance'
 
 import NuevaCuenta, { action as nuevaCuenta } from './pages/NuevaCuenta'
 import Cuentas, { loader as obtenerCuentas, action as eliminarCuenta } from './pages/Cuentas'
 import NuevoAsiento, { action as nuevoAsiento } from './pages/NuevoAsiento'
+import NuevoDetalleAsiento, { action as obtenerCuentasAsiento, loader as obtenerDetallesAsiento } from './pages/NuevoDetalleAsiento'
 import { action as eliminarAsiento } from './components/Asiento'
 import Asiento, { loader as obtenerAsientos } from './pages/Asientos'
 import Login, {action as loginAction, loader as loginLoader} from './pages/Login'
 import Registro from './pages/Registro'
 import { RutasPrivadas } from './routes/RutasPrivadas'
-import Prueba from './pages/Prueba'
+
+
+
+//Detalle de asiento
+import DetalleAsiento, { loader as obtenerDetalle } from './pages/DetalleAsiento'
+import { action as nuevoDetalleAsiento } from './components/FormularioDetalleAsiento'
+import { loader as eliminarDetalleAsiento } from './pages/EliminarDetalleAsiento'
+import { loader as actualizarCierreDeCuentas } from './pages/ActualizarCierreDeCuentas'
+
 
 import NuevoParametro, { action as nuevoParametro } from './pages/NuevoIess'
 import ActualizarIess, { loader as iess, action as actualizarIess } from './pages/ActualizarIess'
@@ -60,33 +79,38 @@ import ParametrosIESS, { loader as parametros, action as eliminarIess } from './
 import Bancos, { loader as obtenerBancos, action as eliminarBanco } from './pages/Bancos'
 import NuevoBanco, { action as nuevoBanco } from './pages/NuevoBanco'
 import ActualizarBanco, { loader as obtenerBanco, action as actualizarBanco } from './pages/ActualizarBanco'
-// Import all of Bootstrap's JS
-//import * as bootstrap from 'bootstrap'
+
+//Detalle pedido
+import NuevoDetalle_Pedido, { action as nuevoDetalle_PedidoAction, loader as nuevoDetalle_PedidoLoader } from './pages/NuevoDetalle_Pedido'
+import Detalle_Pedidos, { loader as detalle_pedidoLoader } from './pages/Detalle_Pedidos'
+import { action as eliminarDetalle_PedidoAction } from "./components/Detalle_Pedido"
+// import ActualizarDetalle_Pedido, {loader as actualizarDetalle_PedidoLoader, action as actualizarDetalle_PedidoAction} from './pages/ActualizarDetalle_Pedido'
+
 
 function App() {
-    
+
     const [user, setUser] = useState()
-    useEffect(()=>{
-        const obtenerLS = () =>{
-            const us = localStorage.getItem('user') ;
+    useEffect(() => {
+        const obtenerLS = () => {
+            const us = localStorage.getItem('user');
             us?.length > 0 && setUser(us)
-            
+
         }
         obtenerLS()
         //console.log("user", obtenerLS())
-    },[])
-    console.log("user APP", user)
-    
+    }, [])
+    //console.log("user APP", user)
+
     const router = createBrowserRouter([
         {
             path: '/',
-            element: <Layout  />,
+            element: <Layout />,
 
             children: [
 
                 {
                     path: '/login',
-                    element: <Login  />,
+                    element: <Login />,
                     action: loginAction,
                     loader: loginLoader,
                     errorElement: <ErrorPage />
@@ -96,15 +120,10 @@ function App() {
                     element: <RutasPrivadas usuario={user} />,
                     children: [
                         {
-                            path: '/clientes',
-                            element: <Clientes />,
-                            loader: clienteLoader,
-                            errorElement: <ErrorPage />
-                        },
-                        {
                             path: '/opciones',
                             element: <PedidosOpciones />
                         },
+
                         {
                             path: '/opciones/preventa',
                             element: <Preventas />,
@@ -118,6 +137,10 @@ function App() {
                             loader: nuevaPreventaLoader
                         },
                         {
+                            path: '/preventas/:preventaId/eliminar',
+                            action: eliminarPreventaAction
+                        },
+                        {
                             path: '/opciones/pedidos',
                             element: <Pedidos />,
                             loader: pedidoLoader,
@@ -127,9 +150,35 @@ function App() {
                             path: '/opciones/pedido/nuevo',
                             element: <NuevoPedido />,
                             action: nuevoPedidoAction,
-                            loader: pedidoLoader,
+                            loader: nuevoPedidoLoader,
                             errorElement: <ErrorPage />
                         },
+                        //Detalle pedido
+                        {
+                            path: '/opciones/detalle_pedidos',
+                            element: <Detalle_Pedidos />,
+                            loader: detalle_pedidoLoader,
+                            errorElement: <ErrorPage />
+                        },
+                        {
+                            path: '/opciones/pedido/detalle/nuevo',
+                            element: <NuevoDetalle_Pedido />,
+                            action: nuevoDetalle_PedidoAction,
+                            loader: nuevoDetalle_PedidoLoader,
+                            errorElement: <ErrorPage />
+                        },
+                        // {
+                        //   path: '/detalle_pedido/:detalle_pedidoId/editar',
+                        //   element: <ActualizarDetalle_Pedido />,
+                        //   loader: actualizarDetalle_PedidoLoader,
+                        //   action: actualizarDetalle_PedidoAction,
+                        //   errorElement: <ErrorPage />
+                        // },
+                        // {
+                        //   path:  '/opciones/detalle_pedidos/:detalle_pedidoId/eliminar',
+                        //   action: eliminarDetalle_PedidoAction
+                        // },
+
                         {
                             path: '/gestor',
                             element: <EmpleadoProduccion />
@@ -146,10 +195,10 @@ function App() {
                             element: <EmpleadosMenu />
                         },
 
-                        // {
-                        //   path:  '/pedidos/:pedidoId/eliminar',
-                        //   action: eliminarPedidoAction
-                        // },
+                        {
+                            path: '/opciones/pedidos/:pedidoId/eliminar',
+                            action: eliminarPedidoAction
+                        },
 
                         {
                             path: '/produccion',
@@ -164,10 +213,47 @@ function App() {
                             errorElement: <ErrorPage />
                         },
                         {
+                            path: '/gestorreceta',
+                            element: <Recetas_Produccion />,
+                            loader: recetaLoader,
+                            errorElement: <ErrorPage />
+                        },
+                        {
+                            path: '/receta/nuevo',
+                            element: <NuevaReceta_Produccion />,
+                            action: nuevoRecetaAction,
+                            errorElement: <ErrorPage />
+                        },
+                        {
+                            path: '/gestorpasoreceta/:pasorecetaId/pasos',
+                            element: <PasosReceta />,
+                            loader: pasorecetaLoader,
+                            //action: pasosrecetaAction,
+                            errorElement: <ErrorPage />
+                        },
+                        {
+                            path: '/pasosreceta/nuevo',
+                            element: <NuevoPaso_Receta />,
+                            action: nuevoPasoRecetaAction,
+                            errorElement: <ErrorPage />
+                        },
+                        {
                             path: '/listaitem/nuevo',
                             element: <NuevoListaItem />,
                             action: nuevaListaItemAction,
+                            //loader: nuevaListaLoader,
                             errorElement: <ErrorPage />
+                        },
+                        {
+                            path: '/listaitem/:listaId/actualizar',
+                            element: <ActualizarListaItem />,
+                            loader: actualizarListaItemLoader,
+                            action: actualizarListaItemAction,
+                            errorElement: <ErrorPage />
+                        },
+                        {
+                            path: '/listaitem/:listaId/eliminar',
+                            action: eliminarListaItemAction
                         },
                         {
                             path: '/item/nuevo',
@@ -182,12 +268,16 @@ function App() {
                             action: actualizarItemAction,
                             errorElement: <ErrorPage />
                         },
-                        // {
-                        //   path: '/clientes',
-                        //   element: <Clientes/>,
-                        //   loader: clienteLoader,
-                        //   errorElement: <ErrorPage/>
-                        // },
+                        {
+                            path: '/item/:itemId/eliminar',
+                            action: eliminarItemAction
+                        },
+                        {
+                            path: '/clientes',
+                            element: <Clientes />,
+                            loader: clienteLoader,
+                            errorElement: <ErrorPage />
+                        },
                         {
                             path: '/cliente/nuevo',
                             element: <NuevoCliente />,
@@ -246,6 +336,7 @@ function App() {
                         {
                             path: '/empleados/iess/nuevo',
                             element: <NuevoParametro />,
+                            loader: obtenerCuentas,
                             action: nuevoParametro
                         },
                         {
@@ -329,6 +420,9 @@ function App() {
                             element: <NuevaCuenta />,
                             loader: obtenerCuentas,
                             action: nuevaCuenta
+                        }, {
+                            path: '/finanzas/cuentas/:cuentaId/eliminar',
+                            action: eliminarCuenta
                         },
 
                         {
@@ -336,6 +430,25 @@ function App() {
                             element: <NuevoAsiento />,
                             loader: obtenerCuentas,
                             action: nuevoAsiento
+                        },
+                        {
+                            path: '/finanzas/asientos/:asientoId/detalle',
+                            element: <DetalleAsiento />,
+                            loader: obtenerDetalle
+                        },
+                        {
+                            path: '/finanzas/asientos/nuevo/nuevaCuentaAsiento',
+                            element: <NuevoDetalleAsiento />,
+                            loader: obtenerDetallesAsiento,
+                            action: nuevoDetalleAsiento
+                        },
+                        {
+                            path: '/finanzas/asientos/nuevo/nuevaCuentaAsiento/:detalleAsientoId',
+                            loader: eliminarDetalleAsiento
+                        },
+                        {
+                            path: '/finanzas/asientos/nuevo/nuevaCuentaAsiento/cerrarCuentas/:asientoId',
+                            loader: actualizarCierreDeCuentas
                         },
                         {
                             path: '/finanzas/asientos',
@@ -352,11 +465,16 @@ function App() {
                             loader: balanceLoader
                         },
                         {
+                            path: '/finanzas/balance/nuevo',
+                            element: <NuevoBalance />,
+                            loader: balanceLoader,
+                            action: nuevoBalance
+                        },
+                        {
                             path: '/finanzas/estado',
                             element: <EstadoFinanciero />,
                             loader: estadoLoader,
                         }
-
                     ]
                 },
                 {

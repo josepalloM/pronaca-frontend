@@ -8,7 +8,7 @@ const FormularioLogin = () => (
             <input
               id="nombre"
               type="text"
-              className="mt-2 block w-full p-3 bg-gray-50"
+              className="mt-2 block w-full p-3 bg-gray-50 uppercase"
               placeholder="Usuario"
               required
               autoComplete='off'

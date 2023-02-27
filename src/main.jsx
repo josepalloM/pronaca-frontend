@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
+import App from './App'
+/*
 import { createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Layout from './components/Layout'
 import NuevoEmpleado, {action as nuevoEmpleadoAction, loader as cargarDepartamentoCargo} from './pages/NuevoEmpleado'
@@ -60,7 +62,7 @@ import NuevoAsiento, {action as nuevoAsiento} from './pages/NuevoAsiento'
 import NuevoDetalleAsiento,{action as obtenerCuentasAsiento, loader as obtenerDetallesAsiento} from './pages/NuevoDetalleAsiento'
 import {action as eliminarAsiento} from './components/Asiento'
 import Asiento, {loader as obtenerAsientos} from './pages/Asientos'
-import Login/*, {action as loginAction}*/ from './pages/Login'
+import Login, {action as loginAction} from './pages/Login'
 import Registro from './pages/Registro'
 import { RutasPrivadas} from './routes/RutasPrivadas'
 import Prueba from './pages/Prueba'
@@ -89,7 +91,7 @@ import {action as eliminarDetalle_PedidoAction} from "./components/Detalle_Pedid
 // import ActualizarDetalle_Pedido, {loader as actualizarDetalle_PedidoLoader, action as actualizarDetalle_PedidoAction} from './pages/ActualizarDetalle_Pedido'
 
 
-/*
+
       {
         index: true,
         element: <Index/>,
@@ -462,7 +464,6 @@ import {action as eliminarDetalle_PedidoAction} from "./components/Detalle_Pedid
 ])
 // ])
 */
-
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

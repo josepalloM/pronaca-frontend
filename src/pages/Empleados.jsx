@@ -1,4 +1,4 @@
-import { Link, useLoaderData, Form , redirect} from "react-router-dom";
+import { Link, useLoaderData, Form , redirect, useLocation} from "react-router-dom";
 import { obtenerEmpleados } from "../data/empleados";
 import Empleado from "../components/Empleado";
 import {obtenerCargos} from "../data/cargo_empleado"
@@ -18,7 +18,9 @@ export async function action({params}){
     return redirect('/empleados')
 }
 function Empleados() {
+
     const {empleados, cargos_empleados} = useLoaderData()
+    const location = useLocation()
 
     return (
         <>
@@ -55,6 +57,7 @@ function Empleados() {
 
                 <button  className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
                     <Link
+                        state={location.state}
                         to='/empleados/nuevo'>CREAR EMPLEADO</Link>
                 </button>
             </div>

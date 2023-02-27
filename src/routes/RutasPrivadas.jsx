@@ -2,7 +2,6 @@ import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import Login from '../pages/Login';
 
 export const RutasPrivadas = ({ usuario, children, redirectTo, setUsuario }) => {
-	console.log("usuario priv ",usuario)
 	
 	
 	if(usuario=="null"){

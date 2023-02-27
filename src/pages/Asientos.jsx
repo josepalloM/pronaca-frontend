@@ -1,4 +1,4 @@
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate, useLocation } from "react-router-dom";
 import {obtenerAsientos} from '../data/asiento'
 import {obtenerCuentas} from '../data/cuentas'
 import Asiento from '../components/Asiento'
@@ -10,6 +10,8 @@ export async function loader() {
 }
 
 function Asientos() {
+
+    const location = useLocation()
 
     const {asientos, cuentas} = useLoaderData()
     return (
@@ -43,6 +45,7 @@ function Asientos() {
 
                 <button  className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
                     <Link
+                        state={location.state}
                         to='/finanzas/asientos/nuevo'>CREAR ASIENTOS</Link>
                 </button>
             </div>
