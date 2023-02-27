@@ -89,34 +89,7 @@ import {action as eliminarDetalle_PedidoAction} from "./components/Detalle_Pedid
 // import ActualizarDetalle_Pedido, {loader as actualizarDetalle_PedidoLoader, action as actualizarDetalle_PedidoAction} from './pages/ActualizarDetalle_Pedido'
 
 
-// Import all of Bootstrap's JS
-//import * as bootstrap from 'bootstrap'
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Layout/>,
-
-    children: [
-      
-      {
-        path: '/login',
-        element: <Login/>,
-        //action: loginAction,
-        errorElement: <ErrorPage/>
-      },
-      {
-        path: '/registro',
-        element: <Registro/>
-      },
-
-
-      {
-        path:'/rutas',
-        element: <RutasPrivadas/>,
-      },
-
-
+/*
       {
         index: true,
         element: <Index/>,
@@ -487,11 +460,13 @@ const router = createBrowserRouter([
   },
  
 ])
-
+// ])
+*/
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    {/* <RouterProvider router={router} /> */}
+    <App/>
   </React.StrictMode>,
 )

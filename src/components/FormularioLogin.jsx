@@ -1,27 +1,29 @@
 const FormularioLogin = () => (
-    <>
+    <>    
         <div className="mb-4">
             <label
-                className="flex justify-start text-gray-800"
-                htmlFor="usuario"
+              className="flex justify-start text-gray-800"
+              htmlFor="nombre"
             >Usuario: </label>
             <input
-                id="usuario"
-                type="text"
-                className="mt-2 block w-full p-3 bg-gray-50"
-                placeholder="Usuario"
-                name="usuario" />
+              id="nombre"
+              type="text"
+              className="mt-2 block w-full p-3 bg-gray-50"
+              placeholder="Usuario"
+              required
+              autoComplete='off'
+              name="nombre" />
             <label
-                className="flex justify-start text-gray-800"
-                htmlFor="contrasenia"
+              className="flex justify-start text-gray-800"
+              htmlFor="cedula"
             >Contraseña </label>
             <input
-                id="contrasenia"
-                type="text"
-                className="mt-2 block w-full p-3 bg-gray-50"
-                placeholder="Contraseña"
-                name="contrasenia" />
-        </div><br></br>
+              id="cedula"
+              type="password"
+              className="mt-2 block w-full p-3 bg-gray-50"
+              placeholder="Contraseña"
+              name="cedula" />
+          </div><br></br>
     </>
 )
 
