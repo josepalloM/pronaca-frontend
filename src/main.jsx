@@ -80,6 +80,10 @@ import ActualizarBanco, {loader as obtenerBanco, action as actualizarBanco } fro
 
 //Detalle pedido
 import NuevoDetalle_Pedido, {action as nuevoDetalle_PedidoAction, loader as nuevoDetalle_PedidoLoader} from './pages/NuevoDetalle_Pedido'
+import Detalle_Pedidos, { loader as detalle_pedidoLoader } from './pages/Detalle_Pedidos'
+import {action as eliminarDetalle_PedidoAction} from "./components/Detalle_Pedido"
+// import ActualizarDetalle_Pedido, {loader as actualizarDetalle_PedidoLoader, action as actualizarDetalle_PedidoAction} from './pages/ActualizarDetalle_Pedido'
+
 
 // Import all of Bootstrap's JS
 //import * as bootstrap from 'bootstrap'
@@ -150,12 +154,30 @@ const router = createBrowserRouter([
       },
       //Detalle pedido
       {
+        path: '/opciones/detalle_pedidos',
+        element: <Detalle_Pedidos/>,
+        loader: detalle_pedidoLoader,
+        errorElement: <ErrorPage/>
+      },
+      {
         path: '/opciones/pedido/detalle/nuevo',
         element: <NuevoDetalle_Pedido/>,
         action: nuevoDetalle_PedidoAction,
         loader: nuevoDetalle_PedidoLoader,
         errorElement: <ErrorPage/>
       },
+      // {
+      //   path: '/detalle_pedido/:detalle_pedidoId/editar',
+      //   element: <ActualizarDetalle_Pedido />,
+      //   loader: actualizarDetalle_PedidoLoader,
+      //   action: actualizarDetalle_PedidoAction,
+      //   errorElement: <ErrorPage />
+      // },
+      // {
+      //   path:  '/opciones/detalle_pedidos/:detalle_pedidoId/eliminar',
+      //   action: eliminarDetalle_PedidoAction
+      // },
+
       {
         path: '/gestor',
         element: <EmpleadoProduccion/>

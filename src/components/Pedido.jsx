@@ -38,6 +38,11 @@ function Pedido({ pedido }) {
                     {ESTADO_PEDIDO}
                 </td>
                 <td className="p-4 flex justify-center gap-3">
+                <button
+                        type="button"
+                        className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
+                        onClick={() => navigate(`/detalle_pedido/${ID_PEDIDO}`)}
+                    >Ver</button>
                     <button
                         type="button"
                         className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"

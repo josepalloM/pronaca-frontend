@@ -4,7 +4,6 @@ import { useNavigate, Form, Link, useActionData, redirect, useLoaderData } from 
 import Error from "../components/Error";
 import { obtenerPedidos } from "../data/pedidos";
 import { agregarDetalle_Pedido } from "../data/detalle_pedidos";
-import FormularioDetalle_Pedido from "../components/FormularioDetalle_Pedido";
 import {obtenerItemsVenta} from "../data/itemsVenta";
 import ItemVenta from "../components/ItemVenta";
 
