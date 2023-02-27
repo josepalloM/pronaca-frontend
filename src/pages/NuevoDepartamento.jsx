@@ -70,11 +70,11 @@ function NuevoDepartamento() {
                 onClick={() => navigate(-1)}
               >Volver</button>
             </div>
-            </div>
-            </Form>
           </div>
-        </>
-        )
+        </Form>
+      </div>
+    </>
+  )
 }
 
-        export default NuevoDepartamento
+export default NuevoDepartamento

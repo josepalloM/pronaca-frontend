@@ -1,7 +1,15 @@
-import { useNavigate, Form, useActionData, redirect } from "react-router-dom"
+import { useNavigate, Form, Link, useActionData, redirect, useLoaderData } from "react-router-dom"
 import FormularioPedido from "../components/FormularioPedido";
 import Error from "../components/Error";
 import { agregarPedido } from "../data/pedidos";
+import {obtenerEmpleados} from "../data/empleados";
+import {obtenerClientes} from "../data/clientes";
+
+export async function loader(){
+    const empleados =  await obtenerEmpleados()
+    const clientes =  await obtenerClientes()
+    return {empleados, clientes}
+}
 
 export  async function action({request}){
     const formData = await request.formData()
@@ -20,12 +28,11 @@ export  async function action({request}){
   
     await agregarPedido(datos)
   
-    console.log(datos)
-    return redirect('/opciones/pedidos')
+    return redirect('/opciones/pedido/detalle/nuevo')
 }
 
 function NuevoPedido() {
-    
+    const {empleados, clientes} = useLoaderData()
     const errores = useActionData()
     const navigate = useNavigate()
 
@@ -40,31 +47,51 @@ function NuevoPedido() {
                 
                 {errores?.length && errores.map((error, i) => <Error key={i}>{error}</Error>)}
 
-                <Form
+                <Form 
                     method="POST"
-
-
                 >
-                    <FormularioPedido />
 
+                    <FormularioPedido clientes={clientes} empleados={empleados} />
                     <div className="grid grid-cols-2 gap-2">
+                        
+                    {/* <Link
+                            state={location.state}
+                            className={`${location.pathname === '/'}`}
+                                    to='/opciones/pedido/nuevo/detalle/nuevo'>
+                                    <button type="submit"
+                                    data-mdb-ripple="true"
+                                    data-mdb-ripple-color="light"
+                                    className="inline-block w-10/12 px-8 py-2.5 bg-orange-300 text-black
+                                    font-medium text-sm leading-tight uppercase rounded
+                                    shadow-md hover:bg-amber-400 hover:shadow focus:bg-grey
+                                    focus:shadow focus:outline-none focus:ring-0 active:bg-grey
+                                    active:shadow transition duration-150 ease-in-out">
+                                Pedidos 
+                            </button>
+                        </Link> */}
                         <div>
                             <input
                                 type="submit"
-                                className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
-                                value="Registrar Pedido"
+                                className="inline-block w-10/12 px-8 py-2.5 bg-orange-300 text-black
+                                    font-medium text-sm leading-tight uppercase rounded
+                                    shadow-md hover:bg-amber-400 hover:shadow focus:bg-grey
+                                    focus:shadow focus:outline-none focus:ring-0 active:bg-grey
+                                    active:shadow transition duration-150 ease-in-out"
+                                value="Siguiente"
                             />
                         </div>
                         <div>
                             <button
                                 type="button"
-                                className="felx justify-items-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
+                                className="inline-block w-10/12 px-8 py-2.5 bg-orange-300 text-black
+                                    font-medium text-sm leading-tight uppercase rounded
+                                    shadow-md hover:bg-amber-400 hover:shadow focus:bg-grey
+                                    focus:shadow focus:outline-none focus:ring-0 active:bg-grey
+                                    active:shadow transition duration-150 ease-in-out"
                                 onClick={() => navigate(-1)}
                             >Cancelar</button>
-                        </div>
-                        
+                        </div>        
                     </div>
-                    
                     
                 </Form>
             </div>

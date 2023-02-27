@@ -1,17 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import App from './App'
+/*
+import { createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Layout from './components/Layout'
 import NuevoEmpleado, {action as nuevoEmpleadoAction, loader as cargarDepartamentoCargo} from './pages/NuevoEmpleado'
 import NuevoDepartamento, {loader as nuevoDepartamentoLoader, action as nuevoDepartamentoAction} from './pages/NuevoDepartamento'
 import NuevoCargo, {loader as nuevoCargoLoader, action as nuevoCargoAction} from './pages/NuevoCargo' //
 import Index from './pages/Index'
 import Pedidos, { loader as pedidoLoader } from './pages/Pedidos'
+import {action as eliminarPedidoAction} from "./components/Pedido"
 import Item, { loader as itemsLoader } from './pages/Items'
 import Recetas_Produccion,{ loader as recetaLoader} from './pages/Receta'
 import NuevaReceta_Produccion ,{action as nuevoRecetaAction} from './pages/NuevoReceta'
-import PasoReceta,{ loader as pasorecetaLoader} from './pages/PasoReceta'
+import PasosReceta,{ loader as pasorecetaLoader} from './pages/PasoReceta'
+import NuevoPaso_Receta ,{action as nuevoPasoRecetaAction} from './pages/NuevoPasoReceta'
 
 import BalanceGeneral, { loader as balanceLoader } from './pages/BalanceGeneral'
 import EstadoFinanciero, { loader as estadoLoader } from './pages/EstadoFinanciero'
@@ -40,7 +44,7 @@ import NuevoListaItem, {action as nuevaListaItemAction} from './pages/NuevoLista
 import {action as eliminarListaItemAction} from './components/ListaItem'
 import {action as eliminarItemAction} from './components/Item'
 
-import NuevoPedido, {action as nuevoPedidoAction} from './pages/NuevoPedido'
+import NuevoPedido, {action as nuevoPedidoAction, loader as nuevoPedidoLoader} from './pages/NuevoPedido'
 import PedidosOpciones from './pages/PedidosOpciones'
 import Preventas, {loader as preventaLoader} from './pages/Preventas'
 import NuevaPreventa, {action as nuevaPreventaAction, loader as nuevaPreventaLoader} from './pages/NuevaPreventa'
@@ -58,9 +62,17 @@ import NuevoAsiento, {action as nuevoAsiento} from './pages/NuevoAsiento'
 import NuevoDetalleAsiento,{action as obtenerCuentasAsiento, loader as obtenerDetallesAsiento} from './pages/NuevoDetalleAsiento'
 import {action as eliminarAsiento} from './components/Asiento'
 import Asiento, {loader as obtenerAsientos} from './pages/Asientos'
+import Login, {action as loginAction} from './pages/Login'
+import Registro from './pages/Registro'
+import { RutasPrivadas} from './routes/RutasPrivadas'
+import Prueba from './pages/Prueba'
 
+
+//Detalle de asiento
+import DetalleAsiento, {loader as obtenerDetalle} from './pages/DetalleAsiento'
 import {action as nuevoDetalleAsiento} from './components/FormularioDetalleAsiento'
 import {loader as eliminarDetalleAsiento} from './pages/EliminarDetalleAsiento'
+import {loader as actualizarCierreDeCuentas} from './pages/ActualizarCierreDeCuentas'
 
 
 import NuevoParametro, {action as nuevoParametro} from './pages/NuevoIess'
@@ -71,22 +83,25 @@ import ParametrosIESS, {loader as parametros, action as eliminarIess} from './pa
 import Bancos, {loader as obtenerBancos, action as eliminarBanco} from './pages/Bancos'
 import NuevoBanco, {action as nuevoBanco} from './pages/NuevoBanco'
 import ActualizarBanco, {loader as obtenerBanco, action as actualizarBanco } from './pages/ActualizarBanco'
-// Import all of Bootstrap's JS
-//import * as bootstrap from 'bootstrap'
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Layout/>,
-    children: [
+//Detalle pedido
+import NuevoDetalle_Pedido, {action as nuevoDetalle_PedidoAction, loader as nuevoDetalle_PedidoLoader} from './pages/NuevoDetalle_Pedido'
+import Detalle_Pedidos, { loader as detalle_pedidoLoader } from './pages/Detalle_Pedidos'
+import {action as eliminarDetalle_PedidoAction} from "./components/Detalle_Pedido"
+// import ActualizarDetalle_Pedido, {loader as actualizarDetalle_PedidoLoader, action as actualizarDetalle_PedidoAction} from './pages/ActualizarDetalle_Pedido'
+
+
+
       {
         index: true,
-        element: <Index/>
+        element: <Index/>,
+        
       },
       {
         path: '/opciones',
-        element: <PedidosOpciones/>
+        element:<PedidosOpciones/>
       },
+      
       {
         path: '/opciones/preventa',
         element: <Preventas/>,
@@ -113,9 +128,35 @@ const router = createBrowserRouter([
         path: '/opciones/pedido/nuevo',
         element: <NuevoPedido/>,
         action: nuevoPedidoAction,
-        loader: pedidoLoader,
+        loader: nuevoPedidoLoader,
         errorElement: <ErrorPage/>
       },
+      //Detalle pedido
+      {
+        path: '/opciones/detalle_pedidos',
+        element: <Detalle_Pedidos/>,
+        loader: detalle_pedidoLoader,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: '/opciones/pedido/detalle/nuevo',
+        element: <NuevoDetalle_Pedido/>,
+        action: nuevoDetalle_PedidoAction,
+        loader: nuevoDetalle_PedidoLoader,
+        errorElement: <ErrorPage/>
+      },
+      // {
+      //   path: '/detalle_pedido/:detalle_pedidoId/editar',
+      //   element: <ActualizarDetalle_Pedido />,
+      //   loader: actualizarDetalle_PedidoLoader,
+      //   action: actualizarDetalle_PedidoAction,
+      //   errorElement: <ErrorPage />
+      // },
+      // {
+      //   path:  '/opciones/detalle_pedidos/:detalle_pedidoId/eliminar',
+      //   action: eliminarDetalle_PedidoAction
+      // },
+
       {
         path: '/gestor',
         element: <EmpleadoProduccion/>
@@ -132,10 +173,10 @@ const router = createBrowserRouter([
         element: <EmpleadosMenu/>
       },
 
-      // {
-      //   path:  '/pedidos/:pedidoId/eliminar',
-      //   action: eliminarPedidoAction
-      // },
+      {
+        path:  '/opciones/pedidos/:pedidoId/eliminar',
+        action: eliminarPedidoAction
+      },
       
       {
         path: '/produccion',
@@ -162,9 +203,16 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage/>
       },
       {
-        path: '/gestorpasoreceta',
-        element: <PasoReceta/>,
+        path: '/gestorpasoreceta/:pasorecetaId/pasos',
+        element: <PasosReceta/>,
         loader: pasorecetaLoader,
+        //action: pasosrecetaAction,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: '/pasosreceta/nuevo',
+        element: <NuevoPaso_Receta/>,
+        action: nuevoPasoRecetaAction,
         errorElement: <ErrorPage/>
       },
       {
@@ -366,6 +414,11 @@ const router = createBrowserRouter([
         action: nuevoAsiento
       },
       {
+        path: '/finanzas/asientos/:asientoId/detalle',
+        element: <DetalleAsiento/>,
+        loader: obtenerDetalle
+      },
+      {
         path: '/finanzas/asientos/nuevo/nuevaCuentaAsiento',
         element: <NuevoDetalleAsiento/>,
         loader: obtenerDetallesAsiento,
@@ -374,6 +427,10 @@ const router = createBrowserRouter([
       {
         path: '/finanzas/asientos/nuevo/nuevaCuentaAsiento/:detalleAsientoId',
         loader: eliminarDetalleAsiento
+      },
+      {
+        path: '/finanzas/asientos/nuevo/nuevaCuentaAsiento/cerrarCuentas/:asientoId',
+        loader: actualizarCierreDeCuentas
       },
       {
         path: '/finanzas/asientos',
@@ -405,11 +462,12 @@ const router = createBrowserRouter([
   },
  
 ])
-
-
+// ])
+*/
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    {/* <RouterProvider router={router} /> */}
+    <App/>
   </React.StrictMode>,
 )

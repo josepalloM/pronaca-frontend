@@ -1,15 +1,16 @@
-import { Link, useLoaderData } from "react-router-dom"
+import { Link, useLoaderData, useLocation} from "react-router-dom"
 import { obtenerPedidos } from "../data/pedidos"
 import Pedido from "../components/Pedido"
 
 export function loader() {
   const pedidos = obtenerPedidos()
-  console.log(pedidos)
   return pedidos
 }
 
 function Pedidos() {
   const pedidos = useLoaderData()
+  const location = useLocation()
+
   return (
     <>
       <h1 className="font-black text-4xl ">Pedidos</h1>
@@ -20,8 +21,10 @@ function Pedidos() {
           <table className="w-full bg-white shadow mt-5 table-auto">
             <thead className="bg-black text-white">
               <tr>
+                <th className="p-2">ID</th>
                 <th className="p-2">Fecha</th>
-                <th className="p-2">Devuelto</th>
+                <th className="p-2">Empleado</th>
+                <th className="p-2">Cliente</th>
                 <th className="p-2">Estado</th>
                 <th className="p-2">Acciones</th>
               </tr>
@@ -29,6 +32,7 @@ function Pedidos() {
             <tbody>
               {pedidos.map(pedido => (
                 <Pedido
+                  
                   pedido={pedido}
                   key={pedido.ID_PEDIDO}
                 />
@@ -42,7 +46,7 @@ function Pedidos() {
           className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
         >
           <Link
-
+            state={location.state}
             to='/opciones/pedido/nuevo'>CREAR Pedido</Link>
         </button>
       </div>

@@ -25,9 +25,26 @@ export async function action({ request }) {
   return redirect("/finanzas/balance");
 }
 
+
+
+
 function NuevoBalance() {
   const errores = useActionData();
   const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    // Validar el formulario antes de enviar los datos
+    const errores = await action({ request: new FormData(form) });
+    setErrores(errores);
+};
+
+
+
+    
+  
+  
 
   return (
     <>

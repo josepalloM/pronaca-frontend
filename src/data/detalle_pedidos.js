@@ -1,21 +1,21 @@
-export async function obtenerPedidos(){
-    const url = "http://localhost:4000/api/pedido"
+export async function obtenerDetalle_Pedidos(){
+    const url = "http://localhost:4000/api/detalle_pedido"
     const respuesta = await fetch(url)
     const resultado = await respuesta.json()
     return resultado
 }
 
-export async function obtenerPedido(id) {
-    const url = "http://localhost:4000/api/pedido/"
+export async function obtenerDetalle_Pedido(id) {
+    const url = "http://localhost:4000/api/detalle_pedido"
     const respuesta = await fetch(`${url}/${id}`)
     const resultado = await respuesta.json()
     return resultado
 }
 
-export async function agregarPedido(datos) {
+export async function agregarDetalle_Pedido(datos) {
 
     try {
-        const url = "http://localhost:4000/api/pedido/"
+        const url = "http://localhost:4000/api/detalle_pedido"
         const respuesta = await fetch(url, {
             method:'POST',
             body:JSON.stringify(datos),
@@ -29,9 +29,9 @@ export async function agregarPedido(datos) {
     }
 }
 
-export async function eliminarPedido(id){
+export async function eliminarDetalle_Pedido(id){
     try {
-        const url = "http://localhost:4000/api/pedido"
+        const url = "http://localhost:4000/api/detalle_pedido"
         const respuesta = await fetch(`${url}/${id}`, {
             method:'DELETE'
         })
@@ -41,9 +41,9 @@ export async function eliminarPedido(id){
     }
 }
 
-export async function actualizarPedido(id, datos){
+export async function actualizarDetalle_Pedido(id, datos){
     try {
-        const url = "http://localhost:4000/api/pedido"
+        const url = "http://localhost:4000/api/detalle_pedido"
         const respuesta = await fetch(`${url}/${id}`, {
             method:'PUT',
             body:JSON.stringify(datos),

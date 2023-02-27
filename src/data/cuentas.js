@@ -26,17 +26,6 @@ export async function agregarCuentas(datos) {
         console.log(error)
     }
 }
-export async function actualizarPasivos(id){
-    try {
-        const url = "http://localhost:4000/api/cuenta/cuentasPasivo"
-        const respuesta = await fetch(url, {
-            method:'GET'
-        })
-        await respuesta.json()
-    }catch (error){
-        console.log(error)
-    }
-}
 
 export async function actualizarCostosGastos(id){
     

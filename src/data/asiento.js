@@ -1,13 +1,8 @@
-export async function actualizarAsientos(){
-    try {
-        const url = "http://localhost:4000/api/asiento/cuentasAsiento"
-        const respuesta = await fetch(url, {
-            method:'GET'
-        })
-        await respuesta.json()
-    }catch (error){
-        console.log(error)
-    }
+export async function obtenerAsiento(id) {
+    const url = "http://localhost:4000/api/asiento"
+    const respuesta = await fetch(`${url}/${id}`)
+    const resultado = await respuesta.json()
+    return resultado
 }
 export async function obtenerAsientos(){
     const url = "http://localhost:4000/api/asiento/"

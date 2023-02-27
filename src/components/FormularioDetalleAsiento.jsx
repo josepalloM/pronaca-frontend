@@ -48,11 +48,11 @@ const FormularioDetalleAsiento = ({cuentas}) => {
                     htmlFor="cuenta"
                 >Descripión de cuenta:</label>
                 <div className="">
-                    {cuentaAsientos2.length ?(
+                    {cuentas.length ?(
                         <select id="cuenta" value={descripcionCuenta} name="cuenta" onChange={(event)=>setDescripcionCuenta(event.target.value)} className="form-control border-2 border-black">
                             <option>Selecciona una cuenta</option>
-                            {cuentaAsientos2.map( cuenta => (
-                                <option key={cuenta.ID_CUENTA} value={cuenta.DESCRIPCION_CUENTA}>{cuenta.DESCRIPCION_CUENTA}</option>                         
+                            {cuentas.map( cuenta => (
+                                <option key={cuenta.ID_CUENTA} value={cuenta.DESCRIPCION_CUENTA}>{cuenta.CODIGO_CUENTA} {cuenta.DESCRIPCION_CUENTA}</option>                         
                             ))}
                                                    
                         </select>
@@ -94,20 +94,6 @@ const FormularioDetalleAsiento = ({cuentas}) => {
                 ):(<p> No existe Monto</p>)}
                 </label>
             </div>  
-
-            <div className="mb-4">
-                <label
-                    className=" flex justify-start text-gray-800"
-                    htmlFor="haber"
-                >Haber:</label>
-                <input 
-                    id="haber"
-                    type="text"
-                    className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
-                    name="haber"
-                    defaultValue="0"
-                />              
-            </div>  
             <div className="mb-4">
                 <label
                     className=" flex justify-start text-gray-800"
@@ -121,6 +107,20 @@ const FormularioDetalleAsiento = ({cuentas}) => {
                     name="debe"
                 />   
             </div>
+            <div className="mb-4">
+                <label
+                    className=" flex justify-start text-gray-800"
+                    htmlFor="haber"
+                >Haber:</label>
+                <input 
+                    id="haber"
+                    type="text"
+                    className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
+                    name="haber"
+                    defaultValue="0"
+                />              
+            </div>  
+            
             <div className="grid grid-cols-2 gap-2">
                 <div>
                   <input
