@@ -30,7 +30,10 @@ const FormularioDetalleAsiento = ({cuentas}) => {
     var idCuentasHijos = [];
     var cuentaAsientos2 = [];
     //ceuntas Hijos
-    cuentasHijos = cuentas.filter(cuenta=>(cuenta.DESCRIPCION_CUENTA=="Banco Pichincha"||cuenta.DESCRIPCION_CUENTA=="Materia prima" || cuenta.DESCRIPCION_CUENTA=="Insumos"||cuenta.DESCRIPCION_CUENTA=="Producto"|| cuenta.DESCRIPCION_CUENTA=="Pago de nómina" || cuenta.DESCRIPCION_CUENTA=="Beneficios sociales" || cuenta.DESCRIPCION_CUENTA=="Ventas"||cuenta.DESCRIPCION_CUENTA=="Devoluciones"|| cuenta.DESCRIPCION_CUENTA=="Costos operativos" ||cuenta.DESCRIPCION_CUENTA=="Costos operativos"||cuenta.DESCRIPCION_CUENTA=="Costos de ventas" || cuenta.DESCRIPCION_CUENTA=="Gastos nómina"))    
+    cuentasHijos = cuentas.filter(cuenta=>(cuenta.DESCRIPCION_CUENTA=="Banco Pichincha"||cuenta.DESCRIPCION_CUENTA=="Banco Internacional"||cuenta.DESCRIPCION_CUENTA=="Materia prima" || 
+    cuenta.DESCRIPCION_CUENTA=="Insumos"||cuenta.DESCRIPCION_CUENTA=="Producto"|| cuenta.DESCRIPCION_CUENTA=="Aporte personal por pagar" || cuenta.DESCRIPCION_CUENTA=="Aporte patronal por pagar" || 
+    cuenta.DESCRIPCION_CUENTA=="Nómina por pagar" || cuenta.DESCRIPCION_CUENTA=="Ventas" ||cuenta.DESCRIPCION_CUENTA=="Devoluciones" ||cuenta.DESCRIPCION_CUENTA=="Costos personal comercial" || 
+    cuenta.DESCRIPCION_CUENTA=="Costos personal producción"||cuenta.DESCRIPCION_CUENTA=="Costos de ventas de mercancia"|| cuenta.DESCRIPCION_CUENTA=="Gastos personal administrativo" ||cuenta.DESCRIPCION_CUENTA=="Gastos personal financiero"))    
     cuentasHijos.forEach(cuenta=>idCuentasHijos.push(cuenta.ID_CUENTA))
     cuentaAsientos2 = cuentas.filter(cuenta => (idCuentasHijos.includes(cuenta.ID_CUENTA) == true)) 
 
@@ -45,11 +48,11 @@ const FormularioDetalleAsiento = ({cuentas}) => {
                     htmlFor="cuenta"
                 >Descripión de cuenta:</label>
                 <div className="">
-                    {cuentaAsientos2.length ?(
+                    {cuentas.length ?(
                         <select id="cuenta" value={descripcionCuenta} name="cuenta" onChange={(event)=>setDescripcionCuenta(event.target.value)} className="form-control border-2 border-black">
                             <option>Selecciona una cuenta</option>
-                            {cuentaAsientos2.map( cuenta => (
-                                <option key={cuenta.ID_CUENTA} value={cuenta.DESCRIPCION_CUENTA}>{cuenta.DESCRIPCION_CUENTA}</option>                         
+                            {cuentas.map( cuenta => (
+                                <option key={cuenta.ID_CUENTA} value={cuenta.DESCRIPCION_CUENTA}>{cuenta.CODIGO_CUENTA} {cuenta.DESCRIPCION_CUENTA}</option>                         
                             ))}
                                                    
                         </select>
@@ -66,7 +69,7 @@ const FormularioDetalleAsiento = ({cuentas}) => {
                 >Código: 
                 {cuentaAsientos2.length ?(      
                     cuentaAsientos2.filter(c => c.DESCRIPCION_CUENTA==descripcionCuenta).map( cuenta => (
-                        <h3 
+                        <h3 key={cuenta.ID_CUENTA}
                             id="codigo_cuenta"
                             placeholder="Código de la cuenta"
                             name="codigo_cuenta"
@@ -91,20 +94,6 @@ const FormularioDetalleAsiento = ({cuentas}) => {
                 ):(<p> No existe Monto</p>)}
                 </label>
             </div>  
-
-            <div className="mb-4">
-                <label
-                    className=" flex justify-start text-gray-800"
-                    htmlFor="haber"
-                >Haber:</label>
-                <input 
-                    id="haber"
-                    type="text"
-                    className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
-                    name="haber"
-                    defaultValue="0"
-                />              
-            </div>  
             <div className="mb-4">
                 <label
                     className=" flex justify-start text-gray-800"
@@ -118,6 +107,20 @@ const FormularioDetalleAsiento = ({cuentas}) => {
                     name="debe"
                 />   
             </div>
+            <div className="mb-4">
+                <label
+                    className=" flex justify-start text-gray-800"
+                    htmlFor="haber"
+                >Haber:</label>
+                <input 
+                    id="haber"
+                    type="text"
+                    className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
+                    name="haber"
+                    defaultValue="0"
+                />              
+            </div>  
+            
             <div className="grid grid-cols-2 gap-2">
                 <div>
                   <input

@@ -1,96 +1,161 @@
-import { Link, useLoaderData } from "react-router-dom";
-import {useState, useForm} from "react"
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
-const FormularioBalance = (informe_financiero_balance) => {
 
-    
-  
+const FormularioBalance = () => {
+    const [date, setDate] = useState(new Date().toISOString().substr(0, 10));
+    const { register, handleSubmit, errors } = useForm();
+
+    const handleChange = (event) => {
+        setDate(event.target.value);
+    };
+
+    const onSubmit = (data) => {
+        console.log(data);
+    };
+
     return (
         <>
-            <div className="my-4">
-                <p>Fecha Inicio: {date}</p>
-                <input
-                    type="date"
-                    onChange={handleChange}
-                    ref={dateInputRef}
-                    id="FECHA_INICIO"
-                    name="FECHA_INICIO"
-                />
-            </div>  
-
-            <div className="my-4">
-                <p>Fecha Fin: {date}</p>
-                <input
-                    type="date"
-                    onChange={handleChange}
-                    ref={dateInputRef}
-                    id="FECHA_FIN"
-                    name="FECHA_FIN"
-                />
-            </div>     
-
-
-
-            <div className="mb-4">
-                <label
-                    className="flex justify-start text-gray-800"
-                    htmlFor="patrimonio_empleado"
-                >Patrimonio:</label>
-                <input 
-                    id="patrimonio_empleado"
-                    type="text"
-                    className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
-                    placeholder="patrimonio del empleado"
-                    name="patrimonio_empleado"
-                />
-            </div>
-            <div className="mb-4">
-                <label
-                    className=" flex justify-start text-gray-800"
-                    htmlFor="activos_balance"
-                >Activos:</label>
-                <input 
-                    id="activos_balance"
-                    type="text"
-                    className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
-                    placeholder="Apellido del empleado"
-                    name="activos_balance"
-                />
-            </div>
-            <div className="mb-4">
-                <label
-                    className=" flex justify-start text-gray-800"
-                    htmlFor="pasivos_balance"
-                >Pasivos:</label>
-                <input 
-                    id="pasivos_balance"
-                    type="text"
-                    className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
-                    placeholder="Cedula del empleado"
-                    name="pasivos_balance"
-                    //pattern="[0-9]{10}"
-                />
-            </div>
-            <div className="mb-4">
-                <label
-                    className=" flex justify-start text-gray-800"
-                    htmlFor="resultado"
-                >Resultado:</label>
-                <input 
-                    id="resultado"
-                    type="text"
-                    className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
-                    placeholder="E-mail del empleado"
-                    name="resultado"
-                    //pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$"
-                />
-            </div>
-          
             
+
+<div className="flex">
+  <div className="mb-4 mr-4">
+    <label
+      className="flex justify-start text-gray-800"
+      htmlFor="fecha_inicio"
+    >
+      Fecha de Inicio:{" "}
+    </label>
+    <input
+      id="fecha_inicio"
+      type="date"
+      className="mt-2 block w-full p-3 bg-gray-50"
+      placeholder="Fecha de Inicio"
+      name="fecha_inicio"
+    />
+  </div>
+  <div className="mb-4">
+    <label
+      className="flex justify-start text-gray-800"
+      htmlFor="fecha_fin"
+    >
+      Fecha de Fin:{" "}
+    </label>
+    <input
+      id="fecha_fin"
+      type="date"
+      className="mt-2 block w-full p-3 bg-gray-50"
+      placeholder="Fecha de Fin"
+      name="fecha_fin"
+      defaultValue={new Date().toISOString().substr(0, 10)}
+    />
+    
+  </div>
+</div>
+
+{/* 
+
+<div className="mb-4">
+   <label
+      className="flex justify-start text-gray-800"
+      htmlFor="activos"
+   >Activos: </label>
+   <input
+      id="activos"
+      type="text"
+      className="mt-2 block w-full p-3 bg-gray-50"
+      placeholder="Valor de los activos"
+      name="activos"
+      
+   />
+   
+</div>
+
+
+<div className="mb-4">
+   <label
+      className="flex justify-start text-gray-800"
+      htmlFor="pasivos"
+   >Activos: </label>
+   <input
+      id="pasivos"
+      type="text"
+      className="mt-2 block w-full p-3 bg-gray-50"
+      placeholder="Valor de los pasivos"
+      name="pasivos"
+      
+   />
+   
+</div>
+
+<div className="mb-4">
+   <label
+      className="flex justify-start text-gray-800"
+      htmlFor="resultados"
+   >Resultados: </label>
+   <input
+      id="resultados"
+      type="text"
+      className="mt-2 block w-full p-3 bg-gray-50"
+      placeholder="Valor de los resultados"
+      name="resultados"
+      
+   />
+   
+</div>
+
+
+
+<div className="mb-4">
+   <label
+      className="flex justify-start text-gray-800"
+      htmlFor="activos"
+   >Activos: </label>
+   <input
+      id="activos"
+      type="number"
+      className="mt-2 block w-full p-3 bg-gray-50"
+      placeholder="Valor de los activos"
+      name="activos"
+      ref={register({ required: true })}
+   />
+   {errors.activos && <span className="text-red-500">Campo requerido</span>}
+</div>
+<div className="mb-4">
+   <label
+      className="flex justify-start text-gray-800"
+      htmlFor="pasivos"
+   >Pasivos: </label>
+   <input
+      id="pasivos"
+      type="number"
+      className="mt-2 block w-full p-3 bg-gray-50"
+      placeholder="Valor de los pasivos"
+      name="pasivos"
+      ref={register({ required: true })}
+   />
+   {errors.pasivos && <span className="text-red-500">Campo requerido</span>}
+</div>
+<div className="mb-4">
+   <label
+      className="flex justify-start text-gray-800"
+      htmlFor="patrimonio"
+   >Patrimonio: </label>
+   <input
+      id="patrimonio"
+      type="number"
+      className="mt-2 block w-full p-3 bg-gray-50"
+      placeholder="Valor del patrimonio"
+      name="patrimonio"
+      ref={register({ required: true })}
+   />
+   {errors.patrimonio && <span className="text-red-500">Campo requerido</span>}
+</div>
+        */}
+
+
         </>
-    )
-}
-
-export default FormularioBalance
-
+    );
+};
+export default FormularioBalance;
 

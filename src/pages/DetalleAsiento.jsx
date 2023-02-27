@@ -1,62 +1,45 @@
 import {useNavigate, Form, useActionData, redirect, useLoaderData} from "react-router-dom"
-import FormularioDetalleAsiento from "../components/FormularioDetalleAsiento"
 import Error from "../components/Error";
-import {obtenerDetalle, cerrarCuentas } from "../data/detalle_asiento";
-import {obtenerCuentas} from "../data/cuentas"
-import { obtenerUltimoAsiento } from "../data/asiento";
+import { obtenerDetalle} from "../data/detalle_asiento";
+import { obtenerAsiento } from "../data/asiento";
 
-export async function loader() {
-  const ultimoAsiento = await obtenerUltimoAsiento(1)
-  const detallesAsiento = await obtenerDetalle(ultimoAsiento[0].ID_ASIENTO)
-  const cuentas = await obtenerCuentas()
-
+export async function loader({params}) {
+  const asiento = await obtenerAsiento(params.asientoId)
+  const detallesAsiento = await obtenerDetalle(asiento[0].ID_ASIENTO)
   //calcular debe y haber
   let debe = 0
   let haber = 0
   detallesAsiento.map(detalle => {debe=debe+detalle.DEBE; haber=haber+detalle.HABER})
   
-  return {detallesAsiento,cuentas, ultimoAsiento, debe, haber}
+  return {detallesAsiento,asiento, debe, haber}
 }
 
-export  async function action({request}){
-  const formData = await request.formData()
-  const datos = Object.fromEntries(formData)
-  
-  //validaciones
-  const errores = []
-  if(Object.values(datos).includes('')){
-    errores.push('Todos los campos son obligatorios')
-  }
-
-  //Retornar datos si hay erroes
-  if(Object.keys(errores).length){
-    return errores
-  }
-
-  await agregarCuentas(datos)
- //await cerrarCuentas(1)
-  return redirect('/finanzas/cuentas')
-}
-
-function NuevDetalleAsiento() {
-  const {detallesAsiento, cuentas, ultimoAsiento, debe, haber}= useLoaderData()
+function DetalleAsiento() {
+  const {detallesAsiento, asiento, debe, haber}= useLoaderData()
   const errores = useActionData()
   const navigate = useNavigate()
-  
     
   return (
     <>
-        <h1 className="font-black text-4xl text-black">Nuevo Detalle Del Asiento --{ultimoAsiento[0].descripcion_asiento}--</h1>
-        <p className="mt-3">Llena todos los campos para agregar una nueva Cuenta</p>
-
+        <h1 className="font-black text-4xl text-black">Detalle Del Asiento --{asiento[0].descripcion_asiento}--</h1>
+        
         <div className=" flex justify-start bg-black text-white rounded md: w-3/4 mx-auto px-5 py-2 mt-6">Cuenta</div>
 
         <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
           {errores?.length && errores.map( (error, i) =>  <Error key={i}>{error}</Error>)}
-
-          <FormularioDetalleAsiento cuentas={cuentas}/>
-          
-          
+            <div className="mb-4">
+                <label
+                    className="flex justify-start text-gray-800"
+                    htmlFor="fecha_asiento"
+                >Fecha Asiento:</label>
+                <input 
+                    id="fecha_asiento"
+                    type="text"
+                    className="mt-2 block w-full p-3 bg-gray-50"
+                    defaultValue={asiento[0].FECHA_ASIENTO}
+                    name="fecha_asiento"
+                />
+            </div>
             <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">
                 {detallesAsiento.length ? (
                     <table className="w-full bg-white shadow mt-5 table-auto">
@@ -124,30 +107,24 @@ function NuevDetalleAsiento() {
             </div>
               {debe===haber ? 
               <div>
-                <p className="text-red-600 hover:text-blue-700 uppercase font-bold text-x">VÁLIDO</p>
-                <div>
-                  <button
-                    type="button"
-                    className="felx justify-items-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
-                    onClick={() => navigate(`/finanzas/asientos/nuevo/nuevaCuentaAsiento/cerrarCuentas/${ultimoAsiento[0].ID_ASIENTO}`)}
-                    disabled={false}
-                  >Guardar</button>
-                </div>
+                <p className="text-red-600 uppercase font-bold text-x">VÁLIDO</p>
               </div>:
               <div>
                 <p className="uppercase font-bold text-x">No VÁLIDO</p>
-                <div>
-                <button
-                  type="button"
-                  className="felx justify-items-center mt-3 rounded bg-orange-200 p-2 uppercase font-bold text-black text-sm"
-                  disabled={true}
-                >Guardar</button>
-              </div>
             </div>
               } 
+            <div className="grid grid-cols-2 gap-2">  
+                <div>
+                    <button
+                        type="button"
+                        className="felx justify-items-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
+                        onClick={() => navigate(-1)}
+                    >Cancelar</button>
+                </div>            
+            </div>
         </div>
     </>
   )
 }
 
-export default NuevDetalleAsiento
+export default DetalleAsiento

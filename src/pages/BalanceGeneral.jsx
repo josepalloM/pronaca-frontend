@@ -31,21 +31,22 @@ return (
                         {balance.map(balance => (
                             <Balance
                                 balance={balance}
-                                key={balance.id}
+                                key={balance.ID_INFORME_FINANCIERO}
                             />
                         ))}
                     </tbody>
+
                 </table>
             ) : (
                 <p className="text-center mt-10"> No existe balances</p>
             )}
         </div>
         <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
-            <Link to="/balance/nuevo">CREAR BALANCE</Link>
+            <Link to="/finanzas/balance/nuevo">CREAR BALANCE</Link>  {/*/balance/nuevo */}
+
         </button>
     </>
 );
-
 }
 
 export default BalanceGeneral;
