@@ -12,7 +12,8 @@ import {action as eliminarPedidoAction} from "./components/Pedido"
 import Item, { loader as itemsLoader } from './pages/Items'
 import Recetas_Produccion,{ loader as recetaLoader} from './pages/Receta'
 import NuevaReceta_Produccion ,{action as nuevoRecetaAction} from './pages/NuevoReceta'
-import PasoReceta,{ loader as pasorecetaLoader} from './pages/PasoReceta'
+import PasosReceta,{ loader as pasorecetaLoader} from './pages/PasoReceta'
+import NuevoPaso_Receta ,{action as nuevoPasoRecetaAction} from './pages/NuevoPasoReceta'
 
 import BalanceGeneral, { loader as balanceLoader } from './pages/BalanceGeneral'
 import EstadoFinanciero, { loader as estadoLoader } from './pages/EstadoFinanciero'
@@ -224,9 +225,16 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage/>
       },
       {
-        path: '/gestorpasoreceta',
-        element: <PasoReceta/>,
+        path: '/gestorpasoreceta/:pasorecetaId/pasos',
+        element: <PasosReceta/>,
         loader: pasorecetaLoader,
+        //action: pasosrecetaAction,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: '/pasosreceta/nuevo',
+        element: <NuevoPaso_Receta/>,
+        action: nuevoPasoRecetaAction,
         errorElement: <ErrorPage/>
       },
       {
