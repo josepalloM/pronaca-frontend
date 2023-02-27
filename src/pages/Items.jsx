@@ -1,10 +1,14 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { obtenerItems } from "../data/items";
 import Item from "../components/Item";
+import { cuentasInventario } from "../data/cuentas.js"
 
-export function loader() {
+export async function loader() {
+    await cuentasInventario(0)
+
     const items = obtenerItems()
     return items
+    
 }
 
 function Items() {
