@@ -40,7 +40,7 @@ function ItemVenta({item, pedido, insertarItem}) {
                         onChange={(event) => setCantidad(event.target.valueAsNumber)}
                     />
                     <div>${PRECIO_ITEM * cantidad}</div>
-                    <button type='button' onClick={() => insertarItem(ID_PEDIDO, ID_ITEM, cantidad, PRECIO_ITEM)}>Añadir producto</button>
+                    <button type='button' onClick={() => insertarItem(ID_PEDIDO, ID_ITEM, cantidad, PRECIO_ITEM * cantidad)}>Añadir producto</button>
                 </div>
             </div>
         </>
