@@ -54,9 +54,10 @@ function Item({ listaItem }) {
                         }
                     }}
                 >
-                    <button type="submit"
-                        className="text-red-600 hover:text-blue-700 uppercase font-bold text-xs"
-                    >Eliminar</button>
+                    <button type="button"
+                        className="text-black-600 hover:text-blue-700 uppercase font-bold text-xs"
+                        onClick={() => navigate('/item/nuevo')}
+                    >Seleccionar</button>
                 </Form>
             </td>
         </tr>
