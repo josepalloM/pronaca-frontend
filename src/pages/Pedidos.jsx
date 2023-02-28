@@ -1,5 +1,6 @@
 import { Link, useLoaderData, useLocation} from "react-router-dom"
 import { obtenerPedidos } from "../data/pedidos"
+import { actualizarCuentasPedidos } from "../data/cuentas"
 import Pedido from "../components/Pedido"
 
 export function loader() {
@@ -8,6 +9,8 @@ export function loader() {
 }
 
 function Pedidos() {
+  actualizarCuentasPedidos(0)
+
   const pedidos = useLoaderData()
   const location = useLocation()
 

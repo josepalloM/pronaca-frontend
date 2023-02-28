@@ -46,7 +46,13 @@ export async function cuentasInventario(id){
     
     const url = "http://localhost:4000/api/cuenta"
     await fetch(`${url}/cuentasInventario/${id}`)
+  
+}
 
+export async function actualizarCuentasPedidos(id){
+    
+    const url = "http://localhost:4000/api/cuenta"
+    await fetch(`${url}/cuentasPedidos/${id}`)
     
 }
 export async function eliminarCuenta(id){
