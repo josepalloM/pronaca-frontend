@@ -123,7 +123,11 @@ function App() {
                             path: '/opciones',
                             element: <PedidosOpciones />
                         },
-
+                        {
+                            path: '/bodegas',
+                            element: <Bodegas />,
+                            errorElement: <ErrorPage />
+                        },
                         {
                             path: '/opciones/preventa',
                             element: <Preventas />,

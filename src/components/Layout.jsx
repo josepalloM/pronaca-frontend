@@ -129,7 +129,25 @@ function Layout() {
                         </Link>
                         </div>
                     </li>
-                    
+                    <li >
+                        <div className={`my-2 text-center ${!open && "scale-0"}`}>
+                            <Link
+                                state={location.state}
+                                className={`${location.pathname === '/' }`}
+                                to='/bodegas'>
+                                <button type="button"
+                                        data-mdb-ripple="true"
+                                        data-mdb-ripple-color="light"
+                                        className="inline-block w-10/12 px-6 py-2.5 bg-white text-black
+                                    font-medium text-xs leading-tight uppercase rounded
+                                    shadow-md hover:bg-amber-400 hover:shadow-lg focus:bg-grey
+                                    focus:shadow focus:outline-none focus:ring-0 active:bg-grey
+                                    active:shadow transition duration-150 ease-in-out">
+                                    Bodegas
+                                </button>
+                            </Link>
+                        </div>
+                    </li>
                                        
                     <li >
                         {location.state?.user ? (
