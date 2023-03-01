@@ -1,4 +1,4 @@
-import { Form, useNavigate, redirect } from "react-router-dom";
+import { Link, Form, useNavigate, redirect } from "react-router-dom";
 import { eliminarPedido } from "../data/pedidos.js";
 
 export async function action({ params }) {
@@ -34,10 +34,12 @@ function Pedido({ pedido }) {
         <button
           type="button"
           className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
-          onClick={() => navigate(`/detalle_pedido/${ID_PEDIDO}`)}
         >
-          Ver
+          <Link state={location.state} to="/opciones/detalle_pedidos">
+            Ver
+          </Link>
         </button>
+
         <button
           type="button"
           className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"

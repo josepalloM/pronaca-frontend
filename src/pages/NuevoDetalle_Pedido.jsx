@@ -54,8 +54,8 @@ function NuevoPedido() {
     const [detalle, setDetalle] = useState([]);
     const [newPedido, setNewPedido] = useState(pedidoEditar);
 
-    const insertarItem = (numPedido,item,cantidad,precio) =>{
-        setDetalle(prevDetalle => [...prevDetalle, { id_pedido: numPedido, id_item: item, cantidad_pedido:cantidad, precio_detalle_pedido: precio}])
+    const insertarItem = (numPedido, item, cantidad, subtotal, precio) =>{
+        setDetalle(prevDetalle => [...prevDetalle, { id_pedido: numPedido, id_item: item, cantidad_pedido:cantidad, subtotal_detalle_pedido:subtotal, precio_detalle_pedido: precio}])
         // console.log(detalle)
         // const precioPedido =+ precio
         // setNewPedido(prevPedido => [...prevPedido, { iva_pedido: precio*0.12, subtotal_pedido: precio-precio*0.12, total_pedido: precio}])
