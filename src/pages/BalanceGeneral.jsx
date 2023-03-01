@@ -4,7 +4,7 @@ import Balance from "../components/Balance";
 import { useState } from "react";
 import VerDetalleBalance from "../components/VerDetalleBalanceRegistro.jsx";
 
-export async function loader() {
+export async function loader() {        
 const balance = await obtenerBalance();
 return { balance };
 }

@@ -1,4 +1,4 @@
-import {agregarBalance, obtenerBalance,verDetalleBalance} from "../data/balance.js";
+import {obtenerBalance,verDetalleBalance} from "../data/balance.js";
 import Error from "../components/Error.jsx";
 import {Form, useNavigate, useLoaderData, useActionData, redirect} from "react-router-dom";
 import VerDetalleBalanceRegistro from '../components/VerDetalleBalanceRegistro.jsx' 
@@ -16,27 +16,7 @@ export async function loader({params}){
     return balance
 }
 
-export async function action({request, params}){
-    const formData = await request.formData()
 
-    const datos = Object.fromEntries(formData)
-
-    //Validacion
-    const errores = []
-    if (Object.values(datos).includes('')){
-        errores.push('Todos los campos son necesarios')
-    }
-
-    //Retornar datos si ha errores
-    if (Object.keys(errores).length){
-        return errores
-    }
-
-    // Actualizar Balance
-    await  actualizarBalance(params.id_balance, datos)
-    console.log(datos)
-    return redirect('/finanzas/balance')
-};
 
 function VerDetalleBalance() {
 
