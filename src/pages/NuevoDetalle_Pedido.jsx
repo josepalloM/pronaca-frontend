@@ -3,15 +3,17 @@ import { useState } from 'react';
 import { useNavigate, Form, Link, useActionData, redirect, useLoaderData } from "react-router-dom"
 import Error from "../components/Error";
 import { obtenerPedidos } from "../data/pedidos";
+import { obtenerPedido } from "../data/pedidos";
+import { actualizarPedido } from "../data/pedidos";
 import { agregarDetalle_Pedido } from "../data/detalle_pedidos";
 import {obtenerItemsVenta} from "../data/itemsVenta";
 import ItemVenta from "../components/ItemVenta";
 
 export async function loader(){
-    const pedidos =  await obtenerPedidos()
-    const pedido = $(pedidos).get(-1)
+    const pedido = $(await obtenerPedidos()).get(-1)
+    const pedidoEditar = obtenerPedido(pedido.ID_PEDIDO)
     const items = await obtenerItemsVenta()
-    return {pedido, items}
+    return {pedido, pedidoEditar,items}
 }
 
 export  async function action({request}){
@@ -45,20 +47,27 @@ export  async function action({request}){
 // }
 
 function NuevoPedido() {
-    const {pedido, items} = useLoaderData()
+    const {pedido, pedidoEditar, items} = useLoaderData()
     const errores = useActionData()
     const navigate = useNavigate()
 
     const [detalle, setDetalle] = useState([]);
+    const [newPedido, setNewPedido] = useState(pedidoEditar);
 
     const insertarItem = (numPedido,item,cantidad,precio) =>{
         setDetalle(prevDetalle => [...prevDetalle, { id_pedido: numPedido, id_item: item, cantidad_pedido:cantidad, precio_detalle_pedido: precio}])
         // console.log(detalle)
+        // const precioPedido =+ precio
+        // setNewPedido(prevPedido => [...prevPedido, { iva_pedido: precio*0.12, subtotal_pedido: precio-precio*0.12, total_pedido: precio}])
+        console.log(newPedido)
     }
 
     const handleSubmit = (e) =>{
         console.log(detalle)
         agregarDetalle_Pedido(detalle)
+        ////quitarCantidadBodega////
+        // actualizarPedido(detalle.ID_PEDIDO, newPedido)
+
 
     }
 
