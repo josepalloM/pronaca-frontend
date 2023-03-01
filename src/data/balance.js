@@ -23,3 +23,11 @@ export async function agregarBalance(datos) {
     }
 
 }
+
+
+export async function obtenerDetalleBalance(id) {
+    const url = "http://localhost:4000/api/detalle_balance"
+    const respuesta = await fetch(`${url}/${id}`)
+    const resultado = await respuesta.json()
+    return resultado
+}

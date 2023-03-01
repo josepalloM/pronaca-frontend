@@ -20,7 +20,7 @@ return (
                 <button
                     type="button"
                     className="text-blue-600 hover:text-green-700 uppercase font-bold text-xs"
-                    onClick={() => navigate(`#`)}
+                    onClick={() => navigate(`/finanzas/balance/${id_balance}/detalle`)}  //``/finanzas/asientos/${ID_ASIENTO}/detalle`
                 >
                     Ver Detalle
                 </button>
