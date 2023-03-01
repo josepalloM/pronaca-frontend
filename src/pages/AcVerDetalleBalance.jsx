@@ -1,10 +1,11 @@
-import {agregarBalance, obtenerBalance} from "../data/balance.js";
+import {agregarBalance, obtenerBalance,verDetalleBalance} from "../data/balance.js";
 import Error from "../components/Error.jsx";
 import {Form, useNavigate, useLoaderData, useActionData, redirect} from "react-router-dom";
 import VerDetalleBalanceRegistro from '../components/VerDetalleBalanceRegistro.jsx' 
 
 export async function loader({params}){
-    const balance =  await obtenerBalance(params.balanceId)
+    const balance =  await verDetalleBalance(params.balanceId)
+    //const balance =  await obtenerBalance(params.balanceId)
     if (Object.values(balance).length===0){
         throw new Response('', {
             status: 404,
@@ -48,10 +49,10 @@ function VerDetalleBalance() {
         
 
             
-        <h1 className="font-black text-4xl text-black">Ver detalle empleado</h1>
+        <h1 className="font-black text-4xl text-black">Ver detalle Balance</h1>
             <p className="mt-3">A continuación podrás ver el detalle de un balance</p>
 
-            <div className=" flex justify-start bg-black text-white rounded md: w-3/4 mx-auto px-5 py-2 mt-6">Departamento</div>
+            <div className=" flex justify-start bg-black text-white rounded md: w-3/4 mx-auto px-5 py-2 mt-6">Informes de Balances</div>
             <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
                 
                 

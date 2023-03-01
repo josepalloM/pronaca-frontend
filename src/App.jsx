@@ -87,7 +87,8 @@ import { action as eliminarDetalle_PedidoAction } from "./components/Detalle_Ped
 // import ActualizarDetalle_Pedido, {loader as actualizarDetalle_PedidoLoader, action as actualizarDetalle_PedidoAction} from './pages/ActualizarDetalle_Pedido'
 
 ///importar editar Balance
-import VerDetalleBalance, { loader as obtenerDetalleBalance } from './pages/AcVerDetalleBalance'
+import VerDetalleBalance, { loader as obtenerDetalleBalance,action as cargarDetalleBalance } from './pages/AcVerDetalleBalance'
+
 
 
 function App() {
@@ -474,10 +475,10 @@ function App() {
                             action: nuevoBalance
                         },
                         {
-                            path: '/finanzas/balance/balanceId/detalle',
+                            path: '/finanzas/balance/:balanceId/detalle',
                             element: <VerDetalleBalance />,
-                            loader: obtenerDetalleBalance
-                            
+                            loader: obtenerDetalleBalance,
+                            action: cargarDetalleBalance
                         },
 
                     

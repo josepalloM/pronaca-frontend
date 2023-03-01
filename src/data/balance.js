@@ -25,9 +25,15 @@ export async function agregarBalance(datos) {
 }
 
 
-export async function obtenerDetalleBalance(id) {
-    const url = "http://localhost:4000/api/detalle_balance"
-    const respuesta = await fetch(`${url}/${id}`)
-    const resultado = await respuesta.json()
-    return resultado
-}
+export async function verDetalleBalance(id) {
+    try {
+      const url = "http://localhost:4000/api/balance";
+      
+      const respuesta = await fetch(url);
+      return await respuesta.json();
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+  

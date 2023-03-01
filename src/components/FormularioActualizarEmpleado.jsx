@@ -21,6 +21,7 @@ const FormularioActualizarEmpleado = ({empleado, departamentos, cargos_empleado}
                     defaultValue={empleado?.NOMBRE_EMPLEADO}
                     name="nombre_empleado"
                     
+                    
                     /// add
                 />
             </div>
