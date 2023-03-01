@@ -23,14 +23,13 @@ function Bodegas(){
                         <tr>
                             <th className="p-2">ID</th>
                             <th className="p-2">Nombre</th>
-                            <th className="p-2">Sector Ubicación</th>
+                            <th className="p-2">Sector</th>
                             <th className="p-2">Acciones</th>
                         </tr>
                         </thead>
                         <tbody>
                         {bodegas.map(bodega => (
                             <Bodega
-
                                 bodega={bodega}
                                 key={bodega.ID_BODEGA}
                             />

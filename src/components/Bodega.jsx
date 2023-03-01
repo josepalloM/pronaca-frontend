@@ -1,5 +1,6 @@
 import {Form, redirect, useNavigate} from "react-router-dom";
 import {eliminarBodega} from "../data/bodegas";
+import VerBodega from "../pages/VerBodega.jsx";
 
 export async function action({params}){
     await eliminarBodega(params.bodegaId)
@@ -13,7 +14,6 @@ function Bodega({bodega}){
         SECTOR_UBICACION,
         ID_BODEGA
     } = bodega
-
     return (
         <tr className="border-b">
             <td className="">
@@ -25,7 +25,13 @@ function Bodega({bodega}){
             <td>
                 {SECTOR_UBICACION}
             </td>
-            <td className="p-4 flex justify-center gap-3">
+            <td className="py-4 flex justify-center gap-3">
+                <button
+                    type="button"
+                    className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
+                    onClick={() => navigate(`/bodegas/${ID_BODEGA}/editar`)}
+                >Ver Productos de la Bodega</button>
+
                 <Form
                     method='post'
                     action={`/bodegas/${ID_BODEGA}/eliminar`}

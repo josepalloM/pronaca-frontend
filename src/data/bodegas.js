@@ -32,3 +32,10 @@ export async function eliminarBodega(id){
         console.log(error)
     }
 }
+
+export async function obtenerBodega(id) {
+    const url = "http://localhost:4000/api/bodega"
+    const respuesta = await fetch(`${url}/${id}`)
+    const resultado = await respuesta.json()
+    return resultado
+}
