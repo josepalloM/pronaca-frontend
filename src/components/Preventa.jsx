@@ -7,7 +7,6 @@ export async function action({params}){
 }
 
 function Preventa({preventa}) {
-    console.log(preventa)
     const {
         ID_PREVENTA,
         ID_EMPLEADO,

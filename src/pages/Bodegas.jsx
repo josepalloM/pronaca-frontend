@@ -1,7 +1,7 @@
 import {obtenerBodegas} from "../data/bodegas.js";
-import {Link, useLoaderData} from "react-router-dom";
-import Pedido from "../components/Pedido.jsx";
-import Pedidos from "./Pedidos.jsx";
+import {Link, useLoaderData, useLocation} from "react-router-dom";
+import Bodega from "../components/Bodega";
+
 
 export function loader() {
     const bodegas = obtenerBodegas()
@@ -10,7 +10,7 @@ export function loader() {
 
 function Bodegas(){
     const bodegas = useLoaderData()
-
+    const location = useLocation()
     return(
         <>
             <h1 className="font-black text-4xl ">Bodegas</h1>
@@ -45,7 +45,7 @@ function Bodegas(){
                 >
                     <Link
                         state={location.state}
-                        to='/opciones/pedido/nuevo'>CREAR Bodega</Link>
+                        to='/opciones/bodega/nuevo'>CREAR Bodega</Link>
                 </button>
             </div>
         </>

@@ -44,6 +44,9 @@ import NuevoPedido, { action as nuevoPedidoAction, loader as nuevoPedidoLoader }
 import PedidosOpciones from './pages/PedidosOpciones'
 import Preventas, { loader as preventaLoader } from './pages/Preventas'
 import NuevaPreventa, { action as nuevaPreventaAction, loader as nuevaPreventaLoader } from './pages/NuevaPreventa'
+import Bodegas, { loader as bodegaLoader} from './pages/Bodegas'
+import NuevaBodega, { action as nuevaBodegaAction} from './pages/NuevaBodega'
+import { action as eliminarBodegaAction } from "./components/Bodega"
 import { action as eliminarPreventaAction } from "./components/Preventa"
 import ActualizarPedido, { loader as actualizarPedidoLoader, action as actualizarPedidoAction } from './pages/ActualizarPedido'
 import ActualizarEmpleado, { loader as actualizarEmpleadoLoader, action as actualizarEmpleadoAction } from './pages/ActualizarEmpleado.jsx'
@@ -124,9 +127,19 @@ function App() {
                             element: <PedidosOpciones />
                         },
                         {
-                            path: '/bodegas',
+                            path: '/opciones/bodega',
                             element: <Bodegas />,
+                            loader: bodegaLoader,
                             errorElement: <ErrorPage />
+                        },
+                        {
+                            path: '/opciones/bodega/nuevo',
+                            element: <NuevaBodega />,
+                            action: nuevaBodegaAction
+                        },
+                        {
+                            path: '/bodegas/:bodegaId/eliminar',
+                            action: eliminarBodegaAction
                         },
                         {
                             path: '/opciones/preventa',

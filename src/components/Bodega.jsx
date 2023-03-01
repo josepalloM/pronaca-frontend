@@ -1,7 +1,9 @@
 import {Form, redirect, useNavigate} from "react-router-dom";
+import {eliminarBodega} from "../data/bodegas";
 
 export async function action({params}){
-    return redirect('/opciones/bodegas')
+    await eliminarBodega(params.bodegaId)
+    return redirect('/opciones/bodega')
 }
 
 function Bodega({bodega}){
@@ -43,3 +45,5 @@ function Bodega({bodega}){
         </tr>
     )
 }
+
+export default Bodega
