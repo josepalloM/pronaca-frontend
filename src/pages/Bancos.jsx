@@ -1,17 +1,22 @@
-import { Link, useLoaderData, Form, redirect, useNavigate } from "react-router-dom"
+import { Link, useLoaderData, Form, redirect, useNavigate, useLocation } from "react-router-dom"
 import { obtenerBancos, eliminarBanco} from "../data/banco"
 
 export function loader() {
   const bancos = obtenerBancos()
   return bancos
 }
+
 export async function action({params}){
   await eliminarBanco(params.bancoId)
   return redirect('/finanzas/bancos')
 }
+
 function ParametrosIESS() {
+
   const bancos = useLoaderData()
   const navigate = useNavigate()
+  const location = useLocation()
+
   return (
     <>
       <h1 className="font-black text-4xl ">Bancos</h1>
@@ -71,7 +76,7 @@ function ParametrosIESS() {
           className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
         >
           <Link
-
+            state={location.state}
             to='/finanzas/bancos/nuevo'>CREAR BANCOS</Link>
         </button>
       </div>

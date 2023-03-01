@@ -1,4 +1,4 @@
-import { Link, useLoaderData, Form, redirect, useNavigate } from "react-router-dom"
+import { Link, useLoaderData, Form, redirect, useNavigate, useLocation } from "react-router-dom"
 import { obtenerParametros, eliminarParametro} from "../data/parametros_iess"
 
 export function loader() {
@@ -10,8 +10,11 @@ export async function action({params}){
   return redirect('/empleados/iess')
 }
 function ParametrosIESS() {
+
   const parametros = useLoaderData()
   const navigate = useNavigate()
+  const location = useLocation()
+
   return (
     <>
       <h1 className="font-black text-4xl ">Parámetros del IESS</h1>
@@ -71,7 +74,7 @@ function ParametrosIESS() {
           className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
         >
           <Link
-
+            state={location.state}
             to='/empleados/iess/nuevo'>CREAR PARÁMETROS</Link>
         </button>
       </div>

@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
+import App from './App'
+/*
 import { createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Layout from './components/Layout'
 import NuevoEmpleado, {action as nuevoEmpleadoAction, loader as cargarDepartamentoCargo} from './pages/NuevoEmpleado'
@@ -60,14 +62,17 @@ import NuevoAsiento, {action as nuevoAsiento} from './pages/NuevoAsiento'
 import NuevoDetalleAsiento,{action as obtenerCuentasAsiento, loader as obtenerDetallesAsiento} from './pages/NuevoDetalleAsiento'
 import {action as eliminarAsiento} from './components/Asiento'
 import Asiento, {loader as obtenerAsientos} from './pages/Asientos'
-import Login/*, {action as loginAction}*/ from './pages/Login'
+import Login, {action as loginAction} from './pages/Login'
 import Registro from './pages/Registro'
 import { RutasPrivadas} from './routes/RutasPrivadas'
 import Prueba from './pages/Prueba'
 
 
+//Detalle de asiento
+import DetalleAsiento, {loader as obtenerDetalle} from './pages/DetalleAsiento'
 import {action as nuevoDetalleAsiento} from './components/FormularioDetalleAsiento'
 import {loader as eliminarDetalleAsiento} from './pages/EliminarDetalleAsiento'
+import {loader as actualizarCierreDeCuentas} from './pages/ActualizarCierreDeCuentas'
 
 
 import NuevoParametro, {action as nuevoParametro} from './pages/NuevoIess'
@@ -85,33 +90,6 @@ import Detalle_Pedidos, { loader as detalle_pedidoLoader } from './pages/Detalle
 import {action as eliminarDetalle_PedidoAction} from "./components/Detalle_Pedido"
 // import ActualizarDetalle_Pedido, {loader as actualizarDetalle_PedidoLoader, action as actualizarDetalle_PedidoAction} from './pages/ActualizarDetalle_Pedido'
 
-
-// Import all of Bootstrap's JS
-//import * as bootstrap from 'bootstrap'
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Layout/>,
-
-    children: [
-      
-      {
-        path: '/login',
-        element: <Login/>,
-        //action: loginAction,
-        errorElement: <ErrorPage/>
-      },
-      {
-        path: '/registro',
-        element: <Registro/>
-      },
-
-
-      {
-        path:'/rutas',
-        element: <RutasPrivadas/>,
-      },
 
 
       {
@@ -436,6 +414,11 @@ const router = createBrowserRouter([
         action: nuevoAsiento
       },
       {
+        path: '/finanzas/asientos/:asientoId/detalle',
+        element: <DetalleAsiento/>,
+        loader: obtenerDetalle
+      },
+      {
         path: '/finanzas/asientos/nuevo/nuevaCuentaAsiento',
         element: <NuevoDetalleAsiento/>,
         loader: obtenerDetallesAsiento,
@@ -444,6 +427,10 @@ const router = createBrowserRouter([
       {
         path: '/finanzas/asientos/nuevo/nuevaCuentaAsiento/:detalleAsientoId',
         loader: eliminarDetalleAsiento
+      },
+      {
+        path: '/finanzas/asientos/nuevo/nuevaCuentaAsiento/cerrarCuentas/:asientoId',
+        loader: actualizarCierreDeCuentas
       },
       {
         path: '/finanzas/asientos',
@@ -475,11 +462,12 @@ const router = createBrowserRouter([
   },
  
 ])
-
-
+// ])
+*/
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    {/* <RouterProvider router={router} /> */}
+    <App/>
   </React.StrictMode>,
 )

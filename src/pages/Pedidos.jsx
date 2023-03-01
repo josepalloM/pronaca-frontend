@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom"
+import { Link, useLoaderData, useLocation} from "react-router-dom"
 import { obtenerPedidos } from "../data/pedidos"
 import Pedido from "../components/Pedido"
 
@@ -9,6 +9,8 @@ export function loader() {
 
 function Pedidos() {
   const pedidos = useLoaderData()
+  const location = useLocation()
+
   return (
     <>
       <h1 className="font-black text-4xl ">Pedidos</h1>
@@ -30,6 +32,7 @@ function Pedidos() {
             <tbody>
               {pedidos.map(pedido => (
                 <Pedido
+                  
                   pedido={pedido}
                   key={pedido.ID_PEDIDO}
                 />
@@ -43,7 +46,7 @@ function Pedidos() {
           className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
         >
           <Link
-
+            state={location.state}
             to='/opciones/pedido/nuevo'>CREAR Pedido</Link>
         </button>
       </div>

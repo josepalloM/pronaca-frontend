@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom"
+import { Link, useLoaderData, useLocation } from "react-router-dom"
 import { obtenerClientes } from "../data/clientes"
 import Cliente from "../components/Cliente"
 
@@ -8,7 +8,10 @@ export function loader() {
 }
 
 function Clientes() {
+  
   const clientes = useLoaderData()
+  const location = useLocation()
+
   return (
     <>
       <h1 className="font-black text-4xl ">Clientes</h1>
@@ -47,7 +50,7 @@ function Clientes() {
           className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
         >
           <Link
-
+            state={location.state}
             to='/cliente/nuevo'>CREAR Cliente</Link>
         </button>
       </div>

@@ -1,16 +1,16 @@
 import {Form, useNavigate,redirect} from "react-router-dom"
 import { eliminarAsiento } from "../data/asiento"
-
+import { eliminarDetalles} from "../data/detalle_asiento"
 export async function action({params}){
+    await eliminarDetalles(params.asientoId)
     await eliminarAsiento(params.asientoId)
     return redirect('/finanzas/asientos')
 }
 
-function Asiento({ asiento, cuentas}) {
-    const {ID_ASIENTO, ID_CUENTA, ID_INFORME_FINANCIERO, FECHA_ASIENTO,descripcion_asiento,DEBE,HABER} = asiento
-    const cuenta = cuentas.filter(cuenta => (cuenta.ID_CUENTA==ID_CUENTA))
-    const cuenta2 = cuentas.filter(cuenta => (cuenta.DESCRIPCION_CUENTA==descripcion_asiento))
-    return (
+function Asiento({ asiento}) {
+    const navigate = useNavigate()
+    const {ID_ASIENTO, FECHA_ASIENTO,descripcion_asiento} = asiento
+        return (
         <tr className="border-b">
             <td>
                 {ID_ASIENTO}
@@ -22,6 +22,12 @@ function Asiento({ asiento, cuentas}) {
                 {descripcion_asiento}
             </td>
             <td className="p-4 flex justify-center gap-3">
+                <button
+                    type="button"
+                    className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
+                    onClick={() => navigate(`/finanzas/asientos/${ID_ASIENTO}/detalle`)}
+                >Editar
+                </button>
                 <Form
                     method='post'
                     action={`/finanzas/asientos/${ID_ASIENTO}/eliminar`}
@@ -31,10 +37,12 @@ function Asiento({ asiento, cuentas}) {
                         }
                     }}
                 >
+                    
                     <button
                         type="submit"
                         className="text-red-600 hover:text-blue-700 uppercase font-bold text-xs"
                     >Eliminar</button>
+                    
                 </Form>
             </td>
         </tr>

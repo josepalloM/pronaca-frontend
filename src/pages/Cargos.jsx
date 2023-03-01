@@ -1,4 +1,4 @@
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate, useLocation } from "react-router-dom";
 import { obtenerCargos } from "../data/cargo_empleado";
 import Cargo from "../components/Cargo_empleado";
 
@@ -11,6 +11,8 @@ function Cargos() {
 
     const { cargos } = useLoaderData()
     const navigate = useNavigate()
+    const location = useLocation()
+    
     return (
         <>
             <h1 className="font-black text-4xl">Cargos</h1>
@@ -40,6 +42,7 @@ function Cargos() {
 
                 <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
                     <Link
+                        state={location.state}
                         to='/empleados/cargos/nuevo'>CREAR CARGO</Link>
                 </button>
             </div>

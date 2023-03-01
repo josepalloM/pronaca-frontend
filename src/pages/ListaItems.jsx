@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useLocation } from "react-router-dom";
 import { obtenerListaItems } from "../data/items";
 import ListaItem from "../components/ListaItem";
 
@@ -11,6 +11,7 @@ export function loader() {
 function ListaItems() {
 
     const listaItems = useLoaderData()
+    const location = useLocation()
 
     return (
         <>
@@ -44,12 +45,14 @@ function ListaItems() {
 
                 <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
                     <Link
+                        state={location.state}
                         to='/listaitem/nuevo'>CREAR</Link>
                 </button>
             </div>
             <div>
                 <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
                     <Link
+                        state={location.state}
                         to='/gestorreceta'>RECETA PRODUCCION</Link>
                 </button>
             </div>

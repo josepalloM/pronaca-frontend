@@ -1,76 +1,78 @@
-import { useNavigate } from 'react-router-dom';
-import { useForm } from '../hooks/useForm';
-import FormularioLogin from '../components/FormularioLogin'
+import FormularioLogin from "../components/FormularioLogin"
+import { useNavigate, Form, useActionData, redirect, useLoaderData } from "react-router-dom"
+import Error from "../components/Error";
+import { consultarEmpleado } from "../data/login";
+
+export async function loader({body}){
+  return null
+}
 
 
-function Login() {
+
+export async function action({request}){
+  const formData = await request.formData()
+  const datos = Object.fromEntries(formData)
+  const errores = []
   
-  const navigate = useNavigate();
+  const resultado = await consultarEmpleado(datos)
+  if(resultado.text === 'Empleado no existe'){
+    errores.push("no esta bién")
+  }
 
-	const { usuario, contrasenia, onInputChange, onResetForm } =
-		useForm({
-			usuario: '',
-			contrasenia: '',
-		});
+ 
+  if(Object.keys(errores).length){
+    return errores
+  }
+  redirect ('/Login')
+}
 
-	const onLogin = e => {
-		e.preventDefault();
 
-		navigate('/index', {
-			replace: true,
-			state: {
-				logged: true,
-				usuario,
-			},
-		});
-
-		onResetForm();
-	};
+function Login(){
   
-  return (
+  //const errores = useActionData()
+  const errores = useActionData()
+  const navigate = useNavigate()
+
+
+  async function handleClick () {
+    const datos = {
+    nombre: nombre.value,
+    cedula: cedula.value
+    }
+    const resultado = await consultarEmpleado(datos)
+    if(resultado.text === 'Empleado existe'){
+      return navigate('/', { state: { user: datos.nombre, cedula: datos.cedula }});
+    }else{
+      if (!confirm('El empleado no existe, ingrese nuevamente ')){
+        e.preventDefault()
+      }      
+      return navigate('/Login');
+    }
+     
+  }
+
+
+  return(
     <>
       <h1 className="font-black text-4xl">Login</h1>
       <p >Registrate para ingresar al sistema</p>
 
-      
-      <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
-        {/* {errores?.length && errores.map((error, i) => <Error key={i}>{error}</Error>)} */}
-        
-        <form onSubmit={onLogin}>
+      <div className="bg-white  border-2 shadow rounded-md md:w-1/2 mx-auto px-5 py-10 mt-5">
+        {errores?.length && errores.map((error, i) => <Error key={i}>{error}</Error>)}
 
-          <div className="mb-4">
-            <label
-                className="flex justify-start text-gray-800"
-                htmlFor="usuario"
-            >Usuario: </label>
-            <input
-                id="usuario"
-                type="text"
-                className="mt-2 block w-full p-3 bg-gray-50"
-                placeholder="Usuario"
-                
-						    onChange={onInputChange}
-                required
-                autoComplete='off'
-                name="usuario" />
-            <label
-                className="flex justify-start text-gray-800"
-                htmlFor="contrasenia"
-            >Contraseña </label>
-            <input
-                id="contrasenia"
-                type="password"
-                className="mt-2 block w-full p-3 bg-gray-50"
-                placeholder="Contraseña"
-                
-						    onChange={onInputChange}
-                name="contrasenia" />
-          </div><br></br>
-
+        <Form
+          method="POST"
+          
+        >
+          <FormularioLogin
+             
+          />
           <div className="grid grid-cols-2 gap-2">
               <div className='flex justify-center'>
                 <input
                   type="submit"
+                  onClick={handleClick}
+                  //onClick={() => navigate('/', { state: { user: 'jose' }})}
                   className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
                   value="Ingresar"
                 />
@@ -83,15 +85,112 @@ function Login() {
                   onClick={() => navigate(-1)}
                 >Volver</button>
               </div>
-          </div>
-          
-			</form>
+            </div>
 
+      </Form>
 
+      </div>
       
+
+    </>
+  )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*import { useState, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useForm } from '../hooks/useForm';
+import FormularioLogin from '../components/FormularioLogin'
+
+
+function Login({ setUsuario }) {
+
+
+  return (
+    <>
+      <h1 className="font-black text-4xl">Login</h1>
+      <p >Registrate para ingresar al sistema</p>
+
+
+      <div className="bg-white  border-2 shadow rounded-md md:w-1/2 mx-auto px-5 py-10 mt-5">
+        { {errores?.length && errores.map((error, i) => <Error key={i}>{error}</Error>)} }
+
+        <form onSubmit={handelSubmit}>
+
+          <div className="mb-4">
+            <label
+              className="flex justify-start text-gray-800"
+              htmlFor="usuario"
+            >Usuario: </label>
+            <input
+              id="usuario"
+              type="text"
+              className="mt-2 block w-full p-3 bg-gray-50"
+              placeholder="Usuario"
+              
+              required
+              autoComplete='off'
+              name="usuario" />
+            <label
+              className="flex justify-start text-gray-800"
+              htmlFor="contrasenia"
+            >Contraseña </label>
+            <input
+              id="contrasenia"
+              type="password"
+              className="mt-2 block w-full p-3 bg-gray-50"
+              placeholder="Contraseña"
+
+              
+              name="contrasenia" />
+          </div><br></br>
+
+          <div className="grid grid-cols-2 gap-2">
+            <div className='flex justify-center'>
+              <input
+                type="submit"
+                className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
+                value="Ingresar"
+              />
+            </div>
+
+            <div className='flex justify-center'>
+              <button
+                type="button"
+                className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
+                onClick={() => navigate(-1)}
+              >Volver</button>
+            </div>
+          </div>
+
+        </form>
+
+
+
       </div>
     </>
   )
 }
+*/
 
 export default Login

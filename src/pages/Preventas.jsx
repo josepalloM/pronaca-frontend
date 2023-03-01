@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom"
+import { Link, useLoaderData, useLocation } from "react-router-dom"
 import { obtenerPreventas } from "../data/preventa"
 import Preventa from "../components/Preventa"
 
@@ -9,8 +9,10 @@ export function loader() {
 }
 
 function Preventas() {
+
   const preventas = useLoaderData()
-  console.log(preventas)
+  const location = useLocation()
+
   return (
     <>
       <h1 className="font-black text-4xl ">Preventa</h1>
@@ -44,7 +46,7 @@ function Preventas() {
           className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
         >
           <Link
-
+            state={location.state}
             to='/opciones/preventa/nuevo'>CREAR preventa</Link>
         </button>
       </div>

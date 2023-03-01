@@ -4,29 +4,31 @@ import {useState, useEffect} from "react";
 
 function Layout() {
 
-    
-        
     const [open, setOpen] = useState(true);
     const location = useLocation()
     const navigate = useNavigate();
-    //console.log(location.state)
 
+
+    const user = location?.state;
+    
     const onLogout = () => {
-		navigate('/login', {
-			replace: true,
-		});
+	    navigate('/', { state: { user: "", cedula:""}})
+        console.log("ingreso al onLog")      
 	};
-
+    
     useEffect(()=>{
-        localStorage.setItem('usuario', JSON.stringify(location.state))
-    }, [location.state])
+        localStorage.setItem('user', JSON.stringify(user))
+        
+    }, [user])
 
     return (
         <div className="min-h-screen flex">
             <aside className={`md:min-h-screen bg-orange-500 relative ${open ? "w-56" : "w-0"} duration-300 relative`}>
                 <AiOutlineMenu className="bg-white text-black text-3xl absolute
                 -right-10 top-2 cursor-pointer" onClick={() => setOpen(!open)}/>
-                <Link to="/">
+                <Link 
+                    state={location.state}
+                    to="/">
                     <div className="flex justify-center "> 
                         <img className="w-9/12 h-9/12" src="https://www.pronaca.com/wp-content/uploads/2022/04/cropped-favicon.png"/>
                     </div>
@@ -130,10 +132,10 @@ function Layout() {
                     
                                        
                     <li >
-                        {location.state?.logged ? (
+                        {location.state?.user ? (
                             <div className={`mt-40 text-center ${!open && "scale-0"}`}>
                             <p className="text-1xl font-bold  bg-white">Bienvenido</p>
-                            <p className="text-2xl font-bold  bg-white">{location.state?.usuario}</p>
+                            <p className="text-2xl font-bold  bg-white">{location.state?.user}</p>
                             </div>
                         ) : (
                             <div className={`mt-40 text-center ${!open && "scale-0"}`}>
@@ -144,9 +146,10 @@ function Layout() {
                     </li>
                     <li >
 
-                        {location.state?.logged ? (
+                        {location.state?.user ? (
                             <div className={`my-2 text-center ${!open && "scale-0"}`}>
                             <Link
+                                
                                 className={`${location.pathname === '/' }`}
                                 to='/login'>
                                 <button type="button"
@@ -165,6 +168,7 @@ function Layout() {
                         ) : (
                             <div className={`my-2 text-center ${!open && "scale-0"}`}>
                         <Link
+                            
                             className={`${location.pathname === '/' }`}
                             to='/login'>
                             <button type="button"
@@ -188,10 +192,6 @@ function Layout() {
 
 
             <main className=" bg-gray-100  md:w-full  p-10 h-screen overflow-scroll ">
-
-
-
-
 
                 <Outlet />
             </main>

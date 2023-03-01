@@ -1,4 +1,4 @@
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData, Link, useLocation } from "react-router-dom";
 import { obtenerBalance } from "../data/balance";
 import Balance from "../components/Balance";
 import { useState } from "react";
@@ -11,6 +11,7 @@ return { balance };
 function BalanceGeneral() {
 
 const { balance } = useLoaderData();
+const location = useLocation()
 
 return (
     <>
@@ -31,21 +32,24 @@ return (
                         {balance.map(balance => (
                             <Balance
                                 balance={balance}
-                                key={balance.id}
+                                key={balance.ID_INFORME_FINANCIERO}
                             />
                         ))}
                     </tbody>
+
                 </table>
             ) : (
                 <p className="text-center mt-10"> No existe balances</p>
             )}
         </div>
         <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
-            <Link to="/balance/nuevo">CREAR BALANCE</Link>
+            <Link 
+                state={location.state}
+                to="/finanzas/balance/nuevo">CREAR BALANCE</Link>  {/*/balance/nuevo */}
+
         </button>
     </>
 );
-
 }
 
 export default BalanceGeneral;
