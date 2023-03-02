@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react"
 
 const VerDetalleBalanceRegistro = ({balance}) => {
+    const {fecha,activos,pasivos, patrimonio,ID_informe_financiero} = balance
 
     
     
@@ -19,7 +20,7 @@ const VerDetalleBalanceRegistro = ({balance}) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="fecha"
 
-                    defaultValue={balance?.FECHA}
+                    defaultValue={fecha}
                     name="fecha"
 
                 /// add
@@ -40,7 +41,7 @@ const VerDetalleBalanceRegistro = ({balance}) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Activos"
 
-                    defaultValue={balance?.ACTIVOS}
+                    defaultValue={activos}
                     name="activos"
 
                 /// add
@@ -59,7 +60,7 @@ const VerDetalleBalanceRegistro = ({balance}) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Pasivos"
 
-                    defaultValue={balance?.PASIVOS}
+                    defaultValue={pasivos}
                     name="pasivos"
 
 
@@ -78,7 +79,7 @@ const VerDetalleBalanceRegistro = ({balance}) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Patrimonio"
                     name="pasivos"
-                    defaultValue={balance?.PATRIMONIO}
+                    defaultValue={patrimonio}
                     
 
 
