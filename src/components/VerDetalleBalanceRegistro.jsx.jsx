@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react"
 
 const VerDetalleBalanceRegistro = ({balance}) => {
-    const {fecha,activos,pasivos, patrimonio,ID_informe_financiero} = balance
-
+    
+    console.log("balance 3", balance)
     
     
     return (
@@ -14,17 +14,8 @@ const VerDetalleBalanceRegistro = ({balance}) => {
                     className="flex justify-start text-gray-800"
                     htmlFor="fecha"
                 >Fecha de Informe:</label>
-                <input
-                    id="fecha"
-                    type="date"
-                    className="mt-2 block w-full p-3 bg-gray-50"
-                    placeholder="fecha"
-
-                    defaultValue={fecha}
-                    name="fecha"
-
-                /// add
-                />
+                <h1>{balance?.fecha}</h1>
+                
             </div>
 
 
@@ -41,7 +32,7 @@ const VerDetalleBalanceRegistro = ({balance}) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Activos"
 
-                    defaultValue={activos}
+                    defaultValue={balance?.activos}
                     name="activos"
 
                 /// add
@@ -60,7 +51,7 @@ const VerDetalleBalanceRegistro = ({balance}) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Pasivos"
 
-                    defaultValue={pasivos}
+                    defaultValue={balance?.pasivos}
                     name="pasivos"
 
 
@@ -79,7 +70,7 @@ const VerDetalleBalanceRegistro = ({balance}) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Patrimonio"
                     name="pasivos"
-                    defaultValue={patrimonio}
+                    defaultValue={balance?.patrimonio}
                     
 
 

@@ -13,7 +13,8 @@ export async function loader({params}){
         })
     }
     console.log("Balance detalle", balance)
-    return {balance}
+    console.log("Balance detalle FECHA", balance.pasivos)
+    return balance
 }
 
 
@@ -41,7 +42,7 @@ function VerDetalleBalance() {
                 {errores?.length && errores.map((error, i) => <Error key={i}>{error}</Error>)}
 
                 <Form
-                    method="GET"
+                   
                     //
 
                 >
