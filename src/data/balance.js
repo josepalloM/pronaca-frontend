@@ -29,7 +29,7 @@ export async function verDetalleBalance(id) {
     try {
       const url = "http://localhost:4000/api/balance";
 
-      const respuesta = await fetch(url);
+      const respuesta = await fetch(`${url}/${id}`)
       const resultado = await respuesta.json()
       console.log('Balance obtenido: ', resultado)
     return resultado
@@ -37,5 +37,6 @@ export async function verDetalleBalance(id) {
       console.log(error);
       throw error;
     }
-  }
+}
+
   

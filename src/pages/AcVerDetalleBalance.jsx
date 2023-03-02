@@ -1,11 +1,11 @@
-import {obtenerBalance,verDetalleBalance} from "../data/balance.js";
+import { verDetalleBalance } from "../data/balance.js";
 import Error from "../components/Error.jsx";
-import {Form, useNavigate, useLoaderData, useActionData, redirect} from "react-router-dom";
+import { Form, useNavigate, useLoaderData, useActionData, redirect } from "react-router-dom";
 import VerDetalleBalanceRegistro from '../components/VerDetalleBalanceRegistro.jsx' 
 
 export async function loader({params}){
     const balance =  await verDetalleBalance(params.balanceId)
-    //const balance =  await obtenerBalance(params.balanceId)
+    
     if (Object.values(balance).length===0){
         throw new Response('', {
             status: 404,
@@ -13,8 +13,10 @@ export async function loader({params}){
         })
     }
     console.log("Balance detalle", balance)
-    return balance
+    return {balance}
 }
+
+
 
 
 
