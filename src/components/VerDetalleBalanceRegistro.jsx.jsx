@@ -1,9 +1,7 @@
 import {useEffect, useState} from "react"
 
 const VerDetalleBalanceRegistro = ({balance}) => {
-    
-    console.log("balance 3", balance)
-    
+
     
     return (
         <>

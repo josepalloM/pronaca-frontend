@@ -12,8 +12,6 @@ export async function loader({params}){
             statusText: 'El balance no fue encontrado'
         })
     }
-    console.log("Balance detalle", balance)
-    console.log("Balance detalle FECHA", balance.pasivos)
     return balance
 }
 
