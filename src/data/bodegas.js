@@ -39,3 +39,19 @@ export async function obtenerBodega(id) {
     const resultado = await respuesta.json()
     return resultado
 }
+
+export async function actualizarBodega(datos){
+    try {
+        const url = "http://localhost:4000/api/bodega"
+        const respuesta = await fetch(url, {
+            method:'PUT',
+            body:JSON.stringify(datos),
+            headers: {
+                'Content-Type':'application/json'
+            }
+        })
+        await respuesta.json()
+    }catch (error){
+        console.log(error)
+    }
+}
