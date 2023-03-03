@@ -1,6 +1,6 @@
-export async function obtenerDetalle_Pedidos(){
+export async function obtenerDetalle_Pedidos(id){
     const url = "http://localhost:4000/api/detalle_pedido"
-    const respuesta = await fetch(url)
+    const respuesta = await fetch(`${url}/${id}`)
     const resultado = await respuesta.json()
     return resultado
 }

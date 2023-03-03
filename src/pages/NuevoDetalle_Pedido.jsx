@@ -42,7 +42,7 @@ function NuevoPedido() {
         console.log(detalle)
         agregarDetalle_Pedido(detalle)
         //actualizar bodegas (cantidad, idItem, ubicacion)
-        // actualizarBodega(detalle.cantidad, detalle.id_item, clienteId)
+        // actualizarBodega(detalle, clienteId)
         console.log(detalle, clienteId)
 
         ////quitarCantidadBodega////
