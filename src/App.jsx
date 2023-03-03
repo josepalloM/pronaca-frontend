@@ -18,6 +18,7 @@ import EstadoFinanciero, { loader as estadoLoader } from './pages/EstadoFinancie
 import ListaItems, { loader as listaItemsloader } from './pages/ListaItems'
 import NuevoItem, { action as nuevoItemAction } from './pages/NuevoItem'
 
+import RolDePago, {loader as rolDePagoLoader} from './pages/RolDePago'
 
 import Clientes, { loader as clienteLoader } from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
@@ -391,6 +392,11 @@ function App() {
                         {
                             path: '/empleados/cargos/:cargoId/eliminar',
                             loader: eliminarCargo
+                        },
+                        {
+                            path: '/empleados/:empleadoId/rolDePago',
+                            element:<RolDePago/>,
+                            loader:rolDePagoLoader
                         },
                         {
                             path: '/finanzas/bancos',

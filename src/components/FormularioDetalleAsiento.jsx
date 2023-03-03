@@ -89,7 +89,7 @@ const FormularioDetalleAsiento = ({cuentas}) => {
                             key={cuenta.ID_CUENTA}
                             placeholder="Monto de la cuenta"
                             
-                        >{cuenta.VALOR_CUENTA} </h3>                        
+                        >{Math.abs(cuenta.VALOR_CUENTA)} </h3>                        
                     ))
                 ):(<p> No existe Monto</p>)}
                 </label>
