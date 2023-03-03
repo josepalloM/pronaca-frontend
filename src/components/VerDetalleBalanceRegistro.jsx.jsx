@@ -49,7 +49,7 @@ const VerDetalleBalanceRegistro = ({balance}) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Pasivos"
 
-                    defaultValue={balance?.pasivos}
+                    defaultValue={-balance?.pasivos}
                     name="pasivos"
 
 
@@ -61,14 +61,14 @@ const VerDetalleBalanceRegistro = ({balance}) => {
                 <label
                     className="flex justify-start text-gray-800"
                     htmlFor="Patrimonio"
-                >Pasivos:</label>
+                >Patrimonio:</label>
                 <input
                     id="patrimonio"
                     type="text"
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Patrimonio"
-                    name="pasivos"
-                    defaultValue={balance?.patrimonio}
+                    name="patrimonio"
+                    defaultValue={-balance?.patrimonio}
                     
 
 
