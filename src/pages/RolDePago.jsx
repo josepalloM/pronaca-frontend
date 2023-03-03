@@ -27,14 +27,22 @@ function RolDePago() {
         <>
             <h1 className="font-black text-4xl text-black">PRONACA</h1>
             <h1 className="font-black text-4xl text-black">ROL DE PAGOS INDIVIDUAL</h1>
-            <p className="mt-3">Empleado: {empleado?.NOMBRE_EMPLEADO}</p>
-            <p className="mt-3">Cargo: {cargo_empleado?.DESCRIPCION_CARGO}</p>
 
             <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
                 
                 
                 {errores?.length && errores.map((error, i) => <Error key={i}>{error}</Error>)}
-
+                <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
+                    
+                    <p
+                    className="flex justify-center mt-3 ml-5 rounded p-2 uppercase font-bold text-black text-sm"
+                    >Empleado: {empleado?.NOMBRE_EMPLEADO}
+                    </p>
+                    <p
+                    className="flex justify-center mt-3 mr-5 rounded p-2 uppercase font-bold text-black text-sm"
+                    >Cargo: {cargo_empleado?.DESCRIPCION_CARGO}
+                    </p>
+                </div>
                 <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
                     <div className="grid grid-cols-2 gap-10">
                         <p
@@ -64,7 +72,7 @@ function RolDePago() {
                             </p>
                             <p
                             className="flex justify-center mt-3 mr-5 rounded p-2 uppercase font-bold text-black text-sm"
-                            >{empleado?.SUELDO-empleado?.SUELDO_NETO}
+                            >{(empleado?.SUELDO-empleado?.SUELDO_NETO).toFixed(2)}
                             </p>
                         </div>
                         
