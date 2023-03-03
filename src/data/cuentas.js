@@ -34,6 +34,27 @@ export async function actualizarCostosGastos(id){
         console.log("w",id)
     
 }
+export async function actualizarCostos(){
+    try {
+        const url = "http://localhost:4000/api/cuenta/cuentasCostos"
+        await respuesta.json()
+    }catch (error){
+        console.log(error)
+    }
+}
+export async function cuentasInventario(id){
+    
+    const url = "http://localhost:4000/api/cuenta"
+    await fetch(`${url}/cuentasInventario/${id}`)
+  
+}
+
+export async function actualizarCuentasPedidos(id){
+    
+    const url = "http://localhost:4000/api/cuenta"
+    await fetch(`${url}/cuentasPedidos/${id}`)
+    
+}
 export async function eliminarCuenta(id){
     try {
         const url = "http://localhost:4000/api/cuenta"

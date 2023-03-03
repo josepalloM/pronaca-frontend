@@ -1,10 +1,9 @@
 import {useEffect, useState} from "react"
 
 const FormularioActualizarEmpleado = ({empleado, departamentos, cargos_empleado}) => {
-
+    
     const [departamento, setDepartamento] = useState("")
     const [cargo, setCargo] = useState("")
-    
     return (
         <>
             <div className="mb-4">
@@ -20,6 +19,7 @@ const FormularioActualizarEmpleado = ({empleado, departamentos, cargos_empleado}
 
                     defaultValue={empleado?.NOMBRE_EMPLEADO}
                     name="nombre_empleado"
+                    
                     
                     /// add
                 />
