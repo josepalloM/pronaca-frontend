@@ -26,17 +26,6 @@ const FormularioDetalleAsiento = ({cuentas}) => {
     
     const [descripcionCuenta, setDescripcionCuenta] = useState("")
 
-    var cuentasHijos = [];
-    var idCuentasHijos = [];
-    var cuentaAsientos2 = [];
-    //ceuntas Hijos
-    cuentasHijos = cuentas.filter(cuenta=>(cuenta.DESCRIPCION_CUENTA=="Banco Pichincha"||cuenta.DESCRIPCION_CUENTA=="Banco Internacional"||cuenta.DESCRIPCION_CUENTA=="Materia prima" || 
-    cuenta.DESCRIPCION_CUENTA=="Insumos"||cuenta.DESCRIPCION_CUENTA=="Producto"|| cuenta.DESCRIPCION_CUENTA=="Aporte personal por pagar" || cuenta.DESCRIPCION_CUENTA=="Aporte patronal por pagar" || 
-    cuenta.DESCRIPCION_CUENTA=="Nómina por pagar" || cuenta.DESCRIPCION_CUENTA=="Ventas" ||cuenta.DESCRIPCION_CUENTA=="Devoluciones" ||cuenta.DESCRIPCION_CUENTA=="Costos personal comercial" || 
-    cuenta.DESCRIPCION_CUENTA=="Costos personal producción"||cuenta.DESCRIPCION_CUENTA=="Costos de ventas de mercancia"|| cuenta.DESCRIPCION_CUENTA=="Gastos personal administrativo" ||cuenta.DESCRIPCION_CUENTA=="Gastos personal financiero"))    
-    cuentasHijos.forEach(cuenta=>idCuentasHijos.push(cuenta.ID_CUENTA))
-    cuentaAsientos2 = cuentas.filter(cuenta => (idCuentasHijos.includes(cuenta.ID_CUENTA) == true)) 
-
     return (
         <>     
             <Form
@@ -52,7 +41,7 @@ const FormularioDetalleAsiento = ({cuentas}) => {
                         <select id="cuenta" value={descripcionCuenta} name="cuenta" onChange={(event)=>setDescripcionCuenta(event.target.value)} className="form-control border-2 border-black">
                             <option>Selecciona una cuenta</option>
                             {cuentas.map( cuenta => (
-                                <option key={cuenta.ID_CUENTA} value={cuenta.DESCRIPCION_CUENTA}>{cuenta.CODIGO_CUENTA} {cuenta.DESCRIPCION_CUENTA}</option>                         
+                                <option key={cuenta.ID_CUENTA} value={cuenta.ID_CUENTA}>{cuenta.CODIGO_CUENTA} {cuenta.DESCRIPCION_CUENTA}</option>                         
                             ))}
                                                    
                         </select>
@@ -67,8 +56,8 @@ const FormularioDetalleAsiento = ({cuentas}) => {
                     className=" flex justify-start text-gray-800"
                     htmlFor="codigo_cuenta"
                 >Código: 
-                {cuentaAsientos2.length ?(      
-                    cuentaAsientos2.filter(c => c.DESCRIPCION_CUENTA==descripcionCuenta).map( cuenta => (
+                {cuentas.length ?(      
+                    cuentas.filter(c => c.ID_CUENTA==descripcionCuenta).map( cuenta => (
                         <h3 key={cuenta.ID_CUENTA}
                             id="codigo_cuenta"
                             placeholder="Código de la cuenta"
@@ -83,8 +72,8 @@ const FormularioDetalleAsiento = ({cuentas}) => {
                 <label
                     className=" flex justify-start text-gray-800"
                 >Monto:   
-                {cuentaAsientos2.length ?(      
-                    cuentaAsientos2.filter(c => c.DESCRIPCION_CUENTA==descripcionCuenta).map( cuenta => (
+                {cuentas.length ?(      
+                    cuentas.filter(c => c.ID_CUENTA==descripcionCuenta).map( cuenta => (
                         <h3
                             key={cuenta.ID_CUENTA}
                             placeholder="Monto de la cuenta"
