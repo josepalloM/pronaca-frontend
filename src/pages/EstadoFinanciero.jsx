@@ -1,4 +1,4 @@
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData, Link,useLocation } from "react-router-dom";
 import { obtenerEstado } from "../data/estado";
 import Estado from "../components/Estado";
 
@@ -9,6 +9,7 @@ return { estado };
 
 function EstadoFinanciero() {
 const { estado } = useLoaderData();
+const location = useLocation()
 
 return (
     <>
@@ -29,7 +30,7 @@ return (
                         {estado.map(estado => (
                             <Estado
                                 estado={estado}
-                                key={estado.id}
+                                key={estado.id_estado}
                             />
                         ))}
                     </tbody>
