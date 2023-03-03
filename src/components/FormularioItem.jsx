@@ -1,6 +1,10 @@
 
-const FormularioItem = ({item}) => {
-    return(
+import { useState } from 'react';
+
+const FormularioItem = ({ item, tipo_items }) => {
+
+    const [tipo_item, settipo_item] = useState('');
+    return (
         <>
             <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
                 <div className="mb-4">
@@ -14,8 +18,8 @@ const FormularioItem = ({item}) => {
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Id Lista Item"
                         name="id_lista_items"
-                        defaultValue = {item?.ID_LISTA_ITEMS}
-                        />
+                        defaultValue={item?.ID_LISTA_ITEMS}
+                    />
                 </div>
                 <div className="mb-4">
                     <label
@@ -27,10 +31,10 @@ const FormularioItem = ({item}) => {
                         type="text"
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Estado de Produccion"
-                        name="id_estado_producion" 
-                        defaultValue = {item?.ID_ESTADO_PRODUCION}
-                        />
-                        
+                        name="id_estado_producion"
+                        defaultValue={item?.ID_ESTADO_PRODUCION}
+                    />
+
                 </div>
                 <div className="mb-4">
                     <label
@@ -42,11 +46,28 @@ const FormularioItem = ({item}) => {
                         type="text"
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Tipo Item"
-                        name="id_tipo_item" 
-                        defaultValue = {item?.ID_TIPO_ITEM}
-                        />
-                        
+                        name="id_tipo_item"
+                        defaultValue={item?.ID_TIPO_ITEM}
+                    />
+
                 </div>
+                {/*<div className="mb-4">
+                    <label
+                        className=" flex justify-start text-gray-800"
+                        htmlFor="tipo_item"
+                    >Tipo Item:</label>
+                    <div className="">
+                        {tipo_items.length ? (
+                            <select id="tipo_item" value={tipo_item} name="tipo_item" onChange={(event) => settipo_item(event.target.value)} className="form-control border-2 border-black">
+                                <option >Selecciona el Tipo de Item</option>
+                                {tipo_items.map(tipo_item => (
+                                    <option key={tipo_item.ID_TIPO_ITEM} value={tipo_item.ID_TIPO_ITEM}>{tipo_item.TIPO_ITEM}</option>
+                                ))}
+                            </select>
+                        ) : (<p> No existe Tipos de Item</p>)}
+                    </div>
+                                </div>*/}
+
                 <div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"
@@ -57,10 +78,10 @@ const FormularioItem = ({item}) => {
                         type="text"
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Codigo Produccion"
-                        name="codigo_item" 
-                        defaultValue = {item?.CODIGO_ITEM}
-                        />
-                        
+                        name="codigo_item"
+                        defaultValue={item?.CODIGO_ITEM}
+                    />
+
                 </div>
                 <div className="mb-4">
                     <label
@@ -72,9 +93,9 @@ const FormularioItem = ({item}) => {
                         type="text"
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Nombre Item"
-                        name="nombre_item" 
+                        name="nombre_item"
                         defaultValue={item?.NOMBRE_ITEM}
-                        />
+                    />
                 </div>
 
                 <div className="mb-4">
@@ -87,9 +108,9 @@ const FormularioItem = ({item}) => {
                         type="text"
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="bodega"
-                        name="id_bodega" 
-                        defaultValue = {item?.ID_BODEGA}
-                        />
+                        name="id_bodega"
+                        defaultValue={item?.ID_BODEGA}
+                    />
                 </div>
 
                 {/*<div className="mb-4">

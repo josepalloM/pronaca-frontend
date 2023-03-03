@@ -230,7 +230,7 @@ const FormularioUpdateItem = ({item}) => {
                         className="flex justify-start text-gray-800"
                         htmlFor="id_paso_receta"
                     >Receta de Produccion: </label>
-                    <select id="id_paso_receta" value={item?.ID_RECETAP} name="iid_paso_receta"
+                    <select id="id_paso_receta" value={item?.ID_PASO_RECETA} name="iid_paso_receta"
                         onChange={(event) =>
                             setreceta(event.target.value)} 
                             className="form-control border-2 border-black">

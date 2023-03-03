@@ -2,6 +2,13 @@ import { useNavigate, Form, useActionData, redirect } from "react-router-dom"
 import FormularioItem from "../components/FormularioItem";
 import Error from "../components/Error";
 import { agregarItems } from "../data/items";
+import {obtenerTiposItem} from '../data/tipo_item';
+
+
+export async function loader() {
+  const tipoitem = await obtenerTiposItem()
+  return {tipoitem}
+}
 
 export  async function action({request}){
   const formData = await request.formData()
@@ -28,6 +35,7 @@ function NuevoItem() {
 
   const errores = useActionData()
   const navigate = useNavigate()
+  const tipo_item = loader()
 
   return (
     <>
@@ -44,7 +52,7 @@ function NuevoItem() {
           {errores?.length && errores.map( (error, i) =>  <Error key={i}>{error}</Error>)}
 
           <Form method="POST">
-            <FormularioItem/>
+            <FormularioItem tipo_items={tipo_item}/>
             <div className="grid grid-cols-2 gap-2">
                 <div>
                     <input
