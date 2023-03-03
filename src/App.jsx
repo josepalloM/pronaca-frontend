@@ -18,6 +18,7 @@ import EstadoFinanciero, { loader as estadoLoader } from './pages/EstadoFinancie
 import ListaItems, { loader as listaItemsloader } from './pages/ListaItems'
 import NuevoItem, { action as nuevoItemAction } from './pages/NuevoItem'
 
+import RolDePago, {loader as rolDePagoLoader} from './pages/RolDePago'
 
 import Clientes, { loader as clienteLoader } from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
@@ -89,6 +90,10 @@ import NuevoDetalle_Pedido, { action as nuevoDetalle_PedidoAction, loader as nue
 import Detalle_Pedidos, { loader as detalle_pedidoLoader } from './pages/Detalle_Pedidos'
 import { action as eliminarDetalle_PedidoAction } from "./components/Detalle_Pedido"
 // import ActualizarDetalle_Pedido, {loader as actualizarDetalle_PedidoLoader, action as actualizarDetalle_PedidoAction} from './pages/ActualizarDetalle_Pedido'
+
+///importar editar Balance
+import VerDetalleBalance, { loader as obtenerDetalleBalanceLoader} from './pages/AcVerDetalleBalance'
+
 
 
 function App() {
@@ -412,6 +417,11 @@ function App() {
                             loader: eliminarCargo
                         },
                         {
+                            path: '/empleados/:empleadoId/rolDePago',
+                            element:<RolDePago/>,
+                            loader:rolDePagoLoader
+                        },
+                        {
                             path: '/finanzas/bancos',
                             element: <Bancos />,
                             loader: obtenerBancos,
@@ -493,6 +503,15 @@ function App() {
                             loader: balanceLoader,
                             action: nuevoBalance
                         },
+                        {
+                            path: '/finanzas/balance/:balanceId/detalle',
+                            element: <VerDetalleBalance />,
+                            loader: obtenerDetalleBalanceLoader,
+                            //action :obtenerDetalleBalanceAction 
+                        },
+
+                    
+
                         {
                             path: '/finanzas/estado',
                             element: <EstadoFinanciero />,

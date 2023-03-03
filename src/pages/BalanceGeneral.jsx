@@ -2,10 +2,15 @@ import { useLoaderData, Link, useLocation } from "react-router-dom";
 import { obtenerBalance } from "../data/balance";
 import Balance from "../components/Balance";
 import { useState } from "react";
+import VerDetalleBalance from "../components/VerDetalleBalanceRegistro.jsx";
 
-export async function loader() {
+export async function loader() {        
 const balance = await obtenerBalance();
 return { balance };
+}
+export async function action({params}){
+    await verDetalleBalance(params.id_balance) 
+    return redirect('/finanzas')
 }
 
 function BalanceGeneral() {
@@ -32,7 +37,7 @@ return (
                         {balance.map(balance => (
                             <Balance
                                 balance={balance}
-                                key={balance.ID_INFORME_FINANCIERO}
+                                key={balance.id_balance}
                             />
                         ))}
                     </tbody>

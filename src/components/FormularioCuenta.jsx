@@ -38,6 +38,20 @@ const FormularioCuenta = ({cuentas}) => {
             <div className="mb-4">
                 <label
                     className=" flex justify-start text-gray-800"
+                    htmlFor="valor_cuenta"
+                >Monto:</label>
+                <input 
+                    id="valor_cuenta"
+                    type="text"
+                    className="mt-2 block w-full p-3 bg-gray-50 border-2 border-black"
+                    placeholder="Valor de la cuenta"
+                    name="valor_cuenta"
+                />
+            </div>
+
+            <div className="mb-4">
+                <label
+                    className=" flex justify-start text-gray-800"
                     htmlFor="id_informe_financiero"
                 >Informe Financiero:</label>
                 <div className="">

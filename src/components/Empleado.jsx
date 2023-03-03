@@ -36,6 +36,12 @@ function Empleado({ empleado, cargos}) {
                 <button
                         type="button"
                         className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
+                        onClick={() => navigate(`/empleados/${ID_EMPLEADO}/rolDePago`)}
+                    >Rol del pago
+                </button>
+                <button
+                        type="button"
+                        className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
                         onClick={() => navigate(`/empleados/${ID_EMPLEADO}/editar`)}
                     >Editar
                 </button>
