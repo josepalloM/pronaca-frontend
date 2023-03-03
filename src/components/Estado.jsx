@@ -22,7 +22,7 @@ function Estado({ estado }) {
                 <button
                     type="button"
                     className="text-blue-600 hover:text-green-700 uppercase font-bold text-xs"
-                    onClick={() => navigate(`#`)}  //finanzas/balance/${id_balance}/detalle
+                    onClick={() => navigate(`/finanzas/estado/${id_estado}/detalle`)}  //finanzas/estado/${id_balance}/detalle
                 >
                     Ver Detalle
                 </button>

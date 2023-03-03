@@ -93,7 +93,7 @@ import { action as eliminarDetalle_PedidoAction } from "./components/Detalle_Ped
 
 ///importar editar Balance
 import VerDetalleBalance, { loader as obtenerDetalleBalanceLoader} from './pages/AcVerDetalleBalance'
-
+import VerDetalleEstado, { loader as obtenerDetalleEstadoLoader} from './pages/AcVerDetalleEstado'
 
 
 function App() {
@@ -516,7 +516,15 @@ function App() {
                             path: '/finanzas/estado',
                             element: <EstadoFinanciero />,
                             loader: estadoLoader,
-                        }
+                        },
+                        {
+                            path: '/finanzas/estado/:estadoId/detalle',
+                            element: <VerDetalleEstado />,
+                            loader: obtenerDetalleEstadoLoader,
+                            //action :obtenerDetalleBalanceAction 
+                        },
+
+                        
                     ]
                 },
                 {
