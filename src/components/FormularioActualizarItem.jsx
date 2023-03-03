@@ -225,12 +225,12 @@ const FormularioUpdateItem = ({item}) => {
                         defaultValue = {item?.DETALLE_ITEM}
                         />
                 </div>
-                <div className="mb-4">
+                {/*<div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"
                         htmlFor="id_paso_receta"
                     >Receta de Produccion: </label>
-                    <select id="id_paso_receta" value={item?.ID_PASO_RECETA} name="iid_paso_receta"
+                    <select id="id_paso_receta" value={item?.ID_PASO_RECETA} name="id_paso_receta"
                         onChange={(event) =>
                             setreceta(event.target.value)} 
                             className="form-control border-2 border-black">
@@ -238,7 +238,7 @@ const FormularioUpdateItem = ({item}) => {
                         <option value={1}>Receta de Embutidos</option>
                         <option value={2}>Receta de Mr Pollo</option>
                     </select>
-                </div>
+                </div>*/}
             </div>
         </>
 
