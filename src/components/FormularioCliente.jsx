@@ -117,7 +117,7 @@ const FormularioCliente = ({cliente, ubicaciones}) => {
                 <label
                     className=" flex justify-start text-gray-800"
                     htmlFor="numero_ubicacion"
-                >Numero Ubicación:</label>
+                >Dirección:</label>
                 <input 
                     id="numero_ubicacion"
                     type="text"

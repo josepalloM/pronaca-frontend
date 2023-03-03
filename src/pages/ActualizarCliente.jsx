@@ -94,7 +94,7 @@ function ActualizarCliente() {
             <h1 className="font-black text-4xl text-black">Editar Cliente</h1>
             <p className="mt-3">A continuación podrás modificar los datos de un cliente</p>
 
-            <div className=" flex justify-start bg-black text-white rounded md: w-3/4 mx-auto px-5 py-2 mt-6">Ciente</div>
+            <div className=" flex justify-start bg-black text-white rounded md: w-3/4 mx-auto px-5 py-2 mt-6">CLiente</div>
             <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
                 
                 

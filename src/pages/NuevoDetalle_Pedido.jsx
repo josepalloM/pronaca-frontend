@@ -3,62 +3,51 @@ import { useState } from 'react';
 import { useNavigate, Form, Link, useActionData, redirect, useLoaderData } from "react-router-dom"
 import Error from "../components/Error";
 import { obtenerPedidos } from "../data/pedidos";
+import { obtenerPedido } from "../data/pedidos";
+import { actualizarBodega } from "../data/bodegas";
 import { agregarDetalle_Pedido } from "../data/detalle_pedidos";
 import {obtenerItemsVenta} from "../data/itemsVenta";
 import ItemVenta from "../components/ItemVenta";
 
 export async function loader(){
-    const pedidos =  await obtenerPedidos()
-    const pedido = $(pedidos).get(-1)
+    const pedido = $(await obtenerPedidos()).get(-1)
+    const pedidoEditar = await obtenerPedido(pedido.ID_PEDIDO)
+    const clienteId = pedidoEditar.ID_CLIENTE
     const items = await obtenerItemsVenta()
-    return {pedido, items}
+    return {pedido, pedidoEditar, clienteId, items}
 }
 
 export  async function action({request}){
-    // const formData = await request.formData()
-    // const datos = Object.fromEntries(formData)
-  
-    // //validaciones
-    // const errores = []
-    // if(Object.values(datos).includes('')){
-    //   errores.push('Todos los campos son obligatorios')
-    // }
-  
-    // //Retornar datos si hay erroes
-    // if(Object.keys(errores).length){
-    //   return errores
-    // }
     
-    // console.log("datos detalle pedido", datos)
-    // // await agregarDetalle_Pedido(datos)
-  
-    // console.log(datos)
     return redirect('/opciones/pedidos')
 }
 
-
-
-
-// const submit = (e) => {
-//     e.preventDefault();
-//     console.log(inputFields)
-// }
-
 function NuevoPedido() {
-    const {pedido, items} = useLoaderData()
+    const {pedido, pedidoEditar, clienteId, items} = useLoaderData()
     const errores = useActionData()
     const navigate = useNavigate()
 
     const [detalle, setDetalle] = useState([]);
+    const [newPedido, setNewPedido] = useState(pedidoEditar);
 
-    const insertarItem = (numPedido,item,cantidad,precio) =>{
-        setDetalle(prevDetalle => [...prevDetalle, { id_pedido: numPedido, id_item: item, cantidad_pedido:cantidad, precio_detalle_pedido: precio}])
+    const insertarItem = (numPedido, item, cantidad, subtotal, precio) =>{
+        setDetalle(prevDetalle => [...prevDetalle, { id_pedido: numPedido, id_item: item, cantidad_pedido:cantidad, subtotal_detalle_pedido:subtotal, precio_detalle_pedido: precio}])
         // console.log(detalle)
+        // const precioPedido =+ precio
+        // setNewPedido(prevPedido => [...prevPedido, { iva_pedido: precio*0.12, subtotal_pedido: precio-precio*0.12, total_pedido: precio}])
+        console.log(newPedido)
     }
 
     const handleSubmit = (e) =>{
         console.log(detalle)
         agregarDetalle_Pedido(detalle)
+        //actualizar bodegas (cantidad, idItem, ubicacion)
+        // actualizarBodega(detalle.cantidad, detalle.id_item, clienteId)
+        console.log(detalle, clienteId)
+
+        ////quitarCantidadBodega////
+        // actualizarPedido(detalle.ID_PEDIDO, newPedido)
+
 
     }
 

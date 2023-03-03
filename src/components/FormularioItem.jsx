@@ -77,22 +77,22 @@ const FormularioItem = ({item}) => {
                         />
                 </div>
 
-                {/*<div className="mb-4">
+                <div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"
-                        htmlFor="fecha_fabri_item"
-                    >Fecha Fabricación: </label>
+                        htmlFor="id_bodega"
+                    >Bodega: </label>
                     <input
-                        id="fecha_fabri_item"
+                        id="id_bodega"
                         type="text"
                         className="mt-2 block w-full p-3 bg-gray-50"
-                        placeholder="Ejmplo: aaaa-mm-dd"
-                        name="fecha_fabri_item" 
-                        defaultValue = {item?.FECHA_FABRI_ITEM}
+                        placeholder="bodega"
+                        name="id_bodega" 
+                        defaultValue = {item?.ID_BODEGA}
                         />
                 </div>
 
-                <div className="mb-4">
+                {/*<div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"
                         htmlFor="fecha1_cadu_item"

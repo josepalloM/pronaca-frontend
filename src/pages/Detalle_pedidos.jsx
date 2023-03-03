@@ -22,6 +22,7 @@ function Detalle_Pedidos() {
                 <th className="p-2">ID</th>
                 <th className="p-2">Items</th>
                 <th className="p-2">Cantidad</th>
+                <th className="p-2">Subtotal</th>
                 <th className="p-2">Precio</th>
               </tr>
             </thead>
@@ -29,20 +30,12 @@ function Detalle_Pedidos() {
               {detalle_pedidos.map(detalle_pedido => (
                 <Detalle_Pedido
                   detalle_pedido={detalle_pedido}
-                  key={detalle_pedido.ID_PEDIDO}
+                  key={detalle_pedido.ID_DETALLE_PEDIDO}
                 />
               ))}
             </tbody>
           </table>
         ) : (<p className="text-center mt-10"> No existe pedidos</p>)}
-
-        <button
-          className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
-        >
-          <Link
-
-            to='/opciones/pedido/nuevo'>CREAR Pedido</Link>
-        </button>
       </div>
     </>
   )
