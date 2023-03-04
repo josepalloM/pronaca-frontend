@@ -1,4 +1,4 @@
-import { useNavigate, Form, useActionData, redirect } from "react-router-dom"
+import { useNavigate, Form, useActionData, redirect, useLoaderData } from "react-router-dom"
 import FormularioItem from "../components/FormularioItem";
 import Error from "../components/Error";
 import { agregarItems } from "../data/items";
@@ -7,7 +7,7 @@ import {obtenerTiposItem} from '../data/tipo_item';
 
 export async function loader() {
   const tipoitem = await obtenerTiposItem()
-  return {tipoitem}
+  return tipoitem
 }
 
 export  async function action({request}){
@@ -32,10 +32,10 @@ export  async function action({request}){
 }
 
 function NuevoItem() {
-
+  const tipo_item = useLoaderData()
   const errores = useActionData()
   const navigate = useNavigate()
-  const tipo_item = loader()
+  
 
   return (
     <>

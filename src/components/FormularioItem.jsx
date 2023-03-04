@@ -4,6 +4,7 @@ import { useState } from 'react';
 const FormularioItem = ({ item, tipo_items }) => {
 
     const [tipo_item, settipo_item] = useState('');
+    console.log(tipo_items);
     return (
         <>
             <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
@@ -51,7 +52,7 @@ const FormularioItem = ({ item, tipo_items }) => {
                     />
 
                 </div>
-                {/*<div className="mb-4">
+                <div className="mb-4">
                     <label
                         className=" flex justify-start text-gray-800"
                         htmlFor="tipo_item"
@@ -66,7 +67,7 @@ const FormularioItem = ({ item, tipo_items }) => {
                             </select>
                         ) : (<p> No existe Tipos de Item</p>)}
                     </div>
-                                </div>*/}
+                </div>
 
                 <div className="mb-4">
                     <label
