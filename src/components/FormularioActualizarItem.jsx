@@ -165,22 +165,20 @@ const FormularioUpdateItem = ({item}) => {
                         defaultValue = {item?.CANTIDAD_LOTE_ITEM}
                         />
                 </div>
-
                 <div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"
-                        htmlFor="precio_item"
-                    >Precio Item: </label>
+                        htmlFor="unidad_medida"
+                    >Unidad Medida: </label>
                     <input
-                        id="precio_item"
+                        id="unidad_medida"
                         type="text"
                         className="mt-2 block w-full p-3 bg-gray-50"
-                        placeholder="Precio Item"
-                        name="precio_item" 
-                        defaultValue = {item?.PRECIO_ITEM}
+                        placeholder="Unidad Medida"
+                        name="unidad_medida" 
+                        defaultValue = {item?.UNIDAD_MEDIDA}
                         />
                 </div>
-
                 <div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"
@@ -193,6 +191,20 @@ const FormularioUpdateItem = ({item}) => {
                         placeholder="Peso de Item"
                         name="peso_item" 
                         defaultValue = {item?.PESO_ITEM}
+                        />
+                </div>
+                <div className="mb-4">
+                    <label
+                        className="flex justify-start text-gray-800"
+                        htmlFor="precio_item"
+                    >Precio Item: </label>
+                    <input
+                        id="precio_item"
+                        type="text"
+                        className="mt-2 block w-full p-3 bg-gray-50"
+                        placeholder="Precio Item"
+                        name="precio_item" 
+                        defaultValue = {item?.PRECIO_ITEM}
                         />
                 </div>
 

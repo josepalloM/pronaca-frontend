@@ -37,7 +37,7 @@ const FormularioItem = ({ item, tipo_items }) => {
                     />
 
                 </div>
-                <div className="mb-4">
+                {/*<div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"
                         htmlFor="id_tipo_item"
@@ -51,7 +51,7 @@ const FormularioItem = ({ item, tipo_items }) => {
                         defaultValue={item?.ID_TIPO_ITEM}
                     />
 
-                </div>
+                </div>*/}
                 <div className="mb-4">
                     <label
                         className=" flex justify-start text-gray-800"
@@ -59,7 +59,7 @@ const FormularioItem = ({ item, tipo_items }) => {
                     >Tipo Item:</label>
                     <div className="">
                         {tipo_items.length ? (
-                            <select id="tipo_item" value={tipo_item} name="tipo_item" onChange={(event) => settipo_item(event.target.value)} className="form-control border-2 border-black">
+                            <select id="tipo_item" value={tipo_item} name="id_tipo_item" onChange={(event) => settipo_item(event.target.value)} className="form-control border-2 border-black">
                                 <option >Selecciona el Tipo de Item</option>
                                 {tipo_items.map(tipo_item => (
                                     <option key={tipo_item.ID_TIPO_ITEM} value={tipo_item.ID_TIPO_ITEM}>{tipo_item.TIPO_ITEM}</option>
@@ -113,7 +113,19 @@ const FormularioItem = ({ item, tipo_items }) => {
                         defaultValue={item?.ID_BODEGA}
                     />
                 </div>
-
+                <div className="mb-4">
+                    <label
+                        className="flex justify-start text-gray-800"
+                        htmlFor="paso_receta"
+                    >Paso Receta: </label>
+                    <input
+                        id="paso_receta"
+                        type="text"
+                        className="mt-2 block w-full p-3 bg-gray-50"
+                        placeholder="Paso Receta"
+                        name="id_paso_receta" 
+                        />
+                </div>
                 {/*<div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"
