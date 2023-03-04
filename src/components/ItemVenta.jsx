@@ -26,7 +26,7 @@ function ItemVenta({ item, pedido, insertarItem }) {
             <input
               id="precio_detalle_pedido"
               name="precio_detalle_pedido"
-              defaultValue={(PRECIO_ITEM * 1.1).toFixed(2)}
+              defaultValue={(PRECIO_ITEM * 1.2).toFixed(2)}
               className="text-center"
             />
           </div>
@@ -39,7 +39,7 @@ function ItemVenta({ item, pedido, insertarItem }) {
             defaultValue={0}
             onChange={(event) => setCantidad(event.target.valueAsNumber)}
           />
-          <div>${(PRECIO_ITEM * 1.1 * cantidad).toFixed(2)}</div>
+          <div>${(PRECIO_ITEM * 1.2 * cantidad).toFixed(2)}</div>
           <button
             type="button"
             onClick={() =>
@@ -48,7 +48,7 @@ function ItemVenta({ item, pedido, insertarItem }) {
                 ID_ITEM,
                 cantidad,
                 (PRECIO_ITEM * cantidad).toFixed(2),
-                (PRECIO_ITEM * 1.1 * cantidad).toFixed(2)
+                (PRECIO_ITEM * 1.2 * cantidad).toFixed(2)
               )
             }
           >
