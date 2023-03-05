@@ -30,8 +30,8 @@ function VerDetalleEstado() {
         
 
             
-        <h1 className="font-black text-4xl text-black">Ver detalle Estado</h1>
-            <p className="mt-3">A continuación podrás ver el detalle de un estado</p>
+        <h1 className="font-black text-4xl text-black">Ver detalle Estado de Resultados</h1>
+            <p className="mt-3">A continuación podrás ver el detalle de un estado de resultados</p>
 
             <div className=" flex justify-start bg-black text-white rounded md: w-3/4 mx-auto px-5 py-2 mt-6">Informes de Estados</div>
             <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
