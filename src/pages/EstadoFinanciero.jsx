@@ -40,7 +40,7 @@ return (
             )}
         </div>
         <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
-            <Link to="#">CREAR ESTADO FINANCIERO</Link>
+            <Link to="/finanzas/estado/nuevo">CREAR ESTADO FINANCIERO</Link>
         </button>
     </>
 );

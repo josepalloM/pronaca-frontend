@@ -56,6 +56,7 @@ import ActualizarDepartamento, { loader as actualizarDepartamentoLoader, action 
 import ActualizarCargo, { loader as actualizarCargoLoader, action as actualizarCargoAction } from './pages/ActualizarCargo.jsx' //
 /////
 import NuevoBalance, { action as nuevoBalance } from './pages/NuevoBalance'
+import NuevoEstado, { action as nuevoEstado } from './pages/NuevoEstado'
 
 import NuevaCuenta, { action as nuevaCuenta } from './pages/NuevaCuenta'
 import Cuentas, { loader as obtenerCuentas, action as eliminarCuenta } from './pages/Cuentas'
@@ -516,6 +517,13 @@ function App() {
                             path: '/finanzas/estado',
                             element: <EstadoFinanciero />,
                             loader: estadoLoader,
+                        },
+
+                        {
+                            path: '/finanzas/estado/nuevo',
+                            element: <NuevoEstado />,
+                            loader: estadoLoader,
+                            action: nuevoEstado
                         },
                         {
                             path: '/finanzas/estado/:estadoId/detalle',
