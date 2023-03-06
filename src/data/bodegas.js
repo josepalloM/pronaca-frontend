@@ -40,12 +40,12 @@ export async function obtenerBodega(id) {
     return resultado
 }
 
-export async function actualizarBodega(datos){
+export async function actualizarBodega(datos,datos2){
     try {
         const url = "http://localhost:4000/api/bodega"
         const respuesta = await fetch(url, {
             method:'PUT',
-            body:JSON.stringify(datos),
+            body:JSON.stringify([datos,datos2]),
             headers: {
                 'Content-Type':'application/json'
             }
