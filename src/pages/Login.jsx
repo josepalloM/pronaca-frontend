@@ -2,6 +2,8 @@ import FormularioLogin from "../components/FormularioLogin"
 import { useNavigate, Form, useActionData, redirect, useLoaderData } from "react-router-dom"
 import Error from "../components/Error";
 import { consultarEmpleado } from "../data/login";
+import { useContext } from "react";
+import {UserContext} from "../context/UserProvider"
 
 export async function loader({body}){
   return null
@@ -16,7 +18,7 @@ export async function action({request}){
   
   const resultado = await consultarEmpleado(datos)
   if(resultado.text === 'Empleado no existe'){
-    errores.push("no esta bién")
+    errores.push("Usuario no encontrado")
   }
 
  
@@ -29,19 +31,24 @@ export async function action({request}){
 
 function Login(){
   
+  const {us, setUser} = useContext(UserContext)
+
   //const errores = useActionData()
   const errores = useActionData()
   const navigate = useNavigate()
 
 
   async function handleClick () {
+    
     const datos = {
-    nombre: nombre.value,
-    cedula: cedula.value
+      nombre: nombre.value,
+      cedula: cedula.value
     }
+    
     const resultado = await consultarEmpleado(datos)
     if(resultado.text === 'Empleado existe'){
-      return navigate('/', { state: { user: datos.nombre, cedula: datos.cedula }});
+      setUser(datos.nombre)
+      return navigate('/');
     }else{
       if (!confirm('El empleado no existe, ingrese nuevamente ')){
         e.preventDefault()

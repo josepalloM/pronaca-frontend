@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import App from './App'
+import UserProvider from './context/UserProvider'
 /*
 import { createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Layout from './components/Layout'
@@ -466,8 +467,12 @@ import {action as eliminarDetalle_PedidoAction} from "./components/Detalle_Pedid
 */
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <UserProvider>
+    <React.StrictMode>
     {/* <RouterProvider router={router} /> */}
     <App/>
   </React.StrictMode>,
+  </UserProvider>
+  
+  
 )
