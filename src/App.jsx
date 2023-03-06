@@ -56,7 +56,7 @@ import ActualizarDepartamento, { loader as actualizarDepartamentoLoader, action 
 import ActualizarCargo, { loader as actualizarCargoLoader, action as actualizarCargoAction } from './pages/ActualizarCargo.jsx' //
 /////
 import NuevoBalance, { action as nuevoBalance } from './pages/NuevoBalance'
-
+import ActualizarItemBodega, { action as actualizarItemBodegaAction, loader as actualizarItemBodegaLoader } from './pages/ActualizarItemBodega.jsx'
 import NuevaCuenta, { action as nuevaCuenta } from './pages/NuevaCuenta'
 import Cuentas, { loader as obtenerCuentas, action as eliminarCuenta } from './pages/Cuentas'
 import NuevoAsiento, { action as nuevoAsiento } from './pages/NuevoAsiento'
@@ -146,6 +146,12 @@ function App() {
                         {
                             path: '/bodegas/:bodegaId/eliminar',
                             action: eliminarBodegaAction
+                        },
+                        {
+                            path: '/bodegas/:clienteId/editaritem',
+                            element: <ActualizarItemBodega />,
+                            action: actualizarItemBodegaAction,
+                            loader: actualizarItemBodegaLoader,
                         },
                         {
                             path: '/bodegas/:bodegaId/editar',
