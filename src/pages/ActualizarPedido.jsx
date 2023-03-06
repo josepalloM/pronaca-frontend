@@ -1,7 +1,10 @@
+import { useLocation } from "react-router-dom";
 import {agregarPedido, obtenerPedido, actualizarPedido} from "../data/pedidos.js";
 import Error from "../components/Error.jsx";
 import {Form, useNavigate, useLoaderData, useActionData, redirect} from "react-router-dom";
-import FormularioPedido from "../components/FormularioPedido.jsx";
+import FormularioActualizarPedido from "../components/FormularioActualizarPedido.jsx";
+import {obtenerEmpleado} from "../data/empleados";
+import {obtenerCliente} from "../data/clientes";
 
 export async function loader({params}){
     const pedido =  await obtenerPedido(params.pedidoId)
@@ -11,8 +14,15 @@ export async function loader({params}){
             statusText: 'El pedido no fue encontrado'
         })
     }
+
+    const cliente = await obtenerCliente(pedido.ID_CLIENTE)
+    console.log(cliente)
+
+    const empleado = await obtenerEmpleado(pedido.ID_EMPLEADO)
+    console.log(empleado)
+
     console.log("Pedido en actualizar", pedido)
-    return pedido
+    return {pedido, cliente, empleado}
 }
 
 export async function action({request, params}){
@@ -39,7 +49,7 @@ export async function action({request, params}){
 function ActualizarPedido() {
 
     const navigate = useNavigate()
-    const pedido = useLoaderData()
+    const {pedido, cliente, empleado} = useLoaderData()
     const errores = useActionData()
 
     return (
@@ -58,8 +68,10 @@ function ActualizarPedido() {
                     
 
                 >
-                    <FormularioPedido 
+                    <FormularioActualizarPedido 
                         pedido={pedido}
+                        cliente={cliente}
+                        empleado={empleado}
                     />
 
                     <div className="grid grid-cols-2 gap-2">

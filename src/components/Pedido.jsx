@@ -19,6 +19,21 @@ function Pedido({ pedido }) {
     ID_PEDIDO,
   } = pedido;
 
+  const handleEditar = () => {
+    if(ESTADO_PEDIDO=="Entregado"){
+      alert("El pedido ya ha sido entregado")
+    }else{
+      navigate(`/pedido/${ID_PEDIDO}/editar`)
+    }
+  }
+  const handleEliminar = () => {
+    if(ESTADO_PEDIDO=="Entregado"){
+      alert("El pedido ya ha sido entregado")
+    }else{
+      `/pedido/${ID_PEDIDO}/editar`
+    }
+  }
+
   return (
     <tr className="border-b">
       <td className="">{ID_PEDIDO}</td>
@@ -43,7 +58,8 @@ function Pedido({ pedido }) {
         <button
           type="button"
           className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
-          onClick={() => navigate(`/pedido/${ID_PEDIDO}/editar`)}
+          // onClick={() => navigate(`/pedido/${ID_PEDIDO}/editar`)}
+          onClick={handleEditar}
         >
           Editar
         </button>

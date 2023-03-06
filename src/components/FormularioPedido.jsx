@@ -1,5 +1,4 @@
-import Select from "react-select";
-import React, {useEffect, useRef, useState} from "react";
+import React, {useRef, useState} from "react";
 
 const FormularioPedido = ({pedido, clientes, empleados}) => {    
     

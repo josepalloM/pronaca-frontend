@@ -69,14 +69,17 @@ const FormularioCliente = ({cliente, ubicaciones}) => {
                     className="flex justify-start text-gray-800"
                     htmlFor="estado_cliente"
                 >Estado Cliente:</label>
-                <input 
+                <select 
                     id="estado_cliente"
-                    type="text"
-                    className="mt-2 block w-full p-3 bg-gray-50"
-                    placeholder="Cedula/Ruc del cliente"
+                    className="form-control border-2 border-black"
                     name="estado_cliente"
                     defaultValue={cliente?.ESTADO_CLIENTE}
-                />
+                >
+                    <option>Seleccione una opción</option>
+                    <option value={"Potencial"}>Potencial</option>
+                    <option value={"Activo"}>Activo</option>
+                    <option value={"Inactivo"}>Inactivo</option>
+                </select>
             </div>
             <div className="mb-4">
                 <label
