@@ -24,11 +24,6 @@ function Cargo({ cargo }) {
                     onClick={() => navigate(`/empleados/cargos/${ID_CARGO_EMPLEADO}/editar`)}
                 >Editar
                 </button>
-                <button type="submit"
-                    className="text-red-600 hover:text-blue-700 uppercase font-bold text-xs"
-                    onClick={() => navigate(`/empleados/cargos/${ID_CARGO_EMPLEADO}/eliminar`)}>
-                    Eliminar
-                </button>
             </td>
         </tr>
     )
