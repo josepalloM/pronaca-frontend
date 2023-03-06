@@ -79,7 +79,7 @@ const utilidad_sin_impuesto=(estado?.ingresos)-(estado?.costos)-(estado?.gastos)
                 <label
                     className="flex justify-start text-gray-800"
                     htmlFor="Utilidad sin Impuestos"
-                >Utilidad</label>
+                >Utilidad antes del Impuesto</label>
                 <input
                     id="utilidad_sin_impuestos"
                     type="text"
@@ -92,6 +92,28 @@ const utilidad_sin_impuesto=(estado?.ingresos)-(estado?.costos)-(estado?.gastos)
 
                 />
             </div>
+
+
+            <div className="mb-4">
+
+                <label
+                    className="flex justify-start text-gray-800"
+                    htmlFor="impuesto"
+                >Impuesto % ISR:</label>
+                <input
+                    id="IMPUESTO"
+                    type="text"
+                    className="mt-2 block w-full p-3 bg-gray-50"
+                    placeholder="ISR"
+
+                    defaultValue={isr*100}
+                    name="isr"
+
+                /// add
+                />
+            </div>
+
+            
 
             <div className="mb-4">
 
