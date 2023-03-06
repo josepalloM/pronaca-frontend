@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
 import NuevoEmpleado, { action as nuevoEmpleadoAction, loader as cargarDepartamentoCargo } from './pages/NuevoEmpleado'
@@ -95,21 +95,12 @@ import { action as eliminarDetalle_PedidoAction } from "./components/Detalle_Ped
 ///importar editar Balance
 import VerDetalleBalance, { loader as obtenerDetalleBalanceLoader} from './pages/AcVerDetalleBalance'
 import VerDetalleEstado, { loader as obtenerDetalleEstadoLoader} from './pages/AcVerDetalleEstado'
+import { UserContext } from "./context/UserProvider";
 
 
 function App() {
 
-    const [user, setUser] = useState()
-    useEffect(() => {
-        const obtenerLS = () => {
-            const us = localStorage.getItem('user');
-            us?.length > 0 && setUser(us)
-
-        }
-        obtenerLS()
-        //console.log("user", obtenerLS())
-    }, [])
-    //console.log("user APP", user)
+    const {us} = useContext(UserContext)
 
     const router = createBrowserRouter([
         {
@@ -127,7 +118,7 @@ function App() {
                 },
 
                 {
-                    element: <RutasPrivadas usuario={user} />,
+                    element: <RutasPrivadas usuario={us} />,
                     children: [
                         {
                             path: '/opciones',

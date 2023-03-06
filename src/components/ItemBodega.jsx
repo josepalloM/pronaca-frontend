@@ -1,4 +1,4 @@
-import {Form, redirect, useNavigate} from "react-router-dom";
+import {Form, redirect, useNavigate, useNavigation} from "react-router-dom";
 import {actualizarItemBodega} from "../data/bodegas.js";
 import { useState } from 'react';
 
@@ -28,6 +28,7 @@ function ItemBodega({id_item, cantidad, id_bodega}) {
                         defaultValue={cantidad}
                         onChange= {event => {
                             setCount(event.target.value);
+                            useNavigate(-1)
                         }}
                     />
                 </div>
