@@ -1,9 +1,12 @@
 
 import { useState } from 'react';
 
-const FormularioItem = ({ item, tipo_items }) => {
+const FormularioItem = ({ item, tipo_items, id_lista_items }) => {
 
     const [tipo_item, settipo_item] = useState('');
+    const [id_lista_item, setid_lista_item] = useState('');
+    console.log(tipo_items);
+    //console.log(id_lista_items);
     return (
         <>
             <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
@@ -21,6 +24,22 @@ const FormularioItem = ({ item, tipo_items }) => {
                         defaultValue={item?.ID_LISTA_ITEMS}
                     />
                 </div>
+                {/*<div className="mb-4">
+                    <label
+                        className=" flex justify-start text-gray-800"
+                        htmlFor="id_lista_item"
+                    >Id Lista Items:</label>
+                    <div className="">
+                        {id_lista_items.length ?(
+                            <select id="id_lista_item" value={id_lista_item} name="id_lista_item" onChange={(event) => setid_lista_item(event.target.value)} className="form-control border-2 border-black">
+                                <option >Selecciona el Id Lista Item</option>
+                                {id_lista_items.map(id_lista_item => (
+                                    <option key={id_lista_item.ID_LISTA_ITEMS} value={id_lista_item.ID_LISTA_ITEMS}>{id_lista_item.ID_LISTA_ITEMS}</option>
+                                ))}
+                            </select>
+                        ) : (<p> No existe Id Lista Item</p>)}
+                    </div>
+                </div>*/}
                 <div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"
@@ -36,7 +55,7 @@ const FormularioItem = ({ item, tipo_items }) => {
                     />
 
                 </div>
-                <div className="mb-4">
+                {/*<div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"
                         htmlFor="id_tipo_item"
@@ -50,15 +69,16 @@ const FormularioItem = ({ item, tipo_items }) => {
                         defaultValue={item?.ID_TIPO_ITEM}
                     />
 
-                </div>
-                {/*<div className="mb-4">
+                </div>*/}
+
+                <div className="mb-4">
                     <label
                         className=" flex justify-start text-gray-800"
                         htmlFor="tipo_item"
                     >Tipo Item:</label>
                     <div className="">
                         {tipo_items.length ? (
-                            <select id="tipo_item" value={tipo_item} name="tipo_item" onChange={(event) => settipo_item(event.target.value)} className="form-control border-2 border-black">
+                            <select id="tipo_item" value={tipo_item} name="id_tipo_item" onChange={(event) => settipo_item(event.target.value)} className="form-control border-2 border-black">
                                 <option >Selecciona el Tipo de Item</option>
                                 {tipo_items.map(tipo_item => (
                                     <option key={tipo_item.ID_TIPO_ITEM} value={tipo_item.ID_TIPO_ITEM}>{tipo_item.TIPO_ITEM}</option>
@@ -66,7 +86,7 @@ const FormularioItem = ({ item, tipo_items }) => {
                             </select>
                         ) : (<p> No existe Tipos de Item</p>)}
                     </div>
-                                </div>*/}
+                </div>
 
                 <div className="mb-4">
                     <label
@@ -112,7 +132,19 @@ const FormularioItem = ({ item, tipo_items }) => {
                         defaultValue={item?.ID_BODEGA}
                     />
                 </div>
-
+                <div className="mb-4">
+                    <label
+                        className="flex justify-start text-gray-800"
+                        htmlFor="paso_receta"
+                    >Paso Receta: </label>
+                    <input
+                        id="paso_receta"
+                        type="text"
+                        className="mt-2 block w-full p-3 bg-gray-50"
+                        placeholder="Paso Receta"
+                        name="id_paso_receta" 
+                        />
+                </div>
                 {/*<div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"

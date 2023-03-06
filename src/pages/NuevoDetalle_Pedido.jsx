@@ -5,16 +5,23 @@ import Error from "../components/Error";
 import { obtenerPedidos } from "../data/pedidos";
 import { obtenerPedido } from "../data/pedidos";
 import { actualizarBodega } from "../data/bodegas";
+import { obtenerBodega } from "../data/bodegas";
+import { obtenerUbicacion } from "../data/ubicaciones";
 import { agregarDetalle_Pedido } from "../data/detalle_pedidos";
 import {obtenerItemsVenta} from "../data/itemsVenta";
+import { obtenerCliente } from "../data/clientes";
 import ItemVenta from "../components/ItemVenta";
 
 export async function loader(){
     const pedido = $(await obtenerPedidos()).get(-1)
     const pedidoEditar = await obtenerPedido(pedido.ID_PEDIDO)
     const clienteId = pedidoEditar.ID_CLIENTE
+    const cliente = await obtenerCliente(clienteId)
+    const ubicacion = await obtenerUbicacion(cliente.ID_UBICACION)
+    const bodega = await obtenerBodega(ubicacion.ID_UBICACION)
+    
     const items = await obtenerItemsVenta()
-    return {pedido, pedidoEditar, clienteId, items}
+    return {pedido, pedidoEditar, clienteId, bodega, items}
 }
 
 export  async function action({request}){
@@ -23,32 +30,20 @@ export  async function action({request}){
 }
 
 function NuevoPedido() {
-    const {pedido, pedidoEditar, clienteId, items} = useLoaderData()
+    const {pedido, pedidoEditar, clienteId, bodega, items} = useLoaderData()
     const errores = useActionData()
     const navigate = useNavigate()
 
     const [detalle, setDetalle] = useState([]);
-    const [newPedido, setNewPedido] = useState(pedidoEditar);
+    const [aBodega, setABodega] = useState([]);
 
     const insertarItem = (numPedido, item, cantidad, subtotal, precio) =>{
         setDetalle(prevDetalle => [...prevDetalle, { id_pedido: numPedido, id_item: item, cantidad_pedido:cantidad, subtotal_detalle_pedido:subtotal, precio_detalle_pedido: precio}])
-        // console.log(detalle)
-        // const precioPedido =+ precio
-        // setNewPedido(prevPedido => [...prevPedido, { iva_pedido: precio*0.12, subtotal_pedido: precio-precio*0.12, total_pedido: precio}])
-        console.log(newPedido)
     }
 
     const handleSubmit = (e) =>{
-        console.log(detalle)
         agregarDetalle_Pedido(detalle)
-        //actualizar bodegas (cantidad, idItem, ubicacion)
-        // actualizarBodega(detalle.cantidad, detalle.id_item, clienteId)
-        console.log(detalle, clienteId)
-
-        ////quitarCantidadBodega////
-        // actualizarPedido(detalle.ID_PEDIDO, newPedido)
-
-
+        actualizarBodega(detalle, {id_cliente:clienteId})
     }
 
     return (
@@ -94,6 +89,7 @@ function NuevoPedido() {
                       <ItemVenta
                         key={item.ID_ITEM}
                         pedido={pedido}
+                        bodega={bodega}
                         item={item}
                         insertarItem={insertarItem}
                       />
@@ -104,16 +100,10 @@ function NuevoPedido() {
                 )}
               </div>
             </div>
-
-            {/* <FormularioDetalle_Pedido 
-                    pedido={pedido} 
-                    items={items} 
-                    /> */}
             <div className="grid grid-cols-2 gap-2">
               <div>
                 <input
                   type="submit"
-                  // onClick={submit}
                   className="inline-block w-10/12 px-8 py-2.5 bg-orange-300 text-black
                                     font-medium text-sm leading-tight uppercase rounded
                                     shadow-md hover:bg-amber-400 hover:shadow focus:bg-grey

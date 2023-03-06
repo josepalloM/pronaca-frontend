@@ -53,22 +53,6 @@ function NuevoPedido() {
 
                     <FormularioPedido clientes={clientes} empleados={empleados} />
                     <div className="grid grid-cols-2 gap-2">
-                        
-                    {/* <Link
-                            state={location.state}
-                            className={`${location.pathname === '/'}`}
-                                    to='/opciones/pedido/nuevo/detalle/nuevo'>
-                                    <button type="submit"
-                                    data-mdb-ripple="true"
-                                    data-mdb-ripple-color="light"
-                                    className="inline-block w-10/12 px-8 py-2.5 bg-orange-300 text-black
-                                    font-medium text-sm leading-tight uppercase rounded
-                                    shadow-md hover:bg-amber-400 hover:shadow focus:bg-grey
-                                    focus:shadow focus:outline-none focus:ring-0 active:bg-grey
-                                    active:shadow transition duration-150 ease-in-out">
-                                Pedidos 
-                            </button>
-                        </Link> */}
                         <div>
                             <input
                                 type="submit"

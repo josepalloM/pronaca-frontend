@@ -1,14 +1,15 @@
-import { Link, useLoaderData } from "react-router-dom"
+import { Link, useLoaderData, useLocation } from "react-router-dom"
 import { obtenerDetalle_Pedidos } from "../data/detalle_pedidos"
 import Detalle_Pedido from "../components/Detalle_pedido"
 
-export function loader() {
-  const detalle_pedidos = obtenerDetalle_Pedidos()
+export function loader({params}) {
+  const detalle_pedidos = obtenerDetalle_Pedidos(params.pedidoId)
   return detalle_pedidos
 }
 
 function Detalle_Pedidos() {
   const detalle_pedidos = useLoaderData()
+  const location = useLocation()
   return (
     <>
       <h1 className="font-black text-4xl ">Detalle Pedidos</h1>
