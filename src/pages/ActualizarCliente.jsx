@@ -1,4 +1,3 @@
-import { useLocation } from "react-router-dom";
 import {agregarCliente, obtenerCliente, actualizarCliente} from "../data/clientes.js";
 import Error from "../components/Error.jsx";
 import {Form, useNavigate, useLoaderData, useActionData, redirect} from "react-router-dom";
@@ -83,7 +82,7 @@ export async function action({request, params}){
 }
 
 function ActualizarCliente() {
-    const location = useLocation()
+
     const navigate = useNavigate()
     const {cliente, ubicaciones} = useLoaderData()
     //const ubicacion = useLoaderData()
@@ -100,9 +99,11 @@ function ActualizarCliente() {
                 
                 
                 {errores?.length && errores.map((error, i) => <Error key={i}>{error}</Error>)}
-                
+
                 <Form
                     method="PUT"
+                    
+
                 >
                     <FormularioCliente 
                         cliente={cliente}

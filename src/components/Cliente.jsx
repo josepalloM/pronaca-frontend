@@ -1,4 +1,4 @@
-import {Form, useNavigate, redirect, useLocation} from "react-router-dom";
+import {Form, useNavigate, redirect} from "react-router-dom";
 import {eliminarCliente} from "../data/clientes.js";
 
 export async function action({params}){
@@ -8,7 +8,6 @@ export async function action({params}){
 
 function Cliente({ cliente }) {
     const navigate = useNavigate()
-    const location = useLocation()
     const {
         NOMBRE_CLIENTE,
         APELLIDO_CLIENTE,
@@ -58,8 +57,7 @@ function Cliente({ cliente }) {
                     <button
                         type="button"
                         className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
-                        onClick={() => navigate(`/clientes/${ID_CLIENTE}/editar` )}
-                        
+                        onClick={() => navigate(`/clientes/${ID_CLIENTE}/editar`)}
                     >Editar</button>
 
                     <Form

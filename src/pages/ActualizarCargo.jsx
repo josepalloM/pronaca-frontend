@@ -2,10 +2,9 @@ import { obtenerCargo, actualizarCargo } from "../data/cargo_empleado";
 import Error from "../components/Error.jsx";
 import {Form, useNavigate, useLoaderData, useActionData, redirect} from "react-router-dom";
 import FormularioActualizarCargo from "../components/FormularioActualizarCargo.jsx";
-import { obtenerDepartamentos } from "../data/departamentos";
+
 
 export async function loader({params}){
-    const departamentos = await obtenerDepartamentos()
     const cargo =  await obtenerCargo(params.cargoId)
     
     
@@ -15,7 +14,8 @@ export async function loader({params}){
             statusText: 'El cargo no fue encontrado'
         })
     }
-    return {cargo,departamentos} 
+    console.log("Cargo en actualizar", cargo)
+    return { cargo }
 }
 
 export async function action({request, params}){
@@ -42,7 +42,7 @@ export async function action({request, params}){
 function ActualizarCargos() {
 
     const navigate = useNavigate()
-    const {cargo,departamentos} = useLoaderData()
+    const { cargo } = useLoaderData()
     const errores = useActionData()
     
 
@@ -63,8 +63,7 @@ function ActualizarCargos() {
 
                 >
                     <FormularioActualizarCargo
-                        cargo={cargo}
-                        departamentos = {departamentos}  
+                        cargo={cargo}  
                     />
 
                     <div className="grid grid-cols-2 gap-2">

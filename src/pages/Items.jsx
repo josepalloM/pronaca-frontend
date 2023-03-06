@@ -14,6 +14,7 @@ export async function loader() {
 function Items() {
 
     const items = useLoaderData()
+
     return (
         <>
             <h1 className="font-black text-4xl">Producto</h1>
@@ -26,7 +27,7 @@ function Items() {
                             <tr>
                                 <th className="p-2">Id Lista Item</th>
                                 <th className="p-2">Estado Produccion</th>
-                                <th className="p-2">Tipo Item</th>
+                                <th className="p-2">Id Tipo Item</th>
                                 <th className="p-2">Codigo Item</th>
                                 <th className="p-2">Nombre Item</th>
                                 <th className="p-2">Fecha Fabricación</th>
@@ -34,9 +35,8 @@ function Items() {
                                 <th className="p-2">Fecha Caducidad 2</th>
                                 <th className="p-2">Lote Item</th>
                                 <th className="p-2">Cantidad Lote</th>
-                                <th className="p-2">Unidad Medida</th>
-                                <th className="p-2">Peso Item</th>
                                 <th className="p-2">Precio Item</th>
+                                <th className="p-2">Peso Item</th>
                                 <th className="p-2">Conservación Item</th>
                                 <th className="p-2">Detalle Item</th>
                                 <th className="p-2">Acciones</th>

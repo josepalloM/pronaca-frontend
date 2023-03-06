@@ -1,5 +1,6 @@
 import {Form, redirect, useNavigate} from "react-router-dom";
 import {eliminarBodega} from "../data/bodegas";
+import VerBodega from "../pages/VerBodega.jsx";
 
 export async function action({params}){
     await eliminarBodega(params.bodegaId)

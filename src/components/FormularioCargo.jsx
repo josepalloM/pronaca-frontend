@@ -1,8 +1,8 @@
 import {useState} from "react"
 
-const FormularioCargo = ({ departamentos}) => {
+const FormularioCargo = ({ departamentos, cuentas }) => {
 
-    const [cargo, setCargo] = useState("")
+    const [value, setValue] = useState("")
 
     return (
         <>
@@ -26,7 +26,7 @@ const FormularioCargo = ({ departamentos}) => {
                 >Departamento:</label>
                 <div className="">
                     {departamentos.length ? (
-                        <select id="id_departamento" value={cargo} name="id_departamento" 
+                        <select id="id_departamento" value={value} name="id_departamento" 
                         
                         onChange={(event) => setValue(event.target.value)} className="border border-gray-500 rounded py-2 px-3 block w-full appearance-none leading-tight focus:outline-none focus:bg-white">
                             <option >Selecciona un departamento</option>

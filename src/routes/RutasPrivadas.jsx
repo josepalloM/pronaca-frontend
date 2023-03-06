@@ -4,7 +4,7 @@ import Login from '../pages/Login';
 export const RutasPrivadas = ({ usuario, children, redirectTo, setUsuario }) => {
 	
 	
-	if(usuario==""){
+	if(usuario=="null"){
 		
 		return	<Navigate to='/login' />
 		//return <Login />
