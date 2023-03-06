@@ -1,10 +1,12 @@
 
 import { useState } from 'react';
 
-const FormularioItem = ({ item, tipo_items }) => {
+const FormularioItem = ({ item, tipo_items, id_lista_items }) => {
 
     const [tipo_item, settipo_item] = useState('');
+    const [id_lista_item, setid_lista_item] = useState('');
     console.log(tipo_items);
+    //console.log(id_lista_items);
     return (
         <>
             <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
@@ -22,6 +24,22 @@ const FormularioItem = ({ item, tipo_items }) => {
                         defaultValue={item?.ID_LISTA_ITEMS}
                     />
                 </div>
+                {/*<div className="mb-4">
+                    <label
+                        className=" flex justify-start text-gray-800"
+                        htmlFor="id_lista_item"
+                    >Id Lista Items:</label>
+                    <div className="">
+                        {id_lista_items.length ?(
+                            <select id="id_lista_item" value={id_lista_item} name="id_lista_item" onChange={(event) => setid_lista_item(event.target.value)} className="form-control border-2 border-black">
+                                <option >Selecciona el Id Lista Item</option>
+                                {id_lista_items.map(id_lista_item => (
+                                    <option key={id_lista_item.ID_LISTA_ITEMS} value={id_lista_item.ID_LISTA_ITEMS}>{id_lista_item.ID_LISTA_ITEMS}</option>
+                                ))}
+                            </select>
+                        ) : (<p> No existe Id Lista Item</p>)}
+                    </div>
+                </div>*/}
                 <div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"
@@ -52,6 +70,7 @@ const FormularioItem = ({ item, tipo_items }) => {
                     />
 
                 </div>*/}
+
                 <div className="mb-4">
                     <label
                         className=" flex justify-start text-gray-800"
