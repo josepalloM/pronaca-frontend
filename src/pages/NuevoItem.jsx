@@ -1,12 +1,14 @@
 import { useNavigate, Form, useActionData, redirect, useLoaderData } from "react-router-dom"
 import FormularioItem from "../components/FormularioItem";
 import Error from "../components/Error";
-import { agregarItems } from "../data/items";
+import { agregarItems, obtenerListaItems } from "../data/items";
 import {obtenerTiposItem} from '../data/tipo_item';
+//import {obtenerListaItem} from '../data/items'
 
 
 export async function loader() {
   const tipoitem = await obtenerTiposItem()
+  //const idListaItem = await obtenerListaItems()
   return tipoitem
 }
 

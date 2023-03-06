@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
 import NuevoEmpleado, { action as nuevoEmpleadoAction, loader as cargarDepartamentoCargo } from './pages/NuevoEmpleado'
@@ -56,7 +56,7 @@ import ActualizarDepartamento, { loader as actualizarDepartamentoLoader, action 
 import ActualizarCargo, { loader as actualizarCargoLoader, action as actualizarCargoAction } from './pages/ActualizarCargo.jsx' //
 /////
 import NuevoBalance, { action as nuevoBalance } from './pages/NuevoBalance'
-
+import ActualizarItemBodega, { action as actualizarItemBodegaAction, loader as actualizarItemBodegaLoader } from './pages/ActualizarItemBodega.jsx'
 import NuevaCuenta, { action as nuevaCuenta } from './pages/NuevaCuenta'
 import Cuentas, { loader as obtenerCuentas, action as eliminarCuenta } from './pages/Cuentas'
 import NuevoAsiento, { action as nuevoAsiento } from './pages/NuevoAsiento'
@@ -93,23 +93,17 @@ import { action as eliminarDetalle_PedidoAction } from "./components/Detalle_Ped
 
 ///importar editar Balance
 import VerDetalleBalance, { loader as obtenerDetalleBalanceLoader} from './pages/AcVerDetalleBalance'
+import { UserContext } from "./context/UserProvider";
+
 
 
 
 function App() {
 
+    const {us} = useContext(UserContext)
+
     const [user, setUser] = useState()
-    useEffect(() => {
-        const obtenerLS = () => {
-            const us = localStorage.getItem('user');
-            us?.length > 0 && setUser(us)
-
-        }
-        obtenerLS()
-        //console.log("user", obtenerLS())
-    }, [])
-    //console.log("user APP", user)
-
+    
     const router = createBrowserRouter([
         {
             path: '/',
@@ -126,7 +120,7 @@ function App() {
                 },
 
                 {
-                    element: <RutasPrivadas usuario={user} />,
+                    element: <RutasPrivadas usuario={us} />,
                     children: [
                         {
                             path: '/opciones',
@@ -146,6 +140,12 @@ function App() {
                         {
                             path: '/bodegas/:bodegaId/eliminar',
                             action: eliminarBodegaAction
+                        },
+                        {
+                            path: '/bodegas/:clienteId/editaritem',
+                            element: <ActualizarItemBodega />,
+                            action: actualizarItemBodegaAction,
+                            loader: actualizarItemBodegaLoader,
                         },
                         {
                             path: '/bodegas/:bodegaId/editar',
@@ -416,6 +416,12 @@ function App() {
                         {
                             path: '/empleados/cargos/:cargoId/eliminar',
                             loader: eliminarCargo
+                        },
+                        {
+                            path: '/empleados/cargos/:cargoId/editar',
+                            element: <ActualizarCargo/>,
+                            loader: actualizarCargoLoader,
+                            action: actualizarCargoAction
                         },
                         {
                             path: '/empleados/:empleadoId/rolDePago',

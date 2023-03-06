@@ -14,7 +14,6 @@ export async function loader() {
 function Items() {
 
     const items = useLoaderData()
-
     return (
         <>
             <h1 className="font-black text-4xl">Producto</h1>
