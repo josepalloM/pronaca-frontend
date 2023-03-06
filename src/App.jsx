@@ -103,17 +103,7 @@ function App() {
     const {us} = useContext(UserContext)
 
     const [user, setUser] = useState()
-    // useEffect(() => {
-    //     const obtenerLS = () => {
-    //         const us = localStorage.getItem('user');
-    //         us?.length > 0 && setUser(us)
-
-    //     }
-    //     obtenerLS()
-    //     //console.log("user", obtenerLS())
-    // }, [])
-    //console.log("user APP", user)
-
+    
     const router = createBrowserRouter([
         {
             path: '/',
