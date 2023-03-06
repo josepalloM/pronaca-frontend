@@ -16,15 +16,9 @@ function Layout() {
         navigate('/')     
 	};
     
-    // useEffect(()=>{
-    //     localStorage.setItem('user', JSON.stringify(user))
-        
-    // }, [user])
 
     return (
         <div className="min-h-screen flex">
-            <h1>{us ? "en linea" : "no en linea"}</h1>
-
             <aside className={`md:min-h-screen bg-orange-500 relative ${open ? "w-56" : "w-0"} duration-300 relative`}>
                 <AiOutlineMenu className="bg-white text-black text-3xl absolute
                 -right-10 top-2 cursor-pointer" onClick={() => setOpen(!open)}/>

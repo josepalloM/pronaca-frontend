@@ -33,7 +33,6 @@ function Login(){
   
   const {us, setUser} = useContext(UserContext)
 
-  //const errores = useActionData()
   const errores = useActionData()
   const navigate = useNavigate()
 
@@ -79,7 +78,6 @@ function Login(){
                 <input
                   type="submit"
                   onClick={handleClick}
-                  //onClick={() => navigate('/', { state: { user: 'jose' }})}
                   className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
                   value="Ingresar"
                 />
