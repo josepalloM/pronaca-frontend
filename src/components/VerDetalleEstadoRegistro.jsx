@@ -2,7 +2,8 @@ import {useEffect, useState} from "react"
 
 const VerDetalleEstadoRegistro = ({estado}) => {
 
-    
+    const isr=0.22
+const utilidad_sin_impuesto=(estado?.ingresos)-(estado?.costos)-(estado?.gastos)
     return (
         <>
 
@@ -59,7 +60,7 @@ const VerDetalleEstadoRegistro = ({estado}) => {
                 <label
                     className="flex justify-start text-gray-800"
                     htmlFor="Gastos"
-                >Gastos de Produccion:</label>
+                >Gastos de Operación:</label>
                 <input
                     id="gastos"
                     type="text"
@@ -85,7 +86,7 @@ const VerDetalleEstadoRegistro = ({estado}) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="utilidad sin impuestos"
                     name="gastos"
-                    defaultValue={300}
+                    defaultValue={utilidad_sin_impuesto}
                     
 
 
@@ -104,7 +105,7 @@ const VerDetalleEstadoRegistro = ({estado}) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="utilidad neta"
                     name="utilidad_neta"
-                    defaultValue={250}
+                    defaultValue={utilidad_sin_impuesto*(1-isr)}
                     
 
 
