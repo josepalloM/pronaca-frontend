@@ -86,7 +86,7 @@ function NuevoIess() {
                             {cuentas.length ?(
                                 <select id="descripcion_cuenta" value={cuenta} name="descripcion_cuenta" onChange={(event)=>setCuenta(event.target.value)} className="form-control border-2 border-black">
                                     <option>Selecciona una cuenta</option>
-                                    {cuentas.filter(c=>c.DESCRIPCION_CUENTA=="Aporte patronal por pagar" || c.DESCRIPCION_CUENTA=="Aporte personal por pagar").map( c => (
+                                    {cuentas.filter(c=>c.DESCRIPCION_CUENTA=="Aporte patronal por pagar" || c.DESCRIPCION_CUENTA=="Aporte personal por pagar" || c.DESCRIPCION_CUENTA=="Impuestos por pagar").map( c => (
                                         <option key={c.ID_CUENTA} value={c.DESCRIPCION_CUENTA}>{c.DESCRIPCION_CUENTA}</option>                         
                                     ))}                        
                                 </select>

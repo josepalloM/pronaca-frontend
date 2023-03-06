@@ -1,4 +1,4 @@
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData, Link,useLocation } from "react-router-dom";
 import { obtenerEstado } from "../data/estado";
 import Estado from "../components/Estado";
 
@@ -9,7 +9,7 @@ return { estado };
 
 function EstadoFinanciero() {
 const { estado } = useLoaderData();
-
+const location = useLocation()
 return (
     <>
         <h1 className="font-black text-4xl ">Estado financiero</h1>
@@ -29,7 +29,7 @@ return (
                         {estado.map(estado => (
                             <Estado
                                 estado={estado}
-                                key={estado.id}
+                                key={estado.id_estado}
                             />
                         ))}
                     </tbody>
@@ -39,7 +39,7 @@ return (
             )}
         </div>
         <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
-            <Link to="#">CREAR ESTADO FINANCIERO</Link>
+        <Link to="/finanzas/estado/nuevo">CREAR ESTADO FINANCIERO</Link>
         </button>
     </>
 );
