@@ -35,7 +35,7 @@ function Pedido({ pedido }) {
           type="button"
           className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
         >
-          <Link state={location.state} to={`/opciones/detalle_pedidos/${ID_PEDIDO}`}>
+          <Link state={location.state} to="/opciones/detalle_pedidos">
             Ver
           </Link>
         </button>

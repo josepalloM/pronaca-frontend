@@ -1,7 +1,6 @@
 import { Outlet, Link, useLocation, useNavigate } from "react-router-dom"
 import {AiOutlineMenu} from "react-icons/ai"
-import {useState, useEffect, useContext} from "react";
-import { UserContext } from "../context/UserProvider";
+import {useState, useEffect} from "react";
 
 function Layout() {
 
@@ -9,13 +8,18 @@ function Layout() {
     const location = useLocation()
     const navigate = useNavigate();
 
-    const {us, setUser} = useContext(UserContext)
+
+    const user = location?.state;
     
     const onLogout = () => {
-	    setUser("")
-        navigate('/')     
+	    navigate('/', { state: { user: "", cedula:""}})
+        console.log("ingreso al onLog")      
 	};
     
+    useEffect(()=>{
+        localStorage.setItem('user', JSON.stringify(user))
+        
+    }, [user])
 
     return (
         <div className="min-h-screen flex">
@@ -23,6 +27,7 @@ function Layout() {
                 <AiOutlineMenu className="bg-white text-black text-3xl absolute
                 -right-10 top-2 cursor-pointer" onClick={() => setOpen(!open)}/>
                 <Link 
+                    state={location.state}
                     to="/">
                     <div className="flex justify-center "> 
                         <img className="w-9/12 h-9/12" src="https://www.pronaca.com/wp-content/uploads/2022/04/cropped-favicon.png"/>
@@ -32,6 +37,7 @@ function Layout() {
                     <li>
                         <div className={`mt-24 text-center ${!open && "scale-0"}`}>
                         <Link
+                            state={location.state}
                             className={`${location.pathname === '/'}`}
                                     to='/opciones'>
                                     <button type="button"
@@ -50,6 +56,7 @@ function Layout() {
                     <li>
                         <div className={`my-2 text-center ${!open && "scale-0"}`}>
                         <Link
+                            state={location.state}
                             className={`${location.pathname === '/'}`}
                             to='/gestor'>
                             <button type="button"
@@ -68,6 +75,7 @@ function Layout() {
                     <li >
                         <div className={`my-2 text-center ${!open && "scale-0"}`}>
                         <Link
+                            state={location.state}
                             className={`${location.pathname === '/' }`}
                             to='/clientes'>
                             <button type="button"
@@ -86,6 +94,7 @@ function Layout() {
                     <li >
                         <div className={`my-2 text-center ${!open && "scale-0"}`}>
                         <Link
+                            state={location.state}
                             className={`${location.pathname === '/' }`}
                             to='/empleados_menu'>
                             <button type="button"
@@ -104,6 +113,7 @@ function Layout() {
                     <li >
                         <div className={`my-2 text-center ${!open && "scale-0"}`}>
                         <Link
+                            state={location.state}
                             className={`${location.pathname === '/' }`}
                             to='/finanzas'>
                             <button type="button"
@@ -140,10 +150,10 @@ function Layout() {
                     </li>
                                        
                     <li >
-                        {us ? (
+                        {location.state?.user ? (
                             <div className={`mt-40 text-center ${!open && "scale-0"}`}>
                             <p className="text-1xl font-bold  bg-white">Bienvenido</p>
-                            <p className="uppercase text-2xl font-bold  bg-white">{us}</p>
+                            <p className="text-2xl font-bold  bg-white">{location.state?.user}</p>
                             </div>
                         ) : (
                             <div className={`mt-40 text-center ${!open && "scale-0"}`}>
@@ -154,9 +164,10 @@ function Layout() {
                     </li>
                     <li >
 
-                        {us ? (
+                        {location.state?.user ? (
                             <div className={`my-2 text-center ${!open && "scale-0"}`}>
-                            <Link                               
+                            <Link
+                                
                                 className={`${location.pathname === '/' }`}
                                 to='/login'>
                                 <button type="button"
@@ -175,6 +186,7 @@ function Layout() {
                         ) : (
                             <div className={`my-2 text-center ${!open && "scale-0"}`}>
                         <Link
+                            
                             className={`${location.pathname === '/' }`}
                             to='/login'>
                             <button type="button"
