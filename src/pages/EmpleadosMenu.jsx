@@ -23,7 +23,7 @@ function EmpleadosMenu() {
                     <div className="flex flex-col items-center">
                         <img src="https://cdn-icons-png.flaticon.com/512/8382/8382909.png" alt="Icono de parámetros del IESS" className="h-16 w-16 object-contain mb-2" />
                         <button className="flex justify-center mt-3 ml-5 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
-                            <Link state={location.state} to='/empleados/iess'>Parámetros del IESS</Link>
+                            <Link state={location.state} to='/empleados/iess'>Parámetros del IESS y SRI</Link>
                         </button>
                     </div>
                     <div className="flex flex-col items-center">

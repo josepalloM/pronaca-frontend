@@ -1,8 +1,7 @@
-import {useEffect, useState} from "react"
 
-const VerDetalleEstadoRegistro = ({estado}) => {
-
-    const isr=0.22
+const VerDetalleEstadoRegistro = ({estado, parametro_isr}) => {
+    const isr=parametro_isr.VALOR
+    console.log("isr",isr)
 const utilidad_sin_impuesto=(estado?.ingresos)-(estado?.costos)-(estado?.gastos)
     return (
         <>

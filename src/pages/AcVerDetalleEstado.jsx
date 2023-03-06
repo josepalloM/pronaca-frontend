@@ -2,17 +2,18 @@ import { verDetalleEstado } from "../data/estado.js";
 import Error from "../components/Error.jsx";
 import { Form, useNavigate, useLoaderData, useActionData, redirect } from "react-router-dom";
 import VerDetalleEstadoRegistro from '../components/VerDetalleEstadoRegistro.jsx' 
+import { obtenerParametro } from "../data/parametros_iess"
 
 export async function loader({params}){
     const estado =  await verDetalleEstado(params.estadoId)
-    
+    const parametro = await obtenerParametro(3)
     if (Object.values(estado).length===0){
         throw new Response('', {
             status: 404,
             statusText: 'El estado no fue encontrado'
         })
     }
-    return estado
+    return {estado,parametro}
 }
 
 
@@ -22,7 +23,7 @@ export async function loader({params}){
 function VerDetalleEstado() {
 
     const navigate = useNavigate()
-    const estado = useLoaderData()
+    const {estado,parametro} = useLoaderData()
     const errores = useActionData()
 
     return (
@@ -46,6 +47,7 @@ function VerDetalleEstado() {
                 >
                     <VerDetalleEstadoRegistro
                         estado={estado}  
+                        parametro_isr = {parametro}
                     />
 
                     <div className="grid grid-cols-2 gap-2">
