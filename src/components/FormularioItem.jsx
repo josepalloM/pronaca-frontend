@@ -1,76 +1,48 @@
 
 import { useState } from 'react';
 
-const FormularioItem = ({ item, tipo_items, id_lista_items }) => {
+const FormularioItem = ({ item, tipo_items, listaitems,estadosproduccion }) => {
 
     const [tipo_item, settipo_item] = useState('');
-    const [id_lista_item, setid_lista_item] = useState('');
-    console.log(tipo_items);
-    //console.log(id_lista_items);
+    const [lista_item, setlista_item] = useState('');
+    const [estado_produc, setestado_produc] =useState('');
+    //console.log(tipo_items);
+    console.log(listaitems);
     return (
         <>
             <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
                 <div className="mb-4">
                     <label
-                        className="flex justify-start text-gray-800"
-                        htmlFor="id_lista_items"
-                    >Id Lista Item: </label>
-                    <input
-                        id="id_lista_items"
-                        type="text"
-                        className="mt-2 block w-full p-3 bg-gray-50"
-                        placeholder="Id Lista Item"
-                        name="id_lista_items"
-                        defaultValue={item?.ID_LISTA_ITEMS}
-                    />
-                </div>
-                {/*<div className="mb-4">
-                    <label
                         className=" flex justify-start text-gray-800"
-                        htmlFor="id_lista_item"
+                        htmlFor="id_lista_items"
                     >Id Lista Items:</label>
                     <div className="">
-                        {id_lista_items.length ?(
-                            <select id="id_lista_item" value={id_lista_item} name="id_lista_item" onChange={(event) => setid_lista_item(event.target.value)} className="form-control border-2 border-black">
-                                <option >Selecciona el Id Lista Item</option>
-                                {id_lista_items.map(id_lista_item => (
-                                    <option key={id_lista_item.ID_LISTA_ITEMS} value={id_lista_item.ID_LISTA_ITEMS}>{id_lista_item.ID_LISTA_ITEMS}</option>
+                        {listaitems.length ? (
+                            <select id="id_lista_items" value={lista_item} name="id_lista_items" onChange={(event) => setlista_item(event.target.value)} className="form-control border-2 border-black">
+                                <option >Selecciona Lista</option>
+                                {listaitems.map(lista_item => (
+                                    <option key={lista_item.ID_LISTA_ITEMS} value={lista_item.ID_LISTA_ITEMS}>{lista_item.DETALLE_LISTA}</option>
                                 ))}
                             </select>
                         ) : (<p> No existe Id Lista Item</p>)}
                     </div>
-                </div>*/}
+                </div>
                 <div className="mb-4">
                     <label
-                        className="flex justify-start text-gray-800"
+                        className=" flex justify-start text-gray-800"
                         htmlFor="id_estado_producion"
-                    >Id Estado Produccion: </label>
-                    <input
-                        id="id_estado_producion"
-                        type="text"
-                        className="mt-2 block w-full p-3 bg-gray-50"
-                        placeholder="Estado de Produccion"
-                        name="id_estado_producion"
-                        defaultValue={item?.ID_ESTADO_PRODUCION}
-                    />
-
+                    >Estado Produccion:</label>
+                    <div className="">
+                        {estadosproduccion.length ? (
+                            <select id="id_estado_producion" value={estado_produc} name="id_estado_producion" onChange={(event) => setestado_produc(event.target.value)} className="form-control border-2 border-black">
+                                <option >Selecciona el estado</option>
+                                {estadosproduccion.map(estadoproduccion => (
+                                    <option key={estadoproduccion.ID_ESTADO_PRODUCCION} value={estadoproduccion.ID_ESTADO_PRODUCCION}>{estadoproduccion.ESTADO_PRODUCCION}</option>
+                                ))}
+                            </select>
+                        ) : (<p> No existe Id Lista Item</p>)}
+                    </div>
                 </div>
-                {/*<div className="mb-4">
-                    <label
-                        className="flex justify-start text-gray-800"
-                        htmlFor="id_tipo_item"
-                    >Id Tipo Item: </label>
-                    <input
-                        id="id_tipo_item"
-                        type="text"
-                        className="mt-2 block w-full p-3 bg-gray-50"
-                        placeholder="Tipo Item"
-                        name="id_tipo_item"
-                        defaultValue={item?.ID_TIPO_ITEM}
-                    />
-
-                </div>*/}
-
                 <div className="mb-4">
                     <label
                         className=" flex justify-start text-gray-800"
@@ -142,8 +114,8 @@ const FormularioItem = ({ item, tipo_items, id_lista_items }) => {
                         type="text"
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Paso Receta"
-                        name="id_paso_receta" 
-                        />
+                        name="id_paso_receta"
+                    />
                 </div>
                 {/*<div className="mb-4">
                     <label
