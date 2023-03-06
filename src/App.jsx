@@ -418,6 +418,12 @@ function App() {
                             loader: eliminarCargo
                         },
                         {
+                            path: '/empleados/cargos/:cargoId/editar',
+                            element: <ActualizarCargo/>,
+                            loader: actualizarCargoLoader,
+                            action: actualizarCargoAction
+                        },
+                        {
                             path: '/empleados/:empleadoId/rolDePago',
                             element:<RolDePago/>,
                             loader:rolDePagoLoader
