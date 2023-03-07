@@ -117,7 +117,7 @@ const FormularioItem = ({ item, tipo_items, listaitems,estadosproduccion, bodega
                     >Paso Receta:</label>
                     <div className="">
                         {pasoreceta.length ? (
-                            <select id="id_paso_receta" value={bodega} name="id_paso_receta" onChange={(event) => setbodega(event.target.value)} className="form-control border-2 border-black">
+                            <select id="id_paso_receta" value={p_receta} name="id_paso_receta" onChange={(event) => setp_receta(event.target.value)} className="form-control border-2 border-black">
                                 <option >Selecciona el paso de la receta</option>
                                 {pasoreceta.map(paso_receta => (
                                     <option key={paso_receta.ID_PASO_RECETA} value={paso_receta.ID_PASO_RECETA}>{paso_receta.NOMBRE_PASO_RECETA}</option>
