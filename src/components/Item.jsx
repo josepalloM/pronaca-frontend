@@ -10,19 +10,19 @@ export async function action({params}){
 function Item({ item}) {
 
     const navigate = useNavigate()
-    const { ID_ITEM, ID_LISTA_ITEMS, ID_ESTADO_PRODUCION, ID_TIPO_ITEM, CODIGO_ITEM, NOMBRE_ITEM, FECHA_FABRI_ITEM, FECHA1_CADU_ITEM, FECHA2_CADU_ITEM,
-        LOTE_ITEM, CANTIDAD_LOTE_ITEM, PRECIO_ITEM, PESO_ITEM, CONSERVACION_ITEM, DETALLE_ITEM,ID_RECETAP} = item
+    const { ID_ITEM, ID_LISTA_ITEMS, ID_ESTADO_PRODUCION,ESTADO_PRODUCCION, ID_TIPO_ITEM, TIPO_ITEM, CODIGO_ITEM, NOMBRE_ITEM, FECHA_FABRI_ITEM, FECHA1_CADU_ITEM, FECHA2_CADU_ITEM,
+        LOTE_ITEM, UNIDAD_MEDIDA,CANTIDAD_LOTE_ITEM, PRECIO_ITEM, PESO_ITEM, CONSERVACION_ITEM, DETALLE_ITEM, ID_RECETAP} = item
 
     return (
         <tr className="">
-            <td>
+            <td align="center">
                 {ID_LISTA_ITEMS}
             </td>
             <td>
-                {ID_ESTADO_PRODUCION}
+                {ESTADO_PRODUCCION}
             </td>
             <td>
-                {ID_TIPO_ITEM}
+                {TIPO_ITEM}
             </td>
             <td>
                 {CODIGO_ITEM}
@@ -42,14 +42,17 @@ function Item({ item}) {
             <td>
                 {LOTE_ITEM}
             </td>
-            <td>
+            <td align="center">
                 {CANTIDAD_LOTE_ITEM}
             </td>
             <td>
-                {PRECIO_ITEM}
+                {UNIDAD_MEDIDA}
             </td>
-            <td>
+            <td align="center">
                 {PESO_ITEM}
+            </td>
+            <td align="center">
+                {PRECIO_ITEM}
             </td>
             <td>
                 {CONSERVACION_ITEM}

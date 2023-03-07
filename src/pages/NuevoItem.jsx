@@ -35,7 +35,7 @@ export  async function action({request}){
 }
 
 function NuevoItem() {
-  const {tipoitem,idListaItem,estadosproduccion} = useLoaderData()
+  const {tipoitem, idListaItem, estadosproduccion} = useLoaderData()
   const errores = useActionData()
   const navigate = useNavigate()
   

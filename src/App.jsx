@@ -16,7 +16,7 @@ import NuevoPaso_Receta, { action as nuevoPasoRecetaAction } from './pages/Nuevo
 import BalanceGeneral, { loader as balanceLoader } from './pages/BalanceGeneral'
 import EstadoFinanciero, { loader as estadoLoader } from './pages/EstadoFinanciero'
 import ListaItems, { loader as listaItemsloader } from './pages/ListaItems'
-import NuevoItem, { action as nuevoItemAction } from './pages/NuevoItem'
+import NuevoItem, { action as nuevoItemAction, loader as cargaTipoItem } from './pages/NuevoItem'
 
 import RolDePago, {loader as rolDePagoLoader} from './pages/RolDePago'
 
@@ -286,6 +286,7 @@ function App() {
                             path: '/item/nuevo',
                             element: <NuevoItem />,
                             action: nuevoItemAction,
+                            loader: cargaTipoItem,
                             errorElement: <ErrorPage />
                         },
                         {

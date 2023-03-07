@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 
-const FormularioItem = ({ item, tipo_items, listaitems,estadosproduccion }) => {
+const FormularioItem = ({ item, tipo_items, listaitems, estadosproduccion }) => {
 
     const [tipo_item, settipo_item] = useState('');
     const [lista_item, setlista_item] = useState('');
