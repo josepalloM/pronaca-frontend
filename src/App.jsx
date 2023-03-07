@@ -181,7 +181,7 @@ function App() {
                         },
                         //Detalle pedido
                         {
-                            path: '/opciones/detalle_pedidos',
+                            path: '/opciones/detalle_pedidos/:pedidoId',
                             element: <Detalle_Pedidos />,
                             loader: detalle_pedidoLoader,
                             errorElement: <ErrorPage />
