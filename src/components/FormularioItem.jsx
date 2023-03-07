@@ -11,6 +11,7 @@ const FormularioItem = ({ item, tipo_items, listaitems,estadosproduccion, bodega
     const [estado_produc, setestado_produc] =useState('');
     const [bodega, setbodega] = useState('');
     const [p_receta,setp_receta] = useState('');
+    const [receta,setreceta] = useState('');
     //console.log(tipo_items);
     console.log(listaitems);
     return (
@@ -23,7 +24,7 @@ const FormularioItem = ({ item, tipo_items, listaitems,estadosproduccion, bodega
                     >Id Lista Items:</label>
                     <div className="">
                         {listaitems.length ? (
-                            <select id="id_lista_items" value={lista_item} name="id_lista_items" onChange={(event) => setlista_item(event.target.value)} className="form-control border-2 border-black">
+                            <select id="id_lista_items" value={lista_item} name="id_lista_items" onChange={(event) => {setlista_item(event.target.value)}} className="form-control border-2 border-black">
                                 <option >Selecciona Lista</option>
                                 {listaitems.map(lista_item => (
                                     <option key={lista_item.ID_LISTA_ITEMS} value={lista_item.ID_LISTA_ITEMS}>{lista_item.DETALLE_LISTA}</option>
@@ -39,7 +40,7 @@ const FormularioItem = ({ item, tipo_items, listaitems,estadosproduccion, bodega
                     >Estado Produccion:</label>
                     <div className="">
                         {estadosproduccion.length ? (
-                            <select id="id_estado_producion" value={estado_produc} name="id_estado_producion" onChange={(event) => setestado_produc(event.target.value)} className="form-control border-2 border-black">
+                            <select id="id_estado_producion" value={estado_produc} name="id_estado_producion" onChange={(event) => setestado_produc(event.target.value) } className="form-control border-2 border-black">
                                 <option >Selecciona el estado</option>
                                 {estadosproduccion.map(estadoproduccion => (
                                     <option key={estadoproduccion.ID_ESTADO_PRODUCCION} value={estadoproduccion.ID_ESTADO_PRODUCCION}>{estadoproduccion.ESTADO_PRODUCCION}</option>
@@ -55,7 +56,7 @@ const FormularioItem = ({ item, tipo_items, listaitems,estadosproduccion, bodega
                     >Tipo Item:</label>
                     <div className="">
                         {tipo_items.length ? (
-                            <select id="tipo_item" value={p_receta} name="id_tipo_item" onChange={(event) => setp_receta(event.target.value)} className="form-control border-2 border-black">
+                            <select id="tipo_item" value={tipo_item} name="id_tipo_item" onChange={(event) => settipo_item(event.target.value)} className="form-control border-2 border-black">
                                 <option >Selecciona el Tipo de Item</option>
                                 {tipo_items.map(tipo_item => (
                                     <option key={tipo_item.ID_TIPO_ITEM} value={tipo_item.ID_TIPO_ITEM}>{tipo_item.TIPO_ITEM}</option>
