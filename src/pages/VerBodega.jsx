@@ -48,7 +48,7 @@ function VerBodega(){
                         <input
                             id="nombre_cliente"
                             type="text"
-                            className="mt-2 block w-full p-3 bg-gray-50 block"
+                            className="mt-2 block w-full p-3 bg-gray-50"
                             name="nombre_cliente"
                             defaultValue={opcionesItems[0].nombreBodega}
                             readOnly
@@ -62,7 +62,7 @@ function VerBodega(){
                         <input
                             id="nombre"
                             type="text"
-                            className="mt-2 block w-full p-3 bg-gray-50 block"
+                            className="mt-2 block w-full p-3 bg-gray-50"
                             name="nombre"
                             defaultValue={opcionesItems[0].sector}
                             readOnly
@@ -79,7 +79,7 @@ function VerBodega(){
                         <tbody>
                         {opcionesItems.map(item =>(
                             <tr  key={item.nombre}>
-                                <td className="border px-8 py-4">{item.nombre}  LOTE:{item.lote} CANTIDAD X LOTE:{item.cantlote} UNIDAD: {item.unidad} PESO: {item.peso}  </td>
+                                <td className="border px-8 py-4">{item.nombre}  <br/>LOTE: {item.lote} <br/>CANTIDAD X LOTE: {item.cantlote} <br/>UNIDAD: {item.unidad} <br/>PESO: {item.peso}  </td>
                                 <td className="border px-8 py-4">{item.cantidad} {item.unidad}</td>
                                 <ItemBodega
                                     id_item={item.id}

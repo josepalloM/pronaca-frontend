@@ -6,9 +6,8 @@ function ItemBodega({id_item, cantidad, id_bodega}) {
     const navigate = useNavigate()
     const [count, setCount] = useState(0);
     async function guardar(){
-        setCount(10);
         await actualizarItemBodega(id_item,count,id_bodega)
-        //navigate(-1)
+        navigate('/bodegas/'+id_bodega+'/editar')
     }
 
     return (
@@ -28,7 +27,6 @@ function ItemBodega({id_item, cantidad, id_bodega}) {
                         defaultValue={cantidad}
                         onChange= {event => {
                             setCount(event.target.value);
-                            useNavigate(-1)
                         }}
                     />
                 </div>
@@ -37,7 +35,7 @@ function ItemBodega({id_item, cantidad, id_bodega}) {
                         <input
                             type="submit"
                             className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
-                            value="Editar Cantidad del Item"
+                            value="Editar Cantidad"
                             onClick={guardar}
                         />
                     </div>
