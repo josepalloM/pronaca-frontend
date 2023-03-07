@@ -51,18 +51,6 @@ function Finanzas() {
                     to='/finanzas/estado'>Estado de Resultados</Link>
                 </button>
 
-                    {/*}
-                <button
-                    className="flex justify-center mt-3 ml-5 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
-                    >
-                <Link
-
-                    to='/finanzas/estado'>Estado de Resultados</Link>
-                </button>
-
-                */}
-
-
                 </div>
 
             </div>

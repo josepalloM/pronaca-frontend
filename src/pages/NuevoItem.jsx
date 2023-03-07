@@ -3,13 +3,14 @@ import FormularioItem from "../components/FormularioItem";
 import Error from "../components/Error";
 import { agregarItems, obtenerListaItems } from "../data/items";
 import {obtenerTiposItem} from '../data/tipo_item';
-//import {obtenerListaItem} from '../data/items'
+import {obtenerEstadosProduccion} from '../data/estado_produccion'
 
 
 export async function loader() {
   const tipoitem = await obtenerTiposItem()
-  //const idListaItem = await obtenerListaItems()
-  return tipoitem
+  const idListaItem = await obtenerListaItems()
+  const estadosproduccion = await obtenerEstadosProduccion()
+  return {tipoitem, idListaItem, estadosproduccion}
 }
 
 export  async function action({request}){
@@ -34,7 +35,7 @@ export  async function action({request}){
 }
 
 function NuevoItem() {
-  const tipo_item = useLoaderData()
+  const {tipoitem,idListaItem,estadosproduccion} = useLoaderData()
   const errores = useActionData()
   const navigate = useNavigate()
   
@@ -54,7 +55,7 @@ function NuevoItem() {
           {errores?.length && errores.map( (error, i) =>  <Error key={i}>{error}</Error>)}
 
           <Form method="POST">
-            <FormularioItem tipo_items={tipo_item}/>
+            <FormularioItem tipo_items={tipoitem} listaitems={idListaItem} estadosproduccion={estadosproduccion}/>
             <div className="grid grid-cols-2 gap-2">
                 <div>
                     <input

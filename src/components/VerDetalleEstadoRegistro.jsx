@@ -12,7 +12,6 @@ const utilidad_sin_impuesto=(estado?.ingresos)-(estado?.costos)-(estado?.gastos)
                     htmlFor="fecha"
                 >Fecha de Informe:</label>
                 <h1>{estado?.fecha}</h1>
-
             </div>
 
             <div className="mb-4">
@@ -68,7 +67,6 @@ const utilidad_sin_impuesto=(estado?.ingresos)-(estado?.costos)-(estado?.gastos)
                     defaultValue={estado?.gastos}
 
 
-
                 />
             </div>
 
@@ -85,7 +83,6 @@ const utilidad_sin_impuesto=(estado?.ingresos)-(estado?.costos)-(estado?.gastos)
                     placeholder="utilidad sin impuestos"
                     name="gastos"
                     defaultValue={utilidad_sin_impuesto}
-
 
 
                 />
@@ -112,7 +109,6 @@ const utilidad_sin_impuesto=(estado?.ingresos)-(estado?.costos)-(estado?.gastos)
             </div>
 
 
-
             <div className="mb-4">
 
                 <label
@@ -128,10 +124,8 @@ const utilidad_sin_impuesto=(estado?.ingresos)-(estado?.costos)-(estado?.gastos)
                     defaultValue={utilidad_sin_impuesto*(1-isr)}
 
 
-
                 />
             </div>
-
 
 
 

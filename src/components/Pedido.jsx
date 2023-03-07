@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, Form, useNavigate, redirect } from "react-router-dom";
 import { eliminarPedido } from "../data/pedidos.js";
 
@@ -18,6 +19,24 @@ function Pedido({ pedido }) {
     ESTADO_PEDIDO,
     ID_PEDIDO,
   } = pedido;
+
+  const [deleteVar, setDeleteVar] = useState(false)
+
+  const handleEditar = () => {
+    if(ESTADO_PEDIDO=="Entregado"){
+      alert("El pedido ya ha sido entregado")
+    }else{
+      navigate(`/pedido/${ID_PEDIDO}/editar`)
+    }
+  }
+
+  function handleEliminar(){
+    if(ESTADO_PEDIDO=="Entregado"){
+      return(true)
+    }else{
+      return(false)
+    }
+  }
 
   return (
     <tr className="border-b">
@@ -43,7 +62,8 @@ function Pedido({ pedido }) {
         <button
           type="button"
           className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
-          onClick={() => navigate(`/pedido/${ID_PEDIDO}/editar`)}
+          // onClick={() => navigate(`/pedido/${ID_PEDIDO}/editar`)}
+          onClick={handleEditar}
         >
           Editar
         </button>
@@ -59,7 +79,8 @@ function Pedido({ pedido }) {
         >
           <button
             type="submit"
-            className="text-red-600 hover:text-blue-700 uppercase font-bold text-xs"
+            disabled={handleEliminar()}
+            className="text-red-600 hover:text-blue-700 uppercase font-bold text-xs disabled:text-gray-400"
           >
             Eliminar
           </button>

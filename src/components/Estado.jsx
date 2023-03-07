@@ -26,8 +26,9 @@ function Estado({ estado }) {
                     </div>
 
             </td>
+                    
         </tr>
-    )
+    );
 }
 
 export default Estado;

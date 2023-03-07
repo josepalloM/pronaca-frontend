@@ -49,7 +49,7 @@ const VerDetalleBalanceRegistro = ({balance}) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Pasivos"
 
-                    defaultValue={-balance?.pasivos}
+                    defaultValue={balance?.pasivos}
                     name="pasivos"
 
 

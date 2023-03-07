@@ -21,7 +21,6 @@ const FormularioEstado = () => {
             <div className="flex">
 
 
-
                 <div className="mb-4">
                     <label
                         className="flex justify-start text-gray-800"

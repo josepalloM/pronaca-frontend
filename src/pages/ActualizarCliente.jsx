@@ -14,10 +14,7 @@ export async function loader({params}){
     }
 
     const ubicaciones =  await obtenerUbicaciones()
-    //console.log("Ubicaciones", ubicaciones)
 
-    
-    //return {cliente, ubicacion}
     console.log(cliente)
     return {cliente, ubicaciones}
 }
@@ -85,8 +82,6 @@ function ActualizarCliente() {
 
     const navigate = useNavigate()
     const {cliente, ubicaciones} = useLoaderData()
-    //const ubicacion = useLoaderData()
-    //const ubicaciones={}
     const errores = useActionData()
 
     return (
@@ -102,8 +97,6 @@ function ActualizarCliente() {
 
                 <Form
                     method="PUT"
-                    
-
                 >
                     <FormularioCliente 
                         cliente={cliente}
