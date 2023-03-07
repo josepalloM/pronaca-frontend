@@ -1,11 +1,16 @@
 
 import { useState } from 'react';
 
-const FormularioItem = ({ item, tipo_items, listaitems, estadosproduccion }) => {
+
+
+
+const FormularioItem = ({ item, tipo_items, listaitems,estadosproduccion, bodegas,pasoreceta }) => {
 
     const [tipo_item, settipo_item] = useState('');
     const [lista_item, setlista_item] = useState('');
     const [estado_produc, setestado_produc] =useState('');
+    const [bodega, setbodega] = useState('');
+    const [p_receta,setp_receta] = useState('');
     //console.log(tipo_items);
     console.log(listaitems);
     return (
@@ -40,7 +45,7 @@ const FormularioItem = ({ item, tipo_items, listaitems, estadosproduccion }) => 
                                     <option key={estadoproduccion.ID_ESTADO_PRODUCCION} value={estadoproduccion.ID_ESTADO_PRODUCCION}>{estadoproduccion.ESTADO_PRODUCCION}</option>
                                 ))}
                             </select>
-                        ) : (<p> No existe Id Lista Item</p>)}
+                        ) : (<p> No existe estados de produccion</p>)}
                     </div>
                 </div>
                 <div className="mb-4">
@@ -50,7 +55,7 @@ const FormularioItem = ({ item, tipo_items, listaitems, estadosproduccion }) => 
                     >Tipo Item:</label>
                     <div className="">
                         {tipo_items.length ? (
-                            <select id="tipo_item" value={tipo_item} name="id_tipo_item" onChange={(event) => settipo_item(event.target.value)} className="form-control border-2 border-black">
+                            <select id="tipo_item" value={p_receta} name="id_tipo_item" onChange={(event) => setp_receta(event.target.value)} className="form-control border-2 border-black">
                                 <option >Selecciona el Tipo de Item</option>
                                 {tipo_items.map(tipo_item => (
                                     <option key={tipo_item.ID_TIPO_ITEM} value={tipo_item.ID_TIPO_ITEM}>{tipo_item.TIPO_ITEM}</option>
@@ -89,153 +94,39 @@ const FormularioItem = ({ item, tipo_items, listaitems, estadosproduccion }) => 
                         defaultValue={item?.NOMBRE_ITEM}
                     />
                 </div>
-
                 <div className="mb-4">
                     <label
-                        className="flex justify-start text-gray-800"
+                        className=" flex justify-start text-gray-800"
                         htmlFor="id_bodega"
-                    >Bodega: </label>
-                    <input
-                        id="id_bodega"
-                        type="text"
-                        className="mt-2 block w-full p-3 bg-gray-50"
-                        placeholder="bodega"
-                        name="id_bodega"
-                        defaultValue={item?.ID_BODEGA}
-                    />
+                    >Bodega:</label>
+                    <div className="">
+                        {bodegas.length ? (
+                            <select id="id_bodega" value={bodega} name="id_bodega" onChange={(event) => setbodega(event.target.value)} className="form-control border-2 border-black">
+                                <option >Selecciona la bodega</option>
+                                {bodegas.map(bodegas => (
+                                    <option key={bodegas.ID_BODEGA} value={bodegas.ID_BODEGA}>{bodegas.NOMBRE}</option>
+                                ))}
+                            </select>
+                        ) : (<p> No existe bodegas</p>)}
+                    </div>
                 </div>
                 <div className="mb-4">
                     <label
-                        className="flex justify-start text-gray-800"
-                        htmlFor="paso_receta"
-                    >Paso Receta: </label>
-                    <input
-                        id="paso_receta"
-                        type="text"
-                        className="mt-2 block w-full p-3 bg-gray-50"
-                        placeholder="Paso Receta"
-                        name="id_paso_receta"
-                    />
+                        className=" flex justify-start text-gray-800"
+                        htmlFor="id_paso_receta"
+                    >Paso Receta:</label>
+                    <div className="">
+                        {pasoreceta.length ? (
+                            <select id="id_paso_receta" value={bodega} name="id_paso_receta" onChange={(event) => setbodega(event.target.value)} className="form-control border-2 border-black">
+                                <option >Selecciona el paso de la receta</option>
+                                {pasoreceta.map(paso_receta => (
+                                    <option key={paso_receta.ID_PASO_RECETA} value={paso_receta.ID_PASO_RECETA}>{paso_receta.NOMBRE_PASO_RECETA}</option>
+                                ))}
+                            </select>
+                        ) : (<p> No existe receta</p>)}
+                    </div>
                 </div>
-                {/*<div className="mb-4">
-                    <label
-                        className="flex justify-start text-gray-800"
-                        htmlFor="fecha1_cadu_item"
-                    >Fecha Caducidad 1 : </label>
-                    <input
-                        id="fecha1_cadu_item"
-                        type="text"
-                        className="mt-2 block w-full p-3 bg-gray-50"
-                        placeholder="Ejmplo: aaaa-mm-dd"
-                        name="fecha1_cadu_item" 
-                        defaultValue = {item?.FECHA1_CADU_ITEM}
-                        />
-                </div>
-
-                <div className="mb-4">
-                    <label
-                        className="flex justify-start text-gray-800"
-                        htmlFor="fecha2_cadu_item"
-                    >Fecha Caducidad 2: </label>
-                    <input
-                        id="fecha2_cadu_item"
-                        type="text"
-                        className="mt-2 block w-full p-3 bg-gray-50"
-                        placeholder="Ejmplo: aaaa-mm-dd"
-                        name="fecha2_cadu_item" 
-                        defaultValue = {item?.FECHA2_CADU_ITEM}
-                        />
-                </div>
-
-                <div className="mb-4">
-                    <label
-                        className="flex justify-start text-gray-800"
-                        htmlFor="lote_item"
-                    >Lote Item: </label>
-                    <input
-                        id="lote_item"
-                        type="text"
-                        className="mt-2 block w-full p-3 bg-gray-50"
-                        placeholder="Lote de Item"
-                        name="lote_item" 
-                        defaultValue = {item?.LOTE_ITEM}
-                        />
-                </div>
-
-                <div className="mb-4">
-                    <label
-                        className="flex justify-start text-gray-800"
-                        htmlFor="cantidad_lote_item"
-                    >Cantidad de Lote: </label>
-                    <input
-                        id="cantidad_lote_item"
-                        type="text"
-                        className="mt-2 block w-full p-3 bg-gray-50"
-                        placeholder="Cantidad Lote de Item"
-                        name="cantidad_lote_item" 
-                        defaultValue = {item?.CANTIDAD_LOTE_ITEM}
-                        />
-                </div>
-
-                <div className="mb-4">
-                    <label
-                        className="flex justify-start text-gray-800"
-                        htmlFor="precio_item"
-                    >Precio Item: </label>
-                    <input
-                        id="precio_item"
-                        type="text"
-                        className="mt-2 block w-full p-3 bg-gray-50"
-                        placeholder="Precio Item"
-                        name="precio_item" 
-                        defaultValue = {item?.PRECIO_ITEM}
-                        />
-                </div>
-
-                <div className="mb-4">
-                    <label
-                        className="flex justify-start text-gray-800"
-                        htmlFor="peso_item"
-                    >Peso Item: </label>
-                    <input
-                        id="peso_item"
-                        type="text"
-                        className="mt-2 block w-full p-3 bg-gray-50"
-                        placeholder="Peso de Item"
-                        name="peso_item" 
-                        defaultValue = {item?.PESO_ITEM}
-                        />
-                </div>
-
-                <div className="mb-4">
-                    <label
-                        className="flex justify-start text-gray-800"
-                        htmlFor="conservacion_item"
-                    >Conservación Item: </label>
-                    <input
-                        id="conservacion_item"
-                        type="text"
-                        className="mt-2 block w-full p-3 bg-gray-50"
-                        placeholder="Conservación Item"
-                        name="conservacion_item" 
-                        defaultValue = {item?.CONSERVACION_ITEM}
-                        />
-                </div>
-
-                <div className="mb-4">
-                    <label
-                        className="flex justify-start text-gray-800"
-                        htmlFor="detalle_item"
-                    >Detalle Item: </label>
-                    <input
-                        id="detalle_item"
-                        type="text"
-                        className="mt-2 block w-full p-3 bg-gray-50"
-                        placeholder="Detalle Item"
-                        name="detalle_item" 
-                        defaultValue = {item?.DETALLE_ITEM}
-                        />
-                </div>*/}
+                
             </div>
         </>
 

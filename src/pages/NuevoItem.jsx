@@ -3,14 +3,18 @@ import FormularioItem from "../components/FormularioItem";
 import Error from "../components/Error";
 import { agregarItems, obtenerListaItems } from "../data/items";
 import {obtenerTiposItem} from '../data/tipo_item';
-import {obtenerEstadosProduccion} from '../data/estado_produccion'
+import {obtenerEstadosProduccion} from '../data/estado_produccion';
+import {obtenerBodegas} from '../data/bodegas';
+import {obtenerPasosReceta} from '../data/paso_receta'
 
 
 export async function loader() {
   const tipoitem = await obtenerTiposItem()
   const idListaItem = await obtenerListaItems()
   const estadosproduccion = await obtenerEstadosProduccion()
-  return {tipoitem, idListaItem, estadosproduccion}
+  const bodega = await obtenerBodegas()
+  const pasoreceta = await obtenerPasosReceta()
+  return {tipoitem, idListaItem, estadosproduccion, bodega, pasoreceta}
 }
 
 export  async function action({request}){
@@ -35,7 +39,8 @@ export  async function action({request}){
 }
 
 function NuevoItem() {
-  const {tipoitem, idListaItem, estadosproduccion} = useLoaderData()
+
+  const {tipoitem,idListaItem,estadosproduccion,bodega,pasoreceta} = useLoaderData()
   const errores = useActionData()
   const navigate = useNavigate()
   
@@ -55,7 +60,8 @@ function NuevoItem() {
           {errores?.length && errores.map( (error, i) =>  <Error key={i}>{error}</Error>)}
 
           <Form method="POST">
-            <FormularioItem tipo_items={tipoitem} listaitems={idListaItem} estadosproduccion={estadosproduccion}/>
+            <FormularioItem tipo_items={tipoitem} listaitems={idListaItem} estadosproduccion={estadosproduccion}
+            bodegas={bodega} pasoreceta={pasoreceta}/>
             <div className="grid grid-cols-2 gap-2">
                 <div>
                     <input
