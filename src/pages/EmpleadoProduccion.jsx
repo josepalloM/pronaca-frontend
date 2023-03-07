@@ -14,13 +14,11 @@ function EmpleadoProduccion() {
             <div className="bg-white shadow rounded-md md:w-3/4 mx-auto px-5 py-10 mt-5">
                 <div className="grid grid-cols-2 gap-10">
                     <div className="flex flex-col items-center">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2728/2728523.png" alt="Imagen 1" className="w-20 h-20 object-contain" />
                         <button className="flex justify-center mt-3 ml-5 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
                             <Link state={location.state} to='/gestorlista'>Gestor de Pedidos</Link>
                         </button>
                     </div>
                     <div className="flex flex-col items-center">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1783/1783976.png" alt="Imagen 2" className="w-20 h-20 object-contain" />
                         <button className="flex justify-center mt-3 ml-5 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
                             <Link state={location.state} to='/produccion'>Operario</Link>
                         </button>
