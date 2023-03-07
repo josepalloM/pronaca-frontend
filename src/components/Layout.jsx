@@ -141,7 +141,7 @@ function Layout() {
                         {us ? (
                             <div className={`mt-40 text-center ${!open && "scale-0"}`}>
                             <p className="text-1xl font-bold  bg-white">Bienvenido</p>
-                            <p className="text-2xl font-bold  bg-white">{us}</p>
+                            <p className="text-2xl font-bold  bg-white uppercase">{us}</p>
                             </div>
                         ) : (
                             <div className={`mt-40 text-center ${!open && "scale-0"}`}>
