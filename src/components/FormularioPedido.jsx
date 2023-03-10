@@ -2,8 +2,13 @@ import Select from "react-select";
 import React, {useEffect, useRef, useState} from "react";
 
 const FormularioPedido = ({pedido, clientes, empleados}) => {    
-    
-    const [date, setDate] = useState('');
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, "0");
+    const dd = String(today.getDate()).padStart(2, "0");
+    const formattedDate = `${yyyy}-${mm}-${dd}`;
+
+    const [date, setDate] = useState(formattedDate);
     const [cliente, setClientes] = useState("")
     const [empleado, setEmpleados] = useState("")
     const dateInputRef = useRef(null);
@@ -51,6 +56,7 @@ const FormularioPedido = ({pedido, clientes, empleados}) => {
                     ref={dateInputRef}
                     id="FECHA_PEDIDO"
                     name="FECHA_PEDIDO"
+                    defaultValue={date}
                 />
             </div>
             <div>

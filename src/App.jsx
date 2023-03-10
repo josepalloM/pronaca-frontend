@@ -98,6 +98,11 @@ import VerDetalleBalance, { loader as obtenerDetalleBalanceLoader} from './pages
 import VerDetalleEstado, { loader as obtenerDetalleEstadoLoader} from './pages/AcVerDetalleEstado'
 import { UserContext } from "./context/UserProvider";
 
+//Pedidos Proveedores
+import PedidosProveedor, { loader as pedidoProveedorLoader } from './pages/PedidosProveedor'
+import { action as eliminarPedidoProveedorAction } from "./components/PedidoProveedor"
+import NuevoPedidoProveedor, { action as nuevoPedidoProveedorAction, loader as nuevoPedidoProveedorLoader } from './pages/NuevoPedidoProveedor'
+import ActualizarPedidoProveedor, { loader as actualizarPedidoProveedorLoader, action as actualizarPedidoProveedorAction } from './pages/ActualizarPedidoProveedor'
 
 function App() {
 
@@ -194,17 +199,31 @@ function App() {
                             loader: nuevoDetalle_PedidoLoader,
                             errorElement: <ErrorPage />
                         },
-                        // {
-                        //   path: '/detalle_pedido/:detalle_pedidoId/editar',
-                        //   element: <ActualizarDetalle_Pedido />,
-                        //   loader: actualizarDetalle_PedidoLoader,
-                        //   action: actualizarDetalle_PedidoAction,
-                        //   errorElement: <ErrorPage />
-                        // },
-                        // {
-                        //   path:  '/opciones/detalle_pedidos/:detalle_pedidoId/eliminar',
-                        //   action: eliminarDetalle_PedidoAction
-                        // },
+                        // Pedidos Proveedores
+                        {
+                            path: '/pedidosProveedor',
+                            element: <PedidosProveedor />,
+                            loader: pedidoProveedorLoader,
+                            errorElement: <ErrorPage />
+                        },
+                        {
+                            path: '/pedidoProveedor/nuevo',
+                            element: <NuevoPedidoProveedor />,
+                            action: nuevoPedidoProveedorAction,
+                            loader: nuevoPedidoProveedorLoader,
+                            errorElement: <ErrorPage />
+                        },
+                        {
+                            path: '/pedidoProveedor/:pedidoProveedorId/editar',
+                            element: <ActualizarPedidoProveedor />,
+                            loader: actualizarPedidoProveedorLoader,
+                            action: actualizarPedidoProveedorAction,
+                            errorElement: <ErrorPage />
+                        },
+                        {
+                            path: '/pedidosProveedor/:pedidoProveedorId/eliminar',
+                            action: eliminarPedidoProveedorAction
+                        },
 
                         {
                             path: '/gestor',
