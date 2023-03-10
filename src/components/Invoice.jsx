@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { format } from 'date-fns';
 import { currencyFormatter } from '../utils/formatters';
 import { obtenerDetalle_Pedidos } from "../data/detalle_pedidos"
 import TablaDetalle from './TablaDetalle';
 
-async function detalles(id){
-  const detalles = await obtenerDetalle_Pedidos(id)
-  return detalles
-}
+// async function detalles(id){
+//   const detalles = await obtenerDetalle_Pedidos(id)
+//   return detalles
+// }
 
 const Invoice = ({ pedido }) => {
   const {
@@ -20,7 +20,17 @@ const Invoice = ({ pedido }) => {
     TOTAL_PEDIDO
   } = pedido;
 
-  const detalle_pedidos = detalles(pedido.ID_PEDIDO)
+  // const detalle_pedidos = detalles(pedido.ID_PEDIDO)
+  const [detalle_pedidos, setDetalle_pedidos] = useState([])
+  useEffect(() => {
+    const detalles = async () => {
+        const detalle = await obtenerDetalle_Pedidos(pedido.ID_PEDIDO)
+        setDetalle_pedidos(detalle)
+        console.log(detalle)
+    }
+    detalles()
+  }, [pedido.ID_PEDIDO])
+
   console.log('Detallesssss', detalle_pedidos)
 
   return (
