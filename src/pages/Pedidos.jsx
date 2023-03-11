@@ -1,17 +1,19 @@
 import { Link, useLoaderData, useLocation} from "react-router-dom"
 import { obtenerPedidos } from "../data/pedidos"
 import Pedido from "../components/Pedido"
+import { obtenerCuentasPedidos } from "../data/cuentas"
 
-export function loader() {
-  const pedidos = obtenerPedidos()
-  return pedidos
+export async function loader() {
+  const pedidos = await obtenerPedidos()
+  const cuentasPedidos = await obtenerCuentasPedidos(1)
+  return {pedidos, cuentasPedidos}
 }
 
 function Pedidos() {
 
-  const pedidos = useLoaderData()
+  const {pedidos, cuentasPedidos} = useLoaderData()
   const location = useLocation()
-
+  
   return (
     <>
       <h1 className="font-black text-4xl ">Pedidos</h1>
@@ -50,6 +52,30 @@ function Pedidos() {
             state={location.state}
             to='/opciones/pedido/nuevo'>CREAR Pedido</Link>
         </button>
+      </div>
+      <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">
+        
+          <table className="w-full bg-white shadow mt-5 table-auto">
+            <thead className="bg-black text-white">
+              <tr>
+                <th className="p-2">Cuenta</th>
+                <th className="p-2">Monto</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cuentasPedidos.map(cuentaPedido => (
+                <tr className="border-b">
+                <td>
+                    {cuentaPedido.DESCRIPCION_CUENTA}
+                </td>
+                <td>
+                    {Math.abs(cuentaPedido.VALOR_CUENTA)}
+                </td>                    
+                </tr>  
+
+              ))}
+            </tbody>
+          </table>
       </div>
     </>
   )

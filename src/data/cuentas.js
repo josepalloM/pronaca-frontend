@@ -66,3 +66,9 @@ export async function eliminarCuenta(id){
         console.log(error)
     }
 }
+export async function obtenerCuentasPedidos(id){
+    const url = "http://localhost:4000/api/cuenta/numCuentasPedidos"
+    const respuesta = await fetch(`${url}/${id}`)
+    const resultado = await respuesta.json()
+    return resultado
+}

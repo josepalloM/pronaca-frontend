@@ -2,24 +2,25 @@ import { Link, useLoaderData, Form , redirect, useLocation} from "react-router-d
 import { obtenerEmpleados } from "../data/empleados";
 import Empleado from "../components/Empleado";
 import {obtenerCargos} from "../data/cargo_empleado"
-import { actualizarMovimiento } from "../data/movimiento_empleado";
+import { actualizarMovimiento, obtenerMovimientos} from "../data/movimiento_empleado";
 import { actualizarCostosGastos } from "../data/cuentas.js";
 
 export async function loader() {
     const empleados = await obtenerEmpleados()
     const cargos_empleados = await obtenerCargos()
-    
+    const movimiento_empleado = await obtenerMovimientos()
     actualizarMovimiento(0)
     
-    return {empleados,cargos_empleados}
+    return {empleados,cargos_empleados, movimiento_empleado}
 }
 export async function action({params}){
     await actualizarCostosGastos(params.empleadoId) 
     return redirect('/empleados')
 }
 function Empleados() {
-
-    const {empleados, cargos_empleados} = useLoaderData()
+    
+    const {empleados, cargos_empleados, movimiento_empleado} = useLoaderData()
+    console.log(movimiento_empleado)
     const location = useLocation()
 
     return (
@@ -60,6 +61,29 @@ function Empleados() {
                         state={location.state}
                         to='/empleados/nuevo'>CREAR EMPLEADO</Link>
                 </button>
+            </div>
+            <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">
+                
+                <table className="w-full bg-white shadow mt-5 table-auto">
+                    <thead className="bg-black text-white">
+                        <tr>
+                            <th className="p-2">Cuenta</th>
+                            <th className="p-2">Monto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {movimiento_empleado.map( mov_empleado => (
+                            <tr className="border-b">
+                                <td>
+                                    {mov_empleado.DESCRIPCION_CUENTA}
+                                </td>
+                                <td>
+                                    {-mov_empleado.VALOR_CUENTA}
+                                </td>                    
+                            </tr>    
+                        ))}
+                    </tbody>
+                </table>
             </div>
         
         </>
