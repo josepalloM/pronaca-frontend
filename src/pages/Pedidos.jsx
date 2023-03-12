@@ -2,6 +2,7 @@ import { Link, useLoaderData, useLocation} from "react-router-dom"
 import { obtenerPedidos } from "../data/pedidos"
 import Pedido from "../components/Pedido"
 import { obtenerCuentasPedidos } from "../data/cuentas"
+import { actualizarCuentasPedidos } from "../data/cuentas"
 
 export async function loader() {
   const pedidos = await obtenerPedidos()
@@ -10,7 +11,7 @@ export async function loader() {
 }
 
 function Pedidos() {
-
+  actualizarCuentasPedidos(0)
   const {pedidos, cuentasPedidos} = useLoaderData()
   const location = useLocation()
   

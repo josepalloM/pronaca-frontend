@@ -72,3 +72,15 @@ export async function obtenerCuentasPedidos(id){
     const resultado = await respuesta.json()
     return resultado
 }
+export async function actualizarCuentasPedidosProveedor(id){
+    
+    const url = "http://localhost:4000/api/cuenta"
+    await fetch(`${url}/cuentasPedidosProveedor/${id}`)
+    
+}
+export async function obtenercuentasPedidosProveedor(id){
+    const url = "http://localhost:4000/api/cuenta/numCuentasPedidosProveedor"
+    const respuesta = await fetch(`${url}/${id}`)
+    const resultado = await respuesta.json()
+    return resultado
+}
