@@ -47,3 +47,9 @@ export async function agregarMovimientoEmpleado(datos) {
         console.log(error)
     }
 }
+export async function obtenerMovimientos(){
+    const url = "http://localhost:4000/api/movimiento_empleado"
+    const respuesta = await fetch(url)
+    const resultado = await respuesta.json()
+    return resultado
+}

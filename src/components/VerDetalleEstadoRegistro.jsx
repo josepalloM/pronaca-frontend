@@ -1,7 +1,7 @@
 
 const VerDetalleEstadoRegistro = ({estado, parametro_isr}) => {
     const isr=parametro_isr.VALOR
-const utilidad_sin_impuesto=(estado?.ingresos)-(estado?.costos)-(estado?.gastos)
+const utilidad_sin_impuesto=(estado?.ingresos)-(estado?.costos)
     return (
         <>
 
@@ -56,24 +56,6 @@ const utilidad_sin_impuesto=(estado?.ingresos)-(estado?.costos)-(estado?.gastos)
 
                 <label
                     className="flex justify-start text-gray-800"
-                    htmlFor="Gastos"
-                >Gastos de Operación:</label>
-                <input
-                    id="gastos"
-                    type="text"
-                    className="mt-2 block w-full p-3 bg-gray-50"
-                    placeholder="Gastos"
-                    name="gastos"
-                    defaultValue={estado?.gastos}
-
-
-                />
-            </div>
-
-            <div className="mb-4">
-
-                <label
-                    className="flex justify-start text-gray-800"
                     htmlFor="Utilidad sin Impuestos"
                 >Utilidad antes del Impuesto</label>
                 <input
@@ -82,7 +64,7 @@ const utilidad_sin_impuesto=(estado?.ingresos)-(estado?.costos)-(estado?.gastos)
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="utilidad sin impuestos"
                     name="gastos"
-                    defaultValue={utilidad_sin_impuesto}
+                    defaultValue={(utilidad_sin_impuesto).toFixed(2)}
 
 
                 />
@@ -121,7 +103,7 @@ const utilidad_sin_impuesto=(estado?.ingresos)-(estado?.costos)-(estado?.gastos)
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="utilidad neta"
                     name="utilidad_neta"
-                    defaultValue={utilidad_sin_impuesto*(1-isr)}
+                    defaultValue={(utilidad_sin_impuesto*(1-isr)).toFixed(2)}
 
 
                 />

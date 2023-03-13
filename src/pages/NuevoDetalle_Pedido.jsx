@@ -22,6 +22,24 @@ export async function loader(){
 }
 
 export  async function action({request}){
+
+  const formData = await request.formData()
+    const datos = Object.fromEntries(formData)
+    console.log(datos)
+  
+    //validaciones
+    const errores = []
+    if(Object.values(datos).includes('')){
+      errores.push('Todos los campos son obligatorios')
+      if(datos.length===0){
+        errores.push('Agregue al menos un producto')
+      }
+    }
+  
+    //Retornar datos si hay erroes
+    if(Object.keys(errores).length){
+      return errores
+    }
     
     return redirect('/opciones/pedidos')
 }
@@ -36,6 +54,14 @@ function NuevoPedido() {
 
     const insertarItem = (numPedido, item, cantidad, subtotal, precio) =>{
         setDetalle(prevDetalle => [...prevDetalle, { id_pedido: numPedido, id_item: item, cantidad_pedido:cantidad, subtotal_detalle_pedido:subtotal, precio_detalle_pedido: precio}])
+    }
+
+    function handleItems(){
+      if(detalle.length===0){
+        return(true)
+      }else{
+        return(false)
+      }
     }
 
     const handleSubmit = (e) =>{
@@ -102,6 +128,7 @@ function NuevoPedido() {
               <div>
                 <input
                   type="submit"
+                  disabled={handleItems()}
                   className="inline-block w-10/12 px-8 py-2.5 bg-orange-300 text-black
                                     font-medium text-sm leading-tight uppercase rounded
                                     shadow-md hover:bg-amber-400 hover:shadow focus:bg-grey

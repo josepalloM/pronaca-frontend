@@ -1,46 +1,47 @@
 import { Link, useLoaderData, useLocation} from "react-router-dom"
-import { obtenerPedidos } from "../data/pedidos"
-import Pedido from "../components/Pedido"
-import { obtenerCuentasPedidos } from "../data/cuentas"
-import { actualizarCuentasPedidos } from "../data/cuentas"
+import { obtenerPedidosProveedor } from "../data/pedidosProveedor"
+import PedidoProveedor from "../components/PedidoProveedor"
+import { actualizarCuentasPedidosProveedor,obtenercuentasPedidosProveedor } from "../data/cuentas"
 
 export async function loader() {
-  const pedidos = await obtenerPedidos()
-  const cuentasPedidos = await obtenerCuentasPedidos(1)
-  return {pedidos, cuentasPedidos}
+  const pedidosProveedor = await obtenerPedidosProveedor()
+  const cuentasPedidosProveedor = await obtenercuentasPedidosProveedor(1)
+  return {pedidosProveedor, cuentasPedidosProveedor}
 }
 
-function Pedidos() {
-  actualizarCuentasPedidos(0)
-  const {pedidos, cuentasPedidos} = useLoaderData()
+function PedidosProveedor() {
+  actualizarCuentasPedidosProveedor(0)
+  const {pedidosProveedor,cuentasPedidosProveedor} = useLoaderData()
   const location = useLocation()
-  
+
   return (
     <>
-      <h1 className="font-black text-4xl ">Pedidos</h1>
-      <p>Administración de pedidos</p>
+      <h1 className="font-black text-4xl ">Pedidos proveedores</h1>
+      <p>Administración de pedidos a proveedores</p>
 
       <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">
-        {pedidos.length ? (
+        {pedidosProveedor.length ? (
           <table className="w-full bg-white shadow mt-5 table-auto">
             <thead className="bg-black text-white">
               <tr>
-                <th className="p-2">ID</th>
+                {/* <th className="p-2">ID</th> */}
+                <th className="p-2">Proveedor</th>
                 <th className="p-2">Fecha</th>
-                <th className="p-2">Empleado</th>
-                <th className="p-2">Cliente</th>
+                <th className="p-2">Detalle</th>
+                <th className="p-2">Cantidad</th>
                 <th className="p-2">Estado</th>
+                <th className="p-2">Subtotal</th>
+                <th className="p-2">Total</th>
                 <th className="p-2">Acciones</th>
               </tr>
             </thead>
             <tbody>
-              {pedidos.map(pedido => (
-                <Pedido
+              {pedidosProveedor.map(pedidoProveedor => (
+                <PedidoProveedor
                   
-                  pedido={pedido}
-                  key={pedido.ID_PEDIDO}
+                  pedidoProveedor={pedidoProveedor}
+                  key={pedidoProveedor.ID_PEDIDO_PROVEEDOR}
                 />
-
               ))}
             </tbody>
           </table>
@@ -51,7 +52,7 @@ function Pedidos() {
         >
           <Link
             state={location.state}
-            to='/opciones/pedido/nuevo'>CREAR Pedido</Link>
+            to='/pedidoProveedor/nuevo'>CREAR Pedido</Link>
         </button>
       </div>
       <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">
@@ -64,13 +65,13 @@ function Pedidos() {
               </tr>
             </thead>
             <tbody>
-              {cuentasPedidos.map(cuentaPedido => (
+              {cuentasPedidosProveedor.map(cuentaPedidoProveedor => (
                 <tr className="border-b">
                 <td>
-                    {cuentaPedido.DESCRIPCION_CUENTA}
+                    {cuentaPedidoProveedor.DESCRIPCION_CUENTA}
                 </td>
                 <td>
-                    {Math.abs(cuentaPedido.VALOR_CUENTA)}
+                    {Math.abs(cuentaPedidoProveedor.VALOR_CUENTA)}
                 </td>                    
                 </tr>  
 
@@ -82,4 +83,4 @@ function Pedidos() {
   )
 }
 
-export default Pedidos
+export default PedidosProveedor

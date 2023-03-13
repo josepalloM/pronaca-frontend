@@ -28,7 +28,7 @@ const FormularioCargo = ({ departamentos}) => {
                     {departamentos.length ? (
                         <select id="id_departamento" value={cargo} name="id_departamento" 
                         
-                        onChange={(event) => setValue(event.target.value)} className="border border-gray-500 rounded py-2 px-3 block w-full appearance-none leading-tight focus:outline-none focus:bg-white">
+                        onChange={(event) => setCargo(event.target.value)} className="border border-gray-500 rounded py-2 px-3 block w-full appearance-none leading-tight focus:outline-none focus:bg-white">
                             <option >Selecciona un departamento</option>
                             {departamentos.map(departamento => (
                                 <option key={departamento.ID_DEPARTAMENTO} value={departamento.ID_DEPARTAMENTO}>{departamento.NOMBRE_DEPARTAMENTO}</option>
