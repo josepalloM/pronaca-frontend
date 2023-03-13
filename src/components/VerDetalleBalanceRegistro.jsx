@@ -1,10 +1,13 @@
-import {useEffect, useState} from "react"
+import { useEffect, useState } from "react"
+import { Link } from "react-router-dom";
 
-const VerDetalleBalanceRegistro = ({balance}) => {
+const VerDetalleBalanceRegistro = ({ balance }) => {
 
-    
+
     return (
         <>
+        <div className="mb-4 width: 400px; border: 1px solid black;">
+
             {/* */}
             <div className="mb-4 border-2 border-yellow-500 rounded-lg shadow-lg bg-yellow-50">
 
@@ -13,7 +16,7 @@ const VerDetalleBalanceRegistro = ({balance}) => {
                     htmlFor="fecha"
                 >Fecha de Informe:</label>
                 <h1>{balance?.fecha}</h1>
-                
+
             </div>
 
             {/* Activos*/}
@@ -39,12 +42,13 @@ const VerDetalleBalanceRegistro = ({balance}) => {
                 />
             </div>
 
-            <div className="mb-4">
 
-                <label
-                    className="flex justify-start text-gray-800"
-                    htmlFor="Inventario"
-                >Inventario:</label>
+
+            <label
+                className="flex justify-start text-gray-800"
+                htmlFor="inventario"
+            >Inventario:</label>
+            <div className="mb-4 flex">
                 <input
                     id="inventario"
                     type="text"
@@ -56,28 +60,83 @@ const VerDetalleBalanceRegistro = ({balance}) => {
 
                 /// add
                 />
+
+                <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
+                    <Link
+                        state={location.state}
+                        to="/opciones/bodega">Ver</Link>
+
+                </button>
             </div>
 
-            <div className="mb-4">
 
-                <label
+
+
+            <label
                     className="flex justify-start text-gray-800"
                     htmlFor="CuentasporCobrarEmpleado"
                 >Cuentas por Cobrar Cliente:</label>
+            <div className="mb-4 flex">
+
+                
                 <input
                     id="cuentas_por_cobrar_emp"
                     type="text"
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Cuentas por Cobrar Empleado"
 
-                    defaultValue={balance?.cuentas_por_cobrar_emp}
+                    defaultValue={balance?.cuentas_por_cobrar_cli}
                     name="cuentas_por_cobrar_emp"
 
                 /// add
                 />
 
-                
+
+                <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
+                    <Link
+                        state={location.state}
+                        to="/opciones/pedidos">Ver</Link>
+
+                </button>
             </div>
+
+
+
+
+            {/*iva en compras*/}
+
+
+            
+            
+            <label
+                    className="flex justify-start text-gray-800"
+                    htmlFor="IVA compras"
+                >IVA Compras:</label>
+
+            <div className="mb-4 flex">
+                <input
+                    id="iva_compras"
+                    type="text"
+                    className="mt-2 block w-full p-3 bg-gray-50"
+                    placeholder="IVA Compras"
+
+                    defaultValue={balance?.iva_compras}
+                    name="cuentas_por_cobrar_cli"
+
+
+                />
+
+
+                <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
+                    <Link
+                        state={location.state}
+                        to="/pedidosProveedor">Ver</Link>
+
+                </button>
+
+            </div>
+
+
 
             <div className="mb-4 border-2 border-green-500 rounded-lg shadow-lg bg-green-50">
                 <label
@@ -93,19 +152,18 @@ const VerDetalleBalanceRegistro = ({balance}) => {
                     name="activos"
                 />
 
-                
+
             </div>
 
             <h1 className="text-2xl font-bold mb-2">Pasivos:</h1>
 
 
-
-            <div className="mb-4">
-
-                <label
+            <label
                     className="flex justify-start text-gray-800"
                     htmlFor="CuentasporPagarProveedor"
-                >Cuentas por pagar cliente:</label>
+                >Cuentas por pagar Proveedor:</label>
+            <div className="mb-4 flex">
+
                 <input
                     id="cuenta_pagar_proveedor"
                     type="text"
@@ -118,15 +176,25 @@ const VerDetalleBalanceRegistro = ({balance}) => {
                 /// add
                 />
 
-                
+                <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
+                    <Link
+                        state={location.state}
+                        to="/pedidosProveedor">Ver</Link>
+
+                </button>
+
+
             </div>
 
-            <div className="mb-4">
 
-                <label
+
+            <label
                     className="flex justify-start text-gray-800"
                     htmlFor="IVAVentas"
                 >IVA Ventas:</label>
+            <div className="mb-4 flex">
+
+                
                 <input
                     id="iva_ventas"
                     type="text"
@@ -137,15 +205,24 @@ const VerDetalleBalanceRegistro = ({balance}) => {
                     name="iva_ventas"
 
                 />
+
+                <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
+                    <Link
+                        state={location.state}
+                        to="/opciones/pedidos">Ver</Link>
+
+                </button>
             </div>
 
 
-            <div className="mb-4">
 
-                <label
+            <label
                     className="flex justify-start text-gray-800"
                     htmlFor="Aportes"
                 >Aportes por pagar:</label>
+            <div className="mb-4">
+
+                
                 <input
                     id="aportes"
                     type="text"
@@ -156,16 +233,19 @@ const VerDetalleBalanceRegistro = ({balance}) => {
                     name="aportes"
 
                 />
+
+
             </div>
 
 
 
-            <div className="mb-4">
 
-                <label
+            <label
                     className="flex justify-start text-gray-800"
                     htmlFor="Nomina por Pagar"
                 >Nómina por pagar:</label>
+            <div className="mb-4 flex">
+
                 <input
                     id="Nominaporpagar"
                     type="text"
@@ -174,8 +254,18 @@ const VerDetalleBalanceRegistro = ({balance}) => {
 
                     defaultValue={balance?.nomina}
                     name="nomina"
-
                 />
+
+
+                <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
+                    <Link
+                        state={location.state}
+                        to="/empleados">Ver</Link>
+
+                </button>
+
+
+
             </div>
 
             <div className="mb-4">
@@ -232,14 +322,14 @@ const VerDetalleBalanceRegistro = ({balance}) => {
                     placeholder="Patrimonio"
                     name="patrimonio"
                     defaultValue={-balance?.patrimonio}
-                    
+
 
 
                 />
             </div>
 
-            
 
+        </div>
 
 
 

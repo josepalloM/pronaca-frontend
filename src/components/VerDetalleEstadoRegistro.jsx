@@ -1,4 +1,6 @@
 
+import {  Link } from "react-router-dom";
+
 const VerDetalleEstadoRegistro = ({estado, parametro_isr}) => {
     const isr=parametro_isr.VALOR
 const utilidad_sin_impuesto=(estado?.ingresos)-(estado?.costos)
@@ -28,9 +30,11 @@ const utilidad_sin_impuesto=(estado?.ingresos)-(estado?.costos)
 
                 defaultValue={estado?.ingresos}
                 name="ingresos"
-
-
             />
+
+            
+
+
             </div>
 
             <div className="mb-4">
@@ -50,6 +54,9 @@ const utilidad_sin_impuesto=(estado?.ingresos)-(estado?.costos)
 
                 /// add
                 />
+
+                
+
             </div>
 
             <div className="mb-4">
@@ -107,6 +114,13 @@ const utilidad_sin_impuesto=(estado?.ingresos)-(estado?.costos)
 
 
                 />
+
+                <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
+                    <Link
+                        state={location.state}
+                        to="/opciones/pedidos">Validar Cuentas</Link>
+
+                </button>
             </div>
 
 
