@@ -75,6 +75,14 @@ function Pedidos() {
                 </tr>  
 
               ))}
+              <tr className="border-b">
+                <td>
+                    Utilidad neta
+                </td>
+                <td>
+                    {(Math.abs(cuentasPedidos[2].VALOR_CUENTA)-Math.abs(cuentasPedidos[3].VALOR_CUENTA)).toFixed(2)}
+                </td>                    
+                </tr>  
             </tbody>
           </table>
       </div>
