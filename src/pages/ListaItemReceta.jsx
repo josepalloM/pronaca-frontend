@@ -8,7 +8,7 @@ export async function loader() {
 
     const items = obtenerItems()
     return items
-    
+
 }
 
 function ItemsReceta() {
@@ -25,34 +25,24 @@ function ItemsReceta() {
                     <table className="w-full bg-white shadow mt-5 table-auto">
                         <thead className="bg-black text-white">
                             <tr>
-                                <th className="p-2">Id Lista Item</th>
-                                <th className="p-2">Estado Produccion</th>
-                                <th className="p-2">Tipo Item</th>
                                 <th className="p-2">Codigo Item</th>
+                                <th className="p-2">Tipo Item</th>
                                 <th className="p-2">Nombre Item</th>
-                                <th className="p-2">Fecha Fabricación</th>
-                                <th className="p-2">Fecha Caducidad 1</th>
-                                <th className="p-2">Fecha Caducidad 2</th>
-                                <th className="p-2">Lote Item</th>
-                                <th className="p-2">Cantidad Lote</th>
-                                <th className="p-2">Unidad Medida</th>
-                                <th className="p-2">Peso Item</th>
-                                <th className="p-2">Precio Item</th>
-                                <th className="p-2">Conservación Item</th>
-                                <th className="p-2">Detalle Item</th>
+                                <th className="p-2">Bodega</th>
+                                <th className="p-2">Paso Receta</th>
                                 <th className="p-2">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {items.map( item => (
-                                    <ItemReceta 
-                                        item={item}
-                                        key={item.ID_ITEM}
-                                    />
-                                    ))}
+                            {items.filter(items=>items.ID_TIPO_ITEM==1).map(item => (
+                                <ItemReceta
+                                    item={item}
+                                    key={item.ID_ITEM}
+                                />
+                            ))}
                         </tbody>
                     </table>
-                ): (<p className="text-center mt-10"> No existe Item</p> )}
+                ) : (<p className="text-center mt-10"> No existe Item</p>)}
 
                 {/*<button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
                     <Link

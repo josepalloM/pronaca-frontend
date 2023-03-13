@@ -40,6 +40,7 @@ import EmpleadoProduccion from './pages/EmpleadoProduccion'
 import NuevoListaItem, { action as nuevaListaItemAction } from './pages/NuevoListaItem'
 import { action as eliminarListaItemAction } from './components/ListaItem'
 import { action as eliminarItemAction } from './components/Item'
+import ItemReceta, {loader as ItemsRecetaLoader} from './pages/ListaItemReceta'
 
 import NuevoPedido, { action as nuevoPedidoAction, loader as nuevoPedidoLoader } from './pages/NuevoPedido'
 import PedidosOpciones from './pages/PedidosOpciones'
@@ -281,6 +282,13 @@ function App() {
                             path: '/pasosreceta/nuevo',
                             element: <NuevoPaso_Receta />,
                             action: nuevoPasoRecetaAction,
+                            errorElement: <ErrorPage />
+                        },
+                        {
+                            path: '/itemreceta',
+                            element: <ItemReceta/>,
+                            //action: nuevaListaItemAction,
+                            loader: ItemsRecetaLoader,
                             errorElement: <ErrorPage />
                         },
                         {

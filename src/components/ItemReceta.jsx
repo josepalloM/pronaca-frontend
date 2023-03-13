@@ -11,59 +11,29 @@ function ItemReceta({ item}) {
 
     const navigate = useNavigate()
     const { ID_ITEM, ID_LISTA_ITEMS, ID_ESTADO_PRODUCION,ESTADO_PRODUCCION, ID_TIPO_ITEM, TIPO_ITEM, CODIGO_ITEM, NOMBRE_ITEM, FECHA_FABRI_ITEM, FECHA1_CADU_ITEM, FECHA2_CADU_ITEM,
-        LOTE_ITEM, UNIDAD_MEDIDA,CANTIDAD_LOTE_ITEM, PRECIO_ITEM, PESO_ITEM, CONSERVACION_ITEM, DETALLE_ITEM, ID_RECETAP} = item
+        LOTE_ITEM, UNIDAD_MEDIDA,CANTIDAD_LOTE_ITEM, PRECIO_ITEM, PESO_ITEM, CONSERVACION_ITEM, NOMBRE_PASO_RECETA, NOMBRE} = item
 
     return (
         <tr className="">
             <td align="center">
-                {ID_LISTA_ITEMS}
-            </td>
-            <td>
-                {ESTADO_PRODUCCION}
+                {CODIGO_ITEM}
             </td>
             <td>
                 {TIPO_ITEM}
             </td>
             <td>
-                {CODIGO_ITEM}
-            </td>
-            <td>
                 {NOMBRE_ITEM}
             </td>
             <td>
-                {FECHA_FABRI_ITEM}
+                {NOMBRE}
             </td>
             <td>
-                {FECHA1_CADU_ITEM}
-            </td>
-            <td>
-                {FECHA2_CADU_ITEM}
-            </td>
-            <td>
-                {LOTE_ITEM}
-            </td>
-            <td align="center">
-                {CANTIDAD_LOTE_ITEM}
-            </td>
-            <td>
-                {UNIDAD_MEDIDA}
-            </td>
-            <td align="center">
-                {PESO_ITEM}
-            </td>
-            <td align="center">
-                {PRECIO_ITEM}
-            </td>
-            <td>
-                {CONSERVACION_ITEM}
-            </td>
-            <td>
-                {DETALLE_ITEM}
+                {NOMBRE_PASO_RECETA}
             </td>
             <td className="p-4 flex justify-center gap-3">
-                <button type="button"
+                {/*<button type="button"
                         className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs" 
-                        onClick={() => navigate(`/item/${ID_ITEM}/actualizar`)}>Editar</button>
+                        onClick={() => navigate(`/item/${ID_ITEM}/actualizar`)}>Editar</button>*/}
                 <Form
                     method='POST'
                     action={`/item/${ID_ITEM}/eliminar`}

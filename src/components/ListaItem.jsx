@@ -56,7 +56,8 @@ function Item({ listaItem }) {
                 >
                     <button type="button"
                         className="text-black-600 hover:text-blue-700 uppercase font-bold text-xs"
-                        onClick={() => navigate('/item/nuevo')}
+                        onClick={() => navigate('/itemreceta')}
+                        //onClick={() => navigate('/item/nuevo')}
                     >Seleccionar</button>
                 </Form>
             </td>
