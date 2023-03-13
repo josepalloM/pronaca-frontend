@@ -2,7 +2,7 @@ import {useEffect, useState} from "react"
 import {useNavigate} from "react-router-dom"
 
 function Balance({ balance }) {
-    const { id_balance, activos, pasivos, patrimonio, fecha } = balance
+    const { id_balance, activos, pasivos, patrimonio, fecha ,bancos, inventario, cuentas_por_cobrar_emp, cuenta_pagar_proveedor, iva_ventas, aportes, nomina, pasivos_fijos} = balance
 
    
     
