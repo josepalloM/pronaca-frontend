@@ -170,7 +170,7 @@ const VerDetalleBalanceRegistro = ({ balance }) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Cuentas por Pagar Proveedor"
 
-                    defaultValue={balance?.cuenta_pagar_proveedor}
+                    defaultValue={-balance?.cuenta_pagar_proveedor}
                     name="cuenta_pagar_proveedor"
 
                 /// add
@@ -201,7 +201,7 @@ const VerDetalleBalanceRegistro = ({ balance }) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="IVA en Ventas"
 
-                    defaultValue={balance?.iva_ventas}
+                    defaultValue={-balance?.iva_ventas}
                     name="iva_ventas"
 
                 />
@@ -229,7 +229,7 @@ const VerDetalleBalanceRegistro = ({ balance }) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Aportes por Pagar"
 
-                    defaultValue={balance?.aportes}
+                    defaultValue={-balance?.aportes}
                     name="aportes"
 
                 />
@@ -252,7 +252,7 @@ const VerDetalleBalanceRegistro = ({ balance }) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Nomina por Pagar"
 
-                    defaultValue={balance?.nomina}
+                    defaultValue={-balance?.nomina}
                     name="nomina"
                 />
 
@@ -280,7 +280,7 @@ const VerDetalleBalanceRegistro = ({ balance }) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Pasivos Fijos"
 
-                    defaultValue={balance?.pasivos_fijos}
+                    defaultValue={-balance?.pasivos_fijos}
                     name="pasivosfijos"
 
                 />
