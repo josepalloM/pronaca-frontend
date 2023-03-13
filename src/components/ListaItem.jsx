@@ -45,7 +45,13 @@ function Item({ listaItem }) {
                     onClick={() => navigate(`/listaitem/${ID_LISTA_ITEMS}/actualizar`)}>Editar
                 </button>
 
-                <Form
+                <button type="button"
+                    className="text-black-600 hover:text-blue-700 uppercase font-bold text-xs"
+                    onClick={() => navigate(`/itemreceta/${ID_LISTA_ITEMS}/itemreceta`)}
+                //onClick={() => navigate('/item/nuevo')}
+                >Seleccionar</button>
+
+                {/*<Form
                     method='POST'
                     action={`/listaitem/${ID_LISTA_ITEMS}/eliminar`}
                     onSubmit={(e) => {
@@ -57,9 +63,9 @@ function Item({ listaItem }) {
                     <button type="button"
                         className="text-black-600 hover:text-blue-700 uppercase font-bold text-xs"
                         onClick={() => navigate('/itemreceta')}
-                        //onClick={() => navigate('/item/nuevo')}
+                    //onClick={() => navigate('/item/nuevo')}
                     >Seleccionar</button>
-                </Form>
+                </Form>*/}
             </td>
         </tr>
     )

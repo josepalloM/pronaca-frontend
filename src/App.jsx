@@ -285,7 +285,7 @@ function App() {
                             errorElement: <ErrorPage />
                         },
                         {
-                            path: '/itemreceta',
+                            path: '/itemreceta/:idlista/itemreceta',
                             element: <ItemReceta/>,
                             //action: nuevaListaItemAction,
                             loader: ItemsRecetaLoader,
