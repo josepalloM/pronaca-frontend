@@ -29,8 +29,9 @@ function ItemsReceta() {
                                 <th className="p-2">Tipo Item</th>
                                 <th className="p-2">Nombre Item</th>
                                 <th className="p-2">Bodega</th>
-                                <th className="p-2">Paso Receta</th>
-                                <th className="p-2">Acciones</th>
+                                <th className="p-2">Lote</th>
+                                <th className="p-2">Medidad</th>
+                                <th className="p-2">Peso</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,10 +45,10 @@ function ItemsReceta() {
                     </table>
                 ) : (<p className="text-center mt-10"> No existe Item</p>)}
 
-                {/*<button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
+                <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
                     <Link
                         to='/item/nuevo'>CREAR</Link>
-                </button>*/}
+                </button>
             </div>
         </>
     )

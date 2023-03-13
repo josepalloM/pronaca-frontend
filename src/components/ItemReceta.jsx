@@ -28,25 +28,13 @@ function ItemReceta({ item}) {
                 {NOMBRE}
             </td>
             <td>
-                {NOMBRE_PASO_RECETA}
+                {LOTE_ITEM}
             </td>
-            <td className="p-4 flex justify-center gap-3">
-                {/*<button type="button"
-                        className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs" 
-                        onClick={() => navigate(`/item/${ID_ITEM}/actualizar`)}>Editar</button>*/}
-                <Form
-                    method='POST'
-                    action={`/item/${ID_ITEM}/eliminar`}
-                    onSubmit={ (e) => {
-                        if (!confirm('¿Deseas eliminar este registro?')){
-                            e.preventDefault()
-                        }
-                    }}
-                >
-                <button type="submit"
-                        className="text-red-600 hover:text-blue-700 uppercase font-bold text-xs"
-                    >Eliminar</button>
-                </Form>
+            <td>
+                {UNIDAD_MEDIDA}
+            </td>
+            <td>
+                {PESO_ITEM}
             </td>
         </tr>
     )
