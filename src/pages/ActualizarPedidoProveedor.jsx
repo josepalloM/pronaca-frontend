@@ -38,7 +38,7 @@ export async function action({request, params}){
 
     // Actualizar Pedido
     await  actualizarPedidoProveedor(params.pedidoProveedorId, datos)
-    return redirect('/pedidosProveedor')
+    return redirect('/item/nuevo')
 }
 
 function ActualizarPedidoProveedor() {
