@@ -11,7 +11,7 @@ import Item, { loader as itemsLoader } from './pages/Items'
 import Recetas_Produccion, { loader as recetaLoader } from './pages/Receta'
 import NuevaReceta_Produccion, { action as nuevoRecetaAction } from './pages/NuevoReceta'
 import PasosReceta, { loader as pasorecetaLoader } from './pages/PasoReceta'
-import NuevoPaso_Receta, { action as nuevoPasoRecetaAction } from './pages/NuevoPasoReceta'
+import NuevoPaso_Receta, { loader as recetapLoader,action as nuevoPasoRecetaAction } from './pages/NuevoPasoReceta'
 
 import BalanceGeneral, { loader as balanceLoader } from './pages/BalanceGeneral'
 import EstadoFinanciero, { loader as estadoLoader } from './pages/EstadoFinanciero'
@@ -281,6 +281,7 @@ function App() {
                         {
                             path: '/pasosreceta/nuevo',
                             element: <NuevoPaso_Receta />,
+                            loader: recetapLoader,
                             action: nuevoPasoRecetaAction,
                             errorElement: <ErrorPage />
                         },
