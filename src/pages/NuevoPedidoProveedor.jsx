@@ -31,7 +31,7 @@ export  async function action({request}){
   
     await agregarPedidoProveedor(datos)
   
-    return redirect('/pedidosProveedor')
+    return redirect('/item/nuevo')
 }
 
 function NuevoPedidoProveedor() {

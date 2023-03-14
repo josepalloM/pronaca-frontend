@@ -1,20 +1,28 @@
-const FormularioPasoReceta = ({ pasoreceta_produccion }) => {
+import { useState } from 'react';
+
+
+const FormularioPasoReceta = ({ recetaproduccion }) => {
+
+    const [receta, setreceta] = useState();
+
     return (
         <>
             <div className="bg-white shadow rounded-md md: w-3/4 mx-auto px-5 py-10 mt-5">
                 <div className="mb-4">
                     <label
-                        className="flex justify-start text-gray-800"
+                        className=" flex justify-start text-gray-800"
                         htmlFor="id_receta_produccion"
-                    >Receta: </label>
-                    <input
-                        id="id_receta_produccion"
-                        type="text"
-                        className="mt-2 block w-full p-3 bg-gray-50"
-                        placeholder="id receta produccion"
-                        name="id_receta_produccion"
-                        defaultValue={pasoreceta_produccion?.ID_PASO_RECETA}
-                    />
+                    >Receta:</label>
+                    <div className="">
+                        {recetaproduccion.length ? (
+                            <select id="id_receta_produccion" value={receta} name="id_receta_produccion" onChange={(event) => { setreceta(event.target.value) }} className="form-control border-2 border-black">
+                                <option >Selecciona la receta</option>
+                                {recetaproduccion.map(recetas => (
+                                    <option key={recetas.ID_RECETA_PRODUCCION} value={recetas.ID_RECETA_PRODUCCION}>{recetas.NOMBRE_RECETA}</option>
+                                ))}
+                            </select>
+                        ) : (<p> No existe Id Lista Item</p>)}
+                    </div>
                 </div>
                 <div className="mb-4">
                     <label
@@ -27,7 +35,7 @@ const FormularioPasoReceta = ({ pasoreceta_produccion }) => {
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="nombre del Paso de la Receta"
                         name="nombre_paso_receta"
-                        defaultValue={pasoreceta_produccion?.NOMBRE_PASO_RECETA}
+
                     />
                 </div>
                 <div className="mb-4">
@@ -41,7 +49,7 @@ const FormularioPasoReceta = ({ pasoreceta_produccion }) => {
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Descripcion de la receta"
                         name="descripcion_paso_receta"
-                        defaultValue={pasoreceta_produccion?.DESCRIPCION_PASO_RECETA}
+
                     />
                 </div>
                 <div className="mb-4">
@@ -55,7 +63,7 @@ const FormularioPasoReceta = ({ pasoreceta_produccion }) => {
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Categoria de la receta"
                         name="categoria_paso_receta"
-                        defaultValue={pasoreceta_produccion?.CATEGORIA_PASO_RECETA}
+
                     />
                 </div>
 
@@ -70,7 +78,7 @@ const FormularioPasoReceta = ({ pasoreceta_produccion }) => {
                         className="mt-2 block w-full p-3 bg-gray-50"
                         placeholder="Ejemplo 10:00"
                         name="tiempo_produc_receta"
-                        defaultValue={pasoreceta_produccion?.TIEMPO_PRODUC_RECETA}
+
                     />
                 </div>
             </div>

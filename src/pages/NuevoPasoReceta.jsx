@@ -1,7 +1,14 @@
-import { useNavigate, Form, useActionData, redirect } from "react-router-dom"
+import { useNavigate, Form, useActionData, redirect, useLoaderData} from "react-router-dom"
 import FormularioPasoReceta from "../components/FormularioPasoReceta";
 import Error from "../components/Error";
 import { agregarPasoReceta } from "../data/paso_receta";
+import {obtenerRecetasProduccion} from '../data/receta_produccion'
+
+
+export async function loader() {
+  const recetas_produccion = await obtenerRecetasProduccion()
+  return recetas_produccion
+}
 
 export  async function action({request}){
   const formData = await request.formData()
@@ -28,6 +35,7 @@ function NuevoPaso_Receta() {
 
   const errores = useActionData()
   const navigate = useNavigate()
+  const receta_produccion = useLoaderData()
 
   return (
     <>
@@ -44,7 +52,7 @@ function NuevoPaso_Receta() {
           {errores?.length && errores.map( (error, i) =>  <Error key={i}>{error}</Error>)}
 
           <Form method="POST">
-            <FormularioPasoReceta/>
+            <FormularioPasoReceta recetaproduccion={receta_produccion} />
             <div className="grid grid-cols-2 gap-2">
                 <div>
                     <input
