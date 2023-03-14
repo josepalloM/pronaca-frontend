@@ -3,10 +3,12 @@ import FormularioPedidoProveedor from "../components/FormularioPedidoProveedor";
 import Error from "../components/Error";
 import { agregarPedidoProveedor } from "../data/pedidosProveedor";
 import {obtenerProveedores} from "../data/proveedores";
+import { obtenerItems } from "../data/items";
 
 export async function loader(){
     const proveedores =  await obtenerProveedores()
-    return {proveedores}
+    const items = await obtenerItems()
+    return {proveedores, items}
 }
 
 export  async function action({request}){
@@ -31,11 +33,11 @@ export  async function action({request}){
   
     await agregarPedidoProveedor(datos)
   
-    return redirect('/item/nuevo')
+    return redirect('/pedidosProveedor')
 }
 
 function NuevoPedidoProveedor() {
-    const {proveedores} = useLoaderData()
+    const {proveedores, items} = useLoaderData()
     const errores = useActionData()
     const navigate = useNavigate()
 
@@ -54,7 +56,7 @@ function NuevoPedidoProveedor() {
                     method="POST"
                 >
 
-                    <FormularioPedidoProveedor proveedores={proveedores} />
+                    <FormularioPedidoProveedor proveedores={proveedores} items={items}/>
                     <div className="grid grid-cols-2 gap-2">
                         <div>
                             <input

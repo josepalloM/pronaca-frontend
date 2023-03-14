@@ -1,7 +1,7 @@
 import Select from "react-select";
 import React, { useRef, useState } from "react";
 
-const FormularioPedidoProveedor = ({ pedidoProveedor, proveedores }) => {
+const FormularioPedidoProveedor = ({ pedidoProveedor, proveedores, items }) => {
   const today = new Date();
   const yyyy = today.getFullYear();
   const mm = String(today.getMonth() + 1).padStart(2, "0");
@@ -10,7 +10,10 @@ const FormularioPedidoProveedor = ({ pedidoProveedor, proveedores }) => {
 
   const [date, setDate] = useState(formattedDate);
   const [proveedor, setProveedor] = useState("");
+  const [detalle, setDetalle] = useState("");
   const [cantidad, setCantidad] = useState(0);
+  const [precio, setPrecio] = useState(0);
+  const [total, setTotal] = useState(0);
   const [inputMayus, setInputMayus] = useState("");
   const dateInputRef = useRef(null);
   const handleChange = (e) => {
@@ -30,6 +33,29 @@ const FormularioPedidoProveedor = ({ pedidoProveedor, proveedores }) => {
   const agregar = (event) => {
     setCantidad(cantidad + 1);
   };
+
+   const handleDetalleChange = (event) => {
+    const value = event.target.value;
+    setDetalle(value);
+
+    switch (value) {
+      case "CARNE FRESCA":
+        setPrecio(22*cantidad)
+        setTotal(25*cantidad)
+        break;
+      case "CARNE LISTA PARA POLLO":
+        setPrecio(5.016*cantidad)
+        setTotal(5.70*cantidad)
+        break;
+      case "CARNE LISTA PARA CHULETA":
+        setPrecio(1.76*cantidad)
+        setTotal(2*cantidad)
+        break;
+      default:
+        alert("Elija un item")
+    }
+  }
+
 
   return (
     <div className="grid grid-cols-2 gap-4">
@@ -75,14 +101,39 @@ const FormularioPedidoProveedor = ({ pedidoProveedor, proveedores }) => {
         >
           Detalle:
         </label>
-        <input
+        {/* ///// */}
+
+        {items.length ? (
+          <select
+            id="DETALLE_PEDIDO_PROVEEDOR"
+            name="DETALLE_PEDIDO_PROVEEDOR"
+            onChange={handleDetalleChange}
+            className="form-control border-2 border-black"
+          >
+            <option>Selecciona un producto</option>
+            {items.filter(items => items.ID_TIPO_ITEM == 1 || items.ID_TIPO_ITEM == 4).map((item) => (
+              <option
+                key={item.ID_ITEM}
+                value={item.NOMBRE_ITEM}
+              >
+                {item.NOMBRE_ITEM}
+              </option>
+            ))}
+          </select>
+        ) : (
+          <p> No existen items</p>
+        )}
+
+
+
+        {/* <input
           id="DETALLE_PEDIDO_PROVEEDOR"
           name="DETALLE_PEDIDO_PROVEEDOR"
           type="text"
           className="block w-full p-3 bg-gray-50"
           value={inputMayus}
           onChange={mayus}
-        />
+        /> */}
       </div>
       <input
         type={"hidden"}
@@ -102,7 +153,7 @@ const FormularioPedidoProveedor = ({ pedidoProveedor, proveedores }) => {
           name="CANTIDAD_PEDIDO"
           type="number"
           min={0}
-          max={10000}
+          max={1000}
           className="flex w-1/2 p-3 m-1 bg-gray-200 rounded text-center"
           onChange={(event) => setCantidad(event.target.valueAsNumber)}
           value={cantidad}
@@ -126,6 +177,8 @@ const FormularioPedidoProveedor = ({ pedidoProveedor, proveedores }) => {
           name="SUBTOTAL_PEDIDO_PROVEEDOR"
           type="text"
           className="block w-full p-3 bg-gray-50"
+          value={precio}
+          readOnly
         />
       </div>
       <div>
@@ -140,6 +193,8 @@ const FormularioPedidoProveedor = ({ pedidoProveedor, proveedores }) => {
           name="TOTAL_PEDIDO_PROVEEDOR"
           type="text"
           className="block w-full p-3 bg-gray-50"
+          value={total}
+          readOnly
         />
       </div>
     </div>
