@@ -6,6 +6,7 @@ import {obtenerTiposItem} from '../data/tipo_item';
 import {obtenerEstadosProduccion} from '../data/estado_produccion';
 import {obtenerBodegas} from '../data/bodegas';
 import {obtenerPasosReceta} from '../data/paso_receta'
+import {obtenerRecetasProduccion} from '../data/receta_produccion'
 
 
 export async function loader() {
@@ -14,7 +15,8 @@ export async function loader() {
   const estadosproduccion = await obtenerEstadosProduccion()
   const bodega = await obtenerBodegas()
   const pasoreceta = await obtenerPasosReceta()
-  return {tipoitem, idListaItem, estadosproduccion, bodega, pasoreceta}
+  const recetas_produccion = await obtenerRecetasProduccion()
+  return {tipoitem, idListaItem, estadosproduccion, bodega, pasoreceta, recetas_produccion}
 }
 
 export  async function action({request}){
@@ -40,7 +42,7 @@ export  async function action({request}){
 
 function NuevoItem() {
 
-  const {tipoitem,idListaItem,estadosproduccion,bodega,pasoreceta} = useLoaderData()
+  const {tipoitem,idListaItem,estadosproduccion,bodega,pasoreceta,recetas_produccion} = useLoaderData()
   const errores = useActionData()
   const navigate = useNavigate()
   
@@ -61,7 +63,7 @@ function NuevoItem() {
 
           <Form method="POST">
             <FormularioItem tipo_items={tipoitem} listaitems={idListaItem} estadosproduccion={estadosproduccion}
-            bodegas={bodega} pasoreceta={pasoreceta}/>
+            bodegas={bodega} pasoreceta={pasoreceta} recetaproduccion={recetas_produccion}/>
             <div className="grid grid-cols-2 gap-2">
                 <div>
                     <input

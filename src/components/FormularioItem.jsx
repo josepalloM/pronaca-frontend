@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 
 
-const FormularioItem = ({ item, tipo_items, listaitems,estadosproduccion, bodegas,pasoreceta }) => {
+const FormularioItem = ({ item, tipo_items, listaitems,estadosproduccion, bodegas,pasoreceta,recetaproduccion }) => {
 
     const [tipo_item, settipo_item] = useState('');
     const [lista_item, setlista_item] = useState('');
@@ -114,13 +114,29 @@ const FormularioItem = ({ item, tipo_items, listaitems,estadosproduccion, bodega
                 <div className="mb-4">
                     <label
                         className=" flex justify-start text-gray-800"
+                        htmlFor="id_receta_produccion"
+                    >Receta:</label>
+                    <div className="">
+                        {recetaproduccion.length ? (
+                            <select id="id_receta_produccion" value={receta} onChange={(event) => { setreceta(event.target.value) }} className="form-control border-2 border-black">
+                                <option >Selecciona la receta</option>
+                                {recetaproduccion.map(recetas => (
+                                    <option key={recetas.ID_RECETA_PRODUCCION} value={recetas.ID_RECETA_PRODUCCION}>{recetas.NOMBRE_RECETA}</option>
+                                ))}
+                            </select>
+                        ) : (<p> No existe Id Lista Item</p>)}
+                    </div>
+                </div>
+                <div className="mb-4">
+                    <label
+                        className=" flex justify-start text-gray-800"
                         htmlFor="id_paso_receta"
                     >Paso Receta:</label>
                     <div className="">
                         {pasoreceta.length ? (
                             <select id="id_paso_receta" value={p_receta} name="id_paso_receta" onChange={(event) => setp_receta(event.target.value)} className="form-control border-2 border-black">
                                 <option >Selecciona el paso de la receta</option>
-                                {pasoreceta.map(paso_receta => (
+                                {pasoreceta.filter(recetap => recetap.ID_RECETA_PRODUCCION == receta).map(paso_receta => (
                                     <option key={paso_receta.ID_PASO_RECETA} value={paso_receta.ID_PASO_RECETA}>{paso_receta.NOMBRE_PASO_RECETA}</option>
                                 ))}
                             </select>
