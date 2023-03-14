@@ -42,6 +42,13 @@ export async function actualizarCostos(){
         console.log(error)
     }
 }
+export async function obtenerCuentasInventario(id){
+    const url = "http://localhost:4000/api/cuenta/obtenerCuentasInventario"
+    const respuesta = await fetch(`${url}/${id}`)
+    const resultado = await respuesta.json()
+    return resultado
+}
+
 export async function cuentasInventario(id){
     
     const url = "http://localhost:4000/api/cuenta"
