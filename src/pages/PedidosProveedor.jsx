@@ -1,17 +1,17 @@
-import { Link, useLoaderData, useLocation} from "react-router-dom"
+import { Link, useLoaderData, useLocation } from "react-router-dom"
 import { obtenerPedidosProveedor } from "../data/pedidosProveedor"
 import PedidoProveedor from "../components/PedidoProveedor"
-import { actualizarCuentasPedidosProveedor,obtenercuentasPedidosProveedor } from "../data/cuentas"
+import { actualizarCuentasPedidosProveedor, obtenercuentasPedidosProveedor } from "../data/cuentas"
 
 export async function loader() {
   const pedidosProveedor = await obtenerPedidosProveedor()
   const cuentasPedidosProveedor = await obtenercuentasPedidosProveedor(1)
-  return {pedidosProveedor, cuentasPedidosProveedor}
+  return { pedidosProveedor, cuentasPedidosProveedor }
 }
 
 function PedidosProveedor() {
   actualizarCuentasPedidosProveedor(0)
-  const {pedidosProveedor,cuentasPedidosProveedor} = useLoaderData()
+  const { pedidosProveedor, cuentasPedidosProveedor } = useLoaderData()
   const location = useLocation()
 
   return (
@@ -20,6 +20,9 @@ function PedidosProveedor() {
       <p>Administración de pedidos a proveedores</p>
 
       <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">
+        <div className="flex flex-col items-center">
+          <img src="https://cdn-icons-png.flaticon.com/512/2801/2801655.png" alt="Imagen 2" className="w-20 h-20 object-contain" />
+        </div>
         {pedidosProveedor.length ? (
           <table className="w-full bg-white shadow mt-5 table-auto">
             <thead className="bg-black text-white">
@@ -38,7 +41,7 @@ function PedidosProveedor() {
             <tbody>
               {pedidosProveedor.map(pedidoProveedor => (
                 <PedidoProveedor
-                  
+
                   pedidoProveedor={pedidoProveedor}
                   key={pedidoProveedor.ID_PEDIDO_PROVEEDOR}
                 />
@@ -56,28 +59,28 @@ function PedidosProveedor() {
         </button>
       </div>
       <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">
-        
-          <table className="w-full bg-white shadow mt-5 table-auto">
-            <thead className="bg-black text-white">
-              <tr>
-                <th className="p-2">Cuenta</th>
-                <th className="p-2">Monto</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cuentasPedidosProveedor.map(cuentaPedidoProveedor => (
-                <tr className="border-b">
+
+        <table className="w-full bg-white shadow mt-5 table-auto">
+          <thead className="bg-black text-white">
+            <tr>
+              <th className="p-2">Cuenta</th>
+              <th className="p-2">Monto</th>
+            </tr>
+          </thead>
+          <tbody>
+            {cuentasPedidosProveedor.map(cuentaPedidoProveedor => (
+              <tr className="border-b">
                 <td>
-                    {cuentaPedidoProveedor.DESCRIPCION_CUENTA}
+                  {cuentaPedidoProveedor.DESCRIPCION_CUENTA}
                 </td>
                 <td>
-                    {Math.abs(cuentaPedidoProveedor.VALOR_CUENTA)}
-                </td>                    
-                </tr>  
+                  {Math.abs(cuentaPedidoProveedor.VALOR_CUENTA)}
+                </td>
+              </tr>
 
-              ))}
-            </tbody>
-          </table>
+            ))}
+          </tbody>
+        </table>
       </div>
     </>
   )

@@ -8,7 +8,7 @@ export function loader() {
 }
 
 function Clientes() {
-  
+
   const clientes = useLoaderData()
   const location = useLocation()
 
@@ -17,7 +17,11 @@ function Clientes() {
       <h1 className="font-black text-4xl ">Clientes</h1>
       <p>Administración de clientes</p>
 
+
       <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">
+        <div className="flex flex-col items-center">
+          <img src="https://cdn-icons-png.flaticon.com/512/4814/4814842.png" alt="Imagen 2" className="w-20 h-20 object-contain" />
+        </div>
         {clientes.length ? (
           <table className="w-full bg-white shadow mt-5 table-auto">
             <thead className="bg-black text-white">
