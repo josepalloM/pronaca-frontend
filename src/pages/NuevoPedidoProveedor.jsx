@@ -33,7 +33,7 @@ export  async function action({request}){
   
     await agregarPedidoProveedor(datos)
   
-    return redirect('/pedidosProveedor')
+    return redirect('/proveedoresOpciones/pedidosProveedor')
 }
 
 function NuevoPedidoProveedor() {

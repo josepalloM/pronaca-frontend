@@ -5,7 +5,7 @@ import { eliminarPedidoProveedor } from "../data/pedidosProveedor";
 export async function action({ params }) {
   console.log("ID eliminar pedido de proveedor ", params.pedidoProveedorId);
   await eliminarPedidoProveedor(params.pedidoProveedorId);
-  return redirect("/pedidosProveedor");
+  return redirect("proveedoresOpciones/pedidosProveedor");
 }
 
 function PedidoProveedor({ pedidoProveedor }) {
@@ -29,7 +29,7 @@ function PedidoProveedor({ pedidoProveedor }) {
     if(ESTADO_PEDIDO_PROVEEDOR=="ENTREGADO"){
       alert("El pedido ya ha sido entregado")
     }else{
-      navigate(`/pedidoProveedor/${ID_PEDIDO_PROVEEDOR}/editar`)
+      navigate(`/proveedoresOpciones/pedidoProveedor/${ID_PEDIDO_PROVEEDOR}/editar`)
     }
   }
 

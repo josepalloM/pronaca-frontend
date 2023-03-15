@@ -55,7 +55,7 @@ function PedidosProveedor() {
         >
           <Link
             state={location.state}
-            to='/pedidoProveedor/nuevo'>CREAR Pedido</Link>
+            to='/proveedoresOpciones/pedidoProveedor/nuevo'>CREAR Pedido</Link>
         </button>
       </div>
       <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">

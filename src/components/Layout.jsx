@@ -141,7 +141,7 @@ function Layout() {
                         <div className={`mt-2 text-center ${!open && "scale-0"}`}>
                         <Link
                             className={`${location.pathname === '/'}`}
-                                    to='/pedidosProveedor'>
+                                    to='/proveedoresOpciones'>
                                     <button type="button"
                                     data-mdb-ripple="true"
                                     data-mdb-ripple-color="light"
