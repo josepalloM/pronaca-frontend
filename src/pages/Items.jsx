@@ -1,22 +1,20 @@
 import { useLoaderData } from "react-router-dom";
 import { obtenerItems } from "../data/items";
 import Item from "../components/Item";
-import { cuentasInventario, obtenerCuentasInventario } from "../data/cuentas.js"
-import TablaInventarios from "../components/TablaInventarios";
+import { cuentasInventario } from "../data/cuentas.js"
 
 export async function loader() {
     await cuentasInventario(0)
 
-    const inventarios = await obtenerCuentasInventario(0)
     const items = await obtenerItems()
 
-    return { items, inventarios }
+    return items
     
 }
 
 function Items() {
 
-    const { items, inventarios } = useLoaderData()
+    const items = useLoaderData()
 
     return (
         <>
@@ -56,33 +54,6 @@ function Items() {
                         </tbody>
                     </table>
                 ): (<p className="text-center mt-10"> No existe Item</p> )}
-
-                {/*<button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
-                    <Link
-                        to='/item/nuevo'>CREAR</Link>
-                </button>*/}
-            </div>
-
-            <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">
-                {inventarios.length ? (
-                    <table className="w-full bg-white shadow mt-5 table-auto">
-                        <thead className="bg-black text-white">
-                            <tr>
-                                <th className="p-2">Código</th>
-                                <th className="p-2">Descripción</th>
-                                <th className="p-2">Valor</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {inventarios.map( cuenta => (
-                                    <TablaInventarios 
-                                    cuenta={cuenta}
-                                        key={cuenta.ID_CUENTA}
-                                    />
-                                    ))}
-                        </tbody>
-                    </table>
-                ): (<p className="text-center mt-10"> No existen cuentas de inventario</p> )}
 
                 {/*<button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
                     <Link

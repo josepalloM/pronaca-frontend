@@ -1,15 +1,19 @@
 import { obtenerBodegas } from "../data/bodegas.js";
 import { Link, useLoaderData, useLocation } from "react-router-dom";
 import Bodega from "../components/Bodega";
+import { obtenerCuentasInventario } from "../data/cuentas.js"
+import TablaInventarios from "../components/TablaInventarios";
 
 
-export function loader() {
-    const bodegas = obtenerBodegas()
-    return bodegas
+export async function loader() {
+    const inventarios = await obtenerCuentasInventario(0)
+
+    const bodegas = await obtenerBodegas()
+    return { bodegas, inventarios }
 }
 
 function Bodegas() {
-    const bodegas = useLoaderData()
+    const { bodegas, inventarios } = useLoaderData()
     const location = useLocation()
     return (
         <>
@@ -50,6 +54,28 @@ function Bodegas() {
                         state={location.state}
                         to='/opciones/bodega/nuevo'>CREAR Bodega</Link>
                 </button>
+            </div>
+
+            <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">
+                {inventarios.length ? (
+                    <table className="w-full bg-white shadow mt-5 table-auto">
+                        <thead className="bg-black text-white">
+                            <tr>
+                                <th className="p-2">Código</th>
+                                <th className="p-2">Descripción</th>
+                                <th className="p-2">Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {inventarios.map(cuenta => (
+                                <TablaInventarios
+                                    cuenta={cuenta}
+                                    key={cuenta.ID_CUENTA}
+                                />
+                            ))}
+                        </tbody>
+                    </table>
+                ) : (<p className="text-center mt-10"> No existen cuentas de inventario</p>)}
             </div>
         </>
     )
