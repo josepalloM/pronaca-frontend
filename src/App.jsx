@@ -112,6 +112,9 @@ import { action as eliminarProveedorAction } from "./components/Proveedor"
 import NuevoProveedor, { action as nuevoProveedorAction } from './pages/NuevoProveedor'
 import ActualizarProveedor, { loader as actualizarProveedorLoader, action as actualizarProveedorAction } from './pages/ActualizarProveedor'
 
+// Transporte
+import Transportes, { loader as transporteLoader } from './pages/Transportes'
+
 function App() {
 
     const {us} = useContext(UserContext)
@@ -601,6 +604,12 @@ function App() {
                             //action :obtenerDetalleBalanceAction 
                         },
 
+                        // Transporte
+                        {
+                            path: '/transporte',
+                            element: <Transportes />,
+                            loader: transporteLoader,
+                        },
                         
                     ]
                 },

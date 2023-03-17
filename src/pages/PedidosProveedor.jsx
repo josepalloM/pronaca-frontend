@@ -20,9 +20,6 @@ function PedidosProveedor() {
       <p>Administración de pedidos a proveedores</p>
 
       <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">
-        <div className="flex flex-col items-center">
-          <img src="https://cdn-icons-png.flaticon.com/512/2801/2801655.png" alt="Imagen 2" className="w-20 h-20 object-contain" />
-        </div>
         {pedidosProveedor.length ? (
           <table className="w-full bg-white shadow mt-5 table-auto">
             <thead className="bg-black text-white">

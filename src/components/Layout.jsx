@@ -155,6 +155,25 @@ function Layout() {
                         </Link>
                         </div>
                     </li>
+
+                    <li>
+                        <div className={`mt-2 text-center ${!open && "scale-0"}`}>
+                        <Link
+                            className={`${location.pathname === '/'}`}
+                                    to='/transporte'>
+                                    <button type="button"
+                                    data-mdb-ripple="true"
+                                    data-mdb-ripple-color="light"
+                                    className="inline-block w-10/12 px-8 py-2.5 bg-white text-black
+                                    font-medium text-xs leading-tight uppercase rounded
+                                    shadow-md hover:bg-amber-400 hover:shadow focus:bg-grey
+                                    focus:shadow focus:outline-none focus:ring-0 active:bg-grey
+                                    active:shadow transition duration-150 ease-in-out">
+                                Transporte 
+                            </button>
+                        </Link>
+                        </div>
+                    </li>
                                        
                     <li >
                         {us ? (
