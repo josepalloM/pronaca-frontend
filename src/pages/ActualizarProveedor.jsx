@@ -92,14 +92,20 @@ function ActualizarProveedor() {
                         <div>
                             <input
                                 type="submit"
-                                className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
+                                className="flex text-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm 
+                                          shadow-md hover:bg-amber-400 hover:shadow focus:bg-grey
+                                          focus:shadow focus:outline-none focus:ring-0 active:bg-grey
+                                          active:shadow transition duration-150 ease-in-out"
                                 value="Editar proveedor"
                             />
                         </div>
                         <div>
                             <button
                                 type="button"
-                                className="felx justify-items-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
+                                className="flex text-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm 
+                                          shadow-md hover:bg-amber-400 hover:shadow focus:bg-grey
+                                          focus:shadow focus:outline-none focus:ring-0 active:bg-grey
+                                          active:shadow transition duration-150 ease-in-out"
                                 onClick={() => navigate(-1)}
                             >Cancelar</button>
                         </div>

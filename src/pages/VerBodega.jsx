@@ -94,7 +94,12 @@ function VerBodega(){
                     <div>
                         <button
                             type="button"
-                            className="flex justify-items-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
+                            // className="flex justify-items-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
+                            className="flex justify-items-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm
+                                    leading-tight 
+                                    shadow-md hover:bg-amber-400 hover:shadow focus:bg-grey
+                                    focus:shadow focus:outline-none focus:ring-0 active:bg-grey
+                                    active:shadow transition duration-150 ease-in-out"
                             onClick={() => navigate(-1)}
                         >Regresar</button>
                     </div>
@@ -104,7 +109,11 @@ function VerBodega(){
                     <div>
                         <button
                             type="button"
-                            className="flex justify-items-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
+                            className="flex justify-items-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm
+                                    leading-tight 
+                                    shadow-md hover:bg-amber-400 hover:shadow focus:bg-grey
+                                    focus:shadow focus:outline-none focus:ring-0 active:bg-grey
+                                    active:shadow transition duration-150 ease-in-out"
                             onClick={() => navigate(-1)}
                         >Regresar</button>
                     </div>
