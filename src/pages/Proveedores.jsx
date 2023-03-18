@@ -41,13 +41,19 @@ function Proveedores() {
           </table>
         ) : (<p className="text-center mt-10"> No existe proveedores</p>)}
 
-        <button
-          className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
-        >
-          <Link
+        <Link
             state={location.state}
-            to='/proveedoresOpciones/proveedor/nuevo'>CREAR Proveedor</Link>
+            to='/proveedoresOpciones/proveedor/nuevo'>
+          <button
+          className="inline-block text-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm 
+                                    shadow-md hover:bg-amber-400 hover:shadow focus:bg-grey
+                                    focus:shadow focus:outline-none focus:ring-0 active:bg-grey
+                                    active:shadow transition duration-150 ease-in-out"
+          // value="CREAR Proveedor"
+        >CREAR Proveedor
+          
         </button>
+        </Link>
       </div>
     </>
   )

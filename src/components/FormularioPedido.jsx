@@ -70,7 +70,7 @@ const FormularioPedido = ({pedido, clientes, empleados}) => {
                     type="text"
                     className="block w-full p-3 bg-gray-50"
                     placeholder="Estado del pedido"
-                    value={"Pendiente"}
+                    value={"PENDIENTE"}
                     readOnly
                 />
             </div>

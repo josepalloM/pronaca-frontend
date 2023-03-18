@@ -15,15 +15,25 @@ function PedidosOpciones() {
                 <div className="grid grid-cols-2 gap-10">
                     <div className="flex flex-col items-center">
                         <img src="https://cdn-icons-png.flaticon.com/512/3624/3624080.png" alt="Imagen 1" className="w-20 h-20 object-contain" />
-                        <button className="flex justify-center mt-3 ml-5 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
-                            <Link state={location.state} to='/opciones/pedidos'>Pedidos</Link>
-                        </button>
+                        <Link state={location.state} to='/opciones/pedidos'>
+                            <button className="flex text-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm 
+                                        shadow-md hover:bg-amber-400 hover:shadow focus:bg-grey
+                                        focus:shadow focus:outline-none focus:ring-0 active:bg-grey
+                                        active:shadow transition duration-150 ease-in-out">
+                                Pedidos
+                            </button>
+                        </Link>
                     </div>
                     <div className="flex flex-col items-center">
                         <img src="https://cdn-icons-png.flaticon.com/512/9813/9813840.png" alt="Imagen 2" className="w-20 h-20 object-contain" />
-                        <button className="flex justify-center mt-3 mr-5 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
-                            <Link state={location.state} to='/opciones/preventa'>Preventa</Link>
-                        </button>
+                        <Link state={location.state} to='/opciones/preventa'>
+                            <button className="flex text-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm 
+                                        shadow-md hover:bg-amber-400 hover:shadow focus:bg-grey
+                                        focus:shadow focus:outline-none focus:ring-0 active:bg-grey
+                                        active:shadow transition duration-150 ease-in-out">
+                                Preventa
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>
