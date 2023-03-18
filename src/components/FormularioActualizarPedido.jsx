@@ -1,8 +1,13 @@
 import React, {useRef, useState} from "react";
 
 const FormularioActualizarPedido = ({pedido, cliente, empleado}) => {    
-    
-    const [date, setDate] = useState(pedido.FECHA_PEDIDO);
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, "0");
+    const dd = String(today.getDate()).padStart(2, "0");
+    const formattedDate = `${yyyy}-${mm}-${dd}`;
+
+    const [date, setDate] = useState(formattedDate);
     const [cuenta, setCuenta] = useState('');
     const dateInputRef = useRef(null);
     const handleChange = (e) => {
@@ -10,7 +15,7 @@ const FormularioActualizarPedido = ({pedido, cliente, empleado}) => {
     };
 
 const handleEstado = (e) => {
-    if(e.target.value=="Entregado"){
+    if(e.target.value=="ENTREGADO"){
         setCuenta(46)
     }else{
         setCuenta('null')
@@ -51,6 +56,7 @@ const handleEstado = (e) => {
                     ref={dateInputRef}
                     id="FECHA_PEDIDO"
                     name="FECHA_PEDIDO"
+                    defaultValue={date}
                 />
             </div>
             <div>
@@ -67,8 +73,8 @@ const handleEstado = (e) => {
                     defaultValue={pedido?.ESTADO_PEDIDO}
                 >
                     <option>Seleccione un estado</option>
-                    <option value={"Pendiente"}>Pendiente</option>
-                    <option value={"Entregado"}>Entregado</option>
+                    <option value={"PENDIENTE"}>PENDIENTE</option>
+                    <option value={"ENTREGADO"}>ENTREGADO</option>
                 </select>
             </div>
             <input 

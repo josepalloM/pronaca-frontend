@@ -50,7 +50,7 @@ function Pedido({ pedido }) {
   const [deleteVar, setDeleteVar] = useState(false)
 
   const handleEditar = () => {
-    if(ESTADO_PEDIDO=="Entregado"){
+    if(ESTADO_PEDIDO=="ENTREGADO"){
       alert("El pedido ya ha sido entregado")
     }else{
       navigate(`/pedido/${ID_PEDIDO}/editar`)
@@ -58,7 +58,7 @@ function Pedido({ pedido }) {
   }
 
   function handleEliminar(){
-    return ESTADO_PEDIDO=="Entregado";
+    return ESTADO_PEDIDO=="ENTREGADO";
   }
 
   return (
