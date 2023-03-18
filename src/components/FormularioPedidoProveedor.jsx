@@ -40,17 +40,20 @@ const FormularioPedidoProveedor = ({ pedidoProveedor, proveedores, items }) => {
 
     switch (value) {
       case "CARNE FRESCA":
-        setPrecio(22*cantidad)
-        setTotal(25*cantidad)
+        setPrecio(22)
+        setTotal(25)
         break;
       case "CARNE LISTA PARA POLLO":
-        setPrecio(5.016*cantidad)
-        setTotal(5.70*cantidad)
+        setPrecio(5.016)
+        setTotal(5.70)
         break;
       case "CARNE LISTA PARA CHULETA":
-        setPrecio(1.76*cantidad)
-        setTotal(2*cantidad)
+        setPrecio(1.76)
+        setTotal(2)
         break;
+      case "INSUMOS":
+        setPrecio(0.44)
+        setTotal(0.5)
       default:
         alert("Elija un item")
     }
@@ -60,7 +63,19 @@ const FormularioPedidoProveedor = ({ pedidoProveedor, proveedores, items }) => {
   return (
     <div className="grid grid-cols-2 gap-4">
       <div className="my-4">
-        {" "}
+        <p>Fecha Seleccionada: {date}</p>
+        <input
+          type="date"
+          onChange={handleChange}
+          ref={dateInputRef}
+          id="FECHA_PEDIDO_PROVEEDOR"
+          name="FECHA_PEDIDO_PROVEEDOR"
+          defaultValue={date}
+        />
+      </div>
+      <div></div>
+      {/* <div></div> */}
+      <div className="my-4 ">
         Seleccione un proveedor
         {proveedores?.length ? (
           <select
@@ -83,18 +98,8 @@ const FormularioPedidoProveedor = ({ pedidoProveedor, proveedores, items }) => {
           <p> No existen proveedores</p>
         )}
       </div>
-      <div className="my-4">
-        <p>Fecha Seleccionada: {date}</p>
-        <input
-          type="date"
-          onChange={handleChange}
-          ref={dateInputRef}
-          id="FECHA_PEDIDO_PROVEEDOR"
-          name="FECHA_PEDIDO_PROVEEDOR"
-          defaultValue={date}
-        />
-      </div>
-      <div>
+      
+      <div className="my-4 ">
         <label
           className="flex justify-start text-gray-800"
           htmlFor="DETALLE_PEDIDO_PROVEEDOR"
@@ -123,17 +128,19 @@ const FormularioPedidoProveedor = ({ pedidoProveedor, proveedores, items }) => {
         ) : (
           <p> No existen items</p>
         )}
-
-
-
-        {/* <input
-          id="DETALLE_PEDIDO_PROVEEDOR"
-          name="DETALLE_PEDIDO_PROVEEDOR"
+      </div>
+      <div className="my-4">
+        <label
+          className="flex justify-start text-gray-800"
+        >
+          Precio:
+        </label>
+        <input
           type="text"
           className="block w-full p-3 bg-gray-50"
-          value={inputMayus}
-          onChange={mayus}
-        /> */}
+          value={precio}
+          readOnly
+        />
       </div>
       <input
         type={"hidden"}
@@ -170,14 +177,14 @@ const FormularioPedidoProveedor = ({ pedidoProveedor, proveedores, items }) => {
           className="flex justify-start text-gray-800"
           htmlFor="SUBTOTAL_PEDIDO_PROVEEDOR"
         >
-          Precio:
+          Subtotal:
         </label>
         <input
           id="SUBTOTAL_PEDIDO_PROVEEDOR"
           name="SUBTOTAL_PEDIDO_PROVEEDOR"
           type="text"
           className="block w-full p-3 bg-gray-50"
-          value={precio}
+          value={precio*cantidad}
           readOnly
         />
       </div>
@@ -193,7 +200,7 @@ const FormularioPedidoProveedor = ({ pedidoProveedor, proveedores, items }) => {
           name="TOTAL_PEDIDO_PROVEEDOR"
           type="text"
           className="block w-full p-3 bg-gray-50"
-          value={total}
+          value={total*cantidad}
           readOnly
         />
       </div>

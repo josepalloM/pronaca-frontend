@@ -16,6 +16,7 @@ export  async function action({request}){
     const nombre = formData.get('nombre_proveedor')
     const tipo = formData.get('tipo_proveedor')
     const ruc = formData.get('ruc')
+    const telefono = formData.get('telefono_proveedor')
 
     //validaciones
     const errores = []
@@ -28,9 +29,9 @@ export  async function action({request}){
         errores.push("El nombre solo debe contener letras");
     }
 
-    let regex2 = new RegExp("^[0-9]{10}$");
+    let regex2 = new RegExp("^[0-9]{13}$");
     if(!regex2.test(ruc)){
-        errores.push("La cédula solo debe contener 10 números");
+        errores.push("La cédula solo debe contener 10 números seguidos de 001");
     }
 
     // let regex3 = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])")
@@ -38,10 +39,10 @@ export  async function action({request}){
     //     errores.push("El email debe ser de la siguiente forma alguien@ejemplo.algo");
     // }
 
-    // let regex5 = new RegExp("(^[0-9]{10}$)|(^[0-9]{9}$)");
-    // if(!regex5.test(telefono)){
-    //     errores.push("El teléfono solo debe contener 9 o 10 números");
-    // }
+    let regex5 = new RegExp("(^[0-9]{10}$)|(^[0-9]{9}$)");
+    if(!regex5.test(telefono)){
+        errores.push("El teléfono solo debe contener 9 o 10 números");
+    }
 
     //Retornar datos si hay erroes
     if(Object.keys(errores).length){

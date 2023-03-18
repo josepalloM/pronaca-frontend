@@ -12,6 +12,7 @@ function Proveedor({ proveedor }) {
         NOMBRE_PROVEEDOR,
         RUC,
         TIPO_PROVEEDOR,
+        TELEFONO_PROVEEDOR,
         ID_PROVEEDOR
 
     } = proveedor
@@ -28,7 +29,9 @@ function Proveedor({ proveedor }) {
                 <td>
                     {RUC}
                 </td>
-
+                <td>
+                    {TELEFONO_PROVEEDOR}
+                </td>
                 <td className="p-4 flex justify-center gap-3">
                     <button
                         type="button"
