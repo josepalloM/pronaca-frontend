@@ -25,8 +25,7 @@ export async function action({request, params}){
     const nombre = formData.get('nombre_proveedor')
     const tipo = formData.get('tipo_proveedor')
     const ruc = formData.get('ruc')
-    // const email = formData.get('email_cliente')
-    // const telefono = formData.get('telefono_cliente')
+    const telefono = formData.get('telefono_proveedor')
     //validaciones
     const errores = []
     if(Object.values(datos).includes('')){
