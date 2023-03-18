@@ -11,14 +11,14 @@ import Item, { loader as itemsLoader } from './pages/Items'
 import Recetas_Produccion, { loader as recetaLoader } from './pages/Receta'
 import NuevaReceta_Produccion, { action as nuevoRecetaAction } from './pages/NuevoReceta'
 import PasosReceta, { loader as pasorecetaLoader } from './pages/PasoReceta'
-import NuevoPaso_Receta, { loader as recetapLoader,action as nuevoPasoRecetaAction } from './pages/NuevoPasoReceta'
+import NuevoPaso_Receta, { loader as recetapLoader, action as nuevoPasoRecetaAction } from './pages/NuevoPasoReceta'
 
 import BalanceGeneral, { loader as balanceLoader } from './pages/BalanceGeneral'
 import EstadoFinanciero, { loader as estadoLoader } from './pages/EstadoFinanciero'
 import ListaItems, { loader as listaItemsloader } from './pages/ListaItems'
 import NuevoItem, { action as nuevoItemAction, loader as cargaTipoItem } from './pages/NuevoItem'
 
-import RolDePago, {loader as rolDePagoLoader} from './pages/RolDePago'
+import RolDePago, { loader as rolDePagoLoader } from './pages/RolDePago'
 
 import Clientes, { loader as clienteLoader } from './pages/Clientes'
 import Finanzas from './pages/Finanzas'
@@ -40,16 +40,16 @@ import EmpleadoProduccion from './pages/EmpleadoProduccion'
 import NuevoListaItem, { action as nuevaListaItemAction } from './pages/NuevoListaItem'
 import { action as eliminarListaItemAction } from './components/ListaItem'
 import { action as eliminarItemAction } from './components/Item'
-import ItemReceta, {loader as ItemsRecetaLoader} from './pages/ListaItemReceta'
+import ItemReceta, { loader as ItemsRecetaLoader } from './pages/ListaItemReceta'
 
 import NuevoPedido, { action as nuevoPedidoAction, loader as nuevoPedidoLoader } from './pages/NuevoPedido'
 import PedidosOpciones from './pages/PedidosOpciones'
 import Preventas, { loader as preventaLoader } from './pages/Preventas'
 import NuevaPreventa, { action as nuevaPreventaAction, loader as nuevaPreventaLoader } from './pages/NuevaPreventa'
-import Bodegas, { loader as bodegaLoader} from './pages/Bodegas'
-import NuevaBodega, { action as nuevaBodegaAction} from './pages/NuevaBodega'
+import Bodegas, { loader as bodegaLoader } from './pages/Bodegas'
+import NuevaBodega, { action as nuevaBodegaAction } from './pages/NuevaBodega'
 import { action as eliminarBodegaAction } from "./components/Bodega"
-import VerBodega, { loader as actualizarBodegaLoader} from './pages/VerBodega'
+import VerBodega, { loader as actualizarBodegaLoader } from './pages/VerBodega'
 import { action as eliminarPreventaAction } from "./components/Preventa"
 import ActualizarPedido, { loader as actualizarPedidoLoader, action as actualizarPedidoAction } from './pages/ActualizarPedido'
 import ActualizarEmpleado, { loader as actualizarEmpleadoLoader, action as actualizarEmpleadoAction } from './pages/ActualizarEmpleado.jsx'
@@ -66,7 +66,7 @@ import NuevoAsiento, { action as nuevoAsiento } from './pages/NuevoAsiento'
 import NuevoDetalleAsiento, { action as obtenerCuentasAsiento, loader as obtenerDetallesAsiento } from './pages/NuevoDetalleAsiento'
 import { action as eliminarAsiento } from './components/Asiento'
 import Asiento, { loader as obtenerAsientos } from './pages/Asientos'
-import Login, {action as loginAction, loader as loginLoader} from './pages/Login'
+import Login, { action as loginAction, loader as loginLoader } from './pages/Login'
 import Registro from './pages/Registro'
 import { RutasPrivadas } from './routes/RutasPrivadas'
 
@@ -95,8 +95,8 @@ import { action as eliminarDetalle_PedidoAction } from "./components/Detalle_Ped
 // import ActualizarDetalle_Pedido, {loader as actualizarDetalle_PedidoLoader, action as actualizarDetalle_PedidoAction} from './pages/ActualizarDetalle_Pedido'
 
 ///importar editar Balance
-import VerDetalleBalance, { loader as obtenerDetalleBalanceLoader} from './pages/AcVerDetalleBalance'
-import VerDetalleEstado, { loader as obtenerDetalleEstadoLoader} from './pages/AcVerDetalleEstado'
+import VerDetalleBalance, { loader as obtenerDetalleBalanceLoader } from './pages/AcVerDetalleBalance'
+import VerDetalleEstado, { loader as obtenerDetalleEstadoLoader } from './pages/AcVerDetalleEstado'
 import { UserContext } from "./context/UserProvider";
 
 //Pedidos Proveedores
@@ -114,10 +114,13 @@ import ActualizarProveedor, { loader as actualizarProveedorLoader, action as act
 
 // Transporte
 import Transportes, { loader as transporteLoader } from './pages/Transportes'
+import { action as eliminarTransporteAction } from "./components/Transporte"
+import NuevoTransporte, { action as nuevoTransporteAction } from './pages/NuevoTransporte'
+import ActualizarTransporte, { loader as actualizarTransporteLoader, action as actualizarTransporteAction } from './pages/ActualizarTransporte'
 
 function App() {
 
-    const {us} = useContext(UserContext)
+    const { us } = useContext(UserContext)
 
     const router = createBrowserRouter([
         {
@@ -326,7 +329,7 @@ function App() {
                         },
                         {
                             path: '/itemreceta/:idlista/itemreceta',
-                            element: <ItemReceta/>,
+                            element: <ItemReceta />,
                             //action: nuevaListaItemAction,
                             loader: ItemsRecetaLoader,
                             errorElement: <ErrorPage />
@@ -485,14 +488,14 @@ function App() {
                         },
                         {
                             path: '/empleados/cargos/:cargoId/editar',
-                            element: <ActualizarCargo/>,
+                            element: <ActualizarCargo />,
                             loader: actualizarCargoLoader,
                             action: actualizarCargoAction
                         },
                         {
                             path: '/empleados/:empleadoId/rolDePago',
-                            element:<RolDePago/>,
-                            loader:rolDePagoLoader
+                            element: <RolDePago />,
+                            loader: rolDePagoLoader
                         },
                         {
                             path: '/finanzas/bancos',
@@ -583,7 +586,7 @@ function App() {
                             //action :obtenerDetalleBalanceAction 
                         },
 
-                    
+
 
                         {
                             path: '/finanzas/estado',
@@ -610,7 +613,24 @@ function App() {
                             element: <Transportes />,
                             loader: transporteLoader,
                         },
-                        
+                        {
+                            path: '/transporte/nuevo',
+                            element: <NuevoTransporte />,
+                            action: nuevoTransporteAction,
+                            errorElement: <ErrorPage />
+                        },
+                        {
+                            path: '/transporte/:transporteId/eliminar',
+                            action: eliminarTransporteAction
+                        },
+                        {
+                            path: '/transporte/:transporteId/editar',
+                            element: <ActualizarTransporte />,
+                            loader: actualizarTransporteLoader,
+                            action: actualizarTransporteAction,
+                            errorElement: <ErrorPage />
+                        },
+
                     ]
                 },
                 {

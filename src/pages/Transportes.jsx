@@ -1,15 +1,15 @@
 import { Link, useLoaderData, useLocation } from "react-router-dom"
-import { obtenerProveedores } from "../data/proveedores"
+import { obtenerTransportes } from "../data/transporte"
 import Transporte from "../components/Transporte"
 
 export function loader() {
-  const proveedores = obtenerProveedores()
-  return proveedores
+  const transportes = obtenerTransportes()
+  return transportes
 }
 
-function Proveedores() {
+function Transportes() {
 
-  const proveedores = useLoaderData()
+  const transportes = useLoaderData()
   const location = useLocation()
 
   return (
@@ -21,21 +21,22 @@ function Proveedores() {
         <div className="flex flex-col items-center">
           <img src="https://cdn-icons-png.flaticon.com/512/819/819873.png" alt="Imagen 1" className="w-20 h-20 object-contain" />
         </div>
-        {proveedores.length ? (
+        {transportes.length ? (
           <table className="w-full bg-white shadow mt-5 table-auto">
             <thead className="bg-black text-white">
               <tr>
                 <th className="p-2">Nombre</th>
-                <th className="p-2">Tipo</th>
+                <th className="p-2">Teléfono</th>
                 <th className="p-2">RUC</th>
+                <th className="p-2">Dirección</th>
                 <th className="p-2">Acciones</th>
               </tr>
             </thead>
             <tbody>
-              {proveedores.map(proveedor => (
+              {transportes.map(transporte => (
                 <Transporte
-                  proveedor={proveedor}
-                  key={proveedor.ID_PROVEEDOR}
+                transporte={transporte}
+                  key={transporte.ID_TRANSPORTE}
                 />
 
               ))}
@@ -48,11 +49,11 @@ function Proveedores() {
         >
           <Link
             state={location.state}
-            to='/proveedoresOpciones/proveedor/nuevo'>CREAR TRANSPORTE</Link>
+            to='/transporte/nuevo'>CREAR TRANSPORTE</Link>
         </button>
       </div>
     </>
   )
 }
 
-export default Proveedores
+export default Transportes
