@@ -118,6 +118,9 @@ import { action as eliminarTransporteAction } from "./components/Transporte"
 import NuevoTransporte, { action as nuevoTransporteAction } from './pages/NuevoTransporte'
 import ActualizarTransporte, { loader as actualizarTransporteLoader, action as actualizarTransporteAction } from './pages/ActualizarTransporte'
 
+//Flotas
+import Flotas, { loader as flotaLoader } from './pages/Flotas'
+
 function App() {
 
     const { us } = useContext(UserContext)
@@ -629,6 +632,12 @@ function App() {
                             loader: actualizarTransporteLoader,
                             action: actualizarTransporteAction,
                             errorElement: <ErrorPage />
+                        },
+                        // Flota
+                        {
+                            path: '/flota/:transporteId',
+                            element: <Flotas />,
+                            loader: flotaLoader,
                         },
 
                     ]

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link, Form, useNavigate, redirect } from "react-router-dom";
+import { currencyFormatter } from "../utils/formatters";
+import moment from "moment";
 import { eliminarPedidoProveedor } from "../data/pedidosProveedor";
 
 export async function action({ params }) {
@@ -42,33 +44,24 @@ function PedidoProveedor({ pedidoProveedor }) {
   }
 
   return (
-    <tr className="border-b">
+    <tr className="border-b text-center p-1">
       {/* <td className="">{ID_PEDIDO_PROVEEDOR}</td> */}
       <td>{NOMBRE_PROVEEDOR}</td>
       <td>
-        {FECHA_PEDIDO_PROVEEDOR}
+        {moment(FECHA_PEDIDO_PROVEEDOR).format("YYYY-MM-DD")}
       </td>
       <td>
         {DETALLE_PEDIDO_PROVEEDOR}
       </td>
       <td>{CANTIDAD_PEDIDO}</td>
       <td>{ESTADO_PEDIDO_PROVEEDOR}</td>
-      <td>{SUBTOTAL_PEDIDO_PROVEEDOR}</td>
-      <td>{TOTAL_PEDIDO_PROVEEDOR}</td>
+      <td>{currencyFormatter.format(SUBTOTAL_PEDIDO_PROVEEDOR)}</td>
+      <td>{currencyFormatter.format(TOTAL_PEDIDO_PROVEEDOR)}</td>
       <td className="p-4 flex justify-center gap-3">
-        {/* <button
-          type="button"
-          className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
-        >
-          <Link state={location.state} to={`/pedidoProveedor/${ID_PEDIDO_PROVEEDOR}`}>
-            Ver
-          </Link>
-        </button> */}
 
         <button
           type="button"
           className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
-          // onClick={() => navigate(`/pedidoProveedor/${ID_PEDIDO_PROVEEDOR}/editar`)}
           onClick={handleEditar}
         >
           Editar

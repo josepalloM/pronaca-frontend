@@ -1,4 +1,4 @@
-import { Form, useNavigate, redirect } from "react-router-dom";
+import { Link, Form, useNavigate, redirect } from "react-router-dom";
 import { eliminarTransporte } from "../data/transporte";
 
 export async function action({ params }) {
@@ -18,21 +18,29 @@ function Transporte({ transporte }) {
     } = transporte
 
     return (
-        <tr className="border-b">
+        <tr className="border-b text-center">
             <td className="">
                 {NOMBRE_TRANSPORTE}
             </td>
-            <td>
+            <td className="p-1">
                 {RUC_TRANSPORTE}
             </td>
-            <td>
+            <td className="p-1">
                 {TELEFONO_TRANSPORTE}
             </td>
-            <td>
+            <td className="p-1">
                 {DIRECCION_TRANSPORTE}
             </td>
 
             <td className="p-4 flex justify-center gap-3">
+                <Link state={location.state} to = {`/flota/${ID_TRANSPORTE}`}>
+                    <button
+                        type="button"
+                        className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
+                    >
+                        Flota
+                    </button>
+                </Link>
                 <button
                     type="button"
                     className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"

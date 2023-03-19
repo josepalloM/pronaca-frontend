@@ -1,6 +1,6 @@
-export async function obtenerFlotas(){
+export async function obtenerFlotas(id){
     const url = "http://localhost:4000/api/flota"
-    const respuesta = await fetch(url)
+    const respuesta = await fetch(`${url}/${id}`)
     const resultado = await respuesta.json()
     return resultado
 }

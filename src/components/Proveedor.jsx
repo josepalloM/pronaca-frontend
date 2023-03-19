@@ -19,7 +19,7 @@ function Proveedor({ proveedor }) {
 
     return (
   
-            <tr className="border-b">
+            <tr className="border-b text-center p-1">
                 <td className="">
                     {NOMBRE_PROVEEDOR}
                 </td>

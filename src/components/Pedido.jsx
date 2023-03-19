@@ -2,6 +2,7 @@ import { useState } from "react";
 import Invoice from '../components/Invoice'
 // import Modal from '../components/Modal'
 import { Link, Form, useLoaderData, useNavigate, redirect } from "react-router-dom";
+import moment from "moment";
 import { eliminarPedido } from "../data/pedidos.js";
 import { obtenerDetalle_Pedidos } from "../data/detalle_pedidos";
 
@@ -10,17 +11,6 @@ export async function action({ params }) {
   await eliminarPedido(params.pedidoId);
   return redirect("/opciones/pedidos");
 }
-
-//  function loader({params}) {
-//   const detalle_pedidos = obtenerDetalle_Pedidos(params.pedidoId)
-//   console.log('detalles de pedidos',detalle_pedidos)
-//   return detalle_pedidos
-// }
-
-// async function obtener (id){
-//   const detalle_pedidos = await obtenerDetalle_Pedidos(id)
-//   return detalle_pedidos
-// }
 
 function Pedido({ pedido }) {
   
@@ -36,16 +26,7 @@ function Pedido({ pedido }) {
 
   } = pedido;
 
-  // const [detalle, setDetalle] = useState([])
-  // obtener(ID_PEDIDO).then(detalle_pedidos => {setDetalle(detalle_pedidos)})
-  // console.log('Detalles de pedidos',detalle)
-
-  // console.log('Detalles de pedidos',detalle_pedidos)
   const [showModal, setShowModal] = useState(false);
-  // const detalle_pedidos = useLoaderData()
-
-
-  
 
   const [deleteVar, setDeleteVar] = useState(false)
 
@@ -63,10 +44,10 @@ function Pedido({ pedido }) {
 
   return (
     <>
-    <tr className="border-b">
+    <tr className="border-b text-center p-1">
     
       <td className="">{ID_PEDIDO}</td>
-      <td>{FECHA_PEDIDO}</td>
+      <td>{moment(FECHA_PEDIDO).format("YYYY-MM-DD")}</td>
       <td>
         {NOMBRE_EMPLEADO} {APELLIDO_EMPLEADO}
       </td>

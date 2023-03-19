@@ -1,59 +1,60 @@
 import { Link, useLoaderData, useLocation } from "react-router-dom"
-import { obtenerTransportes } from "../data/transporte"
-import Transporte from "../components/Transporte"
+import { obtenerFlotas } from "../data/flotas"
+import Flota from "../components/Flota"
 
-export function loader() {
-  const transportes = obtenerTransportes()
-  return transportes
+export function loader({params}) {
+  const flotas = obtenerFlotas(params.transporteId)
+  return flotas
 }
 
-function Transportes() {
+function Flotas() {
 
-  const transportes = useLoaderData()
+  const flotas = useLoaderData()
   const location = useLocation()
 
   return (
     <>
-      <h1 className="font-black text-4xl ">Transporte</h1>
-      <p>Administración de transporte</p>
+      <h1 className="font-black text-4xl ">Flota</h1>
+      <p>Administración de flota</p>
 
       <div className="rounded-md md: w-11/12 mx-auto px-5 py-10 mt-5">
         <div className="flex flex-col items-center">
           <img src="https://cdn-icons-png.flaticon.com/512/819/819873.png" alt="Imagen 1" className="w-20 h-20 object-contain" />
         </div>
-        {transportes.length ? (
+        <div className="flex flex-col items-center font-black text-4xl ">{flotas[0].NOMBRE_TRANSPORTE}</div>
+        {flotas.length ? (
           <table className="w-full bg-white shadow mt-5 table-auto">
             <thead className="bg-black text-white">
               <tr>
-                <th className="p-2">Nombre</th>
-                <th className="p-2">RUC</th>
-                <th className="p-2">Teléfono</th>
-                <th className="p-2">Dirección</th>
+                <th className="p-2">Sector</th>
+                <th className="p-2">Estado</th>
+                <th className="p-2">Capacidad</th>
+                <th className="p-2">Costo</th>
                 <th className="p-2">Acciones</th>
               </tr>
             </thead>
             <tbody>
-              {transportes.map(transporte => (
-                <Transporte
-                transporte={transporte}
-                  key={transporte.ID_TRANSPORTE}
+              {flotas.map(flota => (
+                <Flota
+                flota={flota}
+                  key={flota.ID_FLOTA}
                 />
 
               ))}
             </tbody>
           </table>
-        ) : (<p className="text-center mt-10"> No existen transportes</p>)}
+        ) : (<p className="text-center mt-10"> No existen flotas</p>)}
 
         <button
           className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
         >
           <Link
             state={location.state}
-            to='/transporte/nuevo'>CREAR TRANSPORTE</Link>
+            to='/flota/nuevo'>CREAR FLOTA</Link>
         </button>
       </div>
     </>
   )
 }
 
-export default Transportes
+export default Flotas

@@ -1,4 +1,5 @@
 import { Form, useNavigate, redirect } from "react-router-dom";
+import { currencyFormatter } from "../utils/formatters";
 import { eliminarDetalle_Pedido } from "../data/detalle_pedidos.js";
 
 export async function action({ params }) {
@@ -19,12 +20,12 @@ function Detalle_pedido({ detalle_pedido }) {
   } = detalle_pedido;
 
   return (
-    <tr className="border-b">
+    <tr className="border-b text-center">
       <td className="">{ID_PEDIDO}</td>
       <td>{NOMBRE_ITEM}</td>
       <td>{CANTIDAD_PEDIDO}</td>
-      <td>{SUBTOTAL_DETALLE_PEDIDO}</td>
-      <td>{PRECIO_DETALLE_PEDIDO}</td>
+      <td>{currencyFormatter.format(SUBTOTAL_DETALLE_PEDIDO)}</td>
+      <td>{currencyFormatter.format(PRECIO_DETALLE_PEDIDO)}</td>
     </tr>
   );
 }
