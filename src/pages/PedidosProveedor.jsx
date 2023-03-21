@@ -2,6 +2,7 @@ import { Link, useLoaderData, useLocation } from "react-router-dom"
 import { obtenerPedidosProveedor } from "../data/pedidosProveedor"
 import PedidoProveedor from "../components/PedidoProveedor"
 import { actualizarCuentasPedidosProveedor, obtenercuentasPedidosProveedor } from "../data/cuentas"
+import { currencyFormatter } from "../utils/formatters";
 
 export async function loader() {
   const pedidosProveedor = await obtenerPedidosProveedor()
@@ -76,7 +77,7 @@ function PedidosProveedor() {
                   {cuentaPedidoProveedor.DESCRIPCION_CUENTA}
                 </td>
                 <td>
-                  {Math.abs(cuentaPedidoProveedor.VALOR_CUENTA)}
+                  {currencyFormatter.format(Math.abs(cuentaPedidoProveedor.VALOR_CUENTA))}
                 </td>
               </tr>
 

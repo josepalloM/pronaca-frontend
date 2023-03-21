@@ -3,6 +3,7 @@ import { obtenerPedidos } from "../data/pedidos"
 import Pedido from "../components/Pedido"
 import { obtenerCuentasPedidos } from "../data/cuentas"
 import { actualizarCuentasPedidos } from "../data/cuentas"
+import { currencyFormatter } from "../utils/formatters";
 
 export async function loader() {
   const pedidos = await obtenerPedidos()
@@ -75,7 +76,7 @@ function Pedidos() {
                     {cuentaPedido.DESCRIPCION_CUENTA}
                 </td>
                 <td>
-                    {Math.abs(cuentaPedido.VALOR_CUENTA)}
+                    {currencyFormatter.format(Math.abs(cuentaPedido.VALOR_CUENTA))}
                 </td>                    
                 </tr>  
 
@@ -85,7 +86,7 @@ function Pedidos() {
                     Utilidad neta
                 </td>
                 <td>
-                    {(Math.abs(cuentasPedidos[2].VALOR_CUENTA)-Math.abs(cuentasPedidos[3].VALOR_CUENTA)).toFixed(2)}
+                    {currencyFormatter.format((Math.abs(cuentasPedidos[2].VALOR_CUENTA)-Math.abs(cuentasPedidos[3].VALOR_CUENTA)).toFixed(2))}
                 </td>                    
                 </tr>  
             </tbody>

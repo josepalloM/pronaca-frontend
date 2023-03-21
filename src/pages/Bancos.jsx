@@ -1,5 +1,6 @@
 import { Link, useLoaderData, Form, redirect, useNavigate, useLocation } from "react-router-dom"
 import { obtenerBancos, eliminarBanco} from "../data/banco"
+import { currencyFormatter } from "../utils/formatters";
 
 export function loader() {
   const bancos = obtenerBancos()
@@ -39,7 +40,7 @@ function ParametrosIESS() {
                       {banco.NOMBRE_BANCO}
                   </td>
                   <td>
-                      {banco.SALDO}
+                      {currencyFormatter.format(banco.SALDO)}
                   </td>
                   
                   <td className="p-4 flex justify-center gap-3">

@@ -1,5 +1,6 @@
 import { Form, useNavigate, redirect } from "react-router-dom"
 import { eliminarItem } from "../data/items"
+import { currencyFormatter } from "../utils/formatters";
 
 export async function action({params}){
     await eliminarItem(params.itemId)
@@ -52,7 +53,7 @@ function Item({ item}) {
                 {PESO_ITEM}
             </td>
             <td align="center">
-                {PRECIO_ITEM}
+                {currencyFormatter.format(PRECIO_ITEM)}
             </td>
             <td>
                 {CONSERVACION_ITEM}

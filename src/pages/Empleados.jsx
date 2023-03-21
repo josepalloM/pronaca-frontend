@@ -4,6 +4,7 @@ import Empleado from "../components/Empleado";
 import {obtenerCargos} from "../data/cargo_empleado"
 import { actualizarMovimiento, obtenerMovimientos} from "../data/movimiento_empleado";
 import { actualizarCostosGastos } from "../data/cuentas.js";
+import { currencyFormatter } from "../utils/formatters";
 
 export async function loader() {
     const empleados = await obtenerEmpleados()
@@ -78,7 +79,7 @@ function Empleados() {
                                     {mov_empleado.DESCRIPCION_CUENTA}
                                 </td>
                                 <td>
-                                    {-mov_empleado.VALOR_CUENTA}
+                                    {currencyFormatter.format(-mov_empleado.VALOR_CUENTA)}
                                 </td>                    
                             </tr>    
                         ))}

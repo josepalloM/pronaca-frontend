@@ -1,5 +1,6 @@
 import { Link, useLoaderData, Form, redirect, useNavigate, useLocation } from "react-router-dom"
 import { obtenerParametros, eliminarParametro} from "../data/parametros_iess"
+import { currencyFormatter } from "../utils/formatters";
 
 export function loader() {
   const parametros = obtenerParametros()
@@ -37,7 +38,7 @@ function ParametrosIESS() {
                       {parametro.NOMBRE_PARAMETRO}
                   </td>
                   <td>
-                      {parametro.VALOR}
+                      {currencyFormatter.format(parametro.VALOR)}
                   </td>
                   
                   <td className="p-4 flex justify-center gap-3">

@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react"
 import {useNavigate} from "react-router-dom"
+import { currencyFormatter } from "../utils/formatters";
 
 function Empleado({ empleado, cargos}) {
     const {ID_EMPLEADO, NOMBRE_EMPLEADO, APELLIDO_EMPLEADO,CEDULA_EMPLEADO,HORAS_LABORADAS,ID_CARGO_EMPLEADO,CORREO,SUELDO_NETO} = empleado
@@ -24,7 +25,7 @@ function Empleado({ empleado, cargos}) {
                 {HORAS_LABORADAS}
             </td>
             <td>
-                {SUELDO_NETO}
+                {currencyFormatter.format(SUELDO_NETO)}
             </td>
             <td>
                 {DESCRIPCION_CARGO}

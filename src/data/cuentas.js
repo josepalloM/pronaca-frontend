@@ -91,3 +91,23 @@ export async function obtenercuentasPedidosProveedor(id){
     const resultado = await respuesta.json()
     return resultado
 }
+export async function obtenerCuentasTransporte(id){
+    
+    const url = "http://localhost:4000/api/cuenta"
+    const respuesta = await fetch(`${url}/obtenerCuentasTransporte/${id}`)
+    const resultado = await respuesta.json()
+    return resultado
+  
+}
+export async function pagarCuentasTransporte(id){
+    
+    const url = "http://localhost:4000/api/cuenta"
+    await fetch(`${url}/pagarCuentasTransporte/${id}`)
+  
+}
+export async function actualizarCuentasTransporte(id){
+    
+    const url = "http://localhost:4000/api/cuenta"
+    await fetch(`${url}/actualizarCuentasTransporte/${id}`)
+  
+}

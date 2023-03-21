@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
+import { currencyFormatter } from "../utils/formatters";
 
 const VerDetalleBalanceRegistro = ({ balance }) => {
 
@@ -35,7 +36,7 @@ const VerDetalleBalanceRegistro = ({ balance }) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Bancos"
 
-                    defaultValue={balance?.bancos}
+                    defaultValue={currencyFormatter.format(balance?.bancos)}
                     name="bancos"
 
                 /// add
@@ -55,7 +56,7 @@ const VerDetalleBalanceRegistro = ({ balance }) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Inventario"
 
-                    defaultValue={balance?.inventario}
+                    defaultValue={currencyFormatter.format(balance?.inventario)}
                     name="inventario"
 
                 /// add
@@ -85,7 +86,7 @@ const VerDetalleBalanceRegistro = ({ balance }) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Cuentas por Cobrar Empleado"
 
-                    defaultValue={balance?.cuentas_por_cobrar_cli}
+                    defaultValue={currencyFormatter.format(balance?.cuentas_por_cobrar_cli)}
                     name="cuentas_por_cobrar_emp"
 
                 /// add
@@ -120,7 +121,7 @@ const VerDetalleBalanceRegistro = ({ balance }) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="IVA Compras"
 
-                    defaultValue={balance?.iva_compras}
+                    defaultValue={currencyFormatter.format(balance?.iva_compras)}
                     name="cuentas_por_cobrar_cli"
 
 
@@ -148,7 +149,7 @@ const VerDetalleBalanceRegistro = ({ balance }) => {
                     type="text"
                     className="mt-2 block w-full p-3 bg-gray-50 border-green-500 focus:border-green-500 focus:ring-green-500"
                     placeholder="Activos"
-                    defaultValue={balance?.activos}
+                    defaultValue={currencyFormatter.format(balance?.activos)}
                     name="activos"
                 />
 
@@ -170,7 +171,7 @@ const VerDetalleBalanceRegistro = ({ balance }) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Cuentas por Pagar Proveedor"
 
-                    defaultValue={-balance?.cuenta_pagar_proveedor}
+                    defaultValue={currencyFormatter.format(-balance?.cuenta_pagar_proveedor)}
                     name="cuenta_pagar_proveedor"
 
                 /// add
@@ -180,6 +181,33 @@ const VerDetalleBalanceRegistro = ({ balance }) => {
                     <Link
                         state={location.state}
                         to="/pedidosProveedor">Ver</Link>
+
+                </button>
+
+
+            </div>
+            <label
+                    className="flex justify-start text-gray-800"
+                    htmlFor="CuentasporPagarTransporte"
+                >Cuentas por pagar Transporte:</label>
+            <div className="mb-4 flex">
+
+                <input
+                    id="cuenta_pagar_transporte"
+                    type="text"
+                    className="mt-2 block w-full p-3 bg-gray-50"
+                    placeholder="Cuentas por Pagar Transporte"
+
+                    defaultValue={currencyFormatter.format(-balance?.cuenta_pagar_transporte)}
+                    name="cuenta_pagar_transporte"
+
+                /// add
+                />
+
+                <button className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm">
+                    <Link
+                        state={location.state}
+                        to="/transporte">Ver</Link>
 
                 </button>
 
@@ -201,7 +229,7 @@ const VerDetalleBalanceRegistro = ({ balance }) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="IVA en Ventas"
 
-                    defaultValue={-balance?.iva_ventas}
+                    defaultValue={currencyFormatter.format(-balance?.iva_ventas)}
                     name="iva_ventas"
 
                 />
@@ -229,7 +257,7 @@ const VerDetalleBalanceRegistro = ({ balance }) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Aportes por Pagar"
 
-                    defaultValue={-balance?.aportes}
+                    defaultValue={currencyFormatter.format(-balance?.aportes)}
                     name="aportes"
 
                 />
@@ -252,7 +280,7 @@ const VerDetalleBalanceRegistro = ({ balance }) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Nomina por Pagar"
 
-                    defaultValue={-balance?.nomina}
+                    defaultValue={currencyFormatter.format(-balance?.nomina)}
                     name="nomina"
                 />
 
@@ -280,7 +308,7 @@ const VerDetalleBalanceRegistro = ({ balance }) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Pasivos Fijos"
 
-                    defaultValue={-balance?.pasivos_fijos}
+                    defaultValue={currencyFormatter.format(-balance?.pasivos_fijos)}
                     name="pasivosfijos"
 
                 />
@@ -300,7 +328,7 @@ const VerDetalleBalanceRegistro = ({ balance }) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Pasivos"
 
-                    defaultValue={-balance?.pasivos}
+                    defaultValue={currencyFormatter.format(-balance?.pasivos)}
                     name="pasivos"
 
 
@@ -321,7 +349,7 @@ const VerDetalleBalanceRegistro = ({ balance }) => {
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Patrimonio"
                     name="patrimonio"
-                    defaultValue={-balance?.patrimonio}
+                    defaultValue={currencyFormatter.format(-balance?.patrimonio)}
 
 
 

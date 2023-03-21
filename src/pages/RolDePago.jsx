@@ -2,6 +2,7 @@ import { obtenerEmpleado} from "../data/empleados.js";
 import Error from "../components/Error.jsx";
 import {Form, useNavigate, useLoaderData, useActionData, redirect} from "react-router-dom";
 import { obtenerCargo } from "../data/cargo_empleado";
+import { currencyFormatter } from "../utils/formatters";
 
 export async function loader({params}){
     const empleado =  await obtenerEmpleado(params.empleadoId)
@@ -62,7 +63,7 @@ function RolDePago() {
                             </p>
                             <p
                             className="flex justify-center mt-3 mr-5 rounded p-2 uppercase font-bold text-black text-sm"
-                            >{empleado?.SUELDO_FIJO}
+                            >{currencyFormatter.format(empleado?.SUELDO_FIJO)}
                             </p>
                         </div>
                         <div className="grid grid-cols-2 gap-10">
@@ -72,7 +73,7 @@ function RolDePago() {
                             </p>
                             <p
                             className="flex justify-center mt-3 mr-5 rounded p-2 uppercase font-bold text-black text-sm"
-                            >{(empleado?.SUELDO-empleado?.SUELDO_NETO).toFixed(2)}
+                            >{currencyFormatter.format((empleado?.SUELDO-empleado?.SUELDO_NETO).toFixed(2))}
                             </p>
                         </div>
                         
@@ -100,7 +101,7 @@ function RolDePago() {
                             </p>
                             <p
                             className="flex justify-center mt-3 mr-5 rounded p-2 uppercase font-bold text-black text-sm"
-                            >{empleado?.SUELDO}
+                            >{currencyFormatter.format(empleado?.SUELDO)}
                             </p>
                         </div>
                         <div className="grid grid-cols-2 gap-10">
@@ -110,7 +111,7 @@ function RolDePago() {
                             </p>
                             <p
                             className="flex justify-center mt-3 mr-5 rounded p-2 uppercase font-bold text-black text-sm"
-                            >{empleado?.HORAS_LABORADAS*empleado?.SUELDO_HORAS}
+                            >{currencyFormatter.format(empleado?.HORAS_LABORADAS*empleado?.SUELDO_HORAS)}
                             </p>
                         </div>
                     </div>
@@ -123,7 +124,7 @@ function RolDePago() {
                         </p>
                         <p
                         className="flex justify-center mt-3 mr-5 rounded p-2 uppercase font-bold text-black text-sm"
-                        >{empleado?.SUELDO_NETO}
+                        >{currencyFormatter.format(empleado?.SUELDO_NETO)}
                         </p>
                     </div>
                 </div>
