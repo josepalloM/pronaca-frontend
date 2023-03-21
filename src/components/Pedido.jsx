@@ -31,15 +31,15 @@ function Pedido({ pedido }) {
   const [deleteVar, setDeleteVar] = useState(false)
 
   const handleEditar = () => {
-    if(ESTADO_PEDIDO=="ENTREGADO"){
-      alert("El pedido ya ha sido entregado")
+    if(ESTADO_PEDIDO=="ENTREGADO" || ESTADO_PEDIDO=="EN CAMINO"){
+      alert("El pedido está en camino o ya ha sido entregado")
     }else{
       navigate(`/pedido/${ID_PEDIDO}/editar`)
     }
   }
 
   function handleEliminar(){
-    return ESTADO_PEDIDO=="ENTREGADO";
+    return (ESTADO_PEDIDO=="ENTREGADO" || ESTADO_PEDIDO=="EN CAMINO" || ESTADO_PEDIDO=="ASIGNADO");
   }
 
   return (

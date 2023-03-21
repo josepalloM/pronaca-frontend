@@ -1,15 +1,18 @@
 import { Link, useLoaderData, useLocation } from "react-router-dom"
 import { obtenerFlotas } from "../data/flotas"
 import Flota from "../components/Flota"
+import { obtenerPedidos, actualizarEstados } from "../data/pedidos"
 
-export function loader({params}) {
-  const flotas = obtenerFlotas(params.transporteId)
-  return flotas
+export async function loader({params}) {
+  const flotas = await obtenerFlotas(params.transporteId)
+  const transporteId = params.transporteId
+  const pedidos = await obtenerPedidos()
+  return {flotas, transporteId, pedidos}
 }
 
 function Flotas() {
 
-  const flotas = useLoaderData()
+  const {flotas, transporteId, pedidos} = useLoaderData()
   const location = useLocation()
 
   return (
@@ -26,6 +29,7 @@ function Flotas() {
           <table className="w-full bg-white shadow mt-5 table-auto">
             <thead className="bg-black text-white">
               <tr>
+                <th className="p-2">ID</th>
                 <th className="p-2">Sector</th>
                 <th className="p-2">Estado</th>
                 <th className="p-2">Capacidad</th>
@@ -37,6 +41,7 @@ function Flotas() {
               {flotas.map(flota => (
                 <Flota
                 flota={flota}
+                pedidos={pedidos}
                   key={flota.ID_FLOTA}
                 />
 
@@ -50,7 +55,7 @@ function Flotas() {
         >
           <Link
             state={location.state}
-            to='/flota/nuevo'>CREAR FLOTA</Link>
+            to={`/flota/${transporteId}/nuevo`}>CREAR FLOTA</Link>
         </button>
       </div>
     </>

@@ -56,3 +56,19 @@ export async function actualizarPedido(id, datos){
         console.log(error)
     }
 }
+
+export async function actualizarEstados(id, datos){
+    try {
+        const url = "http://localhost:4000/api/pedido/all"
+        const respuesta = await fetch(`${url}/${id}`, {
+            method:'PUT',
+            body:JSON.stringify(datos),
+            headers: {
+                'Content-Type':'application/json'
+            }
+        })
+        await respuesta.json()
+    }catch (error){
+        console.log(error)
+    }
+}

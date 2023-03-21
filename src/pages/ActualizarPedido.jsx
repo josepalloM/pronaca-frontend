@@ -5,6 +5,9 @@ import {Form, useNavigate, useLoaderData, useActionData, redirect} from "react-r
 import FormularioActualizarPedido from "../components/FormularioActualizarPedido.jsx";
 import {obtenerEmpleado} from "../data/empleados";
 import {obtenerCliente} from "../data/clientes";
+import {obtenerTodasFlotas} from "../data/flotas";
+import {aumentarCantidad} from "../data/flotas";
+import {disminuirCantidad} from "../data/flotas";
 
 export async function loader({params}){
     const pedido =  await obtenerPedido(params.pedidoId)
@@ -16,13 +19,13 @@ export async function loader({params}){
     }
 
     const cliente = await obtenerCliente(pedido.ID_CLIENTE)
-    console.log(cliente)
 
     const empleado = await obtenerEmpleado(pedido.ID_EMPLEADO)
-    console.log(empleado)
+
+    const flotas = await obtenerTodasFlotas()
 
     console.log("Pedido en actualizar", pedido)
-    return {pedido, cliente, empleado}
+    return {pedido, cliente, empleado, flotas}
 }
 
 export async function action({request, params}){
@@ -30,10 +33,15 @@ export async function action({request, params}){
 
     const datos = Object.fromEntries(formData)
 
+    const estado_pedido = formData.get('ESTADO_PEDIDO')
+    console.log(estado_pedido)
+    const flota = formData.get('ID_FLOTA')
+
     //Validacion
     const errores = []
     if (Object.values(datos).includes('')){
-        errores.push('Todos los campos sosn necesarios')
+        errores.push('Todos los campos son necesarios')
+        console.log(datos)
     }
 
     //Retornar datos si ha errores
@@ -42,14 +50,20 @@ export async function action({request, params}){
     }
 
     // Actualizar Pedido
-    await  actualizarPedido(params.pedidoId, datos)
+    await actualizarPedido(params.pedidoId, datos)
+    if(estado_pedido==="ASIGNADO"){
+        await aumentarCantidad(flota, datos)
+    }
+    if(estado_pedido==="ENTREGADO"){
+        await disminuirCantidad(flota, datos)
+    }
     return redirect('/opciones/pedidos')
 }
 
 function ActualizarPedido() {
 
     const navigate = useNavigate()
-    const {pedido, cliente, empleado} = useLoaderData()
+    const {pedido, cliente, empleado, flotas} = useLoaderData()
     const errores = useActionData()
 
     return (
@@ -72,20 +86,27 @@ function ActualizarPedido() {
                         pedido={pedido}
                         cliente={cliente}
                         empleado={empleado}
+                        flotas={flotas}
                     />
 
                     <div className="grid grid-cols-2 gap-2">
                         <div>
                             <input
                                 type="submit"
-                                className="mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
+                                className="flex text-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm 
+                                          shadow-md hover:bg-amber-400 hover:shadow focus:bg-grey
+                                          focus:shadow focus:outline-none focus:ring-0 active:bg-grey
+                                          active:shadow transition duration-150 ease-in-out"
                                 value="Guardar Pedido"
                             />
                         </div>
                         <div>
                             <button
                                 type="button"
-                                className="felx justify-items-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm"
+                                className="flex text-center mt-3 rounded bg-orange-300 p-2 uppercase font-bold text-black text-sm 
+                                          shadow-md hover:bg-amber-400 hover:shadow focus:bg-grey
+                                          focus:shadow focus:outline-none focus:ring-0 active:bg-grey
+                                          active:shadow transition duration-150 ease-in-out"
                                 onClick={() => navigate(-1)}
                             >Cancelar</button>
                         </div>

@@ -120,6 +120,9 @@ import ActualizarTransporte, { loader as actualizarTransporteLoader, action as a
 
 //Flotas
 import Flotas, { loader as flotaLoader } from './pages/Flotas'
+import { action as eliminarFlotaAction } from "./components/Flota"
+import NuevaFlota, { action as nuevaFlotaAction, loader as nuevaFlotaLoader } from './pages/NuevaFlota'
+import ActualizarFlota, { loader as actualizarFlotaLoader, action as actualizarFlotaAction } from './pages/ActualizarFlota'
 
 function App() {
 
@@ -638,6 +641,24 @@ function App() {
                             path: '/flota/:transporteId',
                             element: <Flotas />,
                             loader: flotaLoader,
+                        },
+                        {
+                            path: '/flota/:transporteId/nuevo',
+                            element: <NuevaFlota />,
+                            action: nuevaFlotaAction,
+                            loader: nuevaFlotaLoader,
+                            errorElement: <ErrorPage />
+                        },
+                        {
+                            path: '/flota/:flotaId/eliminar',
+                            action: eliminarFlotaAction
+                        },
+                        {
+                            path: '/flota/:flotaId/editar',
+                            element: <ActualizarFlota />,
+                            loader: actualizarFlotaLoader,
+                            action: actualizarFlotaAction,
+                            errorElement: <ErrorPage />
                         },
 
                     ]
