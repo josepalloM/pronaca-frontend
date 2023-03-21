@@ -112,7 +112,7 @@ function Transportes() {
                                 active:shadow transition duration-150 ease-in-out"
           onClick={actualizarCuentas}
         >
-          Actualizar cuentas por cobrar
+          Actualizar cuentas por pagar
         </button>
 
         <button
